@@ -19,7 +19,7 @@ let n = 123;
 n = 12.345;
 ```
 
-Typ *number* reprezentuje zarówno liczby całkowite jak i zmiennoprzecinkowe.
+Typ *number* reprezentuje zarówno liczby całkowite, jak i zmiennoprzecinkowe.
 
 Jest wiele operacji na liczbach, np. mnożenie `*`, dzielenie `/`, dodawanie `+`, odejmowanie `-` itd.
 
@@ -55,7 +55,7 @@ Poza zwykłymi liczbami, wyróżniamy "specjalne wartości liczbowe", które tak
 ```smart header="Operacje matematyczne są bezpieczne"
 Przeprowadzanie obliczeń matematycznych jest "bezpieczne" w JavaScript. Możemy: dzielić przez zero, traktowac ciągi znaków jako liczby, itd.
 
-Skrypt nigdy nie zatrzyma się na błędzie krytycznym. W najgorszym wypadku, dostaniemy NaN jako wynik działania.
+Skrypt nigdy nie zatrzyma się na błędzie krytycznym. W najgorszym wypadku otrzymamy NaN jako wynik działania.
 ```
 
 Specjalne wartości liczbowe formalnie należą do typu "liczbowego". Oczywiście nie są liczbami w definicji matematycznej.
@@ -96,7 +96,7 @@ Wyrażenie wewnątrz `${…}` zostaje dołączone do części stringa. Do wyraż
 
 Warto odnotować, że taki efekt można osiągnąć jedynie przy użyciu grawisów(``). Apostrofy i Cudzysłów nie mają takich możliwości.
 ```js run
-alert( "Wynik to ${1 + 2}" ); // Wynik to ${1 + 2} (cudzysłów tarktuje ${…} jako kolejną część stringa)
+alert( "Wynik to ${1 + 2}" ); // Wynik to ${1 + 2} (cudzysłów traktuje ${…} jako kolejną część stringa)
 ```
 
 Więcej o typie string można przeczytać w rozdziale <info:string>.
@@ -125,7 +125,7 @@ Wartości typu Boolean mogą być wynikiem porównania:
 ```js run
 let isGreater = 4 > 1;
 
-alert( isGreater ); // true (resultatem porównania jest "tak" - prawda)
+alert( isGreater ); // true (rezultatem porównania jest "tak" - prawda)
 ```
 
 Więcej informacji o typie Boolean można znaleźć w rozdziale <info:logical-operators>.
@@ -140,7 +140,7 @@ Null posiada własny typ, który zawiera jedynie wartość `null`:
 let age = null;
 ```
 
-W JavaScript, `null` nie odnosi się do "nieistniejącego obiektu" lub "wskażnika zerowego" jak w innych językach programowania.
+W JavaScript, `null` nie odnosi się do "nieistniejącego obiektu" lub "wskaźnika zerowego" jak w innych językach programowania.
 
 Jest specjalną wartością, która reprezentuje: "nic", "brak wartości" lub "nieznaną wartość".
 
