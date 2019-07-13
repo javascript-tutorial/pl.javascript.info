@@ -57,6 +57,6 @@ i z których wszyscy jesteśmy zadowoleni.
 
 Jest mnóstwo innych edytorów w naszym dużym świecie. Używaj tego, który lubisz najbardziej. 
 
-Wybór edytora jak i każdego innego narzędzia developerskiego jest naszą indywidualną sprawą zależną od potrzeb w 
+Wybór edytora jak i dowolnego innego narzędzia developerskiego jest naszą indywidualną sprawą zależną od potrzeb w 
 projekcie, 
 przyzwyczajeń czy osobistych preferencji.
