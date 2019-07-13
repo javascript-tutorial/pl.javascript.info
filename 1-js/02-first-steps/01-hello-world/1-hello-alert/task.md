@@ -1,12 +1,11 @@
-importance: 5
+Trudność: 5
 
 ---
 
-# Show an alert
+# Pokaż alert
 
-Create a page that shows a message "I'm JavaScript!".
+Utwórz alert na stronie z treścią "Jestem JavaScript!".
 
-Do it in a sandbox, or on your hard drive, doesn't matter, just ensure that it works.
+Zrób do gdziekolwiek np. w sandbox lub na dysku twardym. Upewnij się, że działa.
 
 [demo src="solution"]
-
