@@ -89,7 +89,7 @@ let name = "John";
 alert( `Hello, *!*${name}*/!*!` ); // Hello, John!
 
 // dołączenie wyrażenia
-alert( `the result is *!*${1 + 2}*/!*` ); // the result is 3
+alert( `Wynikiem jest *!*${1 + 2}*/!*` ); // Wynikiem is 3
 ```
 
 Wyrażenie wewnątrz `${…}` zostaje dołączone do części stringa. Do wyrażenia możemy wstawić cokolwiek: zmienną na przykład `name` lub wyrażenie arytmetyczne jak na przykład `1 + 2` lub coś bardziej złożonego.
@@ -102,9 +102,9 @@ alert( "Wynik to ${1 + 2}" ); // Wynik to ${1 + 2} (cudzysłów traktuje ${…} 
 Więcej o typie string można przeczytać w rozdziale <info:string>.
 
 ```smart header="JavaScript nie posiada typu *character*."
-W niektórych językach jest specjalny typ "characket" dla pojedynczych znaków. Przykładowo w językach C i Java możemy użyć typu `char`.
+W niektórych językach jest specjalny typ "character" dla pojedynczych znaków. Przykładowo w językach C i Java możemy użyć typu `char`.
 
-W JavaScript nie ma takiego typu. Mamy do dyspozycji jedynie `string`. String może zawierać jeden znak lub więcej.
+W JavaScript nie ma takiego typu. Mamy do dyspozycji jedynie `string`. String może być pusty, zawierać też jeden lub więcej znaków.
 ```
 
 ## Boolean (typ logiczny)
@@ -170,7 +170,7 @@ x = undefined;
 alert(x); // "undefined"
 ```
 
-...Jednak nie zalecamy tworzenia zmiennych o warotści `undefined`. Zazwyczaj używamy `null` dla zmiennych bez wartości, `undefined` przydaje się przy sprawdzaniu czy zmienna została przypisana do jakiejś wartości.
+...Jednak nie zalecamy tworzenia zmiennych o wartości `undefined`. Zazwyczaj używamy `null` dla zmiennych bez wartości, `undefined` przydaje się przy sprawdzaniu czy zmienna została przypisana do jakiejś wartości.
 
 ## Obiekty i Symbole
 
@@ -229,7 +229,7 @@ Ostatnie trzy linijki wymagają dodatkowego wyjaśnienia.
 Wyróżniamy 7 podstawowych typów danych w JavaScript.
 
 - `number` dla wszystkich liczb: całkowitych lub zmiennoprzecinkowych.
-- `string` dla ciągów znaków. String może zawierać jeden lub więcej znaków, nie ma oddzielnego typu dla pojedynczego znaku.
+- `string` dla ciągów znaków. String może być pusty, zawierać też jeden lub więcej znaków, nie ma oddzielnego typu dla pojedynczego znaku.
 - `boolean` dla `true`/`false`(prawda/fałsz).
 - `null` dla pustych wartości -- autonomiczny typ, który posiada jedną wartość `null`.
 - `undefined` dla niezdefiniowanych wartości -- autonomiczny typ, który posiada jedną wartość `undefined`.
