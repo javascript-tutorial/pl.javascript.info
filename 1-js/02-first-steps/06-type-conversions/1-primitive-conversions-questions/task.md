@@ -1,10 +1,10 @@
-importance: 5
+Ważność: 5
 
 ---
 
-# Type conversions
+# Konwersje typów
 
-What are results of these expressions?
+Jakie będą rezultaty poniższych wyrażeń?
 
 ```js no-beautify
 "" + 1 + 0
@@ -23,4 +23,4 @@ null + 1
 undefined + 1
 ```
 
-Think well, write down and then compare with the answer.
+Pomyśl dobrze, zapisz odpowiedzi i porównaj z prawidłowym rozwiązaniem.
