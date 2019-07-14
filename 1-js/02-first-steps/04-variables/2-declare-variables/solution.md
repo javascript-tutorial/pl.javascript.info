@@ -16,6 +16,6 @@ let currentUserName = "Jan";
 
 Znowu mogliśmy skrócić nazwę do `userName` jeśli jesteśmy pewni, że dany użytkownik jest użytkownikiem bieżącym.
 
-Współczesne edytory i autouzupełnianie sprawiają, ułatwiają pisanie długich nazw zmiennych. Nie oszczędzaj na nich. Nazwa składająca się z 3 wyrazów jest w porządku.
+Współczesne edytory i autouzupełnianie ułatwiają pisanie długich nazw zmiennych. Nie oszczędzaj na nich. Nazwa składająca się z 3 wyrazów jest w porządku.
 
-A jeśli Twój edytor nie ma odpowiedniego autouzupełniania, [spraw sobie nowy](/code-editors).
+Jeśli Twój edytor nie ma odpowiedniego autouzupełniania, [spraw sobie nowy](/code-editors).
