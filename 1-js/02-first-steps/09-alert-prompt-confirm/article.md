@@ -2,7 +2,7 @@
 
 W tej części poradnika przedstawimy język JavaScript w podstawowej formie, bez żadnych ulepszeń dla danego środowiska.
 
-Nadal będziemy używać przeglądarki jako domyślnego środowiska, więc powinniśmy znać przynajmniej kilka funkcji interfejsu przeglądarki. W tym rozdziale, zaznajomimy się z funkcjami dostępnymi w przeglądarce: `alert`, `prompt` and `confirm`.
+Nadal będziemy używać przeglądarki jako domyślnego środowiska, więc powinniśmy znać przynajmniej kilka funkcji jej interfejsu. W tym rozdziale, zaznajomimy się z funkcjami dostępnymi w przeglądarce: `alert`, `prompt` and `confirm`.
 
 ## alert
 
@@ -20,7 +20,7 @@ Na przykład:
 alert("Hello");
 ```
 
-Małe okno z wiadomością nazywamy *modal window*. Słowo "modal" oznacza, że użytkownik nie może wejść w interakcję z pozostałą treścią strony, czy też z innymi przyciskami itd. nie zakończą interakcji z oknem. W tym przypadku -- do czasu kliknięcia "OK".
+Małe okno z wiadomością nazywamy *modal window*. Słowo "modal" oznacza, że użytkownik nie może wejść w interakcję z pozostałą treścią strony, czy też z innymi przyciskami itd. dopóki nie zakończy interakcji z oknem. W tym przypadku -- do czasu kliknięcia "OK".
 
 ## prompt
 
@@ -33,7 +33,7 @@ result = prompt(title, [default]);
 Funkcja `prompt` wyświetla okno z wiadomością, pole input dla użytkownika oraz przyciski OK/ANULUJ.
 
 `title`
-: Tekst, który zostanie wyświetlony użytkownikowi.The text to show the visitor.
+: Tekst, który zostanie wyświetlony użytkownikowi.
 
 `default`
 : Opcjonalny drugi parametr, wartość początkowa dla pola input.
@@ -99,11 +99,11 @@ Omówiliśmy 3 funkcje dostępne w przeglądarkach do interakcji z użytkownikam
 `confirm`
 : wyświetla wiadomość i oczekuje na użytkownika, który może użyć przycisku "OK" lub "ANULUJ". Zwraca `true` dla OK albo `false` "ANULUJ"/`key:Esc`.
 
-Wszystkie metody wyświetlają okna: wstrzymują wykonywanie skryptu i nie pozwalają na dalszą interakcję ze stroną użytkownikowi do czasu odwołania okna.
+Wszystkie metody wyświetlają okna: wstrzymują wykonywanie skryptu i nie pozwalają użytkownikowi na dalszą interakcję ze stroną do czasu odwołania okna.
 
 Istnieją dwa ograniczenia związane z powyższymi metodami:
 
 1. Dokładna lokalizacja okna jest ustalona przez przeglądarkę. Zazwyczaj jest w części centralnej okna przeglądarki.
 2. Wygląd okna także zależy od przeglądarki. Nie możemy go zmodyfikować.
 
-Taka jest cena dla tego typu ułatwień. Istnieją inne możliwości dla wyświetlania lepszych, bardziej rozbudowanych interakcji z użytkownikiem, jeżeli nie zależy nam na "wodotryskach", te metody w zupełności spełniają swoją funkcję.
+Taka jest cena dla tego typu ułatwień. Istnieją inne możliwości dla wyświetlania lepszych, bardziej rozbudowanych interakcji z użytkownikiem. Jeżeli nie zależy nam na "wodotryskach", te metody w zupełności spełniają swoją funkcję.

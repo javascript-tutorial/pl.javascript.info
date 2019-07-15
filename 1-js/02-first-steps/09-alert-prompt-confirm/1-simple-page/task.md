@@ -2,7 +2,7 @@ importance: 4
 
 ---
 
-# Prost strona
+# Prosta strona
 
 Stwórz prostą stronę, która zapyta użytkownika o imię, a następnie wyświeli je.
 
