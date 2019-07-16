@@ -1,6 +1,6 @@
 # Struktura kodu
 
-Struktura pisania kodu będzie pierwszą rzeczą jaką się nauczymy. 
+Składnia w JavaScript pierwszą rzeczą jaką się nauczymy. 
 
 ## Instrukcje
 
@@ -153,6 +153,6 @@ alert( 'World' );
 
 Proszę, nie wahaj się komentować swojego kodu.
 
-Komentarze zwiększają objętość kodu, ale to nie jest problem. Istnieje wiele narzędzi, które minifikują kod przed opublikowaniem go na środowisku produkcyjnym. Te narzędzia usuwają komentarze, które przy wdrożeniu nie są widoczne. Nie mają one żadnego negatywnego wpływu na działanie skryptów na środowisku produkcyjnym.
+Komentarze zwiększają objętość kodu. Ale tym się nie mart - nie jest problem. Istnieje wiele narzędzi, które minifikują kod przed opublikowaniem go na środowisku produkcyjnym. Te narzędzia usuwają komentarze, które przy wdrożeniu nie są widoczne. Korzystanie z takich narzędzi nie ma żadnego negatywnego wpływu na działanie skryptów na środowisku produkcyjnym.
 
 Później, w jednym z rozdziałów <info:code-quality> poznasz w jaki sposób pisać wartościowe komentarze.
