@@ -100,14 +100,14 @@ Jeśli inne strony muszą skorzystać z tych skryptów, a plik został już pobr
 To znacznie przyspiesza działanie strony i redukuje niepotrzebny ruch. 
 ```
 
-````warn header="Jeśli atrybut `src` jest dodany, wtedy skrypt w środku tagu nie będzie wykonany."
-Pojedynczy tag `<script>` nie może mieć zatem jednocześnie atrybutu `src` i kodu w środku.
+````warn header="Jeśli atrybut `src` jest dodany, treść skryptu środku tagu nie będzie wykonana."
+Pojedynczy tag `<script>` nie może mieć zatem jednocześnie atrybutu `src` i kodu w środku. Jeśli się tak stanie to wykona się skrypt umieszczony za pomocą atrybutu `src`.
 
 To nie zadziała:
 
 ```html
 <script *!*src*/!*="file.js">
-  alert(1); // treść kodu jest zignorowana, ponieważ dodano atrybut src
+  alert(1); // ten alert jest zignorowany, ponieważ dodano atrybut src
 </script>
 ```
 
