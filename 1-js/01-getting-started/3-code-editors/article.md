@@ -46,16 +46,15 @@ Poniższe przykłady zasługują na Twoją uwagę:
 - [Atom](https://atom.io/) (cross-platform, darmowy).
 - [Sublime Text](http://www.sublimetext.com) (cross-platform, shareware).
 - [Notepad++](https://notepad-plus-plus.org/) (Windows, darmowy).
-- [Vim](http://www.vim.org/) i [Emacs](https://www.gnu.org/software/emacs/) są również super jeśli wiesz jak na 
+- [Vim](http://www.vim.org/) i [Emacs](https://www.gnu.org/software/emacs/) są świetne, pod warunkiem, że wiesz jak na 
 nich pracować. 
 
 ## Nie sprzeczajmy się
 
 Lista edytorów powyżej, to narzędzia, z których sam korzystam lub korzystają moi znajomi, których uważam za dobrych 
-programistów, 
-i z których wszyscy jesteśmy zadowoleni.
+programistów, i z których wszyscy jesteśmy zadowoleni.
 
-Jest mnóstwo innych edytorów w naszym dużym świecie. Używaj tego, który lubisz najbardziej. 
+Jest mnóstwo takich programów w naszym dużym świecie. Używaj tego, który lubisz najbardziej. 
 
 Wybór edytora jak i dowolnego innego narzędzia developerskiego jest naszą indywidualną sprawą zależną od potrzeb w 
 projekcie, 
