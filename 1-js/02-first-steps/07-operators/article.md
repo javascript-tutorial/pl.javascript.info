@@ -1,6 +1,6 @@
-# Operators
+# Operatory
 
-We know many operators from school. They are things like addition `+`, multiplication `*`, subtraction `-`, and so on.
+Znamy wiele operatorów ze szkoły.  We know many operators from school. They are things like addition `+`, multiplication `*`, subtraction `-`, and so on.
 
 In this chapter, we'll concentrate on aspects of operators that are not covered by school arithmetic.
 
