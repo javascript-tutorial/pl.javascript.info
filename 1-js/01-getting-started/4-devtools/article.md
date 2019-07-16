@@ -20,7 +20,7 @@ zajrzenia do błędów i uruchomienia pierwszych komend w JavaScript.
 
 Otwórz stronę [bug.html](bug.html).
 
-Na stronie znajduje się błąd w JavaScript. Błąd skryptu jest ukryty dla zwykłego odwiedzającego. Otwórzmy zatem narzędzia 
+Na tej stronie znajduje się błąd w JavaScript. Błąd skryptu jest niewidoczny dla zwykłego odwiedzającego. Otwórzmy zatem narzędzia 
 programistyczne, aby móc go zobaczyć.
 
 Naciśnij `key:F12`, chyba, że korzystasz z Maca, wtedy naciśnij `key:Cmd+Opt+J`.
