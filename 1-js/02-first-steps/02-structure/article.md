@@ -6,7 +6,7 @@ Składnia w JavaScript pierwszą rzeczą jaką się nauczymy.
 
 Instrukcje są zapisem składni i komend, które wykonują określone działania. 
 
-Poznaliśmy zapis `alert('Hello, world!')`, który wyświetlał wiadomość "Hello, world".
+Poznaliśmy zapis `alert('Hello, world!')`, który wyświetlał wiadomość "Hello, world!".
 
 W naszym kodzie możemy mieć tak dużo instrukcji ile tylko zechcemy. Każda instrukcja jest oddzielona od innej średnikiem.
 
