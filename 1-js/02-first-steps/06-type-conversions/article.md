@@ -7,7 +7,7 @@ Na przykład `alert` automatycznie zmieni typ dowolnej wartości do stringa. Mat
 Istnieją jednak przypadki, w których musimy jawnie zmienić typ wartości na inny. 
 
 ```smart header="Nie mówimy jeszcze o obiektach"
-W tym rozdziale nie zajmujemy się objektami. Zamiast tego nauczymy się najpierw typów prymitywnych. Później nauczymy się co nieco o obiektach i zobaczymy jak działa konwersja obiektów w rozdziale <info:object-toprimitive>.
+W tym rozdziale nie zajmujemy się obiektami. Zamiast tego nauczymy się najpierw typów prymitywnych. Później nauczymy się co nieco o obiektach i zobaczymy jak działa konwersja obiektów w rozdziale <info:object-toprimitive>.
 ```
 
 ## String Conversion
@@ -156,4 +156,4 @@ Większość z tych zasad jest łatwa do zrozumienia i zapamiętania. Most of th
 - `undefined` to `NaN` jako number, a nie `0`.
 - `"0"` i spacja w stringu np. `"   "` będzie true jako boolean.
 
-Objekty nie są tutaj omówione. Wrócimy do nich później w rozdziale <info:object-toprimitive>, który jest poświęcony obiektom, gdy poznamy już więcej podstaw JavaScript.
+Obiekty nie są tutaj omówione. Wrócimy do nich później w rozdziale <info:object-toprimitive>, który jest poświęcony obiektom, gdy poznamy już więcej podstaw JavaScript.
