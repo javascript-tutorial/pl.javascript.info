@@ -8,7 +8,6 @@ Istnieją jednak przypadki, w których musimy jawnie zmienić typ wartości na i
 
 ```smart header="Nie mówimy jeszcze o obiektach"
 W tym rozdziale nie zajmujemy się obiektami. Zamiast tego nauczymy się najpierw typów prymitywnych. Później nauczymy się co nieco o obiektach i zobaczymy jak działa konwersja obiektów w rozdziale <info:object-toprimitive>.
-```
 
 ## ToString (do stringa)
 
