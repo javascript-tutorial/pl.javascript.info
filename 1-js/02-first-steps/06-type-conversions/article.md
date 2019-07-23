@@ -4,10 +4,10 @@ W większości przypadków operatory i funkcje automatycznie konwertują przekaz
 
 Na przykład `alert` automatycznie zmieni typ dowolnej wartości do stringa. Matematyczne operacje konwertują wartości do typu liczbowego.
 
-Istnieją jednak przypadku, w których musimy jawne zmienić typ wartości na inny. 
+Istnieją jednak przypadki, w których musimy jawnie zmienić typ wartości na inny. 
 
 ```smart header="Nie mówimy jeszcze o obiektach"
-W tym rozdziale nie zajmujemy się objektami. In this chapter, we won't cover objects. Zamiast tego nauczymy się najpierw typów prymitywnych. Później nauczymy się co nieco o obiektach i zobaczymy jak działa konwersja obiektów w rozdziale <info:object-toprimitive>.
+W tym rozdziale nie zajmujemy się objektami. Zamiast tego nauczymy się najpierw typów prymitywnych. Później nauczymy się co nieco o obiektach i zobaczymy jak działa konwersja obiektów w rozdziale <info:object-toprimitive>.
 ```
 
 ## String Conversion
@@ -28,7 +28,7 @@ alert(typeof value); // string
 */!*
 ```
 
-Konwersja stringów jest bardzo przewidywalna. `false` zostaje `"false"`, typ boolean `null` jest stringiem `"null"`, etc.
+Konwersja stringów jest bardzo przewidywalna. `false` zostaje `"false"`, typ boolean `null` staje się stringiem `"null"`, etc.
 
 ## Numeric Conversion
 
