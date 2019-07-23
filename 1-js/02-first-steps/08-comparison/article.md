@@ -1,96 +1,95 @@
-# Porównania
+# Comparisons
 
-Na matematyce poznaliśmy porównania: 
+We know many comparison operators from maths:
 
-- Większe/mniejsze niż: <code>a &gt; b</code>, <code>a &lt; b</code>.
-- Większe/mniejsze niż lub równe: <code>a &gt;= b</code>, <code>a &lt;= b</code>.
-- Równe: `a == b` (zauważ, że jest tutaj podwójny znak `=`. Pojedyncze użycie `a = b` oznacza przypisanie).
-- Nierówne. W matematyce zapiszemy to jako <code>&ne;</code>, ale w JavaScript jest to zapisane jako wykrzyknik przed znakiem równości: <code>a != b</code>.
+- Greater/less than: <code>a &gt; b</code>, <code>a &lt; b</code>.
+- Greater/less than or equals: <code>a &gt;= b</code>, <code>a &lt;= b</code>.
+- Equals: `a == b` (please note the double equals sign `=`. A single symbol `a = b` would mean an assignment).
+- Not equals. In maths the notation is <code>&ne;</code>, but in JavaScript it's written as an assignment with an exclamation sign before it: <code>a != b</code>.
 
-## Wynikiem jest Boolean
+## Boolean is the result
 
-Jak wszystkie inne operatory porównanie zwraca wartość. W tym przypadku wartością jest Boolean.
+Like all other operators, a comparison returns a value. In this case, the value is a boolean.
 
 - `true` -- means "yes", "correct" or "the truth".
 - `false` -- means "no", "wrong" or "not the truth".
 
-Na przykład:
+For example:
 
 ```js run
-alert( 2 > 1 );  // true (prawda)
-alert( 2 == 1 ); // false (fałsz)
-alert( 2 != 1 ); // true (prawda)
+alert( 2 > 1 );  // true (correct)
+alert( 2 == 1 ); // false (wrong)
+alert( 2 != 1 ); // true (correct)
 ```
 
-Wynik porównania może być przypisany do zmiennej, jak każda inna wartość:
+A comparison result can be assigned to a variable, just like any value:
 
 ```js run
-let result = 5 > 4; // przypisz wynik porównania
+let result = 5 > 4; // assign the result of the comparison
 alert( result ); // true
 ```
 
-## Porównanie stringów
+## String comparison
 
-Aby zobaczyć czy ciąg znaków jest większy niż inny JavaScript używa porównania, które nazywamy "słownikowym" lub "leksykograficznym".
+To see whether a string is greater than another, JavaScript uses the so-called "dictionary" or "lexicographical" order.
 
-Innymi słowy, stringi porównywane są litera po literze.
+In other words, strings are compared letter-by-letter.
 
-Na przykład:
+For example:
 
 ```js run
 alert( 'Z' > 'A' ); // true
-alert( 'Brat' > 'Brak' ); // true
-alert( 'Jan' > 'Ja' ); // true
+alert( 'Glow' > 'Glee' ); // true
+alert( 'Bee' > 'Be' ); // true
 ```
 
-Algorytm porównuje dwa stringi w prosty sposób:
+The algorithm to compare two strings is simple:
 
-1. Porównaj pierwszy znak w obu stringach.
-2. Jeśli pierwszy znak w pierwszym stringu jest większy (lub mniejszy) niż inny string, wtedy pierwszy string jest większy (lub mniejszy). Porównanie zakończone.
-3. Jeśli pierwsze znaki są takie same zrób porównanie dla kolejnego znaku w ten sam sposób jak w punkcie nr 2.
-4. Powtarzaj dopóki nie dojdzie do końca stringu.
-5. Jeśli oba stringi mają taką samą długość są równe. W przeciwnym przypadku dłuższy string jest większy.
+1. Compare the first character of both strings.
+2. If the first character from the first string is greater (or less) than the other string's, then the first string is greater (or less) than the second. We're done.
+3. Otherwise, if both strings' first characters are the same, compare the second characters the same way.
+4. Repeat until the end of either string.
+5. If both strings end at the same length, then they are equal. Otherwise, the longer string is greater.
 
-W powyższych przypadkach porównanie `'Z' > 'A'` zwróci rezultat w pierwszym podejściu. Porównanie `"Brat"` z `"Brak"` będzie porównywane znak po znaku:
+In the examples above, the comparison `'Z' > 'A'` gets to a result at the first step while the strings `"Glow"` and `"Glee"` are compared character-by-character:
 
-1. `B` jest takie same jak `B`.
-2. `r` jest takie same jak `r`.
-3. `a` jest takie same jak `a`.
-3. `t` jest większe niż `k`. Zatrzymaj tutaj. Pierwszy string jest większy.
+1. `G` is the same as `G`.
+2. `l` is the same as `l`.
+3. `o` is greater than `e`. Stop here. The first string is greater.
 
-```smart header="Nie do końca słownikowa, bo kolejność wg Unicode"
-Podany powyżej przykład jest prawie taki sam jak algorytm używany w słownikach lub książkach telefonicznych. Ale nie jest dokładnie taki sam.
+```smart header="Not a real dictionary, but Unicode order"
+The comparison algorithm given above is roughly equivalent to the one used in dictionaries or phone books, but it's not exactly the same.
 
-Na przykład wielkość ma znaczenie. Duża litera `"A"` nie jest równa małej literze `"a"`. Która jest większa? Mała litera `"a"`. Dlaczego? Ponieważ małe litery mają większy index w wewnętrznej tabeli kodowania znaków (Unicode), której używa JavaScript. Wrócimy do tego w rozdziale <info:string>.
+For instance, case matters. A capital letter `"A"` is not equal to the lowercase `"a"`. Which one is greater? The lowercase `"a"`. Why? Because the lowercase character has a greater index in the internal encoding table JavaScript uses (Unicode). We'll get back to specific details and consequences of this in the chapter <info:string>.
 ```
 
-## Porównania wartości różnego typu
+## Comparison of different types
 
-Kiedy porównujemy wartości różnego typu JavaScript konwertuje te wartości na liczby.
+When comparing values of different types, JavaScript converts the values to numbers.
 
-Na przykład:
+For example:
 
 ```js run
-alert( '2' > 1 ); // true, string '2' staje się numerem 2
-alert( '01' == 1 ); // true, string '01' staje się numerem 1
+alert( '2' > 1 ); // true, string '2' becomes a number 2
+alert( '01' == 1 ); // true, string '01' becomes a number 1
 ```
 
-Dla wartości Boolean `true` staje się `1`, a `false` staje się `0`. 
+For boolean values, `true` becomes `1` and `false` becomes `0`. 
 
-Na przykład:
+For example:
 
 ```js run
 alert( true == 1 ); // true
 alert( false == 0 ); // true
 ```
 
-````smart header="Zabawna zależność"
-Jest możliwe, aby w tym samym czasie:
+````smart header="A funny consequence"
+It is possible that at the same time:
 
-- Dwie wartości były równe.
-- Jedna z nich będzie `true` jako Boolean, natomiast druga jest `false` jako Boolean.
+- Two values are equal.
+- One of them is `true` as a boolean and the other one is `false` as a boolean.
 
-Na przykład:
+For example:
 
 ```js run
 let a = 0;
@@ -102,7 +101,7 @@ alert( Boolean(b) ); // true
 alert(a == b); // true!
 ```
 
-Z punkty widzenia JavaScript taki rezultat jest oczekiwany i normalny. Porównanie konwertuje wartości na typ liczbowy (więc string `"0"` zostaje `0`), podczas gdy porównanie `Boolean` konwertuje te wartości w inny sposób.
+From JavaScript's standpoint, this result is quite normal. An equality check converts values using the numeric conversion (hence `"0"` becomes `0`), while the explicit `Boolean` conversion uses another set of rules.
 ````
 
 ## Strict equality
