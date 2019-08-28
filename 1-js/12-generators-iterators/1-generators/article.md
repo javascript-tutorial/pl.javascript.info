@@ -90,7 +90,7 @@ Na razie zapamiętajmy, ze funkcje generujące, w przeciwieństwie od zwykłych 
 ```smart header="`function* f(…)` czy`function *f(…)`?". 
 Co kto lubi, obie składnie są poprawne.
 
-Mimo to, w większości przypadków używamy pierwszej składni, ponieważ gwiazdka `*` wskazuje, że to funkcja generująca, tzn opisuje rodzaj funkcji a nie jej nazwe, więc powinna być koło słowa `function`. 
+Mimo to, w większości przypadków używamy pierwszej składni, ponieważ gwiazdka `*` wskazuje, że to funkcja generująca, tzn opisuje rodzaj funkcji a nie jej nazwę, więc powinna być koło słowa `function`. 
 ```
 
 ## Na generatorach można dokonywać iteracji.
@@ -115,7 +115,7 @@ for(let value of generator) {
 
 Jest to znacznie ładniejszy sposób na używanie generatorów, niż korzystanie z `.next().value`, prawda?
 
-...Weź prosze pod uwagę: przykład wyżej pokazuje `1`, następnie `2` i to wszystko. Nie pokazuje `3`!
+...Weź proszę pod uwagę: przykład wyżej pokazuje `1`, następnie `2` i to wszystko. Nie pokazuje `3`!
 
 Jest tak dlatego, ponieważ pętla for-of ignoruje ostatnią wartość `value`, jeżeli `done: true`. Jeśli chcemy pokazać wszystkie rezultaty za pomocą pętli `for..of`, to musimy je zwrócić za pomocą `yield`:
 
@@ -153,7 +153,7 @@ W kodzie powyżej, `...generateSequence()` zmienia iterable w tablice wartości 
 
 ## Korzystanie z generatorów zamiast z iterable.
 
-Jakiś czas temu w rozdziale [](info:iterable) stworzyliśmy objekt typu iterable `range`, który zwraca wartości od..do.
+Jakiś czas temu w rozdziale [](info:iterable) stworzyliśmy obiekt typu iterable `range`, który zwraca wartości od..do.
 
 Dla przypomnienia, kod:
 
@@ -164,15 +164,15 @@ let range = {
   
   //dla..wywołań ta metoda raz na samym początku
   [Symbol.iterator]() {
-    // zwraca objekt iterator
-    // wprzód, for..of działa tylko dla tego objektu, pyta go o następną wartość
+    // zwraca obiekt iterator
+    // wprzód, for..of działa tylko dla tego obiektu, pyta go o następną wartość
     return {
       current: this.from,
       last: this.to,
 
       // next() jest wywoływana w każdej kolejnej iteracji przez pętle for..of
       next() {
-        // to powinno zwrócić wartość jako objekt {done:..., value:...}
+        // to powinno zwrócić wartość jako obiekt {done:..., value:...}
         if (this.current <= this.last) {
           return { done: false, value: this.current++ };
         } else {
@@ -223,20 +223,20 @@ alert( [...range] ); // 1,2,3,4,5
 
 Możemy teraz iterować po obiekcie `range`.
 
-To działa całkiem nieżle, bo gdy `range[Symbol.iterator]` zostaje wywołany:
+To działa całkiem nieźle, bo gdy `range[Symbol.iterator]` zostaje wywołany:
 
     - zwraca obiekt (który teraz jest generatorem)
-    - który zawiera metode `.next()` (tak jak generator)
-    - która zwraca wartości w formie `{ value: ..., done:true/false}` (zgadza sie, tak samo jak generator).
+    - który zawiera metodę `.next()` (tak jak generator)
+    - która zwraca wartości w formie `{ value: ..., done:true/false}` (zgadza się, tak samo jak generator).
 
 Oczywiście to nie przypadek. Generatory ułatwiają korzystanie z obiektów typu iterable.
 
-Ostatni wariant z generatorem jest znacznie bardziej zwięzły niż oryginalny kod i zawiera te same funkcjonalnosci.
+Ostatni wariant z generatorem jest znacznie bardziej zwięzły niż oryginalny kod i zawiera te same funkcjonalności.
 
 ```smart header="Generatory mogą działać bez końca"
 W przykładach powyżej wygenerowaliśmy skończone ciągi, ale możemy też stworzyć generator, który wytwarza wartości bez końca. Na przykład, niekończący się ciąg pseudo-losowych liczb.
 
-To na pewno musiałoby wymagać `break` w `for..of`, w przeciwnym wypadku pętla powtarzałaby sie bez końca.
+Wymagałoby to użycia `break` w `for..of`, w przeciwnym wypadku pętla powtarzałaby sie bez końca.
 ```
 
 ## Kompozycja generatora
@@ -328,7 +328,7 @@ It works even if the flow of values from the nested generator is infinite. It's 
 
 Do tego momentu, traktowaliśmy generatory jako "iteratory na sterydach". I tak właśnie się z nich często korzysta. 
 
-Ale tak naprawde są one znacznie bardziej potężne i elastyczne.
+Ale tak naprawdę są one znacznie bardziej potężne i elastyczne.
 
 To dlatego, ponieważ `yield` jest drogą dwukierunkową: nie tylko zwraca rezultaty na zewnątrz, ale może też przekazać wartość do środka generatora.
 
@@ -359,7 +359,7 @@ generator.next(4); // --> przekazuje rezultat do generatora
 2. Następnie, jak pokazane na powyższym obrazku, rezultat `yield` zostaje przypisany zmiennej `question` w wywoływanym kodzie.
 3. Poprzez `generator.next(4)`, generator wznawia wykonanie, i `4` zostaje przypisane zmiennej result: `let result = 4`.
 
-Zauważ prosze, kod zewnętrzny nie musi od razu wywołać `next(4)`. Może poświęcić troche czasu na wyliczenie wartości. To też jest prawidłowy kod:
+Zauważ proszę, kod zewnętrzny nie musi od razu wywołać `next(4)`. Wyliczenie wartości może zająć troche czasu. To też jest prawidłowy kod:
 
 ```js 
 // kontynuuj działanie generatora po pewnym czasie
@@ -404,7 +404,6 @@ To przypomina gre w "ping-pong". Każdy `next(value)` (za wyjątkiem pierwszego)
 ## generator.throw
 
 Jak zauważyliśmy w przykładach wyżej, kod zewnętrzny może przekazać wartość do generatora, jako rezultat `yield`.
-As we observed in the examples above, the outer code may pass a value into the generator, as the result of yield.
 
 ...Ale może też zainicjować (rzucić) błąd. Jest to naturalne, ponieważ błąd też jest rodzajem rezultatu. 
 
