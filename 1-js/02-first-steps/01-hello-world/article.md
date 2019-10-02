@@ -4,7 +4,7 @@ Ta część samouczka dotyczy głównych funkcjonalności samego języka JavaScr
 
 Zanim jednak będziemy w stanie uruchamiać nasze skrypty, potrzebujemy środowiska do pracy. Skoro czytasz tę książkę online, idealnie do tego nada się twoja przeglądarka. Ograniczymy komendy przeglądarkowe (np. `alert`) do minimum, aby oszczędzić ci czasu na ich naukę, jeśli planujesz skoncentrować się na innym środowisku (jak np. Node.js). JavaScript działający w przeglądarce omówimy w [następnej części](/ui) tego samouczka.
 
-Na początek zobaczmy, jak podpiąć skrypt do naszej strony. W środowiskach serwerowych (np. Node.js) skrypty wykonuje się poprzez komendę, np. `"node my.js"`.
+Na początek zobaczmy, jak podpiąć skrypt do naszej strony. W środowiskach serwerowych (np. Node.js) skrypty wykonuje się poprzez komendę, np. `"node moj_skrypt.js"`.
 
 
 ## Znacznik "script"
@@ -46,13 +46,13 @@ Znacznik `<script>` zawiera kod javascriptowy, który jest automatycznie wywoły
 Znacznik `<script>` posiada kilka atrybutów, których współcześnie się nie używa, a na które można się natknąć w starym kodzie:
 
 Atrybut `type`: <code>&lt;script <u>type</u>=...&gt;</code>
-: Stary standard HTML, czyli HTML4, wymagał, aby skrypty miały określony typ (`type`). Zwykle było to `type="text/javascript"`. Obecnie nie jest on już wymagany. Ponadto, w aktualnym standardzie HTML całkowicie zmieniło się jego znaczenie. Teraz stosuje się go przy modułach javascriptowych, ale to zaawansowany temat. O modułach będziemy mówić w innej części samouczka.
+: Stary standard HTML, czyli HTML4, wymagał, aby skrypty miały określony typ (`type`). Zwykle było to `type="text/javascript"`. Obecnie nie jest on już wymagany. Ponadto, w aktualnym standardzie HTML całkowicie zmieniło się jego znaczenie - teraz stosuje się go przy modułach javascriptowych. Ale to zaawansowany temat. O modułach będziemy mówić w innej części samouczka.
 
 Atrybut `language`: <code>&lt;script <u>language</u>=...&gt;</code>
 : Ten atrybut służył do określenia języka skryptu. Obecnie nie ma on większego sensu, ponieważ JavaScript jest domyślnym językiem. Nie trzeba go używać.
 
 Komentarze przed i za skryptem
-: W pradawnych książkach i poradnikach możesz natknąć się na komentarze wewnątrz znacznika `<script>`, takie jak ten::
+: W pradawnych książkach i poradnikach możesz natknąć się na komentarze wewnątrz znacznika `<script>`, takie jak ten:
 
     ```html no-beautify
     <script type="text/javascript"><!--
@@ -73,7 +73,7 @@ Pliki skryptowe dołącza się do HTML-a za pomocą atrybutu `src`:
 <script src="/ścieżka/do/skryptu.js"></script>
 ```
 
-W tym przykładzie `/ścieżka/do/skryptu.js` to ścieżka bezwzględna do pliku, licząc od katalogu głównego strony. Można jednak podać ścieżkę względną, odnoszącą się do aktualnej strony. Na przykład, `src="skrypt.js"` odnosi się do pliku `"skrypt.js"` w tym samym folderze.
+W tym przykładzie `/ścieżka/do/skryptu.js` to ścieżka bezwzględna do pliku, licząc od katalogu głównego strony. Można jednak podać ścieżkę względną, liczoną od położenia aktualnej strony. Na przykład, `src="skrypt.js"` odnosi się do pliku `"skrypt.js"` w tym samym folderze.
 
 Oprócz tego mamy możliwość podania pełnego adresu URL, na przykład:
 
@@ -103,7 +103,7 @@ Pojedynczy znacznik `<script>` nie może mieć jednocześnie atrybutu `src` i ko
 Taki kod nie zadziała:
 
 ```html
-<script *!*src*/!*="file.js">
+<script *!*src*/!*="plik.js">
   alert(1); // ten kod jest ignorowany, bo ustawiono 'src'
 </script>
 ```
@@ -113,7 +113,7 @@ Musimy wybrać, czy chcemy wczytać zewnętrzny skrypt za pomocą `<script src="
 Powyższy przykład można rozbić na dwa skrypty:
 
 ```html
-<script src="file.js"></script>
+<script src="plik.js"></script>
 <script>
   alert(1);
 </script>
