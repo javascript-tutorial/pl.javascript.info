@@ -1,42 +1,42 @@
 
-# Manuals and specifications
+# Podręczniki i specyfikacje
 
-This book is a *tutorial*. It aims to help you gradually learn the language. But once you're familiar with the basics, you'll need other sources.
+Ta książka służy jako *samouczek*. Pozwala stopniowo wdrażać się w język. Jednak gdy tylko zapoznasz się z podstawami, nadejdzie czas na zgłębienie wiedzy z innych źródeł.
 
-## Specification
+## Specyfikacja
 
-[The ECMA-262 specification](https://www.ecma-international.org/publications/standards/Ecma-262.htm) contains the most in-depth, detailed and formalized information about JavaScript. It defines the language.
+[Specyfikacja ECMA-262](https://www.ecma-international.org/publications/standards/Ecma-262.htm) zawiera najbardziej dogłębne, szczegółowe i formalne informacje o JavaScripcie. Definiuje język.
 
-But being that formalized, it's difficult to understand at first. So if you need the most trustworthy source of information about the language details, the specification is the right place. But it's not for everyday use.
+Przez tę całą formalność trudniej jest jednak ją zrozumieć. Dlatego jeśli potrzebujesz najbardziej wiarygodnego źródła informacji o szczegółach dotyczących języka, zajrzenie do specyfikacji jest najlepszym wyjściem. Nie służy ona jednak do codziennego użytku.
 
-A new specification version is released every year. In-between these releases, the latest specification draft is at <https://tc39.es/ecma262/>.
+Co roku wypuszczana jest nowa wersja specyfikacji. W międzyczasie wszelkie aktualne "szkice" można zobaczyć na <https://tc39.es/ecma262/>.
 
-To read about new bleeding-edge features, including those that are "almost standard" (so-called "stage 3"), see proposals at <https://github.com/tc39/proposals>.
+Aby dowiedzieć się czegoś o najświeższych funkcjonalnościach, wliczając w to te, które "są już prawie częścią standardu" (są na tzw. "etapie 3"), przejrzyj listę wniosków na <https://github.com/tc39/proposals>.
 
-Also, if you're in developing for the browser, then there are other specs covered in the [second part](info:browser-environment) of the tutorial.
+Jeśli piszesz kod dla przeglądarek, w [drugiej części](info:browser-environment) samouczka znajdziesz więcej materiałów.
 
-## Manuals
+## Podręczniki
 
-- **MDN (Mozilla) JavaScript Reference** is a manual with examples and other information. It's great to get in-depth information about individual language functions, methods etc.
+- **Dokumentacja referencyjna JavaScript na MDN (Mozilla)** służy za poradnik z przykładami i innymi informacjami. Świetnie nadaje się do zgłębiania wiedzy na temat poszczególnych funkcjonalności języka, interfejsów itd.
 
-    One can find it at <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference>.
+    Dostępna jest pod adresem <https://developer.mozilla.org/pl/docs/Web/JavaScript/Referencje>.
 
-    Although, it's often best to use an internet search instead. Just use "MDN [term]" in the query, e.g. <https://google.com/search?q=MDN+parseInt> to search for `parseInt` function.
+    Mimo wszystko łatwiej jest wyszukiwać konkretne pojęcia w internecie. Wystarczy wpisać "MDN [pojęcie]", np. <https://google.com/search?q=MDN+parseInt>, aby znaleźć informacje o funkcji `parseInt`.
 
 
-- **MSDN** – Microsoft manual with a lot of information, including JavaScript (often referred to as JScript). If one needs something specific to Internet Explorer, better go there: <http://msdn.microsoft.com/>.
+- **MSDN** – podręcznik od Microsoftu zawierający sporo informacji, m.in. o JavaScripcie (często nazywany JScriptem). Jeśli szukasz czegoś konkretnego z tematyki Internet Explorera, lepiej zajrzyj na <http://msdn.microsoft.com/>.
 
-    Also, we can use an internet search with phrases such as "RegExp MSDN" or "RegExp MSDN jscript".
+    Można też przeszukać internet przy użyciu fraz "[pojęcie] MSDN" lub "[pojęcie] MSDN jscript", np. "RegExp MSDN".
 
-## Compatibility tables
+## Tabele kompatybilności
 
-JavaScript is a developing language, new features get added regularly.
+JavaScript jest językiem intensywnie rozwijanym, dlatego dość często pojawiają się w nim nowe funkcjonalności.
 
-To see their support among browser-based and other engines, see:
+Jeśli chcesz dowiedzieć się, jak wygląda wsparcie dla nich w poszczególnych silnikach (przeglądarkowych i innych), odwiedź:
 
-- <http://caniuse.com> - per-feature tables of support, e.g. to see which engines support modern cryptography functions: <http://caniuse.com/#feat=cryptography>.
-- <https://kangax.github.io/compat-table> - a table with language features and engines that support those or don't support.
+- <http://caniuse.com> - tabela kompatybilności dla każdej z funkcji z osobna. Na przykład, jeśli chcesz sprawdzić, które silniki wspierają funkcje kryptograficzne: <http://caniuse.com/#feat=cryptography>.
+- <https://kangax.github.io/compat-table> - tabela z wypisanymi funkcjonalnościami języka oraz informacjami, które silniki je wspierają, a które nie.
 
-All these resources are useful in real-life development, as they contain valuable information about language details, their support etc.
+Wszystkie z powyższych źródeł są przydatne podczas codziennego dewelopmentu, jako że zawierają cenne informacje o szczegółach języka, wsparcia dla nich itp.
 
-Please remember them (or this page) for the cases when you need in-depth information about a particular feature.
+Pamiętaj o nich (lub o tej stronie) na wypadek potrzeby zasięgnięcia informacji o konkretnej funkcjonalności.
