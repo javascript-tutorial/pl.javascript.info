@@ -45,6 +45,7 @@
 | lazy initialization              | leniwa inicjalizacja                                                                                       | za pierwszym razem `(ang. *lazy initialization*)`                                                                            |
 | library                          | biblioteka                                                                                                 |
 | lowercase                        | małymi literami                                                                                            | **NIE piszemy: "z małej litery"!**                                                                                           |
+| local storage                    | pamięć lokalna                                                                                             |
 | minify, minification             | _czas._ minifikować, _rzecz._ minifikacja                                                                  |
 | mocked component, component mock | atrapa komponentu                                                                                          |
 | opt-in                           | (stosowane) wedle własnego uznania                                                                         |
@@ -70,6 +71,7 @@
 | state                            | stan                                                                                                       |
 | store                            | magazyn                                                                                                    |
 | string                           | "ciąg znaków" lub "łańcuch znaków" lub "napis" lub "literał znakowy"                                       |
+| syntactic sugar                  | lukier składniowy                                                                                          | za pierwszym razem `(ang. *syntactic sugar*)`                                                                                |
 | tag [HTML]                       | znacznik [HTML]                                                                                            |
 | template literal                 | literał szablonowy                                                                                         | za pierwszym razem `(ang. *template literal*)`                                                                               |
 | term                             | pojęcie                                                                                                    |
