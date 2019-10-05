@@ -16,6 +16,7 @@
 | CDN                              | CDN                                                                                                        |
 | child component                  | komponent potomny                                                                                          |
 | client(s)                        | klient(y)                                                                                                  | **NIE: klienci**                                                                                                             |
+| commit                           | (na Gicie) commit, commitem, (poza Gitem) _czas._ akceptować, wdrażać, potwierdzać                         |
 | component wrapping               | opakowywanie komponentu                                                                                    |
 | concept, idea                    | koncepcja, zagadnienie                                                                                     |
 | controlled component             | komponent kontrolowany                                                                                     |
@@ -33,6 +34,7 @@
 | focus                            | fokus                                                                                                      | "ustawianie fokusu na polu formularza" lub "aktywowanie pola formularza"                                                     |
 | framework                        | framework                                                                                                  |
 | generic                          | generyczny, ogólny, ogólnego użytku                                                                        |
+| Git, GitHub                      | Git, Gitem, Gicie; GitHub, GitHubem, GitHubie                                                              |
 | Glossary                         | Słownik pojęć                                                                                              |
 | hands-on tutorial                | praktyczny tutorial                                                                                        |
 | HTML entities                    | encje HTML                                                                                                 |
@@ -48,12 +50,17 @@
 | opt-in                           | (stosowane) wedle własnego uznania                                                                         |
 | output (data)                    | dane wyjściowe, rezultat, wynik                                                                            |
 | overview                         | ogólne informacje                                                                                          |
+| playground                       | środowisko eksperymentalne                                                                                 |
 | polyfill                         | łatka                                                                                                      |
 | primitive                        | typ podstawowy                                                                                             |
+| Promise                          | Promise, Promise'a, Promisem                                                                               | można dodać dopisek `(pol. *obietnica*)`                                                                                     |
 | property                         | właściwość                                                                                                 | zmienna w obiekcie                                                                                                           |
 | read-only                        | tylko do odczytu                                                                                           |
 | render                           | _czas._ renderować, _rzecz._ renderowanie                                                                  | alternatywa: "wyświetlać"                                                                                                    |
+| (HTTP) request                   | _rzecz._ żądanie (HTTP), _czas._ wysyłać żądanie                                                           |
+| (HTTP) response                  | _rzecz._ odpowiedź (HTTP)                                                                                  |
 | reusable                         | wielokrotnego użytku                                                                                       |
+| sandbox                          | środowisko izolowane                                                                                       |
 | roadmap                          | plan działania                                                                                             |
 | section                          | podrozdział, rozdział, sekcja                                                                              |
 | shallow rendering                | renderowanie płytkie                                                                                       |
@@ -75,7 +82,9 @@
 | Versioned Documentation          | Dokumentacja wersji                                                                                        |
 | wrapper component                | komponent opakowujący                                                                                      |
 
-# Tytuły
+# Zasady tłumaczenia
+
+## Tytuły rozdziałów
 
 Tytuły (np. rozdziałów, książek, utworów) piszemy w cudzysłowie bądź też bez cudzysłowu, ale kursywą (patrz: [poradnia PWN](https://sjp.pwn.pl/poradnia/haslo/kursywa-czy-w-cudzyslowie;8597.html))
 
@@ -84,11 +93,18 @@ Przykłady:
 - ... znajdziesz w rozdziale pt. "Jak łączyć się z API"?
 - ... znajdziesz w rozdziale pt. _Jak łączyć się z API_?
 
-# Zaimki
+## Odmiana nazw własnych
 
-Nie piszemy "Ci", "Tobie", "Twój", lecz "ci", "tobie", "twój".
+- Nazwy własne odmieniamy zgodnie z obowiązującymi zasadami w języku polskim (przydatna okazuje się tu [wyszukiwarka Poradni PWN](https://sjp.pwn.pl/poradnia/szukaj/nazwy%20obce.html)). Przykłady: [Link 1](https://sjp.pwn.pl/poradnia/haslo/odmiana-obcych-nazw-wlasnych;13285.html), [Link 2](https://sjp.pwn.pl/poradnia/haslo/tlumaczenie-obcych-nazw-wlasnych;13579.html), [Link 3](https://sjp.pwn.pl/poradnia/haslo/Odmiana-obcych-nazw-firmowych;19136.html).
 
-# Tłumaczenie kodu
+## Zwroty do czytelnika
+
+- Nie piszemy "Ci", "Tobie", "Twój", lecz "ci", "tobie", "twój".
+- Staramy się, żeby tekst był spójny i logiczny, nawet jeśli taki nie jest w oryginale.
+- Ten samouczek jest dość nieformalny i ma być przyjazny dla czytelnika, dlatego możemy spokojnie pisać "mamy", "robimy" itp.
+- Nie piszmy "zrobiłeś", "przeczytałeś" (ze wskazaniem na rodzaj męski), bo to jest kiepsko odbierane (nawet nie chodzi o równouprawnienie i tym podobne, a o sam "dysonans" podczas czytania przez kobiety ;)).
+
+## Tłumaczenie kodu
 
 Co można tłumaczyć:
 
