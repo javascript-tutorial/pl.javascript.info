@@ -53,7 +53,7 @@
 | playground                       | środowisko eksperymentalne                                                                                 |
 | polyfill                         | łatka                                                                                                      |
 | primitive                        | typ podstawowy                                                                                             |
-| Promise                          | Promise, Promise'a, Promisem                                                                               | można dodać dopisek `(pol. *obietnica*)`                                                                                     |
+| Promise                          | obietnica                                                                                                  | za pierwszym razem `(ang. *promise*)`                                                                                        |
 | property                         | właściwość                                                                                                 | zmienna w obiekcie                                                                                                           |
 | read-only                        | tylko do odczytu                                                                                           |
 | render                           | _czas._ renderować, _rzecz._ renderowanie                                                                  | alternatywa: "wyświetlać"                                                                                                    |
