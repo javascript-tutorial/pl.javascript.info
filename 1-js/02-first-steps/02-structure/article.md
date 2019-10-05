@@ -1,44 +1,44 @@
-# Code structure
+# Struktura kodu
 
-The first thing we'll study is the building blocks of code.
+Składnia w JavaScript pierwszą rzeczą jaką się nauczymy. 
 
-## Statements
+## Instrukcje
 
-Statements are syntax constructs and commands that perform actions.
+Instrukcje są zapisem składni i komend, które wykonują określone działania. 
 
-We've already seen a statement, `alert('Hello, world!')`, which shows the message "Hello, world!".
+Poznaliśmy zapis `alert('Hello, world!')`, który wyświetlał wiadomość "Hello, world!".
 
-We can have as many statements in our code as we want. Statements can be separated with a semicolon.
+W naszym kodzie możemy mieć tak dużo instrukcji ile tylko zechcemy. Każda instrukcja jest oddzielona od innej średnikiem.
 
-For example, here we split "Hello World" into two alerts:
+Na przykład, jeśli chcemy dwukrotnie wyświetlić alert, kod będzie wyglądał następująco:
 
 ```js run no-beautify
 alert('Hello'); alert('World');
 ```
 
-Usually, statements are written on separate lines to make the code more readable:
+Instrukcje piszemy zazwyczaj w osobnych wierszach. Dzięki temu kod staje się czytelniejszy:
 
 ```js run no-beautify
 alert('Hello');
 alert('World');
 ```
 
-## Semicolons [#semicolon]
+## Średnik [#semicolon]
 
-A semicolon may be omitted in most cases when a line break exists.
+Średnik w większości przypadków może zostać pominięty jeśli istnieje podział na wiersze. 
 
-This would also work:
+To będzie działać:
 
 ```js run no-beautify
 alert('Hello')
 alert('World')
 ```
 
-Here, JavaScript interprets the line break as an "implicit" semicolon. This is called an [automatic semicolon insertion](https://tc39.github.io/ecma262/#sec-automatic-semicolon-insertion).
+W tym przykładzie JavaScript interpretuje każdą linię z osobna i wstawia niejawny średnik. Nazywa się to [automatycznym wstawieniem średnika](https://tc39.github.io/ecma262/#sec-automatic-semicolon-insertion).
 
-**In most cases, a newline implies a semicolon. But "in most cases" does not mean "always"!**
+**W większości przypadków nowa linia sugeruje miejsce dla średnika. Ale, w większości przypadku nie oznacza "zawsze"!**
 
-There are cases when a newline does not mean a semicolon. For example:
+Jest kilka sytuacji, w których nowa linia nie oznacza, że powinien tam znaleźć się średnik. Na przykład:
 
 ```js run no-beautify
 alert(3 +
@@ -46,114 +46,113 @@ alert(3 +
 + 2);
 ```
 
-The code outputs `6` because JavaScript does not insert semicolons here. It is intuitively obvious that if the line ends with a plus `"+"`, then it is an "incomplete expression", so the semicolon is not required. And in this case that works as intended.
+Kod zwróci `6` ponieważ JavaScript nie wstawi średnika na końcu linii. Jest intuicyjne i oczywiste, że jeśli koniec linii kończy się wyrażeniem np. plusem `"+"`, wtedy jest to "wyrażenie niepełne" i średnik nie jest wymagany. I w tym przypadku działa to zgodnie z oczekiwaniem.
 
-**But there are situations where JavaScript "fails" to assume a semicolon where it is really needed.**
+**Ale są sytuacje, w których JavaScript błędnie zakłada gdzie średnik jest rzeczywiście potrzebny.**
 
-Errors which occur in such cases are quite hard to find and fix.
+Błąd, który się pojawi w takim przypadku jest trudny do wykrycia i naprawienia.
 
 ````smart header="An example of an error"
-If you're curious to see a concrete example of such an error, check this code out:
+Jeśli jesteś ciekawy konkretnego przypadku, sprawdź ten kod::
 
 ```js run
 [1, 2].forEach(alert)
 ```
 
-No need to think about the meaning of the brackets `[]` and `forEach` yet. We'll study them later. For now, just remember the result of the code: it shows `1` then `2`.
+Nie musisz teraz myśleć co oznaczają te nawiasy kwadratowe `[]` ani czym jest `forEach`. Poznamy to później. Teraz zapamiętaj, że rezultatem będzie wyświetlenie najpierw `1`, a później `2`.
 
-Now, let's add an `alert` before the code and *not* finish it with a semicolon:
+Teraz dodaj `alert` przed kodem i *nie* dodawaj na końcu średnika:
 
 ```js run no-beautify
-alert("There will be an error")
+alert("Tutaj będzie błąd")
 
 [1, 2].forEach(alert)
 ```
 
-Now if we run the code, only the first `alert` is shown and then we have an error!
+Jeśli uruchomimy kod tylko pierwszy `alert` się pojawi, a następnie dostaniemy komunikat błędu w konsoli!
 
-But everything is fine again if we add a semicolon after `alert`:
+Ale wszystko będzie w porządku jeśli umieścimy średnik po pierwszej instrukcji:
 ```js run
-alert("All fine now");
+alert("Wszystko jest teraz ok");
 
 [1, 2].forEach(alert)  
 ```
 
-Now we have the "All fine now" message followed by `1` and `2`.
+Dostaniemy teraz najpierw alert z treścią "Wszystko jest teraz ok", a następnie kolejne, o treści `1` i `2`.
 
 
-The error in the no-semicolon variant occurs because JavaScript does not assume a semicolon before square brackets `[...]`.
+Problem z brakiem średnika w tym błędnym wariancie powstał ponieważ JavaScript nie zakłada średnika przed nawiasem kwadratowym `[...]`.
 
-So, because the semicolon is not auto-inserted, the code in the first example is treated as a single statement. Here's how the engine sees it:
+Więc, skoro średnik nie jest automatycznie wstawiony, interpreter traktuje kod z pierwszego przykładu jako jedną instrukcję. Dla silnika JavaScript wygląda ona następująco: :
 
 ```js run no-beautify
-alert("There will be an error")[1, 2].forEach(alert)
+alert("Tutaj będzie błąd")[1, 2].forEach(alert)
 ```
 
-But it should be two separate statements, not one. Such a merging in this case is just wrong, hence the error. This can happen in other situations.
+To powinny być dwie oddzielne instrukcje, ale nie są. Takie łączenie jest po prostu błędne i może pojawić się również w wielu innych sytuacjach.
 ````
 
-We recommend putting semicolons between statements even if they are separated by newlines. This rule is widely adopted by the community. Let's note once again -- *it is possible* to leave out semicolons most of the time. But it's safer -- especially for a beginner -- to use them.
+Zalecamy używanie średników nawet wtedy, gdy instrukcje są oddzielone nową linią. Społeczność programistów przyjęła taką właśnie zasadę. Zanotujmy to jeszcze raz -- *istnieje możliwość* nie wpisywania średników w większości przypadków. Ale bezpieczniej jest -- szczególnie dla początkujących -- po prostu ich używać.
 
-## Comments
+## Komentarze
 
-As time goes on, programs become more and more complex. It becomes necessary to add *comments* which describe what the code does and why.
+Z czasem programy stają się coraz bardziej złożone. Przychodzi wtedy konieczność dodawania *komentarzy*, które opisują co robi kod i dlaczego.
 
-Comments can be put into any place of a script. They don't affect its execution because the engine simply ignores them.
+Komentarze mogą być umieszczone w dowolnym miejscu skryptu. Nie wpływają na wykonanie się kodu, ponieważ silnik JavaScript je ignoruje.
 
-**One-line comments start with two forward slash characters `//`.**
+**Komentarze jednoliniowe zaczynają się od podwójnego slasha `//`.**
 
-The rest of the line is a comment. It may occupy a full line of its own or follow a statement.
+Reszta linii to komentarz. Może zajmować całą linię od początku lub być umieszczony za instrukcją.
 
-Like here:
+Tak jak tutaj:
 ```js run
-// This comment occupies a line of its own
+// Ten komentarz zaczyna się od początku
 alert('Hello');
 
-alert('World'); // This comment follows the statement
+alert('World'); // Ten komentarz umieszczony jest za instrukcją
 ```
 
-**Multiline comments start with a forward slash and an asterisk <code>/&#42;</code> and end with an asterisk and a forward slash <code>&#42;/</code>.**
+**Komentarze w kilku liniach zaczynamy od slasha i gwiazki <code>/&#42;</code> i kończymy gwiazdką i slashem <code>&#42;/</code>.**
 
-Like this:
-
+Tak jak tutaj:
 ```js run
-/* An example with two messages.
-This is a multiline comment.
+/* To jest przykładowy komentarz.
+Komentarz znajduje się w dwóch wierszach.
 */
 alert('Hello');
 alert('World');
 ```
 
-The content of comments is ignored, so if we put code inside <code>/&#42; ... &#42;/</code>, it won't execute.
+Treść komentarza jest ignorowana, więc możemy w nim umieścić kod <code>/&#42; ... &#42;/</code>, który się nie wykona.
 
-Sometimes it can be handy to temporarily disable a part of code:
+Czasami jest to pomocne, aby tymczasowo wyłączyć pewną część kodu:
 
 ```js run
-/* Commenting out the code
+/* Zakomentowana część kodu
 alert('Hello');
 */
 alert('World');
 ```
 
-```smart header="Use hotkeys!"
-In most editors, a line of code can be commented out by pressing the `key:Ctrl+/` hotkey for a single-line comment and something like `key:Ctrl+Shift+/` -- for multiline comments (select a piece of code and press the hotkey). For Mac, try `key:Cmd` instead of `key:Ctrl`.
+```smart header="Używaj skrótów klawiaturowych!"
+W większości edytorów możesz wstawić komentarz w linii wciskając klawisze `key:Ctrl+/` lub komentarz w wielu liniach wciskając klawisze `key:Ctrl+Shift+/` -- (wybierz kawałek kodu i po prostu wciśnij klawisze). W Macu, spróbuj `key:Cmd` zamiast `key:Ctrl`.
 ```
 
-````warn header="Nested comments are not supported!"
-There may not be `/*...*/` inside another `/*...*/`.
+````warn header="Zagnieżdżone komentarze nie są wspierane!"
+Nie może być `/*...*/` w środku innego `/*...*/`.
 
-Such code will die with an error:
+Taki kod "wypluje" błąd:
 
 ```js run no-beautify
 /*
-  /* nested comment ?!? */
+  /* zagnieżdżony komentarz ?!? */
 */
 alert( 'World' );
 ```
 ````
 
-Please, don't hesitate to comment your code.
+Proszę, nie wahaj się komentować swojego kodu.
 
-Comments increase the overall code footprint, but that's not a problem at all. There are many tools which minify code before publishing to a production server. They remove comments, so they don't appear in the working scripts. Therefore, comments do not have negative effects on production at all.
+Komentarze zwiększają objętość kodu. Ale tym się nie mart - nie jest problem. Istnieje wiele narzędzi, które minifikują kod przed opublikowaniem go na środowisku produkcyjnym. Te narzędzia usuwają komentarze, które przy wdrożeniu nie są widoczne. Korzystanie z takich narzędzi nie ma żadnego negatywnego wpływu na działanie skryptów na środowisku produkcyjnym.
 
-Later in the tutorial there will be a chapter <info:code-quality> that also explains how to write better comments.
+Później, w jednym z rozdziałów <info:code-quality> poznasz w jaki sposób pisać wartościowe komentarze.
