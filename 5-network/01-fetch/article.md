@@ -3,7 +3,7 @@
 
 Ilekroć jest to potrzebne, JavaScript potrafi wykonywać żądania sieciowe do serwera i pobierać nowe informacje.
 
-Można na przykład użyć zapytania sieciowego do:
+Można na przykład użyć żądania sieciowego do:
 
 - złożenia zamówienia,
 - wyświetlenia informacji o użytkowniku,
@@ -75,7 +75,7 @@ let url = 'https://api.github.com/repos/javascript-tutorial/en.javascript.info/c
 let response = await fetch(url);
 
 *!*
-let commits = await response.json(); // read response body and parse as JSON
+let commits = await response.json(); // odczytaj ciało odpowiedzi i zwróć jako JSON
 */!*
 
 alert(commits[0].author.login);
@@ -236,7 +236,7 @@ W poniższym przykładzie mamy znacznik `<canvas>`, który pozwala na rysowanie 
 <body style="margin:0">
   <canvas id="canvasElem" width="100" height="80" style="border:1px solid"></canvas>
 
-  <input type="button" value="Submit" onclick="submit()">
+  <input type="button" value="Prześlij" onclick="submit()">
 
   <script>
     canvasElem.onmousemove = function(e) {
@@ -280,14 +280,14 @@ function submit() {
 
 ## Podsumowanie
 
-Typowe żądanie `fetch` składa się z dwóch wywołań metody `await`:
+Typowe żądanie sieciowe składa się z dwóch wywołań metody `await`:
 
 ```js
 let response = await fetch(url, options); // rozwiązuje się z nagłówkami odpowiedzi
 let result = await response.json(); // odczytuje ciało jako JSON
 ```
 
-Or, without `await`:
+Albo bez użycia `await`:
 
 ```js
 fetch(url, options)
