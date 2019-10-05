@@ -47,7 +47,7 @@ Jak widać, to niemal jedna linijka:
 </script>
 ```
 
-Kod serwera jest poza naszym zakresem zainteresowania, nie pokazujemy go zatem w tym przykładzie. W każdym razie serwer akceptuje żądanie POST i odpowiada "Zapisano użytkownika".
+Kod serwera jest poza naszym zakresem zainteresowania, nie pokazujemy go zatem w tym przykładzie. W każdym razie serwer akceptuje żądanie POST i odpowiada "Użytkownik zapisany".
 
 ## Metody FormData
 
