@@ -1,67 +1,66 @@
 # Struktura kodu
 
-Składnia w JavaScript pierwszą rzeczą jaką się nauczymy. 
+Na początek skupimy się na częściach składowych pisanego przez nas kodu.
 
 ## Instrukcje
 
-Instrukcje są zapisem składni i komend, które wykonują określone działania. 
+Instrukcje są zapisem składni i komend, które wykonują określone działania.
 
-Poznaliśmy zapis `alert('Hello, world!')`, który wyświetlał wiadomość "Hello, world!".
+Poznaliśmy już instrukcję `alert('Witaj, świecie!')`, która wyświetlała komunikat "Witaj, świecie!".
 
-W naszym kodzie możemy mieć tak dużo instrukcji ile tylko zechcemy. Każda instrukcja jest oddzielona od innej średnikiem.
+W naszym kodzie możemy mieć tyle instrukcji, ile chcemy. Każdą z nich można oddzielić średnikiem.
 
-Na przykład, jeśli chcemy dwukrotnie wyświetlić alert, kod będzie wyglądał następująco:
+Na przykład, jeśli chcemy dwukrotnie wyświetlić komunikat, kod będzie wyglądał następująco:
 
 ```js run no-beautify
-alert('Hello'); alert('World');
+alert("Witaj");
+alert("świecie");
 ```
 
 Instrukcje piszemy zazwyczaj w osobnych wierszach. Dzięki temu kod staje się czytelniejszy:
 
 ```js run no-beautify
-alert('Hello');
-alert('World');
+alert("Witaj");
+alert("świecie");
 ```
 
-## Średnik [#semicolon]
+## Średniki [#semicolon]
 
-Średnik w większości przypadków może zostać pominięty jeśli istnieje podział na wiersze. 
+Średnik w większości przypadków można pominąć, o ile kod podzieliliśmy na osobne wiersze.
 
-To będzie działać:
+To także zadziała:
 
 ```js run no-beautify
-alert('Hello')
-alert('World')
+alert("Hello");
+alert("World");
 ```
 
-W tym przykładzie JavaScript interpretuje każdą linię z osobna i wstawia niejawny średnik. Nazywa się to [automatycznym wstawieniem średnika](https://tc39.github.io/ecma262/#sec-automatic-semicolon-insertion).
+W tym przykładzie JavaScript interpretuje każdy podział linii jako "niejawny" średnik. Mechanizm ten nazywa się [automatycznym wstawianiem średnika](https://tc39.github.io/ecma262/#sec-automatic-semicolon-insertion).
 
-**W większości przypadków nowa linia sugeruje miejsce dla średnika. Ale, w większości przypadku nie oznacza "zawsze"!**
+**W większości przypadków nowa linia jest równoznaczna z postawieniem średnika. Co nie oznacza, że tak jest zawsze!**
 
-Jest kilka sytuacji, w których nowa linia nie oznacza, że powinien tam znaleźć się średnik. Na przykład:
+Istnieje kilka sytuacji, w których nowa linia nie oznacza, że powinien tam znaleźć się średnik. Na przykład:
 
 ```js run no-beautify
-alert(3 +
-1
-+ 2);
+alert(3 + 1 + 2);
 ```
 
-Kod zwróci `6` ponieważ JavaScript nie wstawi średnika na końcu linii. Jest intuicyjne i oczywiste, że jeśli koniec linii kończy się wyrażeniem np. plusem `"+"`, wtedy jest to "wyrażenie niepełne" i średnik nie jest wymagany. I w tym przypadku działa to zgodnie z oczekiwaniem.
+Kod zwróci `6`, ponieważ JavaScript nie wstawi średnika na końcu linii. Wydaje się oczywistym, że jeśli linia kończy się wyrażeniem, na przykład plusem `"+"`, to mamy do czynienia z "niepełnym wyrażeniem" i średnik nie jest wymagany. I w tym przypadku działa to zgodnie z oczekiwaniami.
 
-**Ale są sytuacje, w których JavaScript błędnie zakłada gdzie średnik jest rzeczywiście potrzebny.**
+**Są jednak sytuacje, w których JavaScript błędnie zakłada, gdzie średnik jest rzeczywiście potrzebny.**
 
-Błąd, który się pojawi w takim przypadku jest trudny do wykrycia i naprawienia.
+Błąd, który się pojawi w takim przypadku, jest trudny do wykrycia i naprawienia.
 
-````smart header="An example of an error"
-Jeśli jesteś ciekawy konkretnego przypadku, sprawdź ten kod::
+````smart header="Przykład błędu"
+Jeśli ciekawi cię konkretny przykład takiego błędu, uruchom poniższy kod:
 
 ```js run
 [1, 2].forEach(alert)
 ```
 
-Nie musisz teraz myśleć co oznaczają te nawiasy kwadratowe `[]` ani czym jest `forEach`. Poznamy to później. Teraz zapamiętaj, że rezultatem będzie wyświetlenie najpierw `1`, a później `2`.
+Nie musisz się zastanawiać, co oznaczają te nawiasy kwadratowe `[]` ani czym jest `forEach`. Będzie o tym później. Na tę chwilę musisz wiedzieć, że rezultatem będzie wyświetlenie najpierw `1`, a później `2`.
 
-Teraz dodaj `alert` przed kodem i *nie* dodawaj na końcu średnika:
+Teraz dodaj `alert` przed kodem i *nie* dodawaj średnika na końcu linii:
 
 ```js run no-beautify
 alert("Tutaj będzie błąd")
@@ -69,21 +68,21 @@ alert("Tutaj będzie błąd")
 [1, 2].forEach(alert)
 ```
 
-Jeśli uruchomimy kod tylko pierwszy `alert` się pojawi, a następnie dostaniemy komunikat błędu w konsoli!
+Jeśli uruchomimy powyższy kod, zobaczymy tylko pierwszy `alert`, a następnie otrzymamy komunikat błędu w konsoli!
 
-Ale wszystko będzie w porządku jeśli umieścimy średnik po pierwszej instrukcji:
+Wszystko jednak zacznie działać, gdy tylko umieścimy średnik po pierwszej instrukcji:
 ```js run
 alert("Wszystko jest teraz ok");
 
-[1, 2].forEach(alert)  
+[1, 2].forEach(alert)
 ```
 
-Dostaniemy teraz najpierw alert z treścią "Wszystko jest teraz ok", a następnie kolejne, o treści `1` i `2`.
+Dostaniemy teraz najpierw komunikat z treścią "Wszystko jest teraz ok", a następnie dwa kolejne, o treści `1` i `2`.
 
 
-Problem z brakiem średnika w tym błędnym wariancie powstał ponieważ JavaScript nie zakłada średnika przed nawiasem kwadratowym `[...]`.
+Problem z brakiem średnika w tym błędnym wariancie powstał, ponieważ JavaScript nie zakłada średnika przed nawiasem kwadratowym `[...]`.
 
-Więc, skoro średnik nie jest automatycznie wstawiony, interpreter traktuje kod z pierwszego przykładu jako jedną instrukcję. Dla silnika JavaScript wygląda ona następująco: :
+A skoro średnik nie jest automatycznie wstawiany, interpreter traktuje kod z pierwszego przykładu jako jedną instrukcję. Dla silnika JavaScript wygląda ona następująco:
 
 ```js run no-beautify
 alert("Tutaj będzie błąd")[1, 2].forEach(alert)
@@ -92,67 +91,69 @@ alert("Tutaj będzie błąd")[1, 2].forEach(alert)
 To powinny być dwie oddzielne instrukcje, ale nie są. Takie łączenie jest po prostu błędne i może pojawić się również w wielu innych sytuacjach.
 ````
 
-Zalecamy używanie średników nawet wtedy, gdy instrukcje są oddzielone nową linią. Społeczność programistów przyjęła taką właśnie zasadę. Zanotujmy to jeszcze raz -- *istnieje możliwość* nie wpisywania średników w większości przypadków. Ale bezpieczniej jest -- szczególnie dla początkujących -- po prostu ich używać.
+Zalecamy używanie średników nawet wtedy, gdy instrukcje są oddzielone nową linią. Społeczność programistów przyjęła taką właśnie zasadę. Zanotujmy to jeszcze raz -- _istnieje możliwość_ nie wpisywania średników w większości przypadków. Ale bezpieczniej jest -- szczególnie dla początkujących -- używać ich zawsze.
 
 ## Komentarze
 
-Z czasem programy stają się coraz bardziej złożone. Przychodzi wtedy konieczność dodawania *komentarzy*, które opisują co robi kod i dlaczego.
+Z czasem programy stają się coraz bardziej złożone. Przychodzi wtedy konieczność dodania _komentarzy_, które opisują, co robi kod i dlaczego.
 
-Komentarze mogą być umieszczone w dowolnym miejscu skryptu. Nie wpływają na wykonanie się kodu, ponieważ silnik JavaScript je ignoruje.
+Komentarze mogą być umieszczane w dowolnym miejscu skryptu. Nie wpływają na wykonanie kodu, ponieważ silnik JavaScript je ignoruje.
 
-**Komentarze jednoliniowe zaczynają się od podwójnego slasha `//`.**
+**Komentarze jednoliniowe zaczynają się od podwójnego ukośnika (slasha) `//`.**
 
-Reszta linii to komentarz. Może zajmować całą linię od początku lub być umieszczony za instrukcją.
+Reszta linii to komentarz. Może zajmować całą linię od początku lub zostać umieszczony za instrukcją.
 
 Tak jak tutaj:
+
 ```js run
 // Ten komentarz zaczyna się od początku
-alert('Hello');
+alert("Witaj");
 
-alert('World'); // Ten komentarz umieszczony jest za instrukcją
+alert("świecie"); // Ten komentarz umieszczony jest za instrukcją
 ```
 
-**Komentarze w kilku liniach zaczynamy od slasha i gwiazki <code>/&#42;</code> i kończymy gwiazdką i slashem <code>&#42;/</code>.**
+**Komentarze w kilku liniach zaczynamy od ukośnika i gwiazdki <code>/\*</code>, a kończymy gwiazdką i ukośnikiem <code>\*/</code>.**
 
 Tak jak tutaj:
+
 ```js run
 /* To jest przykładowy komentarz.
-Komentarz znajduje się w dwóch wierszach.
+Komentarz zajmuje kilka linii.
 */
-alert('Hello');
-alert('World');
+alert("Witaj");
+alert("świecie");
 ```
 
-Treść komentarza jest ignorowana, więc możemy w nim umieścić kod <code>/&#42; ... &#42;/</code>, który się nie wykona.
+Treść komentarza jest ignorowana, więc możemy w nim umieścić kod <code>/\* ... \*/</code>, który się nie wykona.
 
-Czasami jest to pomocne, aby tymczasowo wyłączyć pewną część kodu:
+Czasami przydaje się to, gdy chcemy tymczasowo wyłączyć pewną część kodu:
 
 ```js run
 /* Zakomentowana część kodu
-alert('Hello');
+alert('Witaj');
 */
-alert('World');
+alert("świecie");
 ```
 
 ```smart header="Używaj skrótów klawiaturowych!"
-W większości edytorów możesz wstawić komentarz w linii wciskając klawisze `key:Ctrl+/` lub komentarz w wielu liniach wciskając klawisze `key:Ctrl+Shift+/` -- (wybierz kawałek kodu i po prostu wciśnij klawisze). W Macu, spróbuj `key:Cmd` zamiast `key:Ctrl`.
+W większości edytorów można zamienić jedną linię w komentarz za pomocą klawiszy `key:Ctrl+/` lub kilka linii za pomocą `key:Ctrl+Shift+/` (zaznacz fragment kodu i po prostu wciśnij te klawisze). Jeśli korzystasz z Maca, zamiast `key:Ctrl` użyj `key:Cmd`.
 ```
 
-````warn header="Zagnieżdżone komentarze nie są wspierane!"
-Nie może być `/*...*/` w środku innego `/*...*/`.
+````warn header="Nie można zagnieżdżać komentarzy!"
+Nie można umieszczać jednego komentarza blokowego `/*...*/` wewnątrz innego `/*...*/`.
 
-Taki kod "wypluje" błąd:
+Taki kod rzuci błędem:
 
 ```js run no-beautify
 /*
   /* zagnieżdżony komentarz ?!? */
 */
-alert( 'World' );
+alert( 'świecie' );
 ```
 ````
 
-Proszę, nie wahaj się komentować swojego kodu.
+Nie bój się komentować swojego kodu.
 
-Komentarze zwiększają objętość kodu. Ale tym się nie mart - nie jest problem. Istnieje wiele narzędzi, które minifikują kod przed opublikowaniem go na środowisku produkcyjnym. Te narzędzia usuwają komentarze, które przy wdrożeniu nie są widoczne. Korzystanie z takich narzędzi nie ma żadnego negatywnego wpływu na działanie skryptów na środowisku produkcyjnym.
+Komentarze może i zwiększają objętość kodu, ale tym się nie martw. Istnieje wiele narzędzi, które minifikują kod przed opublikowaniem go w środowisku produkcyjnym poprzez m.in. usunięcie komentarzy. Korzystanie z takich narzędzi nie ma żadnego negatywnego wpływu na działanie skryptów w środowisku produkcyjnym.
 
-Później, w jednym z rozdziałów <info:code-quality> poznasz w jaki sposób pisać wartościowe komentarze.
+Później, w jednym z rozdziałów pt. "<info:code-quality>" poznasz, w jaki sposób pisać wartościowe komentarze.
