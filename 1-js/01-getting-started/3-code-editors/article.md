@@ -1,46 +1,46 @@
-# Code editors
+# Edytory kodu
 
-A code editor is the place where programmers spend most of their time.
+Edytor kodu to miejsce, w którym programista spędza najwięcej swojego czasu.
 
-There are two main types of code editors: IDEs and lightweight editors. Many people use one tool of each type.
+Wyróżniamy dwa typy edytorów: IDE oraz te "lekkie". Wiele osób korzysta po jednym narzędziu z każdego typu.
 
 ## IDE
 
-The term [IDE](https://en.wikipedia.org/wiki/Integrated_development_environment) (Integrated Development Environment) refers to a powerful editor with many features that usually operates on a "whole project." As the name suggests, it's not just an editor, but a full-scale "development environment."
+Termin [IDE](https://pl.wikipedia.org/wiki/Zintegrowane_środowisko_programistyczne) (Zintegrowane Środowisko Programistyczne) odnosi się do rozbudowanego edytora z wieloma funkcjonalnościami, które współgrają z całym projektem. Jak sama nazwa wskazuje, jest to w pełni funkcjonalne środowisko programistyczne.
 
-An IDE loads the project (which can be many files), allows navigation between files, provides autocompletion based on the whole project (not just the open file), and integrates with a version management system (like [git](https://git-scm.com/)), a testing environment, and other "project-level" stuff.
+IDE ładuje projekt (który może mieć mnóstwo plików), pozwala nawigować między plikami, zapewnia autouzupełnianie oparte o cały projekt (a nie tylko o otwarty plik), integruje się z systemami kontroli wersji (jak [git](https://git-scm.com/)), środowiskiem testowym oraz innymi narzędzami na poziomie projektu.
 
-If you haven't selected an IDE yet, consider the following options:
+Jeśli nie masz jeszcze wybranego żadnego IDE, rozważ następujące opcje:
 
-- [Visual Studio Code](https://code.visualstudio.com/) (cross-platform, free).
-- [WebStorm](http://www.jetbrains.com/webstorm/) (cross-platform, paid).
+- [Visual Studio Code](https://code.visualstudio.com/) (cross-platform, darmowy).
+- [WebStorm](http://www.jetbrains.com/webstorm/) (cross-platform, płatny).
 
-For Windows, there's also "Visual Studio", not to be confused with "Visual Studio Code". "Visual Studio" is a paid and mighty Windows-only editor, well-suited for the .NET platform. It's also good at JavaScript. There's also a free version [Visual Studio Community](https://www.visualstudio.com/vs/community/).
+Dla systemu Windows istnieje jeszcze "Visual Studio", którego nie należy mylić z "Visual Studio Code". "Visual Studio" jest rozbudowanym i płatnym edytorem tylko dla systemu Windows, świetnie dopasowanym do platformy .NET. Jest również dobry dla JavaScriptu. Dostępna jest również darmowa wersja [Visual Studio Community](https://www.visualstudio.com/vs/community/).
 
-Many IDEs are paid, but have a trial period. Their cost is usually negligible compared to a qualified developer's salary, so just choose the best one for you.
+Wiele środowisk programistycznych jest płatnych, ale mają wersje próbne (trial). Ich koszt jest zazwyczaj niewielki, jeśli porównamy go do wynagrodzenia wykwalifikowanego developera. Po prostu wybierz dla siebie najlepszy.
 
-## Lightweight editors
+## Lekkie edytory
 
-"Lightweight editors" are not as powerful as IDEs, but they're fast, elegant and simple.
+"Lekkie edytory" nie są tak potężne jak IDE, ale są szybkie, eleganckie i proste w obsłudze.
 
-They are mainly used to open and edit a file instantly.
+Zazwyczaj są używane do szybkiego otwarcia i edycji pliku.
 
-The main difference between a "lightweight editor" and an "IDE" is that an IDE works on a project-level, so it loads much more data on start, analyzes the project structure if needed and so on. A lightweight editor is much faster if we need only one file.
+Główna różnica pomiędzy lekkim edytorem a środowiskiem programistycznym polega na tym, że IDE działa na poziomie całego projektu, wczytuje mnóstwo danych na starcie, analizuje strukturę projektu itd. Lekki edytor jest o wiele szybszy, jeśli potrzebujemy go użyć do pracy na jednym pliku.
 
-In practice, lightweight editors may have a lot of plugins including directory-level syntax analyzers and autocompleters, so there's no strict border between a lightweight editor and an IDE.
+W praktyce jednak lekkie edytory mają wiele wtyczek, które wspomagają pracę, analizują i dostarcząją autouzupełnianie na poziomie projektu, więc granica pomiędzy lekkimi edytorami a IDE powoli się zaciera.
 
-The following options deserve your attention:
+Poniższe przykłady zasługują na twoją uwagę: 
 
-- [Atom](https://atom.io/) (cross-platform, free).
-- [Visual Studio Code](https://code.visualstudio.com/) (cross-platform, free).
-- [Sublime Text](http://www.sublimetext.com) (cross-platform, shareware).
-- [Notepad++](https://notepad-plus-plus.org/) (Windows, free).
-- [Vim](http://www.vim.org/) and [Emacs](https://www.gnu.org/software/emacs/) are also cool if you know how to use them.
+- [Atom](https://atom.io/) (wieloplatformowy, darmowy).
+- [Visual Studio Code](https://code.visualstudio.com/) (wieloplatformowy, darmowy).
+- [Sublime Text](http://www.sublimetext.com) (wieloplatformowy, shareware).
+- [Notepad++](https://notepad-plus-plus.org/) (Windows, darmowy).
+- [Vim](http://www.vim.org/) i [Emacs](https://www.gnu.org/software/emacs/) są świetne, pod warunkiem że wiesz, jak na nich pracować.
 
-## Let's not argue
+## Nie sprzeczajmy się
 
-The editors in the lists above are those that either I or my friends whom I consider good developers have been using for a long time and are happy with.
+Edytory na powyższej liście to narzędzia, z których sam korzystam lub korzystają moi znajomi, których uważam za dobrych programistów, i z których wszyscy jesteśmy zadowoleni.
 
-There are other great editors in our big world. Please choose the one you like the most.
+Jest mnóstwo takich programów w naszym dużym świecie. Używaj tego, który lubisz najbardziej. 
 
-The choice of an editor, like any other tool, is individual and depends on your projects, habits, and personal preferences.
+Wybór edytora, jak i dowolnego innego narzędzia deweloperskiego, jest naszą indywidualną sprawą, zależną od potrzeb w projekcie, przyzwyczajeń czy osobistych preferencji.
