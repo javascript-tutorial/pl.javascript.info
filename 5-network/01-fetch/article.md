@@ -12,11 +12,11 @@ Można na przykład użyć żądania sieciowego do:
 
 ...I to wszystko bez przeładowania strony!
 
-Istnieje nadrzędny termin "AJAX" (skrót od <b>A</b>synchronous <b>J</b>avaScript <b>A</b>nd <b>X</b>ML) dotyczący żądań sieciowych w JavaScript. Nie musimy jednak używać XML-a: skrót ten pochodzi z dawnych czasów, stąd też zawiera takie właśnie słowo. Być może znasz już ten termin.
+Istnieje nadrzędny termin "AJAX" (skrót od <b>A</b>synchronous <b>J</b>avaScript <b>A</b>nd <b>X</b>ML) dotyczący żądań sieciowych w JavaScripcie. Nie musimy jednak używać XML-a: skrót ten pochodzi z dawnych czasów, stąd też zawiera takie właśnie słowo. Być może znasz już ten termin.
 
 Istnieje wiele sposobów wysłania żądania sieciowego i pobrania informacji z serwera.
 
-Metoda `fetch()` jest nowoczesna i wszechstronna, zaczniemy więc od niej. Nie jest ona wspierana przez stare przeglądarki (można ją zaimplementować skryptem typu polyfill), jest natomiast bardzo dobrze obsługiwana przez współczesne przeglądarki.
+Metoda `fetch()` jest nowoczesna i wszechstronna, dlatego od niej zaczniemy. Nie jest ona wspierana przez stare przeglądarki (można ją dodać poprzez odpowiednią łatkę - ang. *polyfill*), jest natomiast bardzo dobrze obsługiwana przez współczesne przeglądarki.
 
 Podstawowa składnia jest następująca:
 
@@ -29,15 +29,15 @@ let promise = fetch(url, [options])
 
 Bez `options` mamy do czynienia ze zwykłym zapytaniem GET, pobierającym zawartość adresu `url`.
 
-Przeglądarka natychmiast uruchamia zapytanie i zwraca obietnicę (ang. *promise*), której kod (wywołujący owo zapytanie) powinien użyć do uzyskania wyniku.
+Przeglądarka natychmiast uruchamia zapytanie i zwraca obietnicę (ang. *promise*), której kod wywołujący powinien użyć do uzyskania wyniku.
 
 Uzyskanie odpowiedzi jest zwykle procesem dwuetapowym.
 
-**Po pierwsze `obietnica`, zwrócona przez `fetch`, rozwiązuje się za pomocą obiektu wbudowanej klasy [Response](https://fetch.spec.whatwg.org/#response-class) , gdy tylko serwer odpowie nagłówkami.**
+**Po pierwsze, obietnica `promise` zwrócona przez `fetch`, rozwiązuje się (ang. *resolves*) do obiektu wbudowanej klasy [Response](https://fetch.spec.whatwg.org/#response-class) , gdy tylko serwer odpowie nagłówkami.**
 
-Na tym etapie możemy sprawdzić status HTTP, aby zobaczyć czy zapytanie się powiodło czy nie, możemy również sprawdzić nagłówki, ale jeszcze nie mamy dostępu do ciała odpowiedzi.
+Na tym etapie możemy sprawdzić status żądania HTTP, aby dowiedzieć się, czy się ono powiodło, albo przejrzeć nagłówki. Nie mamy jednak jeszcze dostępu do ciała odpowiedzi.
 
-Obietnica zostaje odrzucona jeżeli `fetch` nie był w stanie wykonać zapytania HTTP, np. ze względu problemy sieciowe lub brak strony, do której skierowano zapytanie. Nieprawidłowe statusy HTTP takie jak 404 lub 500 nie powodują błędu.
+Obietnica jest odrzucana (ang. *rejects*), jeżeli `fetch` jest w stanie wykonać zapytania HTTP, np. ze względu na problemy sieciowe lub brak strony, do której skierowano zapytanie. Nieprawidłowe statusy HTTP, takie jak 404 lub 500, nie powodują błędu.
 
 Informację o statusie HTTP znajdziemy wśród właściwości odpowiedzi:
 
@@ -50,23 +50,23 @@ Przykładowo:
 let response = await fetch(url);
 
 if (response.ok) { // jeżeli kod odpowiedzi HTTP jest z zakresu 200-299
-  // pobierz ciało odpowiedzi (wyjaśnienie metody poniżej)
+  // pobierz ciało odpowiedzi (wyjaśnione poniżej)
   let json = await response.json();
 } else {
   alert("Błąd HTTP: " + response.status);
 }
 ```
 
-**Po drugie, aby pobrać ciało odpowiedzi należy wywołać kolejną metodę.**
+**Po drugie, aby pobrać ciało odpowiedzi, należy wywołać kolejną metodę.**
 
-`Response` (pol. *odpowiedź*) zapewnia wiele metod, bazujących na obietnicach, które pozwalają na dostęp do ciała odpowiedzi i zwrócenie go w różnych formach:
+Obiekt klasy `Response` (pol. *odpowiedź*) zapewnia wiele metod bazujących na obietnicach, które pozwalają na dostęp do ciała odpowiedzi i zwrócenie go w różnych formach:
 
 - **`response.text()`** -- odczytaj odpowiedź i zwróć jako tekst,
 - **`response.json()`** -- odczytaj odpowiedź i zwróć jako JSON,
 - **`response.formData()`** -- zwróć odpowiedź jako obiekt typu `FormData` (wyjaśnienie w [następnym rozdziale](info:formdata)),
 - **`response.blob()`** -- zwróć odpowiedź jako [Blob](info:blob) (dane binarne z typem),
 - **`response.arrayBuffer()`** -- zwróć odpowiedź jako [ArrayBuffer](info:arraybuffer-binary-arrays) (niskopoziomowa reprezentacja danych binarnych),
-- ponadto `response.body` jest sam w sobie obiektem typu [ReadableStream](https://streams.spec.whatwg.org/#rs-class), co pozwala na odczytywanie go kawałek po kawałku, co zostanie pokazane w kolejnym przykładzie.
+- ponadto `response.body` jest sam w sobie obiektem typu [ReadableStream](https://streams.spec.whatwg.org/#rs-class), co pozwala na odczytywanie go kawałek po kawałku. Ale o tym nieco później.
 
 Pobierzmy dla przykładu obiekt JSON z ostatnimi commitami z GitHuba.
 
@@ -162,7 +162,7 @@ let response = fetch(protectedUrl, {
 });
 ```
 
-... Istnieją również [zabronione nagłówki HTTP](https://fetch.spec.whatwg.org/#forbidden-header-name), których nie możemy zdefiniować:
+... Istnieją również [zabronione nagłówki HTTP](https://fetch.spec.whatwg.org/#forbidden-header-name), których nie możemy ustawić:
 
 - `Accept-Charset`, `Accept-Encoding`
 - `Access-Control-Request-Headers`
@@ -189,7 +189,7 @@ Dzięki nim protokół HTTP działa prawidłowo i jest bezpieczny, dlatego też 
 
 ## Żądania POST
 
-Ażeby wykonać żądanie typu `POST` lub jakiekolwiek inne żądanie sieciowe musimy użyć opcji dostępnych w metodzie `fetch`:
+Do wykonania żądania z metodą `POST` lub jakąkolwiek inną musimy użyć opcji dostępnych w funkcji `fetch`:
 
 - **`method`** -- metoda HTTP, np. `POST`,
 - **`body`** -- ciało żądania, może przyjąć formę:
@@ -222,13 +222,13 @@ let result = await response.json();
 alert(result.message);
 ```
 
-Należy pamiętać, że jeżeli ciało żądania (`body`) jest łańcuchem znaków, wówczas nagłówek `Content-Type` domyślnie ustawiony jest jako `text/plain;charset=UTF-8`.
+Należy pamiętać, że jeżeli ciało żądania (`body`) jest łańcuchem znaków, wówczas nagłówek `Content-Type` domyślnie ustawiony jest na `text/plain;charset=UTF-8`.
 
-Ponieważ jednak zamierzamy wysłać obiekt JSON, użyjemy obiektu `headers` do ustawienia nagłówka `Content-Type` jako `application/json`, czyli właściwego dla danych zakodowanych w formacie JSON.
+Ponieważ jednak zamierzamy wysłać obiekt JSON, użyjemy obiektu `headers` do ustawienia nagłówka `Content-Type` na `application/json`, czyli właściwego dla danych zakodowanych w formacie JSON.
 
 ## Wysyłanie obrazu
 
-Możemy także za pomocą `fetch`przesłać dane binarne, używając obiektów `Blob` albo `BufferSource`.
+Za pomocą `fetch` możemy także przesłać dane binarne, używając obiektów `Blob` albo `BufferSource`.
 
 W poniższym przykładzie mamy znacznik `<canvas>`, który pozwala na rysowanie poprzez poruszanie nad nim myszką. Kliknięcie na przycisk "Prześlij" wysyła obraz do serwera:
 
@@ -263,7 +263,7 @@ W poniższym przykładzie mamy znacznik `<canvas>`, który pozwala na rysowanie 
 
 Zauważ, że nie ustawiamy ręcznie nagłówka `Content-Type`, ponieważ obiekt `Blob` posiada wbudowany typ (tutaj `image/png`, wymuszony przez metodę `toBlob`). Dla obiektów `Blob` ten typ zostaje ustawiony dla nagłówka `Content-Type`.
 
-Funkcję `submit()` można również przepisać nie używając składni `async/await` w taki sposób:
+Funkcję `submit()` można również przepisać z pominięciem składni `async/await` w taki sposób:
 
 ```js
 function submit() {
@@ -280,10 +280,10 @@ function submit() {
 
 ## Podsumowanie
 
-Typowe żądanie sieciowe składa się z dwóch wywołań metody `await`:
+Typowe żądanie sieciowe składa się z dwóch wywołań `await`:
 
 ```js
-let response = await fetch(url, options); // rozwiązuje się z nagłówkami odpowiedzi
+let response = await fetch(url, options); // rozwiązuje się do obiektu z nagłówkami odpowiedzi
 let result = await response.json(); // odczytuje ciało jako JSON
 ```
 
@@ -297,7 +297,7 @@ fetch(url, options)
 
 Właściwości żądania:
 - `response.status` -- kod odpowiedzi HTTP,
-- `response.ok` -- `true` jeżeli kod odpowiedzi to 200-299.
+- `response.ok` -- `true` dla kodów odpowiedzi z przedziału 200-299.
 - `response.headers` -- obiekt podobny do typu Map z nagłówkami HTTP.
 
 Metody służące do przetwarzania ciała odpowiedzi:
