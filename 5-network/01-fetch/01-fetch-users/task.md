@@ -1,10 +1,10 @@
 # Pobierz użytkowników z GitHuba
 
-Stwórz asynchroniczną funkcję `getUsers(names)`, która pobiera z GitHuba tablicę z nazwami użytkowników, a następnie zwraca tablicę z odpowiadającymi im użytkownikami.
+Stwórz asynchroniczną funkcję `getUsers(names)`, która otrzymuje tablicę z loginami do GitHuba, a następnie zwraca tablicę z odpowiadającymi im użytkownikami.
 
-Informacje o użytkowniku przypisanym do `USERNAME`, znajdują się pod adresem url: `https://api.github.com/users/USERNAME`.
+Informacje o użytkowniku przypisanym do `USERNAME`, znajdują się pod adresem: `https://api.github.com/users/USERNAME`.
 
-W środowisku izolowanym znajduje się przykład testowy.
+W naszym środowisku izolowanym znajduje się przykład testowy.
 
 Ważne informacje:
 
