@@ -2,7 +2,7 @@ importance: 4
 
 ---
 
-# Stała z wielkich liter?
+# Stała zapisana wielkimi literami?
 
 Zbadaj poniższy kod:
 
@@ -12,13 +12,13 @@ const birthday = '18.04.1982';
 const age = someCode(birthday);
 ```
 
-Mamy tutaj stałą datę `birthday` oraz `age`, który jest obliczany na podstawie `birthday` za pomocą jakiegoś kodu (który nie jest podany dla uproszczenia, ponieważ szczegóły nie są tutaj istotne).
+Mamy tutaj stałą datę urodzenia `birthday` oraz wiek `age`, który jest obliczany na podstawie `birthday` za pomocą jakiegoś kodu (który nie jest podany dla uproszczenia, ponieważ szczegóły nie są tutaj istotne).
 
-Czy byłoby poprawne użycie wielkich liter dla `birthday`? Dla `age`? Czy może nawet dla dwóch?
+Czy byłoby poprawne użycie wielkich liter dla `birthday`? Albo dla `age`? A może nawet dla obydwóch zmiennych?
 
 ```js
-const BIRTHDAY = '18.04.1982'; // z wielkich liter?
+const BIRTHDAY = '18.04.1982'; // wielkimi literami?
 
-const AGE = someCode(BIRTHDAY); // z wielkich liter?
+const AGE = someCode(BIRTHDAY); // wielkimi literami?
 ```
 
