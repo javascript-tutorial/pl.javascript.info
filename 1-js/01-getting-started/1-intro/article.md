@@ -12,13 +12,8 @@ Skrypty są pisane, a później odczytywane, jako zwykły tekst. Nie muszą być
 
 Pod tym kątem JavaScript znacząco różni się od innego języka o nazwie [Java](https://pl.wikipedia.org/wiki/Java).
 
-<<<<<<< HEAD
 ```smart header="Dlaczego akurat <u>Java</u>Script?"
 Kiedy JavaScript powstawał, początkowo nosił nazwę "LiveScript". Jednak z powodu dużej popularności Javy w tamtym czasie, stwierdzono, że wykreowanie nowego języka na "młodszego brata" Javy pomoże zyskać na popularności.
-=======
-```smart header="Why is it called <u>Java</u>Script?"
-When JavaScript was created, it initially had another name: "LiveScript". But Java was very popular at that time, so it was decided that positioning a new language as a "younger brother" of Java would help.
->>>>>>> a0bfa924a17cad8e7fee213904b27dbf57c2dbac
 
 Z czasem JavaScript ewoluował na tyle, że stał się niezależnym językiem oraz doczekał własnej specyfikacji zwanej [ECMAScript](https://pl.wikipedia.org/wiki/ECMAScript). Obecnie nie ma już żadnego związku z Javą.
 ```
