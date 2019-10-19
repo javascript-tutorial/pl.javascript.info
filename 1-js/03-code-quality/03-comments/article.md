@@ -30,7 +30,7 @@ Czasami korzystnie jest zastąpić kawałek kodu funkcją, tak jak w tym przypad
 
 ```js
 function showPrimes(n) {
-  nextPrime:
+  nextPrime: 
   for (let i = 2; i < n; i++) {
     // sprawdź czy i jest liczbą pierwszą
     for (let j = 2; j < i; j++) {
@@ -114,52 +114,48 @@ W rzeczywistości nie zawsze jesteśmy w stanie uniknąć "wyjaśniających" kom
 
 Ustaliliśmy już, że wyjaśniające komentarze są przeważnie złe. W takim razie które komentarze są dobre?
 
-### Opisz architekturę
+Opisz architekturę
+: Dostarcz wysokopoziomowy przegląd komponentów, opisz, jak ze sobą współdziałają, jaki jest przepływ danych w różnych sytuacjach... W skrócie -- przedstaw spojrzenie na kod z lotu ptaka. Istnieje specjalny język [UML](http://wikipedia.org/wiki/Unified_Modeling_Language) służący do budowania wysokopoziomowych diagramów, które opisują architekturę i wyjaśniają kod. Zdecydowanie warto zgłębić ten temat.
 
-Dostarcz wysokopoziomowy przegląd komponentów, opisz, jak ze sobą współdziałają, jaki jest przepływ danych w różnych sytuacjach... W skrócie -- przedstaw spojrzenie na kod z lotu ptaka. Istnieje specjalny język [UML](http://wikipedia.org/wiki/Unified_Modeling_Language) służący do budowania wysokopoziomowych diagramów, które opisują architekturę i wyjaśniają kod. Zdecydowanie warto zgłębić ten temat.
+Udokumentuj parametry oraz użycie funkcji
+: Istnieje specjalna składnia [JSDoc](http://en.wikipedia.org/wiki/JSDoc) pozwalająca na dokumentowanie funkcji: sposób jej użycia, oczekiwane parametry i zwracaną wartość.
 
-### Udokumentuj parametry oraz użycie funkcji
+    Na przykład:
 
-Istnieje specjalna składnia [JSDoc](http://en.wikipedia.org/wiki/JSDoc) pozwalająca na dokumentowanie funkcji: sposób jej użycia, oczekiwane parametry i zwracaną wartość.
+    ```js
+    /**
+      * Zwraca x podniesiony do n-tej potęgi.
+      *
+      * @param {number} x Liczba do potęgowania.
+      * @param {number} n Wykładnik potęgi; musi być liczbą naturalną.
+      * @return {number} x podniesiony do n-tej potęgi.
+      */
+    function pow(x, n) {
+      ...
+    }
+    ```
 
-Na przykład:
+    Takie komentarze pozwalają nam poznać przeznaczenie funkcji i używać jej w poprawny sposób bez zerkania do jej treści.
 
-```js
-/**
-  * Zwraca x podniesiony do n-tej potęgi.
-  *
-  * @param {number} x Liczba do potęgowania.
-  * @param {number} n Wykładnik potęgi; musi być liczbą naturalną.
-  * @return {number} x podniesiony do n-tej potęgi.
-  */
-function pow(x, n) {
-  ...
-}
-```
+    Tak na marginesie, wiele edytorów, takich jak [WebStorm](https://www.jetbrains.com/webstorm/), jest w stanie dobrze je zrozumieć oraz używać ich do automatycznego uzupełniania i sprawdzania kodu.
 
-Takie komentarze pozwalają nam poznać przeznaczenie funkcji i używać jej w poprawny sposób bez zerkania do jej treści.
+    Istnieją również takie narzędzia jak [JSDoc 3](https://github.com/jsdoc3/jsdoc), które są w stanie generować dokumentację HTML z tych komentarzy. Możesz dowiedzieć się więcej na ten temat pod tym linkiem: <http://usejsdoc.org/>.
 
-Tak na marginesie, wiele edytorów, takich jak [WebStorm](https://www.jetbrains.com/webstorm/), jest w stanie dobrze je zrozumieć oraz używać ich do automatycznego uzupełniania i sprawdzania kodu.
+Dlaczego zadanie jest rozwiązane w taki sposób?
+: Co zostało napisane jest ważne. Jednakże to, czego _nie_ napisano, może być jeszcze ważniejsze w zrozumieniu, o co chodzi w kodzie. Dlaczego zadanie zostało rozwiązane dokładnie w taki sposób? Kod nie odpowie na to pytanie.
 
-Istnieją również takie narzędzia jak [JSDoc 3](https://github.com/jsdoc3/jsdoc), które są w stanie generować dokumentację HTML z tych komentarzy. Możesz dowiedzieć się więcej na ten temat pod tym linkiem: <http://usejsdoc.org/>.
+    Jeżeli jest wiele sposobów na rozwiązanie zadania, dlaczego został wybrany właśnie ten sposób? Zwłaszcza gdy nie jest najbardziej oczywisty.
 
-### Dlaczego zadanie jest rozwiązane w taki sposób?
+    Bez takich komentarzy następująca sytuacja staje się możliwa:
 
-Co zostało napisane jest ważne. Jednakże to, czego _nie_ napisano, może być jeszcze ważniejsze w zrozumieniu, o co chodzi w kodzie. Dlaczego zadanie zostało rozwiązane dokładnie w taki sposób? Kod nie odpowie na to pytanie.
+    1. Ty (bądź twój współpracownik) otwiera kod napisany jakiś czas temu i widzi, że jest nieoptymalny.
+    2. Myślisz sobie: *Jaki byłem wtedy głupi i o ile jestem teraz mądrzejszy* i przepisujesz kod na "bardziej oczywisty i poprawny" wariant.
+    3. ... Chęć przepisania była w porządku. Jednak w trakcie tego procesu zauważasz, że "bardziej oczywiste" rozwiązanie nie jest idealne. Nawet mgliście pamiętasz dlaczego, ponieważ już raz przyszło ci spróbować tego rozwiązania dawno temu. Powracasz do poprawnego wariantu, ale poświęcony czas został już bezpowrotnie stracony.
 
-Jeżeli jest wiele sposobów na rozwiązanie zadania, dlaczego został wybrany właśnie ten sposób? Zwłaszcza gdy nie jest najbardziej oczywisty.
+    Komentarze opisujące rozwiązanie są bardzo ważne. Pomagają kontynuować proces wytwarzania oprogramowania w poprawny sposób.
 
-Bez takich komentarzy następująca sytuacja staje się możliwa:
-
-1. Ty (bądź twój współpracownik) otwiera kod napisany jakiś czas temu i widzi, że jest nieoptymalny.
-2. Myślisz sobie: *Jaki byłem wtedy głupi i o ile jestem teraz mądrzejszy* i przepisujesz kod na "bardziej oczywisty i poprawny" wariant.
-3. ... Chęć przepisania była w porządku. Jednak w trakcie tego procesu zauważasz, że "bardziej oczywiste" rozwiązanie nie jest idealne. Nawet mgliście pamiętasz dlaczego, ponieważ już raz przyszło ci spróbować tego rozwiązania dawno temu. Powracasz do poprawnego wariantu, ale poświęcony czas został już bezpowrotnie stracony.
-
-Komentarze opisujące rozwiązanie są bardzo ważne. Pomagają kontynuować proces wytwarzania oprogramowania w poprawny sposób.
-
-### Jakieś nieoczywistości w kodzie? Jeśli tak, to gdzie są?
-
-Jeśli kod ma jakieś aspekty, które są subtelne lub sprzeczne z intuicją, zdecydowanie warto zawrzeć to w komentarzu.
+Jakieś nieoczywistości w kodzie? Jeśli tak, to gdzie są?
+: Jeśli kod ma jakieś aspekty, które są subtelne lub sprzeczne z intuicją, zdecydowanie warto zawrzeć to w komentarzu.
 
 ## Podsumowanie
 
