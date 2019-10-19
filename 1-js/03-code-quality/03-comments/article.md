@@ -152,12 +152,12 @@ Jeżeli jest wiele sposobów na rozwiązanie zadania, dlaczego został wybrany w
 Bez takich komentarzy następująca sytuacja staje się możliwa:
 
 1. Ty (bądź twój współpracownik) otwiera kod napisany jakiś czas temu i widzi, że jest nieoptymalny.
-2. Myślisz sobie: "Jaka byłam wtedy głupia i jak bardzo jestem teraz mądrzejsza" i przepisujesz kod na "bardziej oczywisty i poprawny" wariant.
-3. ...Chęć przepisania była w porządku. Jednak w trakcie tego procesu zauważasz, że "bardziej oczywiste" rozwiązanie jest nieidealne. Nawet mgliście pamiętasz dlaczego, ponieważ już raz spróbowałaś tego rozwiązania dawno temu. Powracasz do poprawnego wariantu ale czas został już stracony.
+2. Myślisz sobie: *Jaki byłem wtedy głupi i o ile jestem teraz mądrzejszy* i przepisujesz kod na "bardziej oczywisty i poprawny" wariant.
+3. ... Chęć przepisania była w porządku. Jednak w trakcie tego procesu zauważasz, że "bardziej oczywiste" rozwiązanie nie jest idealne. Nawet mgliście pamiętasz dlaczego, ponieważ już raz przyszło ci spróbować tego rozwiązania dawno temu. Powracasz do poprawnego wariantu, ale poświęcony czas został już bezpowrotnie stracony.
 
 Komentarze opisujące rozwiązanie są bardzo ważne. Pomagają kontynuować proces wytwarzania oprogramowania w poprawny sposób.
 
-### Jakieś subtelności w kodzie? Jeśli tak, to gdzie są?
+### Jakieś nieoczywistości w kodzie? Jeśli tak, to gdzie są?
 
 Jeśli kod ma jakieś aspekty, które są subtelne lub sprzeczne z intuicją, zdecydowanie warto zawrzeć to w komentarzu.
 
