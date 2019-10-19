@@ -1,108 +1,108 @@
-# Konwersje typów
+# Rzutowanie typów
 
-W większości przypadków operatory i funkcje automatycznie konwertują przekazywane do nich wartości na właściwy typ. 
+W większości przypadków operatory i funkcje automatycznie rzutują przekazywane do nich wartości na właściwy typ.
 
-Na przykład `alert` automatycznie zmieni typ dowolnej wartości do stringa. Matematyczne operacje konwertują wartości do typu liczbowego.
+Na przykład `alert` automatycznie zmieni typ dowolnej wartości do typu tekstowego. Matematyczne operacje rzutują wartości do typów liczbowych.
 
 Istnieją jednak przypadki, w których musimy jawnie zmienić typ wartości na inny. 
 
 ```smart header="Nie mówimy jeszcze o obiektach"
-W tym rozdziale nie zajmujemy się obiektami. Zamiast tego nauczymy się najpierw typów prymitywnych. Później nauczymy się co nieco o obiektach i zobaczymy jak działa konwersja obiektów w rozdziale <info:object-toprimitive>.
+W tym rozdziale nie zajmujemy się obiektami. Zamiast tego nauczymy się najpierw typów prostych. Później nauczymy się co nieco o obiektach i w rozdziale pt. "<info:object-toprimitive>" zobaczymy, jak działa rzutowanie obiektów.
 
-## String Conversion
+## Rzutowanie do typu tekstowego
 
-Konwersja do stringa następuje kiedy potrzebujemy wartości typu string.
+Rzutowanie do typu tekstowego następuje, kiedy potrzebujemy wartości zmiennej w formie tekstowej.
 
-Na przykład `alert(value)` konwertuje do stringa żeby wyświetlić wartość.
+Na przykład, funkcja `alert(value)` rzutuje wyświetlaną wartość do typu tekstowego.
 
-Możemy również wywołać funkcję `String(value)` żeby skonwertować wartość:
+Możemy również wywołać funkcję `String(value)`, żeby jawnie rzutować wartość na tekst:
 
 ```js run
 let value = true;
 alert(typeof value); // boolean
 
 *!*
-value = String(value); // teraz wartość "true" jest stringiem
+value = String(value); // teraz wartość "true" jest ciągiem znaków
 alert(typeof value); // string
 */!*
 ```
 
-Konwersja stringów jest bardzo przewidywalna. `false` zostaje `"false"`, typ boolean `null` staje się stringiem `"null"`, etc.
+Rzutowanie wartości do tekstu jest bardzo przewidywalne. `false` zostaje `"false"`, typ `null` staje się napisem `"null"` itd.
 
-## Numeric Conversion
+## Rzutowanie do typu liczbowego
 
-Konwersja do typu liczbowego następuje automatycznie w wyniku matematycznych wyrażeń i funkcji.
+Rzutowanie do typu liczbowego następuje automatycznie w wyniku matematycznych wyrażeń i funkcji.
 
-Na przykład dzielenie `/` dla wartości nie będących liczbami: 
+Na przykład przy dzieleniu (`/`) z udziałem wartości nie będących liczbami:
 
 ```js run
-alert( "6" / "2" ); // 3, stringi są zamienione na liczby
+alert( "6" / "2" ); // 3, wartości tekstowe są zamienane na liczby
 ```
 
-Możemy użyć funkcji `Number(value)`, aby jawnie przekonwertować `wartość` do liczby. 
+Możemy użyć funkcji `Number(value)`, aby jawnie rzutować zmienną `value` na liczbę. 
 
 ```js run
 let str = "123";
 alert(typeof str); // string
 
-let num = Number(str); // zostaje typem liczbowym o wartości 123
+let num = Number(str); // staje się typem liczbowym o wartości 123
 
 alert(typeof num); // number
 ```
 
-Jawna konwersja jest zazwyczaj wymagana gdy chcemy odczytać wartość ze źródła będącą stringiem, a oczekujemy wartości liczbowej.
+Jawne rzutowanie jest zazwyczaj wymagane, gdy chcemy odczytać wartość ze źródła tekstowego, a w kodzie oczekujemy wartości liczbowej.
 
-Jeśli string nie jest prawidłową liczbą wynikiem konwersji będzie `NaN`. Dla przykładu:
+Jeśli podana wartość tekstowa nie jest prawidłową liczbą, wynikiem konwersji będzie `NaN`. Dla przykładu:
 
 ```js run
 let age = Number("dowolny ciąg znaków zamiast typu liczbowego");
 
-alert(age); // NaN, konwersja nie powiodła się
+alert(age); // NaN, rzutowanie nie powiodło się
 ```
 
-Zasady konwersji typu liczbowego:
+Zasady rzutowania do typu liczbowego:
 
 | Wartość |  Otrzymamy... |
 |---------|-------------|
 |`undefined`|`NaN`|
 |`null`|`0`|
-|<code>true&nbsp;and&nbsp;false</code> | `1` and `0` |
-| `string` | Białe znaki z początku i końca są usunięte. Jeśli pozostała wartość stringa jest pusta wynikiem będzie `0`. W przeciwnym wypadku liczba jest odczytywana ze stringa. Wszystkie nieprawidłowe konwersje dają `NaN`. |
+|<code>true&nbsp;i&nbsp;false</code> | `1` i `0` |
+| `string` | Białe znaki z początku i końca są usuwane. Jeśli pozostała wartość napisu jest pusta, wynikiem będzie `0`. W przeciwnym wypadku liczba jest odczytywana z tekstu. Wszystkie nieprawidłowe rzutowania dają `NaN`. |
 
 Przykłady:
 
 ```js run
 alert( Number("   123   ") ); // 123
-alert( Number("123z") );      // NaN (błąd podczas odczytywania liczby ze stringa "z")
+alert( Number("123z") );      // NaN (błąd podczas rzutowania "z" na liczbę)
 alert( Number(true) );        // 1
 alert( Number(false) );       // 0
 ```
 
-Zauważ, że `null` i `undefined` zachowują się inaczej. `null` zostanie przekonwertowany do zera, natomiast `undefined` sprawi, że wynikiem będzie `NaN`.
+Zauważ, że `null` i `undefined` zachowują się inaczej. `null` jest konwertowany do zera, a `undefined` do `NaN`.
 
-````smart header="'+' konkatenuje stringi"
-Większość matematycznych operacji konwertuje wartości do typu liczbowego. Jedynym wyjątkiem jest `+`. Jeśli dodasz jedną z wartości, która będzie stringiem, wtedy wynikiem takiej operacji będzie typ string.
+````smart header="Operator '+' łączy ciągi znaków"
+Większość operacji matematycznych rzutuje wartości do typu liczbowego. Jedynym wyjątkiem jest `+`. Jeśli jedna z dodawanych wartości będzie typu tekstowego, druga również jest rzutowana do typu tekstowego.
 
-Wtedy operacja je konkatenuje (łączy):
+Wtedy następuje ich konkatenacja (połączenie):
 
 ```js run
-alert( 1 + '2' ); // '12' (string po prawej)
-alert( '1' + 2 ); // '12' (string po lewej)
+alert( 1 + '2' ); // '12' (tekst po prawej)
+alert( '1' + 2 ); // '12' (tekst po lewej)
 ```
 
-Dzieje się to w przypadku gdy przynajmniej jeden z argumentów jest stringiem. W przeciwnym wypadku wartości zostaną przekonwertowane na typ liczbowy.
+Dzieje się tak w sytuacji, gdy przynajmniej jeden z argumentów jest typu tekstowego. W przeciwnym wypadku wartości są rzutowane na typ liczbowy.
 ````
 
-## Boolean Conversion
+## Rzutowanie do typu logicznego
 
-Konwersje typu Boolean są najprostsze.
+Rzutowania do typu logicznego są najprostsze.
 
-Zachodzą w logicznych operacjach (później poznamy warunki i inne podobne rzeczy) i może zostać wywołana z użyciem funkcji `Boolean(value)`.
+Zachodzą w operacjach logicznych (później poznamy instrukcje warunkowe i inne podobne rzeczy), ale także mogą zostać wywołane z użyciem funkcji `Boolean(value)`.
 
-Zasada konwersji:
+Zasada rzutowania:
 
-- Wartości, które są "puste" np. `0`, pusty string, `null`, `undefined` i `NaN` zostaną przekonwertowane do `false`.
-- Inne wartości zostaną przekonwertowane do `true`.
+- Wartości "puste", np. `0`, pusty ciąg znaków, `null`, `undefined` i `NaN`, są konwertowane do `false`.
+- Inne wartości są konwertowane do `true`.
 
 Na przykład:
 
@@ -110,39 +110,39 @@ Na przykład:
 alert( Boolean(1) ); // true
 alert( Boolean(0) ); // false
 
-alert( Boolean("hello") ); // true
+alert( Boolean("witaj") ); // true
 alert( Boolean("") ); // false
 ```
 
-````warn header="Miej na uwadze, że string z `\"0\"` będzie `true`"
-Niektóre języki (np. PHP) traktują `"0"` jako `false`. Ale w JavaScript każdy string z jakąkolwiek wartością jest zawsze `true`.
+````warn header="Miej na uwadze, że tekst zawierający cyfrę 0 (`\"0\"`) da `true`"
+Niektóre języki (np. PHP) traktują `"0"` jako `false`. Ale w JavaScripcie każdy niepusty ciąg znaków daje zawsze `true`.
 
 ```js run
 alert( Boolean("0") ); // true
-alert( Boolean(" ") ); // spacje, również true (jakakolwiek wartość stringowa jest true)
+alert( Boolean(" ") ); // spacje, również true (każdy niepusty ciąg znaków daje true)
 ```
 ````
 
-## Summary
+## Podsumowanie
 
-Trzy najczęściej używane konwersje dotyczą konwersji do stringu, liczby i typu boolean.
+Trzy najczęściej używane rzutowania dotyczą ciągów znaków, liczb i typów logicznych.
 
-**`String Conversion`** -- Zachodzi gdy coś wpisujemy. Może zajść również z użyciem `String(value)`. Konwersja do stringa jest zazwyczaj oczywista dla prymitywnych wartości.
+**`Rzutowanie do typu tekstowego`** -- Zachodzi, gdy coś wypisujemy na ekranie. Może zajść również przy użyciu funkcji `String(value)`. Wynik rzutowania do tekstu jest zazwyczaj oczywisty dla typów prostych.
 
-**`Numeric Conversion`** -- Zachodzi w matematycznych operacjach. Może zajść również z użyciem `Number(value)`.
+**`Rzutowanie do typu liczbowego`** -- Zachodzi w operacjach matematycznych. Może zajść również przy użyciu funkcji `Number(value)`.
 
-Konwersja jest zgodna z zasadami:
+Rzutowanie to jest zgodne z zasadami:
 
 | Wartość |  Otrzymamy... |
 |-------|-------------|
 |`undefined`|`NaN`|
 |`null`|`0`|
 |<code>true&nbsp;/&nbsp;false</code> | `1 / 0` |
-| `string` | String jest odczytywany taki "jak jest", białe znaki z obu stron są zignorowane. Pusty string staje się `0`. Błąd konwersji zwraca `NaN`.|
+| `string` | Tekst jest odczytywany "jak leci", białe znaki na obydwóch końcach są ignorowane. Pusty ciąg znaków staje się `0`. Błąd konwersji zwraca `NaN`.|
 
-**`Boolean Conversion`** -- Zachodzi w logicznych operacjach. Może zajść również z użyciem `Boolean(value)`.
+**`Rzutowanie do typu logicznego`** -- Zachodzi w operacjach logicznych. Może zajść również przy użyciu funkcji `Boolean(value)`.
 
-Konwersja jest zgodna z zasadami:
+Rzutowanie jest zgodne z zasadami:
 
 | Wartość |  Otrzymamy... |
 |-------|-------------|
@@ -150,9 +150,9 @@ Konwersja jest zgodna z zasadami:
 |Każda inna wartość| `true` |
 
 
-Większość z tych zasad jest łatwa do zrozumienia i zapamiętania. Most of these rules are easy to understand and memorize. Wyjątki, które warto wspomnieć, w których ludzie najczęściej popełniają błędy:Warte uwagi najczęściej popełnianie błędy:
+Większość z tych zasad jest łatwa do zrozumienia i zapamiętania. Warte uwagi, najczęściej popełnianie błędy to:
 
-- `undefined` to `NaN` jako number, a nie `0`.
-- `"0"` i spacja w stringu np. `"   "` będzie true jako boolean.
+- `undefined` rzutowane na typ liczbowy daje `NaN`, a nie `0`.
+- `"0"` i spacja w ciągu znaków np. `"   "` rzutowane na typ logiczny dadzą `true`.
 
-Obiekty nie są tutaj omówione. Wrócimy do nich później w rozdziale <info:object-toprimitive>, który jest poświęcony obiektom, gdy poznamy już więcej podstaw JavaScript.
+Nie omówiliśmy tu obiektów. Wrócimy do nich później w rozdziale pt. "<info:object-toprimitive>", gdy już poznamy więcej podstaw JavaScriptu.
