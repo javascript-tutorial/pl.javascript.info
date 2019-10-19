@@ -17,10 +17,10 @@ undefined + 1 = NaN // (6)
 " \t \n" - 2 = -2 // (7)
 ```
 
-1. Dodawanie stringa `"" + 1` konwertuje `1` do stringa: `"" + 1 = "1"` i wtedy mamy zastosowane `"1" + 0`.
-2. Odejmowanie `-` (jak większość matematycznych operacji) działa wyłącznie z typami liczbowymi i konwertuje pusty string `""` do `0`.
-3. Dodawanie stringa dołącza liczbę `5` do tego stringa.
-4. Odejmowanie zawsze konwertuje do liczby, zatem konwertuje `"  -9  "` na typ number `-9` (ignoruje spacje dookoła).
-5. `null` stanie się `0` po konwersji na liczbę.
-6. `undefined` stanie się `NaN` po konwersji na liczbę.
-7. Space characters, are trimmed off string start and end when a string is converted to a number. Here the whole string consists of space characters, such as `\t`, `\n` and a "regular" space between them. So, similarly to an empty string, it becomes `0`.
+1. Dodawanie ciągu znaków `"" + 1` rzutuje `1` do typu tekstowego: `"" + 1 = "1"`, a później analogicznie `"1" + 0`.
+2. Odejmowanie `-` (jak większość operacji matematycznych) działa wyłącznie z typami liczbowymi i konwertuje pusty napis `""` do `0`.
+3. Dodawanie ciągu znaków dołącza (konkatenuje) liczbę `5` do zmiennej.
+4. Odejmowanie zawsze rzutuje wartości do liczby, zatem konwertuje `"  -9  "` na liczbę `-9` (ignoruje spacje dookoła).
+5. `null` rzutowany na liczbę stanie się `0`.
+6. `undefined` rzutowany na liczbę stanie się `NaN`.
+7. Podczas rzutowania typu tekstowego na liczbowy ignorowane są białe znaki po obydwóch stronach tekstu. W tym przypadku cały tekst składa się z białych znaków: `\t`, `\n` i "zwykłych" spacji pomiędzy nimi. W rezultacie powstały pusty ciąg znaków po rzutowaniu na liczbę da wartość `0`.

@@ -2,9 +2,9 @@ importance: 5
 
 ---
 
-# Konwersje typów
+# Rzutowanie typów
 
-Jakie będą rezultaty poniższych wyrażeń?
+Jakie będą wyniki poniższych wyrażeń?
 
 ```js no-beautify
 "" + 1 + 0
