@@ -3,11 +3,11 @@
 
 Metoda `fetch` pozwala śledzić postęp pobierania (ang. *download*).
 
-Należy pamiętać, że `fetch` nie ma możliwości śledzenia postępu przesyłania danych (ang. *upload*). For that purpose, please use [XMLHttpRequest](info:xmlhttprequest), we'll cover it later.
+Należy pamiętać, że `fetch` nie ma możliwości śledzenia postępu wysyłania danych (ang. *upload*). Do tego celu należy użyć [XMLHttpRequest](info:xmlhttprequest). Omówimy to w dalszej części.
 
 W celu śledzenia postępu pobierania możemy wykorzystać właściwość `response.body`. Jest to specjalny obiekt `ReadableStream` (pol. *czytelny strumień*), który udostępnia ciało odpowiedzi na bieżąco, kawałek po kawałku (ang. *chunk*). Czytelne strumienie zostały opisane w specyfikacji [Streams API](https://streams.spec.whatwg.org/#rs-class).
 
-W przeciwieństwie do `response.text()`, `response.json()` czy innych metod, `response.body` pozwala na całkowitą kontrolę nad procesem odczytu, tak więc  and we can count how much is consumed at any moment.
+W przeciwieństwie do `response.text()`, `response.json()` czy innych metod, `response.body` pozwala na całkowitą kontrolę nad procesem odczytu, co pozwala na określenie, jaka ilość danych jest zużywana w dowolnym momencie.
 
 Oto przykład kodu, który odczytuje odpowiedź z `response.body`:
 
@@ -15,23 +15,23 @@ Oto przykład kodu, który odczytuje odpowiedź z `response.body`:
 // zamiast response.json() i innych metod
 const reader = response.body.getReader();
 
-// nieskończona pętla w momencie pobierania ciała odpowiedzi
+// pętla nieskończona w momencie pobierania ciała odpowiedzi
 while(true) {
   // done przyjmuje wartość true dla ostatniego kawałka
-  // value jest tablicą Uint8Array bitów kawałka
+  // value jest tablicą Uint8Array bajtów danego kawałka  
   const {done, value} = await reader.read();
 
   if (done) {
     break;
   }
 
-  console.log(`Received ${value.length} bytes`)
+  console.log(`Pobrano ${value.length} bajtów`)
 }
 ```
 
 Rezultatem wywołania `await reader.read()` jest obiekt, posiadający dwie właściwości:
 - **`done`** -- `true` po zakończeniu odczytu, w przeciwnym przypadku `false`.
-- **`value`** -- reprezentująca typ tablica `Uint8Array`.
+- **`value`** -- reprezentująca typ tablica bajtów `Uint8Array`.
 
 ```smart
 Streams API opisuje też asynchroniczną iterację po `ReadableStream` za pomocą pętli `for await..of`, aczkolwiek to rozwiązanie nie jest szeroko wspierane (zob. [problemy z przeglądarką](https://github.com/whatwg/streams/issues/778#issuecomment-461341033)), wobec tego używamy pętli `while`.
@@ -39,9 +39,9 @@ Streams API opisuje też asynchroniczną iterację po `ReadableStream` za pomoc�
 
 Otrzymujemy kawałki odpowiedzi w pętli, aż do zakończenia ładowania, to znaczy dopóki `done` nie stanie się `true`.
 
-Aby rejestrować postęp wystarczy dodawać do licznika długość `value` każdego otrzymanego kawałka.
+Aby rejestrować postęp, wystarczy dodawać do licznika długość `value` każdego otrzymanego kawałka.
 
-Oto w pełni działający przykład, który otrzymuje odpowiedź i rejestruje postęp w konsoli. Dodatkowe wyjaśnienia w dalszej części artykułu.
+Oto w pełni działający przykład, w którym postęp otrzymywanej odpowiedzi jest wyświetlany w konsoli. Szczegóły w dalszej części artykułu.
 
 ```js run async
 // Krok 1: uruchom pobieranie i podepnij czytnik
@@ -53,7 +53,7 @@ const reader = response.body.getReader();
 const contentLength = +response.headers.get('Content-Length');
 
 // Krok 3: odczytaj dane
-let receivedLength = 0; // otrzymana liczba bitów w danym momencie
+let receivedLength = 0; // otrzymana liczba bajtów w danym momencie
 let chunks = []; // tablica otrzymanych binarnych fragmentów (składają się na ciało)
 while(true) {
   const {done, value} = await reader.read();
@@ -65,7 +65,7 @@ while(true) {
   chunks.push(value);
   receivedLength += value.length;
 
-  console.log(`Received ${receivedLength} of ${contentLength}`)
+  console.log(`Pobrano ${receivedLength} z ${contentLength}`)
 }
 
 // Krok 4: połącz kawałki w jedną tablicę Uint8Array
@@ -86,27 +86,27 @@ alert(commits[0].author.login);
 
 Wyjaśnijmy wszystko krok po kroku:
 
-1. We perform `fetch` as usual, but instead of calling `response.json()`, we obtain a stream reader `response.body.getReader()`.
+1. Wykonujemy `fetch` jak zazwyczaj, lecz zamiast wywołać `response.json()` podpinamy czytnik strumienia `response.body.getReader()`.
 
-    Please note, we can't use both these methods to read the same response: either use a reader or a response method to get the result.
-2. Prior to reading, we can figure out the full response length from the `Content-Length` header.
+    Zauważ, że nie możemy użyć obu powyższych metod, aby odczytać tę samą odpowiedź: albo więc użyjemy czytnika, albo którąś z metod żądania.
+2. Przed odczytem możemy pobrać długość pełnej odpowiedzi z nagłówka `Content-Length`.
 
-    It may be absent for cross-origin requests (see chapter <info:fetch-crossorigin>) and, well, technically a server doesn't have to set it. But usually it's at place.
-3. Call `await reader.read()` until it's done.
+    Może go nie być w przypadku żądań `cross-origin` (patrz rozdział <info:fetch-crossorigin>) i technicznie rzecz biorąc serwer nie musi go ustawiać, aczkolwiek zazwyczaj jest dostępny.
+3. Wywołujemy `await reader.read()` aż do zakończenia odczytu.
 
-    We gather response chunks in the array `chunks`. That's important, because after the response is consumed, we won't be able to "re-read" it using `response.json()` or another way (you can try, there'll be an error).
-4. At the end, we have `chunks` -- an array of `Uint8Array` byte chunks. We need to join them into a single result. Unfortunately, there's no single method that concatenates those, so there's some code to do that:
-    1. We create `chunksAll = new Uint8Array(receivedLength)` -- a same-typed array with the combined length.
-    2. Then use `.set(chunk, position)` method to copy each `chunk` one after another in it.
-5. We have the result in `chunksAll`. It's a byte array though, not a string.
+    Gromadzimy kawałki odpowiedzi w tablicy `chunks`. Jest to istotne, ponieważ po zużyciu odpowiedzi nie będziemy mogli odczytać jej ponownie za pomocą `response.json()` lub w inny sposób (możesz spróbować, pojawi się błąd).
+4. Mamy więc `chunks` -- tablicę zawierającą kawałki jako bajty w tablicach `Uint8Array`. Musimy je połączyć w jeden wynik. Niestety, nie ma jednej metody, która by je łączyła, potrzebujemy więc nieco kodu, aby to zrobić:
+    1. Tworzymy `chunksAll = new Uint8Array(receivedLength)` -- tablicę tego samego typu o łącznym rozmiarze wszystkich kawałków.
+    2. Następnie kopiujemy do niej kawałki jeden po drugim używając metody `.set(chunk, position)`.
+5. Wynik trzymamy w zmiennej `chunksAll`. Jest to jednak tablica bajtów, a nie łańcuch znaków.
 
-    To create a string, we need to interpret these bytes. The built-in [TextDecoder](info:text-decoder) does exactly that. Then we can `JSON.parse` it, if necessary.
+    Aby utworzyć ciąg musimy odpowiednio zinterpretować te bajty. Z pomocą przychodzi nam wbudowana metoda [TextDecoder](info:text-decoder). Następnie wywołujemy `JSON.parse`, jeżeli zachodzi taka potrzeba.
 
-    What if we need binary content instead of a string? That's even simpler. Replace steps 4 and 5 with a single line that creates a `Blob` from all chunks:
+    Co jeśli potrzebujemy zawartości binarnej, a nie łańcucha znaków? W takim przypadku sprawa jest jeszcze prostsza. Zastępujemy krok czwarty oraz piąty jedną linijką kodu, który tworzy `Blob` z wszystkich kawałków:
     ```js
     let blob = new Blob(chunks);
     ```
 
-At we end we have the result (as a string or a blob, whatever is convenient), and progress-tracking in the process.
+W rezultacie otrzymujemy łańcuch znaków lub 'Blob' (w zależności od potrzeb) oraz możliwość śledzenia postępu całego procesu.
 
-Once again, please note, that's not for *upload* progress (no way now with `fetch`), only for *download* progress.
+Ważne, aby pamiętać, że powyższe nie dotyczy postępu *wysyłania*  (obecnie niemożliwe za pomocą `fetch`), a jedynie postępu *pobierania*.
