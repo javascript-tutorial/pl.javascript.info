@@ -1,11 +1,11 @@
 
-To fetch a user we need: `fetch('https://api.github.com/users/USERNAME')`.
+Do pobrania użytkownika wykorzystamy: `fetch('https://api.github.com/users/USERNAME')`.
 
-If the response has status `200`, call `.json()` to read the JS object.
+Jeżeli odpowiedź zostanie zwrócona ze statusem `200`, wywołamy metodę `.json()`, aby móc odczytać javascriptowy obiekt.
 
-Otherwise, if a `fetch` fails, or the response has non-200 status, we just return `null` in the resulting arrray.
+Jeżeli natomiast `fetch` się nie powiedzie lub status odpowiedzi będzie inny niz 200, wówczas w tablicy wynikowej zwracamy po prostu `null`.
 
-So here's the code:
+Kod wygląda następująco:
 
 ```js demo
 async function getUsers(names) {
@@ -33,8 +33,8 @@ async function getUsers(names) {
 }
 ```
 
-Please note: `.then` call is attached directly to `fetch`, so that when we have the response, it doesn't wait for other fetches, but starts to read `.json()` immediately.
+Zauważ, że metoda `.then` jest dołączona bezpośrednio do `fetch`, więc nie czeka ona na kolejne żądania, lecz jak tylko otrzyma odpowiedź, natychmiast odczytuje ją przy użyciu metody `.json()`.
 
-If we used `await Promise.all(names.map(name => fetch(...)))`, and call `.json()` on the results, then it would wait for all fetches to respond. By adding `.json()` directly to each `fetch`, we ensure that individual fetches start reading data as JSON without waiting for each other.
+Gdybyśmy jednak użyli `await Promise.all(names.map(name => fetch(...)))` i wywołali metodę `.json()` dopiero na rezultacie, wówczas musiałaby ona czekać, aż wszystkie żądania zwrócą swoje odpowiedzi. Dołączając `.json()` bezpośrednio do każdego zapytania `fetch` możemy być pewni, że pojedyncze zapytania zaczną odczytywać dane jako JSON, bez czekania nawzajem na siebie.
 
-That's an example of how low-level Promise API can still be useful even if we mainly use `async/await`.
+Jest to przykład tego, jak przydatne może być niskopoziomowe Promise API, nawet jeżeli głównie korzystamy z `async/await`.
