@@ -1,10 +1,10 @@
-importance: 5
+istotność: 5
 
 ---
 
-# String quotes
+# Cudzysłów w string
 
-What is the output of the script?
+Co zostanie wyświetlone przez skrypt?
 
 ```js
 let name = "Ilya";

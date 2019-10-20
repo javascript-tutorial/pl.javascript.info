@@ -1,5 +1,5 @@
 
-Aby pobrać użytkownika wykorzystamy: `fetch('https://api.github.com/users/USERNAME')`.
+Do pobrania użytkownika wykorzystamy: `fetch('https://api.github.com/users/USERNAME')`.
 
 Jeżeli odpowiedź zostanie zwrócona ze statusem `200`, wywołamy metodę `.json()`, aby móc odczytać javascriptowy obiekt.
 

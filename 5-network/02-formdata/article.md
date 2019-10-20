@@ -3,7 +3,7 @@
 
 W niniejszym rozdziale omówimy wysyłkę formularzy HTML: z plikami lub bez, z dodatkowymi polami i tak dalej.
 
-Pomoże nam w tym obiekt typu [FormData](https://xhr.spec.whatwg.org/#interface-formdata). Jak zapewne się domyślasz jest to obiekt reprezentujący dane formularza HTML.
+Pomoże nam w tym obiekt [FormData](https://xhr.spec.whatwg.org/#interface-formdata). Jak zapewne się domyślasz, jest to obiekt reprezentujący dane formularza HTML.
 
 Konstruktor wygląda następująco:
 ```js
@@ -14,7 +14,7 @@ Przechwyci on automatycznie wszystkie pola formularza HTML na stronie.
 
 `FormData` posiada tę szczególną cechę, że metody sieciowe takie jak `fetch` mogą przyjmować obiekt `FormData` jako ciało. Jest on wówczas kodowany i wysyłany jako `Content-Type: form/multipart`.
 
-Od strony serwera wygląda to jak zwykłe przesłanie formularza.
+Z perspektywy serwera wygląda to jak zwykłe przesłanie formularza.
 
 ## Wysyłanie prostego formularza
 
@@ -47,26 +47,26 @@ Jak widać, to niemal jedna linijka:
 </script>
 ```
 
-Kod serwera jest poza naszym zakresem zainteresowania, nie pokazujemy go zatem w tym przykładzie. W każdym razie serwer akceptuje żądanie POST i odpowiada "Użytkownik zapisany".
+Kod serwera jest poza naszym zakresem zainteresowania, zatem nie pokazujemy go w tym przykładzie. W każdym razie serwer akceptuje żądanie POST i odpowiada komunikatem: "Użytkownik zapisany".
 
 ## Metody FormData
 
 Pola w `FormData` możemy zmieniać następującymi metodami:
 
-- `formData.append(name, value)` - dodaj pole formularza z podanymi `name` oraz `value`,
-- `formData.append(name, blob, fileName)` - dodaj pole tak jakby było znacznikiem `<input type="file">`, trzeci argument `fileName` ustawia nazwę pliku (nie nazwę formularza), tak jakby była nazwą pliku w systemie plików użytkownika,
+- `formData.append(name, value)` - dodaj pole formularza o nazwie `name` i wartości `value`,
+- `formData.append(name, blob, fileName)` - dodaj pole tak jakby było znacznikiem `<input type="file">`; trzeci argument `fileName` ustawia nazwę pliku (nie nazwę formularza), tak jakby była nazwą pliku w systemie plików użytkownika,
 - `formData.delete(name)` - usuń pole `name`,
 - `formData.get(name)` - pobierz wartość pola `name`,
-- `formData.has(name)` - jeżeli istniej pole `name`, zwróć `true`, w innym przypadku zwróć `false`
+- `formData.has(name)` - jeżeli istnieje pole `name`, zwróć `true`; w innym przypadku zwróć `false`
 
-Formularz, technicznie rzecz ujmując, może mieć wiele pól `name`, tak więc wiele wywołań metody `append` dodaje więcej pól o tej samej nazwie.
+Formularz, z technicznego punktu widzenia, może mieć pól o nazwie `name`, tak więc wiele wywołań metody `append` doda wiele pól o tej samej nazwie.
 
-Istnieje również metoda `set`, która ma taką samą składnię jak `append`. Różnica polega na tym, że `.set` usuwa wszystkie pola `name`, a następnie dodaje nowe pole. Dzięki temu upewnia się, że istnieje tylko jedno pole z podanym `name`. Pozostała część wygląda jak w metodzie `append`:
+Istnieje również metoda `set`, która ma taką samą składnię jak `append`. Różnica polega na tym, że `.set` usuwa wszystkie pola o nazwie `name`, a następnie dodaje nowe pole. Dzięki temu zapewnia, że istnieje tylko jedno pole o nazwie `name`. Pozostała część wygląda jak w metodzie `append`:
 
 - `formData.set(name, value)`,
 - `formData.set(name, blob, fileName)`.
 
-Możemy również iterować po polach `formData` używając pętli `for..of`:
+Możemy również iterować po polach `formData`, używając pętli `for..of`:
 
 ```js run
 let formData = new FormData();
@@ -75,20 +75,20 @@ formData.append('key2', 'value2');
 
 // Wylicz pary klucz/wartość
 for(let [name, value] of formData) {
-  alert(`${name} = ${value}`); // key1=value1 oraz key2=value2
+  alert(`${name}=${value}`); // key1=value1 oraz key2=value2
 }
 ```
 
 ## Wysyłanie formularza z plikiem
 
-Formularz jest zawsze wysyłany jako `Content-Type: form/multipart`, gdyż takie kodowanie pozwala na wysyłkę plików. Tak więc pola `<input type="file">` są również wysyłane, podobnie jak to ma miejsce w zwykłym przesłaniu formularza.
+Formularz jest zawsze wysyłany jako `Content-Type: form/multipart`, gdyż takie kodowanie pozwala na wysyłkę plików. Tak więc pola `<input type="file">` są również wysyłane, podobnie jak ma to miejsce w zwykłym przesłaniu formularza.
 
 Oto przykład takiego formularza:
 
 ```html run autorun
 <form id="formElem">
   <input type="text" name="firstName" value="Jan">
-  Picture: <input type="file" name="picture" accept="image/*">
+   Obraz: <input type="file" name="picture" accept="image/*">
   <input type="submit">
 </form>
 
@@ -112,13 +112,13 @@ Oto przykład takiego formularza:
 
 ## Wysyłanie formularza z danymi typu Blob
 
-W rozdziale <info:fetch> widzieliśmy, że wysyłka dynamicznie generowanych danych binarnych, np. obrazu jako `Blob`, jest dość prosta. Możemy go umieścić jako parametr `body` w metodzie `fetch`.
+W rozdziale pt. "<info:fetch>" widzieliśmy, że wysyłka dynamicznie generowanych danych binarnych, np. obrazu jako `Blob`, jest dość prosta. Możemy go umieścić jako parametr `body` funkcji `fetch`.
 
 W praktyce jednak często wygodniej jest wysłać obraz nie osobno, ale jako część formularza, z dodatkowymi polami, takimi jak "nazwa” i inne metadane.
 
-Ponadto serwery są zwykle bardziej przystosowane do akceptowania formularzy zakodowanych w postaci wieloczęściowej niż surowych danych binarnych.
+Ponadto serwery są zwykle lepiej przystosowane do akceptowania formularzy zakodowanych w postaci wieloczęściowej (ang. *multipart*) niż surowych danych binarnych.
 
-W tym przykładzie pobieramy jako formularz obraz ze znacznika `<canvas>`, wraz z innymi polami, używając `FormData`:
+W tym przykładzie wysyłamy w formularzu obraz ze znacznika `<canvas>` wraz z innymi polami, używając  do tego `FormData`:
 
 ```html run autorun height="90"
 <body style="margin:0">
@@ -166,9 +166,9 @@ Serwer odczytuje dane formularza i plik, tak jakby było to zwykłe przesyłanie
 
 ## Podsumowanie
 
-Obiekty typu [FormData](https://xhr.spec.whatwg.org/#interface-formdata) służą do przechwytywania formularza HTML i przesłania go za pomocą metody `fetch` lub innej metody sieciowej.
+Obiekty klasy [FormData](https://xhr.spec.whatwg.org/#interface-formdata) służą do przechwycenia formularza HTML i przesłania go za pomocą `fetch` lub innej funkcji sieciowej.
 
-Możemy albo utworzyć `new FormData(form)` z formularza HTML form, abo stworzyć obiekt bez formularza, a następnie dołączyć do niego pola metodami:
+Możemy albo utworzyć `new FormData(form)` na podstawie formularza HTML, albo stworzyć obiekt bez formularza, a następnie dołączyć do niego pola metodami:
 
 - `formData.append(name, value)`
 - `formData.append(name, blob, fileName)`
@@ -177,8 +177,8 @@ Możemy albo utworzyć `new FormData(form)` z formularza HTML form, abo stworzy�
 
 Zwróćmy uwagę na dwie osobliwości:
 
-1. Metoda `set` usuwa pole o tej samej nazwie, a `append` nie. To jedynia różnica między nimi.
-2. Aby wysłać plik, potrzebna jest 3-argumentowa składnia, gdzie ostatnim argumentem jest nazwa pliku, która zwykle pobierana jest z systemu plików na potrzeby `<input type="file">`.
+1. Metoda `set` usuwa zduplikowane pola o tej samej nazwie, a `append` nie. To jedynia różnica między nimi.
+2. Aby wysłać plik, potrzebna jest trójargumentowa składnia, gdzie ostatnim argumentem jest nazwa pliku, zwykle pobierana z systemu plików na potrzeby `<input type="file">`.
 
 Inne metody to:
 
@@ -186,4 +186,4 @@ Inne metody to:
 - `formData.get(name)`
 - `formData.has(name)`
 
-I tak to wygląda!
+I to by było na tyle!

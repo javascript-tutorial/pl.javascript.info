@@ -1,159 +1,158 @@
-# Type Conversions
+# Rzutowanie typów
 
-Most of the time, operators and functions automatically convert the values given to them to the right type. 
+W większości przypadków operatory i funkcje automatycznie rzutują przekazywane do nich wartości na właściwy typ.
 
-For example, `alert` automatically converts any value to a string to show it. Mathematical operations convert values to numbers.
+Na przykład `alert` automatycznie zmieni typ dowolnej wartości do typu tekstowego. Matematyczne operacje rzutują wartości do typów liczbowych.
 
-There are also cases when we need to explicitly convert a value to the expected type.
+Istnieją jednak przypadki, w których musimy jawnie zmienić typ wartości na inny. 
 
-```smart header="Not talking about objects yet"
-In this chapter, we won't cover objects. Instead, we'll study primitives first. Later, after we learn about objects, we'll see how object conversion works in the chapter <info:object-toprimitive>.
-```
+```smart header="Nie mówimy jeszcze o obiektach"
+W tym rozdziale nie zajmujemy się obiektami. Zamiast tego nauczymy się najpierw typów prostych. Później nauczymy się co nieco o obiektach i w rozdziale pt. "<info:object-toprimitive>" zobaczymy, jak działa rzutowanie obiektów.
 
-## String Conversion
+## Rzutowanie do typu tekstowego
 
-String conversion happens when we need the string form of a value.
+Rzutowanie do typu tekstowego następuje, kiedy potrzebujemy wartości zmiennej w formie tekstowej.
 
-For example, `alert(value)` does it to show the value.
+Na przykład, funkcja `alert(value)` rzutuje wyświetlaną wartość do typu tekstowego.
 
-We can also call the `String(value)` function to convert a value to a string:
+Możemy również wywołać funkcję `String(value)`, żeby jawnie rzutować wartość na tekst:
 
 ```js run
 let value = true;
 alert(typeof value); // boolean
 
 *!*
-value = String(value); // now value is a string "true"
+value = String(value); // teraz wartość "true" jest ciągiem znaków
 alert(typeof value); // string
 */!*
 ```
 
-String conversion is mostly obvious. A `false` becomes `"false"`, `null` becomes `"null"`, etc.
+Rzutowanie wartości do tekstu jest bardzo przewidywalne. `false` zostaje `"false"`, typ `null` staje się napisem `"null"` itd.
 
-## Numeric Conversion
+## Rzutowanie do typu liczbowego
 
-Numeric conversion happens in mathematical functions and expressions automatically.
+Rzutowanie do typu liczbowego następuje automatycznie w wyniku matematycznych wyrażeń i funkcji.
 
-For example, when division `/` is applied to non-numbers:
+Na przykład przy dzieleniu (`/`) z udziałem wartości nie będących liczbami:
 
 ```js run
-alert( "6" / "2" ); // 3, strings are converted to numbers
+alert( "6" / "2" ); // 3, wartości tekstowe są zamienane na liczby
 ```
 
-We can use the `Number(value)` function to explicitly convert a `value` to a number:
+Możemy użyć funkcji `Number(value)`, aby jawnie rzutować zmienną `value` na liczbę. 
 
 ```js run
 let str = "123";
 alert(typeof str); // string
 
-let num = Number(str); // becomes a number 123
+let num = Number(str); // staje się typem liczbowym o wartości 123
 
 alert(typeof num); // number
 ```
 
-Explicit conversion is usually required when we read a value from a string-based source like a text form but expect a number to be entered.
+Jawne rzutowanie jest zazwyczaj wymagane, gdy chcemy odczytać wartość ze źródła tekstowego, a w kodzie oczekujemy wartości liczbowej.
 
-If the string is not a valid number, the result of such a conversion is `NaN`. For instance:
+Jeśli podana wartość tekstowa nie jest prawidłową liczbą, wynikiem konwersji będzie `NaN`. Dla przykładu:
 
 ```js run
-let age = Number("an arbitrary string instead of a number");
+let age = Number("dowolny ciąg znaków zamiast typu liczbowego");
 
-alert(age); // NaN, conversion failed
+alert(age); // NaN, rzutowanie nie powiodło się
 ```
 
-Numeric conversion rules:
+Zasady rzutowania do typu liczbowego:
 
-| Value |  Becomes... |
-|-------|-------------|
+| Wartość |  Otrzymamy... |
+|---------|-------------|
 |`undefined`|`NaN`|
 |`null`|`0`|
-|<code>true&nbsp;and&nbsp;false</code> | `1` and `0` |
-| `string` | Whitespaces from the start and end are removed. If the remaining string is empty, the result is `0`. Otherwise, the number is "read" from the string. An error gives `NaN`. |
+|<code>true&nbsp;i&nbsp;false</code> | `1` i `0` |
+| `string` | Białe znaki z początku i końca są usuwane. Jeśli pozostała wartość napisu jest pusta, wynikiem będzie `0`. W przeciwnym wypadku liczba jest odczytywana z tekstu. Wszystkie nieprawidłowe rzutowania dają `NaN`. |
 
-Examples:
+Przykłady:
 
 ```js run
 alert( Number("   123   ") ); // 123
-alert( Number("123z") );      // NaN (error reading a number at "z")
+alert( Number("123z") );      // NaN (błąd podczas rzutowania "z" na liczbę)
 alert( Number(true) );        // 1
 alert( Number(false) );       // 0
 ```
 
-Please note that `null` and `undefined` behave differently here: `null` becomes zero while `undefined` becomes `NaN`.
+Zauważ, że `null` i `undefined` zachowują się inaczej. `null` jest konwertowany do zera, a `undefined` do `NaN`.
 
-````smart header="Addition '+' concatenates strings"
-Almost all mathematical operations convert values to numbers. A notable exception is addition `+`. If one of the added values is a string, the other one is also converted to a string.
+````smart header="Operator '+' łączy ciągi znaków"
+Większość operacji matematycznych rzutuje wartości do typu liczbowego. Jedynym wyjątkiem jest `+`. Jeśli jedna z dodawanych wartości będzie typu tekstowego, druga również jest rzutowana do typu tekstowego.
 
-Then, it concatenates (joins) them:
+Wtedy następuje ich konkatenacja (połączenie):
 
 ```js run
-alert( 1 + '2' ); // '12' (string to the right)
-alert( '1' + 2 ); // '12' (string to the left)
+alert( 1 + '2' ); // '12' (tekst po prawej)
+alert( '1' + 2 ); // '12' (tekst po lewej)
 ```
 
-This only happens when at least one of the arguments is a string. Otherwise, values are converted to numbers.
+Dzieje się tak w sytuacji, gdy przynajmniej jeden z argumentów jest typu tekstowego. W przeciwnym wypadku wartości są rzutowane na typ liczbowy.
 ````
 
-## Boolean Conversion
+## Rzutowanie do typu logicznego
 
-Boolean conversion is the simplest one.
+Rzutowania do typu logicznego są najprostsze.
 
-It happens in logical operations (later we'll meet condition tests and other similar things) but can also be performed explicitly with a call to `Boolean(value)`.
+Zachodzą w operacjach logicznych (później poznamy instrukcje warunkowe i inne podobne rzeczy), ale także mogą zostać wywołane z użyciem funkcji `Boolean(value)`.
 
-The conversion rule:
+Zasada rzutowania:
 
-- Values that are intuitively "empty", like `0`, an empty string, `null`, `undefined`, and `NaN`, become `false`.
-- Other values become `true`.
+- Wartości "puste", np. `0`, pusty ciąg znaków, `null`, `undefined` i `NaN`, są konwertowane do `false`.
+- Inne wartości są konwertowane do `true`.
 
-For instance:
+Na przykład:
 
 ```js run
 alert( Boolean(1) ); // true
 alert( Boolean(0) ); // false
 
-alert( Boolean("hello") ); // true
+alert( Boolean("witaj") ); // true
 alert( Boolean("") ); // false
 ```
 
-````warn header="Please note: the string with zero `\"0\"` is `true`"
-Some languages (namely PHP) treat `"0"` as `false`. But in JavaScript, a non-empty string is always `true`.
+````warn header="Miej na uwadze, że tekst zawierający cyfrę 0 (`\"0\"`) da `true`"
+Niektóre języki (np. PHP) traktują `"0"` jako `false`. Ale w JavaScripcie każdy niepusty ciąg znaków daje zawsze `true`.
 
 ```js run
 alert( Boolean("0") ); // true
-alert( Boolean(" ") ); // spaces, also true (any non-empty string is true)
+alert( Boolean(" ") ); // spacje, również true (każdy niepusty ciąg znaków daje true)
 ```
 ````
 
-## Summary
+## Podsumowanie
 
-The three most widely used type conversions are to string, to number, and to boolean.
+Trzy najczęściej używane rzutowania dotyczą ciągów znaków, liczb i typów logicznych.
 
-**`String Conversion`** -- Occurs when we output something. Can be performed with `String(value)`. The conversion to string is usually obvious for primitive values.
+**`Rzutowanie do typu tekstowego`** -- Zachodzi, gdy coś wypisujemy na ekranie. Może zajść również przy użyciu funkcji `String(value)`. Wynik rzutowania do tekstu jest zazwyczaj oczywisty dla typów prostych.
 
-**`Numeric Conversion`** -- Occurs in math operations. Can be performed with `Number(value)`.
+**`Rzutowanie do typu liczbowego`** -- Zachodzi w operacjach matematycznych. Może zajść również przy użyciu funkcji `Number(value)`.
 
-The conversion follows the rules:
+Rzutowanie to jest zgodne z zasadami:
 
-| Value |  Becomes... |
+| Wartość |  Otrzymamy... |
 |-------|-------------|
 |`undefined`|`NaN`|
 |`null`|`0`|
 |<code>true&nbsp;/&nbsp;false</code> | `1 / 0` |
-| `string` | The string is read "as is", whitespaces from both sides are ignored. An empty string becomes `0`. An error gives `NaN`. |
+| `string` | Tekst jest odczytywany "jak leci", białe znaki na obydwóch końcach są ignorowane. Pusty ciąg znaków staje się `0`. Błąd konwersji zwraca `NaN`.|
 
-**`Boolean Conversion`** -- Occurs in logical operations. Can be performed with `Boolean(value)`.
+**`Rzutowanie do typu logicznego`** -- Zachodzi w operacjach logicznych. Może zajść również przy użyciu funkcji `Boolean(value)`.
 
-Follows the rules:
+Rzutowanie jest zgodne z zasadami:
 
-| Value |  Becomes... |
+| Wartość |  Otrzymamy... |
 |-------|-------------|
 |`0`, `null`, `undefined`, `NaN`, `""` |`false`|
-|any other value| `true` |
+|Każda inna wartość| `true` |
 
 
-Most of these rules are easy to understand and memorize. The notable exceptions where people usually make mistakes are:
+Większość z tych zasad jest łatwa do zrozumienia i zapamiętania. Warte uwagi, najczęściej popełnianie błędy to:
 
-- `undefined` is `NaN` as a number, not `0`.
-- `"0"` and space-only strings like `"   "` are true as a boolean.
+- `undefined` rzutowane na typ liczbowy daje `NaN`, a nie `0`.
+- `"0"` i spacja w ciągu znaków np. `"   "` rzutowane na typ logiczny dadzą `true`.
 
-Objects aren't covered here. We'll return to them later in the chapter <info:object-toprimitive> that is devoted exclusively to objects after we learn more basic things about JavaScript.
+Nie omówiliśmy tu obiektów. Wrócimy do nich później w rozdziale pt. "<info:object-toprimitive>", gdy już poznamy więcej podstaw JavaScriptu.
