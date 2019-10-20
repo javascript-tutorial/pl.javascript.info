@@ -3,7 +3,7 @@
 
 W niniejszym rozdziale omówimy wysyłkę formularzy HTML: z plikami lub bez, z dodatkowymi polami i tak dalej.
 
-Pomoże nam w tym obiekt typu [FormData](https://xhr.spec.whatwg.org/#interface-formdata). Jak zapewne się domyślasz, jest to obiekt reprezentujący dane formularza HTML.
+Pomoże nam w tym obiekt [FormData](https://xhr.spec.whatwg.org/#interface-formdata). Jak zapewne się domyślasz, jest to obiekt reprezentujący dane formularza HTML.
 
 Konstruktor wygląda następująco:
 ```js

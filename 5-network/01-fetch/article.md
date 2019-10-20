@@ -99,13 +99,13 @@ let text = await response.text(); // odczytaj ciało odpowiedzi jako tekst
 alert(text.slice(0, 80) + '...');
 ```
 
-Aby zaprezentować odczyt danych w formacie binarnym, pobierzmy obraz logo [specyfikacji "fetch"](https://fetch.spec.whatwg.org) (patrz rozdział [Blob](info:blob) odnośnie operacji na obiekcie typu `Blob`):
+Aby zaprezentować odczyt danych w formacie binarnym, pobierzmy obraz logo [specyfikacji "fetch"](https://fetch.spec.whatwg.org) (patrz rozdział [Blob](info:blob) odnośnie operacji na obiekcie `Blob`):
 
 ```js async run
 let response = await fetch('/article/fetch/logo-fetch.svg');
 
 *!*
-let blob = await response.blob(); // pobierz logo jako obiekt typu Blob
+let blob = await response.blob(); // pobierz logo jako obiekt Blob
 */!*
 
 // stwórz dla niego znacznik <img>
@@ -261,7 +261,7 @@ W poniższym przykładzie mamy znacznik `<canvas>`, który pozwala na rysowanie 
 </body>
 ```
 
-Zauważ, że nie ustawiamy ręcznie nagłówka `Content-Type`, ponieważ obiekt `Blob` posiada wbudowany typ (tutaj `image/png`, wymuszony przez metodę `toBlob`). Dla obiektów `Blob` ten typ zostaje ustawiony dla nagłówka `Content-Type`.
+Zauważ, że nie ustawiamy ręcznie nagłówka `Content-Type`, ponieważ obiekt `Blob` posiada wbudowany typ (tutaj `image/png`, wymuszony przez metodę `toBlob`). Dla obiektów `Blob` ten typ jest przekazywany do nagłówka `Content-Type`.
 
 Funkcję `submit()` można również przepisać z pominięciem składni `async/await` w taki sposób:
 
@@ -298,7 +298,7 @@ fetch(url, options)
 Właściwości żądania:
 - `response.status` -- kod odpowiedzi HTTP,
 - `response.ok` -- `true` dla kodów odpowiedzi z przedziału 200-299.
-- `response.headers` -- obiekt podobny do typu Map z nagłówkami HTTP.
+- `response.headers` -- z nagłówkami HTTP, podobny do Map.
 
 Metody służące do przetwarzania ciała odpowiedzi:
 - **`response.text()`** -- zwróć odpowiedź jako tekst,
@@ -310,6 +310,6 @@ Metody służące do przetwarzania ciała odpowiedzi:
 Poznane jak dotąd opcje metody `fetch`:
 - `method` -- metoda żądania HTTP,
 - `headers` -- obiekt z nagłówkami żądania (nie każdy dowolny nagłówek jest dozwolony),
-- `body` -- dane do wysyłki (ciało żądania) jako `string`, `FormData`, `BufferSource`, `Blob` lub obiekt `UrlSearchParams`.
+- `body` -- dane do wysyłki (ciało żądania) jako `string` albo obiekt `FormData`, `BufferSource`, `Blob` lub `UrlSearchParams`.
 
 W następnych rozdziałach poznamy więcej opcji i przypadków użycia metody `fetch`.
