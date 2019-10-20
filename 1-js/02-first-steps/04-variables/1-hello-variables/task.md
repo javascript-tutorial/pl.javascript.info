@@ -2,9 +2,9 @@ importance: 2
 
 ---
 
-# Working with variables
+# Praca ze zmiennymi
 
-1. Declare two variables: `admin` and `name`.
-2. Assign the value `"John"` to `name`.
-3. Copy the value from `name` to `admin`.
-4. Show the value of `admin` using `alert` (must output "John").
+1. Zadeklaruj dwie zmienne: `admin` oraz `name`.
+2. Przypisz wartość `"Jan"` do `name`.
+3. Skopiuj wartość z `name` do `admin`.
+4. Wyświetl wartość `admin` używając funkcji `alert` (musi wyświetlić "Jan").

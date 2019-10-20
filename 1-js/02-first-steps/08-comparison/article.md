@@ -74,7 +74,7 @@ alert( '2' > 1 ); // true, string '2' becomes a number 2
 alert( '01' == 1 ); // true, string '01' becomes a number 1
 ```
 
-For boolean values, `true` becomes `1` and `false` becomes `0`.
+For boolean values, `true` becomes `1` and `false` becomes `0`. 
 
 For example:
 
