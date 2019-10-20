@@ -39,7 +39,7 @@ Streams API opisuje też asynchroniczną iterację po `ReadableStream` za pomoc�
 
 Otrzymujemy kawałki odpowiedzi w pętli, aż do zakończenia ładowania, to znaczy dopóki `done` nie stanie się `true`.
 
-Aby rejestrować postęp, wystarczy dodawać do licznika długość `value` każdego otrzymanego kawałka.
+Aby rejestrować postęp, wystarczy dodawać do licznika długość tablicy `value` każdego otrzymanego kawałka.
 
 Oto w pełni działający przykład, w którym postęp otrzymywanej odpowiedzi jest wyświetlany w konsoli. Szczegóły w dalszej części artykułu.
 
@@ -107,6 +107,6 @@ Wyjaśnijmy wszystko krok po kroku:
     let blob = new Blob(chunks);
     ```
 
-W rezultacie otrzymujemy łańcuch znaków lub 'Blob' (w zależności od potrzeb) oraz możliwość śledzenia postępu całego procesu.
+W rezultacie otrzymujemy łańcuch znaków lub `Blob` (w zależności od potrzeb) oraz możliwość śledzenia postępu całego procesu.
 
 Ważne, aby pamiętać, że powyższe nie dotyczy postępu *wysyłania*  (obecnie niemożliwe za pomocą `fetch`), a jedynie postępu *pobierania*.
