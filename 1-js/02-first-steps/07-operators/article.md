@@ -111,7 +111,7 @@ let apples = "2";
 let oranges = "3";
 
 *!*
-// Obydwie wartości są konwertowane do liczb, a następnie przekazywane do dwuargumentowego plusa
+// obydwie wartości są konwertowane do liczb, a następnie przekazywane do dwuargumentowego plusa
 alert( +apples + +oranges ); // 5
 */!*
 
@@ -200,7 +200,7 @@ alert( c ); // 0
 
 W powyższym kodzie wyrażenie `(a = b + 1)` zwraca wartość, która została przypisana do `a` (czyli `3`), a następnie ta wartość jest używana w kolejnych operacjach.
 
-Śmiesznie to wygląda, prawda? Musimy jednak o tym wiedzieć, zważywszy na fakt, iż w wielu bibliotekach javascriptowych napotkamy taki zapis. Radzimy jednak nie pisać tak we własnym kodzie. Tego typu sztuczki tylko zaciemniają kod.
+Śmiesznie to wygląda, prawda? Musimy jednak o tym wiedzieć, zważywszy na fakt, iż w wielu bibliotekach javascriptowych napotkamy taki zapis. Radzimy jednak nie pisać tak we własnym kodzie. Tego typu sztuczki sprawiają, że kod jest mniej czytelny.
 ````
 
 ## Reszta z dzielenia %
