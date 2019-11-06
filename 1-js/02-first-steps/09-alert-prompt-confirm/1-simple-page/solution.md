@@ -1,7 +1,7 @@
-kod JavaScript:
+Kod JavaScript:
 
 ```js demo run
-let name = prompt("Jakie jest Twoje imię?", "");
+let name = prompt("Jak masz na imię?", "");
 alert(name);
 ```
 
@@ -15,7 +15,7 @@ Cała strona:
   <script>
     'use strict';
 
-    let name = prompt("Jakie jest Twoje imię?", "");
+    let name = prompt("Jak masz na imię?", "");
     alert(name);
   </script>
 
