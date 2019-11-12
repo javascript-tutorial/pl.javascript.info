@@ -11,7 +11,7 @@ Guru "code review" szukają ich do zadań testowych.
 
 Początkujący programiści czasem używają ich lepiej niż ninja koderzy.
 
-Przeczytaj je uważnie i dowiedz się, kim jesteś: programistą ninja, nowicjuszem czy guru sprawdzania kodu?
+Przeczytaj je uważnie i dowiedz się, kim jesteś: programistą ninja, nowicjuszem czy guru *code review*?
 
 
 ```warn header="Uwaga, ironia!"
@@ -48,7 +48,7 @@ Zmienna o krótkiej nazwie znika w kodzie jak prawdziwy ninja w dżungli. Nikt n
 
 ... Jest jednak pewien wyjątek. Prawdziwy ninja nigdy nie użyje `i` jako licznika pętli `"for"`. Wszędzie tylko nie tam! Rozejrzyj się, jest wiele dużo bardziej egzotycznych liter. Na przykład `x` lub `y`.
 
-Taka egzotyczna nazwa licznika pętli jest tym bardziej fajowa, gdy sama pętla zajmuje 1-2 strony (albo i więcej, jeśli dasz radę). Wtedy taki delikwent dogłębnie analizujący pętlę nie będzie w stanie w prosty sposób domyślić się, że `x` to tak nic innego jak licznik pętli.
+Taka egzotyczna nazwa licznika pętli jest tym bardziej fajowa, gdy sama pętla zajmuje 1-2 strony (albo i więcej, jeśli dasz radę). Wtedy taki delikwent dogłębnie analizujący pętlę nie będzie w stanie w prosty sposób domyślić się, że `x` to tak naprawdę nic innego jak licznik pętli.
 
 ## Używaj skrótów
 
