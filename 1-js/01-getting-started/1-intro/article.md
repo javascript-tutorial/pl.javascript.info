@@ -38,7 +38,7 @@ Silniki są skomplikowane. Ale ich podstawy są proste.
 2. Następnie konwertuje ("kompiluje") skrypt do kodu maszynowego.
 3. Na koniec kod maszynowy jest uruchamiany i działa dość szybko.
 
-Silnik stosuje różne optymalizacje na każdym z kroków tego procesu. Co więcej, obserwuje on skompilowany kod podczas działania, analizuje przepływ danych i optymalizuje kod maszynowy, bazując na tej wiedzy. Dzięki temu skrypty działają bardzo szybko.
+Silnik stosuje różne optymalizacje na każdym z kroków tego procesu. Co więcej, obserwuje on skompilowany kod podczas działania, analizuje przepływ danych i optymalizuje kod maszynowy, bazując na tej wiedzy.
 ```
 
 ## Co potrafi JavaScript w przeglądarce?
