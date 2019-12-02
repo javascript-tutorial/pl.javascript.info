@@ -53,15 +53,27 @@ Kod serwera jest poza naszym zakresem zainteresowania, zatem nie pokazujemy go w
 
 Pola w `FormData` możemy zmieniać następującymi metodami:
 
+<<<<<<< HEAD
 - `formData.append(name, value)` - dodaj pole formularza o nazwie `name` i wartości `value`,
 - `formData.append(name, blob, fileName)` - dodaj pole tak jakby było znacznikiem `<input type="file">`; trzeci argument `fileName` ustawia nazwę pliku (nie nazwę formularza), tak jakby była nazwą pliku w systemie plików użytkownika,
 - `formData.delete(name)` - usuń pole `name`,
 - `formData.get(name)` - pobierz wartość pola `name`,
 - `formData.has(name)` - jeżeli istnieje pole `name`, zwróć `true`; w innym przypadku zwróć `false`
+=======
+- `formData.append(name, value)` - add a form field with the given `name` and `value`,
+- `formData.append(name, blob, fileName)` - add a field as if it were `<input type="file">`, the third argument `fileName` sets file name (not form field name), as it were a name of the file in user's filesystem,
+- `formData.delete(name)` - remove the field with the given `name`,
+- `formData.get(name)` - get the value of the field with the given `name`,
+- `formData.has(name)` - if there exists a field with the given `name`, returns `true`, otherwise `false`
+>>>>>>> 47d186598add3a0ea759615596a12e277ce8fb5a
 
 Formularz, z technicznego punktu widzenia, może mieć pól o nazwie `name`, tak więc wiele wywołań metody `append` doda wiele pól o tej samej nazwie.
 
+<<<<<<< HEAD
 Istnieje również metoda `set`, która ma taką samą składnię jak `append`. Różnica polega na tym, że `.set` usuwa wszystkie pola o nazwie `name`, a następnie dodaje nowe pole. Dzięki temu zapewnia, że istnieje tylko jedno pole o nazwie `name`. Pozostała część wygląda jak w metodzie `append`:
+=======
+There's also method `set`, with the same syntax as `append`. The difference is that `.set` removes all fields with the given `name`, and then appends a new field. So it makes sure there's only one field with such `name`, the rest is just like `append`:
+>>>>>>> 47d186598add3a0ea759615596a12e277ce8fb5a
 
 - `formData.set(name, value)`,
 - `formData.set(name, blob, fileName)`.
