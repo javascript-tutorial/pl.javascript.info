@@ -42,7 +42,11 @@ Tylko komentarze mogą znajdować się powyżej deklaracji `"use strict"`.
 ```warn header="Nie ma możliwości anulowania `use strict`"
 Nie ma takiej dyrektywy jak `"no use strict"`, która przywraca wcześniejsze działanie silnika JavaScript.
 
+<<<<<<< HEAD
 Jeśli włączysz tryb ścisły, nie ma już odwrotu.
+=======
+Once we enter strict mode, there's no going back.
+>>>>>>> 5b195795da511709faf79a4d35f9c5623b6dbdbd
 ```
 
 ## Konsola przeglądarki

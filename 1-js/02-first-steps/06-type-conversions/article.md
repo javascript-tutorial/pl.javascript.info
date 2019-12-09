@@ -1,6 +1,10 @@
 # Rzutowanie typów
 
+<<<<<<< HEAD
 W większości przypadków operatory i funkcje automatycznie rzutują przekazywane do nich wartości na właściwy typ.
+=======
+Most of the time, operators and functions automatically convert the values given to them to the right type.
+>>>>>>> 5b195795da511709faf79a4d35f9c5623b6dbdbd
 
 Na przykład `alert` automatycznie zmieni typ dowolnej wartości do typu tekstowego. Matematyczne operacje rzutują wartości do typów liczbowych.
 
@@ -80,6 +84,7 @@ alert( Number(false) );       // 0
 
 Zauważ, że `null` i `undefined` zachowują się inaczej. `null` jest konwertowany do zera, a `undefined` do `NaN`.
 
+<<<<<<< HEAD
 ````smart header="Operator '+' łączy ciągi znaków"
 Większość operacji matematycznych rzutuje wartości do typu liczbowego. Jedynym wyjątkiem jest `+`. Jeśli jedna z dodawanych wartości będzie typu tekstowego, druga również jest rzutowana do typu tekstowego.
 
@@ -92,6 +97,9 @@ alert( '1' + 2 ); // '12' (tekst po lewej)
 
 Dzieje się tak w sytuacji, gdy przynajmniej jeden z argumentów jest typu tekstowego. W przeciwnym wypadku wartości są rzutowane na typ liczbowy.
 ````
+=======
+Most mathematical operators also perform such conversion, we'll see that in the next chapter.
+>>>>>>> 5b195795da511709faf79a4d35f9c5623b6dbdbd
 
 ## Rzutowanie do typu logicznego
 
