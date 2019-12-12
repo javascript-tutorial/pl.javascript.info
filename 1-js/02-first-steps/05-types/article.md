@@ -10,7 +10,7 @@ message = 123456;
 
 Część języków programowania stosuje tak zwane "dynamiczne typowanie", które oznacza, że typy danych zmiennych mogą zmienić się w trakcie działania programu.
 
-Wyróżniamy 7 podstawowych typów danych w JavaScripcie. Przedstawimy je teraz ogólnie, w następnych rozdziałach omówimy bardziej szczegółowo.
+Wyróżniamy 8 podstawowych typów danych w JavaScripcie. Przedstawimy je teraz ogólnie, w następnych rozdziałach omówimy bardziej szczegółowo.
 
 ## Typ liczbowy
 
@@ -62,6 +62,25 @@ Specjalne wartości liczbowe formalnie należą do typu "liczbowego". Oczywiści
 
 Więcej informacji o pracy z liczbami zawarte jest w rozdziale pt. "<info:number>".
 
+## BigInt
+
+W JavaScripcie typ liczbowy nie może reprezentować liczb całkowitych większych od <code>2<sup>53</sup></code> (ani ujemnych mniejszych od <code>-2<sup>53</sup></code>) ze względu na ograniczenia techniczne narzucone przez jego reprezentację wewnętrzną. Daje to liczby o długości około 16 cyfr, co w większości przypadków wystarcza. Jednak czasami potrzebujemy skorzystać z naprawdę dużych liczb, np. w krytografii czy znaczników czasowych z dokładnością do mikrosekund.
+
+Typ `BigInt` został niedawno dodany do języka i reprezentuje liczby całkowite o dowolnej długości.
+
+`BigInt` tworzy się poprzez dodanie `n` na końcu liczby:
+
+```js
+// "n" na końcu oznacza, że to liczba typu BigInt
+const bigInt = 1234567890123456789012345678901234567890n;
+```
+
+Z racji tego, że liczby typu `BigInt` są rzadko stosowane, poświęciliśmy im osobny rozdział pt. "<info:bigint>".
+
+```smart header="Problemy z kompatybilnością"
+Aktualnie dla typu `BigInt` wsparcie posiadają przeglądarki Firefox i Chrome. Brakuje go w Safari/IE/Edge.
+```
+
 ## Typ tekstowy
 
 Ciąg znaków (ang. *string*), zwany także "literałem znakowym" lub "napisem", to typ tekstowy, który zapisujemy przy użyciu cudzysłowów.
@@ -69,7 +88,7 @@ Ciąg znaków (ang. *string*), zwany także "literałem znakowym" lub "napisem",
 ```js
 let str = "Witaj";
 let str2 = 'Można użyć także apostrofów';
-let phrase = `Można dołączyć zmienną ${str}`;
+let phrase = `Można dołączyć dodatkową zmienną ${str}`;
 ```
 
 W JavaScripcie istnieją 3 typy cudzysłowów.
@@ -78,7 +97,7 @@ W JavaScripcie istnieją 3 typy cudzysłowów.
 2. Apostrofy: `'Witaj'`.
 3. Grawisy (ang. *backtick*): <code>&#96;Witaj&#96;</code>.
 
-W JavaScripcie nie ma różnicy między cudzysłowami a apostrofami.
+Pojedyncze i podwójne cudzysłowy są cudzysłowami prostymi. W JavaScripcie nie ma między nimi żadnej różnicy.
 
 Grawisy są "rozszerzeniem funkcjonalności" zwykłych apostrofów i cudzysłowów. Pozwalają na dodanie zmiennej i wyrażeń do ciągu znaków poprzez umieszczenie ich wewnątrz `${…}`, przykładowo:
 
@@ -102,12 +121,12 @@ alert( "Wynik to ${1 + 2}" ); // Wynik to ${1 + 2} (cudzysłów traktuje ${…} 
 Więcej o ciągach znaków można przeczytać w rozdziale pt. "<info:string>".
 
 ```smart header="JavaScript nie posiada typu *znakowego*."
-W niektórych językach istnieje specjalny typ "znakowy", używany do przechowywania pojedynczych znaków. Przykładowo, w językach C i Java możemy użyć typu `char`.
+W niektórych językach istnieje specjalny typ "znakowy", używany do przechowywania pojedynczych znaków. Przykładowo, w językach C i Java możemy użyć typu o nazwie "char".
 
 W JavaScripcie nie ma takiego typu. Mamy do dyspozycji jedynie `string`. Ciąg znaków może być pusty albo zawierać jeden i więcej znaków.
 ```
 
-## Typ logiczny
+## Typ logiczny (boolean)
 
 Typ logiczny (ang. *boolean*) posiada dwie wartości: `true` (prawda) lub `false` (fałsz).
 
@@ -198,6 +217,8 @@ typeof undefined // "undefined"
 
 typeof 0 // "number"
 
+typeof 10n // "bigint"
+
 typeof true // "boolean"
 
 typeof "coś" // "string"
@@ -226,9 +247,10 @@ Ostatnie trzy linijki wymagają dodatkowego wyjaśnienia.
 
 ## Podsumowanie
 
-W JavaScripcie wyróżniamy 7 podstawowych typów danych.
+W JavaScripcie wyróżniamy 8 podstawowych typów danych.
 
 - `number` dla wszystkich liczb: całkowitych lub zmiennoprzecinkowych.
+- `bigint` dla liczb całkowitych o dowolnej długości.
 - `string` dla ciągów znaków. Może być pusty albo zawierać jeden czy więcej znaków; nie ma oddzielnego typu dla pojedynczego znaku.
 - `boolean` dla `true`/`false` (prawda/fałsz).
 - `null` dla pustych wartości -- autonomiczny typ, który posiada jedną wartość: `null`.

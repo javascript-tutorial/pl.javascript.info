@@ -80,18 +80,7 @@ alert( Number(false) );       // 0
 
 Zauważ, że `null` i `undefined` zachowują się inaczej. `null` jest konwertowany do zera, a `undefined` do `NaN`.
 
-````smart header="Operator '+' łączy ciągi znaków"
-Większość operacji matematycznych rzutuje wartości do typu liczbowego. Jedynym wyjątkiem jest `+`. Jeśli jedna z dodawanych wartości będzie typu tekstowego, druga również jest rzutowana do typu tekstowego.
-
-Wtedy następuje ich konkatenacja (połączenie):
-
-```js run
-alert( 1 + '2' ); // '12' (tekst po prawej)
-alert( '1' + 2 ); // '12' (tekst po lewej)
-```
-
-Dzieje się tak w sytuacji, gdy przynajmniej jeden z argumentów jest typu tekstowego. W przeciwnym wypadku wartości są rzutowane na typ liczbowy.
-````
+Większość operatorów matematycznych także wykonuje taką konwersję. Więcej na ten temat dowiesz się z kolejnego rozdziału.
 
 ## Rzutowanie do typu logicznego
 

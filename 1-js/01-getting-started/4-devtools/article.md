@@ -29,10 +29,15 @@ Dokładny widok narzędzi deweloperskich zależy od wersji Chrome'a. Narzędzia 
 - Widzimy treść błędu zapisaną kolorem czerwonym. W tym przypadku skrypt zawiera nieznaną komendę "lalala".
 - Po prawej stronie jest klikalny link do źródła `bug.html:12`, z numerem linii kodu, w której błąd wystąpił.
 
-Poniżej treści błędu znajduje się niebieski symbol `>`. Oznacza linię, w której możemy pisać kod JavaScript. Naciśnij `key:Enter`, aby ten kod uruchomić (`key:Shift+Enter` dodaje nowy wiersz).
+Poniżej treści błędu znajduje się niebieski symbol `>`. Oznacza linię, w której możemy pisać kod JavaScript. Naciśnij `key:Enter`, aby ten kod uruchomić.
 
 Widzisz już komunikaty błędów i na początek powinno to wystarczyć. W rozdziale pt. "<info:debugging-chrome>" wrócimy do narzędzi deweloperskich, by poznać więcej tajników debuggowania.
 
+```smart header="Multi-line input"
+Usually, when we put a line of code into the console, and then press `key:Enter`, it executes.
+
+To insert multiple lines, press `key:Shift+Enter`. This way one can enter long fragments of JavaScript code.
+```
 
 ## Firefox, Edge i inne
 
@@ -49,12 +54,6 @@ Otwórz Preferencje i przejdź do zakładki "Zaawansowane". Zaznacz na samym dol
 ![safari](safari.png)
 
 Teraz, gdy naciśniesz `key:Cmd+Opt+C`, otworzysz konsolę. Warto dodać, że w górnym pasku menu pojawiła się nowa pozycja o nazwie "Programowanie". Ma w sobie wiele funkcji i opcji konfiguracyjnych.
-
-## Wpisywanie w wielu wierszach
-
-Zazwyczaj gdy wprowadzamy kod JavaScript w konsoli i naciśniemy klawisz `key:Enter`, wykona się on od razu.
-
-Aby wstawić kod, który ma kilka linii, wystarczy wcisnąć na końcu linii klawisz `key:Shift+Enter`, aby przejść do następnej.
 
 ## Podsumowanie
 
