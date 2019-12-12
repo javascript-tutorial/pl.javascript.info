@@ -10,15 +10,9 @@ message = 123456;
 
 Część języków programowania stosuje tak zwane "dynamiczne typowanie", które oznacza, że typy danych zmiennych mogą zmienić się w trakcie działania programu.
 
-<<<<<<< HEAD
-Wyróżniamy 7 podstawowych typów danych w JavaScripcie. Przedstawimy je teraz ogólnie, w następnych rozdziałach omówimy bardziej szczegółowo.
+Wyróżniamy 8 podstawowych typów danych w JavaScripcie. Przedstawimy je teraz ogólnie, w następnych rozdziałach omówimy bardziej szczegółowo.
 
 ## Typ liczbowy
-=======
-There are eight basic data types in JavaScript. Here, we'll cover them in general and in the next chapters we'll talk about each of them in detail.
-
-## Number
->>>>>>> 5b195795da511709faf79a4d35f9c5623b6dbdbd
 
 ```js
 let n = 123;
@@ -68,43 +62,33 @@ Specjalne wartości liczbowe formalnie należą do typu "liczbowego". Oczywiści
 
 Więcej informacji o pracy z liczbami zawarte jest w rozdziale pt. "<info:number>".
 
-<<<<<<< HEAD
-## Typ tekstowy
-=======
 ## BigInt
 
-In JavaScript, the "number" type cannot represent integer values larger than <code>2<sup>53</sup></code> (or less than <code>-2<sup>53</sup></code> for negatives), that's a technical limitation caused by their internal representation. That's about 16 decimal digits, so for most purposes the limitation isn't a problem, but sometimes we need really big numbers, e.g. for cryptography or microsecond-precision timestamps.
+W JavaScripcie typ liczbowy nie może reprezentować liczb całkowitych większych od <code>2<sup>53</sup></code> (ani ujemnych mniejszych od <code>-2<sup>53</sup></code>) ze względu na ograniczenia techniczne narzucone przez jego reprezentację wewnętrzną. Daje to liczby o długości około 16 cyfr, co w większości przypadków wystarcza. Jednak czasami potrzebujemy skorzystać z naprawdę dużych liczb, np. w krytografii czy znaczników czasowych z dokładnością do mikrosekund.
 
-`BigInt` type was recently added to the language to represent integers of arbitrary length.
+Typ `BigInt` został niedawno dodany do języka i reprezentuje liczby całkowite o dowolnej długości.
 
-A `BigInt` is created by appending `n` to the end of an integer literal:
+`BigInt` tworzy się poprzez dodanie `n` na końcu liczby:
 
 ```js
-// the "n" at the end means it's a BigInt
+// "n" na końcu oznacza, że to liczba typu BigInt
 const bigInt = 1234567890123456789012345678901234567890n;
 ```
 
-As `BigInt` numbers are rarely needed, we devoted them a separate chapter <info:bigint>.
+Z racji tego, że liczby typu `BigInt` są rzadko stosowane, poświęciliśmy im osobny rozdział pt. "<info:bigint>".
 
-```smart header="Compatability issues"
-Right now `BigInt` is supported in Firefox and Chrome, but not in Safari/IE/Edge.
+```smart header="Problemy z kompatybilnością"
+Aktualnie dla typu `BigInt` wsparcie posiadają przeglądarki Firefox i Chrome. Brakuje go w Safari/IE/Edge.
 ```
 
-## String
->>>>>>> 5b195795da511709faf79a4d35f9c5623b6dbdbd
+## Typ tekstowy
 
 Ciąg znaków (ang. *string*), zwany także "literałem znakowym" lub "napisem", to typ tekstowy, który zapisujemy przy użyciu cudzysłowów.
 
 ```js
-<<<<<<< HEAD
 let str = "Witaj";
 let str2 = 'Można użyć także apostrofów';
-let phrase = `Można dołączyć zmienną ${str}`;
-=======
-let str = "Hello";
-let str2 = 'Single quotes are ok too';
-let phrase = `can embed another ${str}`;
->>>>>>> 5b195795da511709faf79a4d35f9c5623b6dbdbd
+let phrase = `Można dołączyć dodatkową zmienną ${str}`;
 ```
 
 W JavaScripcie istnieją 3 typy cudzysłowów.
@@ -113,11 +97,7 @@ W JavaScripcie istnieją 3 typy cudzysłowów.
 2. Apostrofy: `'Witaj'`.
 3. Grawisy (ang. *backtick*): <code>&#96;Witaj&#96;</code>.
 
-<<<<<<< HEAD
-W JavaScripcie nie ma różnicy między cudzysłowami a apostrofami.
-=======
-Double and single quotes are "simple" quotes. There's practically no difference between them in JavaScript.
->>>>>>> 5b195795da511709faf79a4d35f9c5623b6dbdbd
+Pojedyncze i podwójne cudzysłowy są cudzysłowami prostymi. W JavaScripcie nie ma między nimi żadnej różnicy.
 
 Grawisy są "rozszerzeniem funkcjonalności" zwykłych apostrofów i cudzysłowów. Pozwalają na dodanie zmiennej i wyrażeń do ciągu znaków poprzez umieszczenie ich wewnątrz `${…}`, przykładowo:
 
@@ -140,22 +120,13 @@ alert( "Wynik to ${1 + 2}" ); // Wynik to ${1 + 2} (cudzysłów traktuje ${…} 
 
 Więcej o ciągach znaków można przeczytać w rozdziale pt. "<info:string>".
 
-<<<<<<< HEAD
 ```smart header="JavaScript nie posiada typu *znakowego*."
-W niektórych językach istnieje specjalny typ "znakowy", używany do przechowywania pojedynczych znaków. Przykładowo, w językach C i Java możemy użyć typu `char`.
-=======
-```smart header="There is no *character* type."
-In some languages, there is a special "character" type for a single character. For example, in the C language and in Java it is called "char".
->>>>>>> 5b195795da511709faf79a4d35f9c5623b6dbdbd
+W niektórych językach istnieje specjalny typ "znakowy", używany do przechowywania pojedynczych znaków. Przykładowo, w językach C i Java możemy użyć typu o nazwie "char".
 
 W JavaScripcie nie ma takiego typu. Mamy do dyspozycji jedynie `string`. Ciąg znaków może być pusty albo zawierać jeden i więcej znaków.
 ```
 
-<<<<<<< HEAD
-## Typ logiczny
-=======
-## Boolean (logical type)
->>>>>>> 5b195795da511709faf79a4d35f9c5623b6dbdbd
+## Typ logiczny (boolean)
 
 Typ logiczny (ang. *boolean*) posiada dwie wartości: `true` (prawda) lub `false` (fałsz).
 
@@ -273,33 +244,19 @@ Ostatnie trzy linijki wymagają dodatkowego wyjaśnienia.
 2. Wynikiem wywołania `typeof null` jest `object`. Jest to znany błąd związany z `typeof`, nie został on jednak poprawiony ze względu na wsteczną kompatybilność. Oczywiście `null` nie jest obiektem - posiada własny typ.
 3. Wynikiem wywołania `typeof alert` jest `"function"` ze względu na to, że `alert` jest po prostu funkcją. O funkcjach napisaliśmy więcej w następnych rozdziałach, gdzie zauważamy, że tak naprawdę nie ma typu "function" w JavaScripcie. Funkcje należą do typu "object". Jednak `typeof` traktuje funkcje inaczej, zwracając `"function"`, co nie jest do końca poprawne, lecz bardzo wygodne w praktyce.
 
-<<<<<<< HEAD
 
 ## Podsumowanie
 
-W JavaScripcie wyróżniamy 7 podstawowych typów danych.
+W JavaScripcie wyróżniamy 8 podstawowych typów danych.
 
 - `number` dla wszystkich liczb: całkowitych lub zmiennoprzecinkowych.
+- `bigint` dla liczb całkowitych o dowolnej długości.
 - `string` dla ciągów znaków. Może być pusty albo zawierać jeden czy więcej znaków; nie ma oddzielnego typu dla pojedynczego znaku.
 - `boolean` dla `true`/`false` (prawda/fałsz).
 - `null` dla pustych wartości -- autonomiczny typ, który posiada jedną wartość: `null`.
 - `undefined` dla niezdefiniowanych wartości -- autonomiczny typ, który posiada jedną wartość: `undefined`.
 - `object` dla bardziej złożonych struktur danych.
 - `symbol` dla unikalnych identyfikatorów.
-=======
-## Summary
-
-There are 8 basic data types in JavaScript.
-
-- `number` for numbers of any kind: integer or floating-point, integers are limited by ±2<sup>53</sup>.
-- `bigint` is for integer numbers of arbitrary length.
-- `string` for strings. A string may have one or more characters, there's no separate single-character type.
-- `boolean` for `true`/`false`.
-- `null` for unknown values -- a standalone type that has a single value `null`.
-- `undefined` for unassigned values -- a standalone type that has a single value `undefined`.
-- `object` for more complex data structures.
-- `symbol` for unique identifiers.
->>>>>>> 5b195795da511709faf79a4d35f9c5623b6dbdbd
 
 Operator `typeof` pozwala na sprawdzenie typu zmiennej.
 
