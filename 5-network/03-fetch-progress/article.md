@@ -107,6 +107,10 @@ Wyjaśnijmy wszystko krok po kroku:
     let blob = new Blob(chunks);
     ```
 
+<<<<<<< HEAD
 W rezultacie otrzymujemy łańcuch znaków lub `Blob` (w zależności od potrzeb) oraz możliwość śledzenia postępu całego procesu.
+=======
+At the end we have the result (as a string or a blob, whatever is convenient), and progress-tracking in the process.
+>>>>>>> d10b50ae7f67d91606a751926cb06aa06f10c1b4
 
 Ważne, aby pamiętać, że powyższe nie dotyczy postępu *wysyłania*  (obecnie niemożliwe za pomocą `fetch`), a jedynie postępu *pobierania* danych.
