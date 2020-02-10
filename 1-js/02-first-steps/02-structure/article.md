@@ -95,7 +95,11 @@ Zalecamy używanie średników nawet wtedy, gdy instrukcje są oddzielone nową 
 
 ## Komentarze
 
+<<<<<<< HEAD
 Z czasem programy stają się coraz bardziej złożone. Przychodzi wtedy konieczność dodania _komentarzy_, które opisują, co robi kod i dlaczego.
+=======
+## Comments [#code-comments]
+>>>>>>> 10c7807f49122f475f7cda5d07a324247091c080
 
 Komentarze mogą być umieszczane w dowolnym miejscu skryptu. Nie wpływają na wykonanie kodu, ponieważ silnik JavaScript je ignoruje.
 
