@@ -135,6 +135,7 @@ W języku JavaScript istnieje wiele operatorów, a każdy operator ma nadany jak
 
 Poniżej znajduje się fragment [tabeli kolejności wykonywania działań](https://developer.mozilla.org/en/JavaScript/Reference/operators/operator_precedence) (nie musisz jej znać na pamięć; zwróć tylko uwagę, że jednoargumentowe operatory mają zawsze wyższy priorytet niż ich dwuargumentowe odpowiedniki):
 
+<<<<<<< HEAD
 | Priorytet | Nazwa                    | Symbol |
 | --------- | ------------------------ | ------ |
 | ...       | ...                      | ...    |
@@ -147,6 +148,20 @@ Poniżej znajduje się fragment [tabeli kolejności wykonywania działań](https
 | ...       | ...                      | ...    |
 | 3         | przypisanie              | `=`    |
 | ...       | ...                      | ...    |
+=======
+| Precedence | Name | Sign |
+|------------|------|------|
+| ... | ... | ... |
+| 17 | unary plus | `+` |
+| 17 | unary negation | `-` |
+| 15 | multiplication | `*` |
+| 15 | division | `/` |
+| 13 | addition | `+` |
+| 13 | subtraction | `-` |
+| ... | ... | ... |
+| 3 | assignment | `=` |
+| ... | ... | ... |
+>>>>>>> 9acc1302a14a3bbabbc9bf95d04581094bd0f1a8
 
 
 Jak widać, "jednoargumentowy plus" ma priotytet równy `16`, czyli większy niż `13` przypisany do "dodawania" (jednoargumentowego plusa). To dlatego w wyrażeniu `"+apples + +oranges"` jednoargumentowe plusy aplikowane są w pierwszej kolejności.
