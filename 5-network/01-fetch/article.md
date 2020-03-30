@@ -1,7 +1,11 @@
 
 # Fetch
 
+<<<<<<< HEAD
 Ilekroć jest to potrzebne, JavaScript potrafi wykonywać żądania sieciowe do serwera i pobierać nowe informacje.
+=======
+JavaScript can send network requests to the server and load new information whenever it's needed.
+>>>>>>> 62299ed853674c4fd1427cd310516d5535bce648
 
 Można na przykład użyć żądania sieciowego do:
 
@@ -61,12 +65,21 @@ if (response.ok) { // jeżeli kod odpowiedzi HTTP jest z zakresu 200-299
 
 Obiekt klasy `Response` (pol. *odpowiedź*) zapewnia wiele metod bazujących na obietnicach, które pozwalają na dostęp do ciała odpowiedzi i zwrócenie go w różnych formach:
 
+<<<<<<< HEAD
 - **`response.text()`** -- odczytaj odpowiedź i zwróć jako tekst,
 - **`response.json()`** -- odczytaj odpowiedź i zwróć jako JSON,
 - **`response.formData()`** -- zwróć odpowiedź jako obiekt typu `FormData` (wyjaśnienie w [następnym rozdziale](info:formdata)),
 - **`response.blob()`** -- zwróć odpowiedź jako [Blob](info:blob) (dane binarne z typem),
 - **`response.arrayBuffer()`** -- zwróć odpowiedź jako [ArrayBuffer](info:arraybuffer-binary-arrays) (niskopoziomowa reprezentacja danych binarnych),
 - ponadto `response.body` jest sam w sobie obiektem typu [ReadableStream](https://streams.spec.whatwg.org/#rs-class), co pozwala na odczytywanie go kawałek po kawałku. Ale o tym nieco później.
+=======
+- **`response.text()`** -- read the response and return as text,
+- **`response.json()`** -- parse the response as JSON,
+- **`response.formData()`** -- return the response as `FormData` object (explained in the [next chapter](info:formdata)),
+- **`response.blob()`** -- return the response as [Blob](info:blob) (binary data with type),
+- **`response.arrayBuffer()`** -- return the response as [ArrayBuffer](info:arraybuffer-binary-arrays) (low-level representaion of binary data),
+- additionally, `response.body` is a [ReadableStream](https://streams.spec.whatwg.org/#rs-class) object, it allows you to read the body chunk-by-chunk, we'll see an example later.
+>>>>>>> 62299ed853674c4fd1427cd310516d5535bce648
 
 Pobierzmy dla przykładu obiekt JSON z ostatnimi commitami z GitHuba.
 
@@ -230,7 +243,11 @@ Ponieważ jednak zamierzamy wysłać obiekt JSON, użyjemy obiektu `headers` do 
 
 Za pomocą `fetch` możemy także przesłać dane binarne, używając obiektów `Blob` albo `BufferSource`.
 
+<<<<<<< HEAD
 W poniższym przykładzie mamy znacznik `<canvas>`, który pozwala na rysowanie poprzez poruszanie nad nim myszką. Kliknięcie na przycisk "Prześlij" wysyła obraz do serwera:
+=======
+In this example, there's a `<canvas>` where we can draw by moving a mouse over it. A click on the "submit" button sends the image to the server:
+>>>>>>> 62299ed853674c4fd1427cd310516d5535bce648
 
 ```html run autorun height="90"
 <body style="margin:0">
