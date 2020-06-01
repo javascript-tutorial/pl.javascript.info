@@ -4,7 +4,11 @@ Sprawdźmy, czym jest JavaScript, co możemy osiągnąć z jego pomocą i z jaki
 
 ## Czym jest JavaScript?
 
+<<<<<<< HEAD
 *JavaScript* pierwotnie został stworzony z myślą o *"ożywieniu stron internetowych"*.
+=======
+*JavaScript* was initially created to "make web pages alive".
+>>>>>>> 69e44506c3e9dac74c282be37b55ba7ff122ae74
 
 Programy napisane w tym języku nazywamy *skryptami*. Możemy je pisać bezpośrednio w kodzie HTML strony i uruchamiać podczas wczytywania strony.
 
@@ -63,7 +67,11 @@ Możliwości przeglądarkowego JavaScriptu są ograniczone ze względu na bezpie
 
 Przykładami takich restrykcji są:
 
+<<<<<<< HEAD
 - JavaScript zawarty na stronie nie może odczytywać/zapisywać plików na dysku twardym, kopiować ich ani uruchamiać programów. Nie ma bezpośredniego dostępu do funkcji systemu operacyjnego.
+=======
+- JavaScript on a webpage may not read/write arbitrary files on the hard disk, copy them or execute programs. It has no direct access to OS functions.
+>>>>>>> 69e44506c3e9dac74c282be37b55ba7ff122ae74
 
     Współczesne przeglądarki pozwalają na przetwarzanie plików, jednak dostęp jest ograniczony do sytuacji, w których użytkownik wykona odpowiednie akcje, np. "przeciągnie" plik do okna przeglądarki lub wybierze go poprzez element `<input>`.
 
