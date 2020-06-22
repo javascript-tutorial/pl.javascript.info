@@ -5,7 +5,11 @@ Metoda `fetch` pozwala śledzić postęp pobierania (ang. *download*).
 
 Należy pamiętać, że `fetch` nie ma możliwości śledzenia postępu wysyłania danych (ang. *upload*). Do tego celu należy użyć [XMLHttpRequest](info:xmlhttprequest). Omówimy to w dalszej części.
 
+<<<<<<< HEAD
 W celu śledzenia postępu pobierania możemy wykorzystać właściwość `response.body`. Jest to specjalny obiekt `ReadableStream` (pol. *odczytywalny strumień*), który udostępnia ciało odpowiedzi na bieżąco, kawałek po kawałku (ang. *chunk*). Odczytywalne strumienie zostały opisane w specyfikacji [API Strumieni](https://streams.spec.whatwg.org/#rs-class).
+=======
+To track download progress, we can use `response.body` property. It's `ReadableStream` -- a special object that provides body chunk-by-chunk, as it comes. Readable streams are described in the [Streams API](https://streams.spec.whatwg.org/#rs-class) specification.
+>>>>>>> e4e6a50b5762dd5dc4c0f0c58f870c64be39dcfa
 
 W przeciwieństwie do `response.text()`, `response.json()` czy innych metod, `response.body` pozwala na całkowitą kontrolę nad procesem odczytu, co pozwala na określenie, jaka ilość danych jest zużywana w dowolnym momencie.
 
@@ -107,6 +111,10 @@ Wyjaśnijmy wszystko krok po kroku:
     let blob = new Blob(chunks);
     ```
 
+<<<<<<< HEAD
 W rezultacie otrzymujemy łańcuch znaków lub `Blob` (w zależności od potrzeb) oraz możliwość śledzenia postępu całego procesu.
+=======
+At the end we have the result (as a string or a blob, whatever is convenient), and progress-tracking in the process.
+>>>>>>> e4e6a50b5762dd5dc4c0f0c58f870c64be39dcfa
 
 Ważne, aby pamiętać, że powyższe nie dotyczy postępu *wysyłania*  (obecnie niemożliwe za pomocą `fetch`), a jedynie postępu *pobierania* danych.

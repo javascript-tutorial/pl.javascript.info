@@ -1,6 +1,14 @@
 # Typy danych
 
+<<<<<<< HEAD
 Zmienna w JavaScripcie może zawierać różne dane. Zmienna może być w jednej chwili łańcuchem znaków (ang. *string*), a w innym liczbą:
+=======
+A value in JavaScript is always of a certain type. For example, a string or a number.
+
+There are eight basic data types in JavaScript. Here, we'll cover them in general and in the next chapters we'll talk about each of them in detail.
+
+We can put any type in a variable. For example, a variable can at one moment be a string and then store a number:
+>>>>>>> e4e6a50b5762dd5dc4c0f0c58f870c64be39dcfa
 
 ```js
 // nie ma tu błędów
@@ -8,9 +16,13 @@ let message = "hello";
 message = 123456;
 ```
 
+<<<<<<< HEAD
 Część języków programowania stosuje tak zwane "dynamiczne typowanie", które oznacza, że typy danych zmiennych mogą zmienić się w trakcie działania programu.
 
 Wyróżniamy 8 podstawowych typów danych w JavaScripcie. Przedstawimy je teraz ogólnie, w następnych rozdziałach omówimy bardziej szczegółowo.
+=======
+Programming languages that allow such things, such as JavaScript, are called "dynamically typed", meaning that there exist data types, but variables are not bound to any of them.
+>>>>>>> e4e6a50b5762dd5dc4c0f0c58f870c64be39dcfa
 
 ## Typ liczbowy
 
@@ -64,21 +76,38 @@ Więcej informacji o pracy z liczbami zawarte jest w rozdziale pt. "<info:number
 
 ## BigInt
 
+<<<<<<< HEAD
 W JavaScripcie typ liczbowy nie może reprezentować liczb całkowitych większych od <code>2<sup>53</sup></code> (ani ujemnych mniejszych od <code>-2<sup>53</sup></code>) ze względu na ograniczenia techniczne narzucone przez jego reprezentację wewnętrzną. Daje to liczby o długości około 16 cyfr, co w większości przypadków wystarcza. Jednak czasami potrzebujemy skorzystać z naprawdę dużych liczb, np. w krytografii czy znaczników czasowych z dokładnością do mikrosekund.
+=======
+In JavaScript, the "number" type cannot represent integer values larger than <code>(2<sup>53</sup>-1)</code> (that's `9007199254740991`), or less than <code>-(-2<sup>53</sup>-1)</code> for negatives. It's a technical limitation caused by their internal representation.
+
+For most purposes that's quite enough, but sometimes we need really big numbers, e.g. for cryptography or microsecond-precision timestamps.
+>>>>>>> e4e6a50b5762dd5dc4c0f0c58f870c64be39dcfa
 
 Typ `BigInt` został niedawno dodany do języka i reprezentuje liczby całkowite o dowolnej długości.
 
+<<<<<<< HEAD
 `BigInt` tworzy się poprzez dodanie `n` na końcu liczby:
+=======
+A `BigInt` value is created by appending `n` to the end of an integer:
+>>>>>>> e4e6a50b5762dd5dc4c0f0c58f870c64be39dcfa
 
 ```js
 // "n" na końcu oznacza, że to liczba typu BigInt
 const bigInt = 1234567890123456789012345678901234567890n;
 ```
 
+<<<<<<< HEAD
 Z racji tego, że liczby typu `BigInt` są rzadko stosowane, poświęciliśmy im osobny rozdział pt. "<info:bigint>".
 
 ```smart header="Problemy z kompatybilnością"
 Aktualnie dla typu `BigInt` wsparcie posiadają przeglądarki Firefox i Chrome. Brakuje go w Safari/IE/Edge.
+=======
+As `BigInt` numbers are rarely needed, we don't cover them here, but devoted them a separate chapter <info:bigint>. Read it when you need such big numbers.
+
+```smart header="Compatability issues"
+Right now `BigInt` is supported in Firefox/Chrome/Edge, but not in Safari/IE.
+>>>>>>> e4e6a50b5762dd5dc4c0f0c58f870c64be39dcfa
 ```
 
 ## Typ tekstowy
@@ -163,7 +192,11 @@ W JavaScripcie `null` nie odnosi się do "nieistniejącego obiektu" lub "wskaźn
 
 Jest specjalną wartością, która reprezentuje "nic", "brak wartości" lub "nieznaną wartość".
 
+<<<<<<< HEAD
 Kod powyżej zakłada, że wartość zmiennej `age` jest pusta bądź nieznana z jakiegoś powodu.
+=======
+The code above states that `age` is unknown.
+>>>>>>> e4e6a50b5762dd5dc4c0f0c58f870c64be39dcfa
 
 ## Wartość "undefined"
 
@@ -174,30 +207,50 @@ Wartość `undefined` oznacza, że "wartość zmiennej nie jest przypisana"
 W przypadku zadeklarowania zmiennej bez przypisania do niej konkretnej wartości, domyślna wartość to `undefined`:
 
 ```js run
-let x;
+let age;
 
+<<<<<<< HEAD
 alert(x); // wyświetla "undefined"
 ```
 
 W zasadzie możliwe jest przypisanie `undefined` do zmiennej:
-
-```js run
-let x = 123;
-
-x = undefined;
-
-alert(x); // "undefined"
+=======
+alert(age); // shows "undefined"
 ```
 
+Technically, it is possible to explicitly assign `undefined` to a variable:
+>>>>>>> e4e6a50b5762dd5dc4c0f0c58f870c64be39dcfa
+
+```js run
+let age = 100;
+
+// change the value to undefined
+age = undefined;
+
+alert(age); // "undefined"
+```
+
+<<<<<<< HEAD
 ... Jednak nie zalecamy tworzenia zmiennych o wartości `undefined`. Zazwyczaj używamy `null` dla zmiennych bez wartości, `undefined` przydaje się przy sprawdzaniu czy zmienna została przypisana do jakiejś wartości.
+=======
+...But we don't recommend doing that. Normally, one uses `null` to assign an "empty" or "unknown" value to a variable, while `undefined` is reserved as a default initial value for unassigned things.
+>>>>>>> e4e6a50b5762dd5dc4c0f0c58f870c64be39dcfa
 
 ## Obiekty i symbole
 
 Typ `object` jest jedyny w swoim rodzaju.
 
+<<<<<<< HEAD
 Wszystkie inne typy zwane są "prostymi" (ang. *primitive*), ponieważ ich wartości mogą przechowywać tylko jedną rzecz (może to być ciąg znaków, liczba, typ logiczny itd.). W przeciwieństwie do typów prostych, obiekty używane są do przechowywania większych kolekcji danych. Więcej o obiektach omówimy poźniej w rozdziale pt. "<info:object>", po wcześniejszym omówieniu typów prostych.
 
 Typ `symbol` jest używany do tworzenia unikalnych identyfikatorów dla obiektów. Wspominamy o nim tylko dla kompletności tego rozdziału, niemniej zdecydowanie lepiej jest poznać ten typ po zrozumieniu samych obiektów.
+=======
+All other types are called "primitive" because their values can contain only a single thing (be it a string or a number or whatever). In contrast, objects are used to store collections of data and more complex entities.
+
+Being that important, objects deserve a special treatment. We'll deal with them later in the chapter <info:object>, after we learn more about primitives.
+
+The `symbol` type is used to create unique identifiers for objects. We have to mention it here for the sake of completeness, but also postpone the details till we know objects.
+>>>>>>> e4e6a50b5762dd5dc4c0f0c58f870c64be39dcfa
 
 ## Operator "typeof" [#type-typeof]
 
@@ -240,14 +293,31 @@ typeof alert // "function"  (3)
 
 Ostatnie trzy linijki wymagają dodatkowego wyjaśnienia.
 
+<<<<<<< HEAD
 1. `Math` jest wbudowanym obiektem, który daje dostęp do operacji matematycznych. Dowiemy się o nim więcej w rozdziale pt. "<info:number>". W tym przypadku posłużył jako przykład obiektu.
 2. Wynikiem wywołania `typeof null` jest `object`. Jest to znany błąd związany z `typeof`, nie został on jednak poprawiony ze względu na wsteczną kompatybilność. Oczywiście `null` nie jest obiektem - posiada własny typ.
 3. Wynikiem wywołania `typeof alert` jest `"function"` ze względu na to, że `alert` jest po prostu funkcją. O funkcjach napisaliśmy więcej w następnych rozdziałach, gdzie zauważamy, że tak naprawdę nie ma typu "function" w JavaScripcie. Funkcje należą do typu "object". Jednak `typeof` traktuje funkcje inaczej, zwracając `"function"`, co nie jest do końca poprawne, lecz bardzo wygodne w praktyce.
+=======
+1. `Math` is a built-in object that provides mathematical operations. We will learn it in the chapter <info:number>. Here, it serves just as an example of an object.
+2. The result of `typeof null` is `"object"`. That's an officially recognized error in `typeof` behavior, coming from the early days of JavaScript and kept for compatibility. Definitely, `null` is not an object. It is a special value with a separate type of its own.
+3. The result of `typeof alert` is `"function"`, because `alert` is a function. We'll study functions in the next chapters where we'll also see that there's no special "function" type in JavaScript. Functions belong to the object type. But `typeof` treats them differently, returning `"function"`. That also comes from the early days of JavaScript. Technically, such behavior isn't correct, but can be convenient in practice.
+>>>>>>> e4e6a50b5762dd5dc4c0f0c58f870c64be39dcfa
 
 
 ## Podsumowanie
 
+<<<<<<< HEAD
 W JavaScripcie wyróżniamy 8 podstawowych typów danych.
+=======
+- `number` for numbers of any kind: integer or floating-point, integers are limited by ±2<sup>53</sup>.
+- `bigint` is for integer numbers of arbitrary length.
+- `string` for strings. A string may have zero or more characters, there's no separate single-character type.
+- `boolean` for `true`/`false`.
+- `null` for unknown values -- a standalone type that has a single value `null`.
+- `undefined` for unassigned values -- a standalone type that has a single value `undefined`.
+- `object` for more complex data structures.
+- `symbol` for unique identifiers.
+>>>>>>> e4e6a50b5762dd5dc4c0f0c58f870c64be39dcfa
 
 - `number` dla wszystkich liczb: całkowitych lub zmiennoprzecinkowych.
 - `bigint` dla liczb całkowitych o dowolnej długości.
