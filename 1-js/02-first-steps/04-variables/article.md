@@ -80,9 +80,14 @@ let user = 'Jan'
 
 Wszystkie powyższe przykłady działają tak samo. Wybór zależy od osobistego gustu i poczucia estetyki.
 
+<<<<<<< HEAD
 
 ````smart header="`var` zamiast `let`"
 W starszych skryptach możesz napotkać słowo kluczowe `var` zamiast `let`:
+=======
+````smart header="`var` instead of `let`"
+In older scripts, you may also find another keyword: `var` instead of `let`:
+>>>>>>> 445bda39806050acd96f87166a7c97533a0c67e9
 
 ```js
 *!*var*/!* message = 'Witaj';
@@ -135,9 +140,28 @@ alert(hello); // Witaj, świecie!
 alert(message); // Witaj, świecie!
 ```
 
+<<<<<<< HEAD
 ```smart header="Języki funkcyjne"
 Warto zauważyć, że istnieją języki programowania [funkcyjnego](https://pl.wikipedia.org/wiki/Programowanie_funkcyjne), jak [Scala](http://www.scala-lang.org/) czy [Erlang](http://www.erlang.org/), które zabraniają zmiany wartości zmiennych.
 W takich językach, gdy wartość  trafi do "pudełka", pozostaje tam na zawsze. Jeśli chcemy przechować coś innego, język zmusza nas do utworzenia nowego pudełka (zadeklarowania nowej zmiennej). Nie możemy ponownie użyć starego.
+=======
+````warn header="Declaring twice triggers an error"
+A variable should be declared only once.
+
+A repeated declaration of the same variable is an error:
+
+```js run
+let message = "This";
+
+// repeated 'let' leads to an error
+let message = "That"; // SyntaxError: 'message' has already been declared
+```
+So, we should declare a variable once and then refer to it without `let`.
+````
+
+```smart header="Functional languages"
+It's interesting to note that there exist [functional](https://en.wikipedia.org/wiki/Functional_programming) programming languages, like [Scala](http://www.scala-lang.org/) or [Erlang](http://www.erlang.org/) that forbid changing variable values.
+>>>>>>> 445bda39806050acd96f87166a7c97533a0c67e9
 
 Choć na pierwszy rzut oka może się to wydawać trochę dziwne, te języki całkiem dobrze nadają się do pisania poważnych programów. Co więcej, istnieją obszary, takie jak obliczenia równoległe, w których takie ograniczenie daje pewne korzyści. Warto przestudiować tego typu języki (nawet jeśli nie planujesz go używać w najbliższym czasie), aby poszerzyć horyzonty.
 ```
@@ -189,8 +213,12 @@ let имя = '...';
 let 我 = '...';
 ```
 
+<<<<<<< HEAD
 Technicznie rzecz biorąc, nie ma tu błędu (takie nazwy są dozwolone), ale istnieje międzynarodowa tradycja używania języka angielskiego do nazywania zmiennych.
 Nawet jeśli piszemy niewielki skrypt, może mieć on przed sobą długie życie. Mogą go kiedyś chcieć przeczytać ludzie z innych krajów.
+=======
+Technically, there is no error here. Such names are allowed, but there is an international convention to use English in variable names. Even if we're writing a small script, it may have a long life ahead. People from other countries may need to read it some time.
+>>>>>>> 445bda39806050acd96f87166a7c97533a0c67e9
 ````
 
 ````warn header="Nazwy zarezerwowane"
