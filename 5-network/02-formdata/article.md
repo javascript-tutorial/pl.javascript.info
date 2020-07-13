@@ -12,7 +12,11 @@ let formData = new FormData([form]);
 
 Przechwyci on automatycznie wszystkie pola formularza HTML na stronie.
 
+<<<<<<< HEAD
 `FormData` posiada tę szczególną cechę, że metody sieciowe takie jak `fetch` mogą przyjmować obiekt `FormData` jako ciało. Jest on wówczas kodowany i wysyłany jako `Content-Type: form/multipart`.
+=======
+The special thing about `FormData` is that network methods, such as `fetch`, can accept a `FormData` object as a body. It's encoded and sent out with `Content-Type: multipart/form-data`.
+>>>>>>> c3a11c85e54153ebb137b5541b1d1f751c804439
 
 Z perspektywy serwera wygląda to jak zwykłe przesłanie formularza.
 
@@ -81,7 +85,11 @@ for(let [name, value] of formData) {
 
 ## Wysyłanie formularza z plikiem
 
+<<<<<<< HEAD
 Formularz jest zawsze wysyłany jako `Content-Type: form/multipart`, gdyż takie kodowanie pozwala na wysyłkę plików. Tak więc pola `<input type="file">` są również wysyłane, podobnie jak ma to miejsce w zwykłym przesłaniu formularza.
+=======
+The form is always sent as `Content-Type: multipart/form-data`, this encoding allows to send files. So, `<input type="file">` fields are sent also, similar to a usual form submission.
+>>>>>>> c3a11c85e54153ebb137b5541b1d1f751c804439
 
 Oto przykład takiego formularza:
 
