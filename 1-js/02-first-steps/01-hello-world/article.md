@@ -45,8 +45,13 @@ Znacznik `<script>` zawiera kod javascriptowy, który jest automatycznie wywoły
 
 Znacznik `<script>` posiada kilka atrybutów, których współcześnie się nie używa, a na które można się natknąć w starym kodzie:
 
+<<<<<<< HEAD
 Atrybut `type`: <code>&lt;script <u>type</u>=...&gt;</code>
 : Stary standard HTML, czyli HTML4, wymagał, aby skrypty miały określony typ (`type`). Zwykle było to `type="text/javascript"`. Obecnie nie jest on już wymagany. Ponadto, w aktualnym standardzie HTML całkowicie zmieniło się jego znaczenie - teraz stosuje się go przy modułach javascriptowych. Ale to zaawansowany temat. O modułach będziemy mówić w innej części samouczka.
+=======
+The `type` attribute: <code>&lt;script <u>type</u>=...&gt;</code>
+: The old HTML standard, HTML4, required a script to have a `type`. Usually it was `type="text/javascript"`. It's not required anymore. Also, the modern HTML standard totally changed the meaning of this attribute. Now, it can be used for JavaScript modules. But that's an advanced topic, we'll talk about modules in another part of the tutorial.
+>>>>>>> cdf382de4cf3ed39ca70cb7df60c4c4886f2d22e
 
 Atrybut `language`: <code>&lt;script <u>language</u>=...&gt;</code>
 : Ten atrybut służył do określenia języka skryptu. Obecnie nie ma on większego sensu, ponieważ JavaScript jest domyślnym językiem. Nie trzeba go używać.
@@ -78,7 +83,7 @@ W tym przykładzie `/ścieżka/do/skryptu.js` to ścieżka bezwzględna do pliku
 Oprócz tego mamy możliwość podania pełnego adresu URL, na przykład:
 
 ```html
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.2.0/lodash.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.js"></script>
 ```
 
 Jeśli chcesz dodać kilka skryptów, wstaw więcej znaczników:
