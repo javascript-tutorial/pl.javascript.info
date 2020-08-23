@@ -36,7 +36,7 @@ Rzutowanie do typu liczbowego następuje automatycznie w wyniku matematycznych w
 Na przykład przy dzieleniu (`/`) z udziałem wartości nie będących liczbami:
 
 ```js run
-alert( "6" / "2" ); // 3, wartości tekstowe są zamienane na liczby
+alert( "6" / "2" ); // 3, wartości tekstowe są zamieniane na liczby
 ```
 
 Możemy użyć funkcji `Number(value)`, aby jawnie rzutować zmienną `value` na liczbę. 
