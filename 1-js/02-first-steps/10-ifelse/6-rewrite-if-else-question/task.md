@@ -2,21 +2,21 @@ importance: 5
 
 ---
 
-# Rewrite 'if..else' into '?'
+#  Przepisz instrukcję `if` na operator warunkowy '?
 
-Rewrite `if..else` using multiple ternary operators `'?'`.
+ Przepisz instrukcję `if` na używając wielokrotnego operatora warunkowego '?`.
 
-For readability, it's recommended to split the code into multiple lines.
+Dla czytelności zalecamy podzielić kod na wiele linii.
 
 ```js
 let message;
 
-if (login == 'Employee') {
-  message = 'Hello';
-} else if (login == 'Director') {
-  message = 'Greetings';
+if (login == 'Pracownik') {
+  message = 'Witaj';
+} else if (login == 'Dyrektor') {
+  message = 'Pozdrowienia';
 } else if (login == '') {
-  message = 'No login';
+  message = 'Brak loginu';
 } else {
   message = '';
 }
