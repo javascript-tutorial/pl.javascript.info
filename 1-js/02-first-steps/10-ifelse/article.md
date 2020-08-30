@@ -59,7 +59,7 @@ if (1) { // 1 jest truthy
 możemy także przekazać wcześniej sprawdzoną wartość logiczną w taki sposób:
 
 ```js
-let cond = (year == 2015); // equality evaluates to true or false
+let cond = (year == 2015); // równanie przekształca się w prawdę lub fałsz
 
 if (cond) {
   ...
