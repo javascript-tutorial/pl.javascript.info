@@ -1,24 +1,25 @@
 
-Try running it:
+Spróbuj to uruchomić:
 
 ```js run
-let str = "Hello";
+let str = "Witaj";
 
 str.test = 5; // (*)
 
 alert(str.test);
 ```
 
-Depending on whether you have `use strict` or not, the result may be:
-1. `undefined` (no strict mode)
-2. An error (strict mode).
+W zależności czy używasz `use strict` czy też nie, wynik może być różny:
 
-Why? Let's replay what's happening at line `(*)`:
+1. `undefined` (brak trybu nowoczesnego)
+2. Błąd (tryb nowoczesny).
 
-1. When a property of `str` is accessed, a "wrapper object" is created.
-2. In strict mode, writing into it is an error.
-3. Otherwise, the operation with the property is carried on, the object gets the `test` property, but after that the "wrapper object" disappears, so in the last line `str` has no trace of the property.
+Dlaczego? Spróbujmy odtworzyć co dzieje się w lini `(*)`:
 
-**This example clearly shows that primitives are not objects.**
+1. Kiedy uzyskujemy dostęp do własności `str`, tworzony jest "wrapper obiektu".
+2. W trybie nowoczesnym przypisywanie wartości do niego powoduje błąd.
+3. W przeciwnym wypadku operacja przypisania wartości jest kontynuowana, obiekt dostaje własność `test`, ale zaraz po tym "wrapper obiektu" znika i w w ostatnim wierszu `str` nie może dostać się do własności obiektu.
 
-They can't store additional data.
+**Ten przykład jasno pokazuje że typy podstawowe nie są obiektami.**
+
+Nie mogą przechowywać dodatkowych informacji.

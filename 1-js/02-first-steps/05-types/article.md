@@ -130,7 +130,7 @@ W JavaScripcie nie ma takiego typu. Mamy do dyspozycji jedynie `string`. Ciąg z
 
 Typ logiczny (ang. *boolean*) posiada dwie wartości: `true` (prawda) lub `false` (fałsz).
 
-Ty logiczny jest najczęsciej używany do przechowywania wartości pokroju "tak/nie", gdzie `true` to "tak, prawda", a `false` oznacza "nie, nieprawda".
+Typ logiczny jest najczęściej używany do przechowywania wartości pokroju "tak/nie", gdzie `true` to "tak, prawda", a `false` oznacza "nie, nieprawda".
 
 Na przykład: 
 
