@@ -42,7 +42,11 @@ Powiedz mu, że krótszy znaczy lepszy. Wprowadź go na ścieżkę ninja.
 Tao kryje się w milczeniu. Tylko Tao dobrze się zaczyna i dobrze kończy.
 ```
 
+<<<<<<< HEAD
 Kolejnym sposobem na szybsze programowanie jest używanie wszędzie jednoliterowych nazw zmiennych. Takich jak `a`, `b` czy `c`.
+=======
+Another way to code shorter is to use single-letter variable names everywhere. Like `a`, `b` or `c`.
+>>>>>>> f830bc5d9454d85829e011d914f215eb5896579a
 
 Zmienna o krótkiej nazwie znika w kodzie jak prawdziwy ninja w dżungli. Nikt nie będzie w stanie znaleźć jej przy pomocy wyszukiwarki edytora. A nawet jeśli komuś się to uda, nie będzie w stanie domyślić się, co oznacza `a` czy `b`.
 
