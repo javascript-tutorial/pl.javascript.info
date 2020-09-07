@@ -4,7 +4,11 @@ Sprawdźmy, czym jest JavaScript, co możemy osiągnąć z jego pomocą i z jaki
 
 ## Czym jest JavaScript?
 
+<<<<<<< HEAD
 *JavaScript* pierwotnie został stworzony z myślą o *"ożywieniu stron internetowych"*.
+=======
+*JavaScript* was initially created to "make web pages alive".
+>>>>>>> 58f6599df71b8d50417bb0a52b1ebdc995614017
 
 Programy napisane w tym języku nazywamy *skryptami*. Możemy je pisać bezpośrednio w kodzie HTML strony i uruchamiać podczas wczytywania strony.
 
@@ -63,7 +67,11 @@ Możliwości przeglądarkowego JavaScriptu są ograniczone ze względu na bezpie
 
 Przykładami takich restrykcji są:
 
+<<<<<<< HEAD
 - JavaScript zawarty na stronie nie może odczytywać/zapisywać plików na dysku twardym, kopiować ich ani uruchamiać programów. Nie ma bezpośredniego dostępu do funkcji systemu operacyjnego.
+=======
+- JavaScript on a webpage may not read/write arbitrary files on the hard disk, copy them or execute programs. It has no direct access to OS functions.
+>>>>>>> 58f6599df71b8d50417bb0a52b1ebdc995614017
 
     Współczesne przeglądarki pozwalają na przetwarzanie plików, jednak dostęp jest ograniczony do sytuacji, w których użytkownik wykona odpowiednie akcje, np. "przeciągnie" plik do okna przeglądarki lub wybierze go poprzez element `<input>`.
 
@@ -106,10 +114,18 @@ Współczesne narzędzia pozwalają na szybką i przejrzystą transpilację, umo
 
 Przykłady takich języków:
 
+<<<<<<< HEAD
 - [CoffeeScript](http://coffeescript.org/) jest "lukrem składniowym" (ang. *syntactic sugar*) dla JavaScriptu. Wprowadza krótszą składnie, pozwalając na pisanie precyzyjnego i bardziej przejrzystego kodu. Ma zwolenników wśród programistów języka Ruby.
 - [TypeScript](http://www.typescriptlang.org/) skupia się na dodaniu "rygorystycznego typowania danych" w celu ułatwienia dewelopmentu i lepszego wsparcia dla skomplikowanych systemów. Jest rozwijany przez Microsoft.
 - [Flow](http://flow.org/) również dodaje typy, ale w nieco inny sposób. Rozwijany przez Facebooka.
 - [Dart](https://www.dartlang.org/) jest odrębnym językiem, posiadającym własny silnik, który działa poza przeglądarką (np. w aplikacjach mobilnych), ale może być także transpilowany do JavaScriptu. Rozwijany przez Google.
+=======
+- [CoffeeScript](http://coffeescript.org/) is a "syntactic sugar" for JavaScript. It introduces shorter syntax, allowing us to write clearer and more precise code. Usually, Ruby devs like it.
+- [TypeScript](http://www.typescriptlang.org/) is concentrated on adding "strict data typing" to simplify the development and support of complex systems. It is developed by Microsoft.
+- [Flow](http://flow.org/) also adds data typing, but in a different way. Developed by Facebook.
+- [Dart](https://www.dartlang.org/) is a standalone language that has its own engine that runs in non-browser environments (like mobile apps), but also can be transpiled to JavaScript. Developed by Google.
+- [Brython](https://brython.info/) is a Python transpiler to JavaScript that allow to write application in pure Python without JavaScript.
+>>>>>>> 58f6599df71b8d50417bb0a52b1ebdc995614017
 
 Jest ich więcej. Rzecz jasna, nawet jeśli używamy któregoś z języków transpilowanych, powinniśmy znać JavaScript, aby lepiej rozumieć, co się dzieje w kodzie.
 
