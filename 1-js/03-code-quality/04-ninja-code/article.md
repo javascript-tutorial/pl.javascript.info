@@ -1,8 +1,13 @@
 # Kod ninja
 
 
+<<<<<<< HEAD
 ```quote author="Konfucjusz"
 Bezużyteczną rzeczą jest uczyć się, lecz nie myśleć, a niebezpieczną myśleć, lecz nie uczyć się niczego.
+=======
+```quote author="Confucius (Analects)"
+Learning without thought is labor lost; thought without learning is perilous.
+>>>>>>> e074a5f825a3d10b0c1e5e82561162f75516d7e3
 ```
 
 Programiści ninja z przeszłości używali poniższych trików, by zmusić do myślenia umysły deweloperów.
@@ -42,7 +47,11 @@ Powiedz mu, że krótszy znaczy lepszy. Wprowadź go na ścieżkę ninja.
 Tao kryje się w milczeniu. Tylko Tao dobrze się zaczyna i dobrze kończy.
 ```
 
+<<<<<<< HEAD
 Kolejnym sposobem na szybsze programowanie jest używanie wszędzie jednoliterowych nazw zmiennych. Takich jak `a`, `b` czy `c`.
+=======
+Another way to code shorter is to use single-letter variable names everywhere. Like `a`, `b` or `c`.
+>>>>>>> e074a5f825a3d10b0c1e5e82561162f75516d7e3
 
 Zmienna o krótkiej nazwie znika w kodzie jak prawdziwy ninja w dżungli. Nikt nie będzie w stanie znaleźć jej przy pomocy wyszukiwarki edytora. A nawet jeśli komuś się to uda, nie będzie w stanie domyślić się, co oznacza `a` czy `b`.
 
@@ -103,8 +112,13 @@ Nie ma opcji, żeby ktoś był w stanie na szybko przejrzeć taki kod. A gdy jes
 
 ## Sprytne synonimy
 
+<<<<<<< HEAD
 ```quote author="Konfucjusz"
 Ciężko jest znaleźć czarnego kota w ciemnym pokoju, szczególnie jeżeli go tam nie ma.
+=======
+```quote author="Laozi (Tao Te Ching)"
+The Tao that can be told is not the eternal Tao. The name that can be named is not the eternal name.
+>>>>>>> e074a5f825a3d10b0c1e5e82561162f75516d7e3
 ```
 
 Używanie *podobnych* nazw do *tych samych* rzeczy ubarwia nieco życie i pokazuje publice twoją kreatywność.
