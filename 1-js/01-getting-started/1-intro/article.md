@@ -4,7 +4,11 @@ Sprawdźmy, czym jest JavaScript, co możemy osiągnąć z jego pomocą i z jaki
 
 ## Czym jest JavaScript?
 
+<<<<<<< HEAD
 *JavaScript* pierwotnie został stworzony z myślą o *"ożywieniu stron internetowych"*.
+=======
+*JavaScript* was initially created to "make web pages alive".
+>>>>>>> 181cc781ab6c55fe8c43887a0c060db7f93fb0ca
 
 Programy napisane w tym języku nazywamy *skryptami*. Możemy je pisać bezpośrednio w kodzie HTML strony i uruchamiać podczas wczytywania strony.
 
@@ -24,9 +28,15 @@ Przeglądarka posiada wbudowany silnik, potocznie nazywany "wirtualną maszyną 
 
 Poszczególne silniki różnią się "nazwami kodowymi", na przykład:
 
+<<<<<<< HEAD
 - [V8](https://pl.wikipedia.org/wiki/V8_(silnik_JavaScript)) -- w Chromie i Operze.
 - [SpiderMonkey](https://pl.wikipedia.org/wiki/SpiderMonkey) -- w Firefoksie.
 - ... istnieją inne nazwy, jak "Trident" lub "Chakra" dla różnych wersji IE, "ChakraCore" dla Microsoft Edge, "Nitro" i "SquirrelFish" dla Safari itd.
+=======
+- [V8](https://en.wikipedia.org/wiki/V8_(JavaScript_engine)) -- in Chrome and Opera.
+- [SpiderMonkey](https://en.wikipedia.org/wiki/SpiderMonkey) -- in Firefox.
+- ...There are other codenames like "Chakra" for IE, "ChakraCore" for Microsoft Edge, "Nitro" and "SquirrelFish" for Safari, etc.
+>>>>>>> 181cc781ab6c55fe8c43887a0c060db7f93fb0ca
 
 Warto zapamiętać powyższe nazwy, ponieważ często przewijają się w artykułach programistycznych w Internecie. W tym także będą się pojawiać. Będziemy pisać, na przykład, że "funkcjonalność X jest wspierana przez silnik V8", co oznacza, że najprawdopodobniej zadziała w Chromie i Operze.
 
@@ -63,7 +73,11 @@ Możliwości przeglądarkowego JavaScriptu są ograniczone ze względu na bezpie
 
 Przykładami takich restrykcji są:
 
+<<<<<<< HEAD
 - JavaScript zawarty na stronie nie może odczytywać/zapisywać plików na dysku twardym, kopiować ich ani uruchamiać programów. Nie ma bezpośredniego dostępu do funkcji systemu operacyjnego.
+=======
+- JavaScript on a webpage may not read/write arbitrary files on the hard disk, copy them or execute programs. It has no direct access to OS functions.
+>>>>>>> 181cc781ab6c55fe8c43887a0c060db7f93fb0ca
 
     Współczesne przeglądarki pozwalają na przetwarzanie plików, jednak dostęp jest ograniczony do sytuacji, w których użytkownik wykona odpowiednie akcje, np. "przeciągnie" plik do okna przeglądarki lub wybierze go poprzez element `<input>`.
 
@@ -106,10 +120,18 @@ Współczesne narzędzia pozwalają na szybką i przejrzystą transpilację, umo
 
 Przykłady takich języków:
 
+<<<<<<< HEAD
 - [CoffeeScript](http://coffeescript.org/) jest "lukrem składniowym" (ang. *syntactic sugar*) dla JavaScriptu. Wprowadza krótszą składnie, pozwalając na pisanie precyzyjnego i bardziej przejrzystego kodu. Ma zwolenników wśród programistów języka Ruby.
 - [TypeScript](http://www.typescriptlang.org/) skupia się na dodaniu "rygorystycznego typowania danych" w celu ułatwienia dewelopmentu i lepszego wsparcia dla skomplikowanych systemów. Jest rozwijany przez Microsoft.
 - [Flow](http://flow.org/) również dodaje typy, ale w nieco inny sposób. Rozwijany przez Facebooka.
 - [Dart](https://www.dartlang.org/) jest odrębnym językiem, posiadającym własny silnik, który działa poza przeglądarką (np. w aplikacjach mobilnych), ale może być także transpilowany do JavaScriptu. Rozwijany przez Google.
+=======
+- [CoffeeScript](http://coffeescript.org/) is a "syntactic sugar" for JavaScript. It introduces shorter syntax, allowing us to write clearer and more precise code. Usually, Ruby devs like it.
+- [TypeScript](http://www.typescriptlang.org/) is concentrated on adding "strict data typing" to simplify the development and support of complex systems. It is developed by Microsoft.
+- [Flow](http://flow.org/) also adds data typing, but in a different way. Developed by Facebook.
+- [Dart](https://www.dartlang.org/) is a standalone language that has its own engine that runs in non-browser environments (like mobile apps), but also can be transpiled to JavaScript. Developed by Google.
+- [Brython](https://brython.info/) is a Python transpiler to JavaScript that allow to write application in pure Python without JavaScript.
+>>>>>>> 181cc781ab6c55fe8c43887a0c060db7f93fb0ca
 
 Jest ich więcej. Rzecz jasna, nawet jeśli używamy któregoś z języków transpilowanych, powinniśmy znać JavaScript, aby lepiej rozumieć, co się dzieje w kodzie.
 
