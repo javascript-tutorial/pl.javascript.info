@@ -2,16 +2,16 @@ importance: 5
 
 ---
 
-# Rewrite 'if' into '?'
+# Przepisz instrukcję `if` na operator warunkowy '?'
 
-Rewrite this `if` using the conditional operator `'?'`:
+Przepisz tę instrukcję `if` na operator warunkowy '?'
 
 ```js
 let result;
 
 if (a + b < 4) {
-  result = 'Below';
+  result = 'Poniżej';
 } else {
-  result = 'Over';
+  result = 'Ponad';
 }
 ```
