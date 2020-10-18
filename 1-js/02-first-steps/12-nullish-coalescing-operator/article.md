@@ -1,42 +1,42 @@
-# Nullish coalescing operator '??'
+# Operator łączenia wartości null '??'
 
 [recent browser="new"]
 
-Here, in this article, we'll say that an expression is "defined" when it's neither `null` nor `undefined`.
+W tym artykule zakładamy, że wyrażenie jest "zdefiniowane", jeżeli nie jest `null` albo `undefined`.
 
-The nullish coalescing operator is written as two question marks `??`.
+Operator łączenia wartości null zapisujemy jako dwa znaki zapytania `??`.
 
-The result of `a ?? b` is:
-- if `a` is defined, then `a`,
-- if `a` isn't defined, then `b`.
+Wynikiem `a ?? b` jest:
+- jeżeli `a` jest zdefiniowane, to wynikiem jest `a`,
+- jeżeli `a` nie jest zdefiniowane, to wynikiem jest `b`.
 
 
-In other words, `??` returns the first argument if it's not `null/undefined`. Otherwise, the second one.
+Innymi słowy, `??` zwraca pierwszy argument jeżeli jego wartość jest inna niż `null/undefined`. W przeciwnym razie, zwraca drugi argument.
 
-The nullish coalescing operator isn't anything completely new. It's just a nice syntax to get the first "defined" value of the two.
+Operator łączenia wartości null isn't anything completely new. It's just a nice syntax to get the first "defined" value of the two.
 
-We can rewrite `result = a ?? b` using the operators that we already know, like this:
+Możemy zapisać `result = a ?? b` używając operatorów, które już znamy:
 
 ```js
 result = (a !== null && a !== undefined) ? a : b;
 ```
 
-The common use case for `??` is to provide a default value for a potentially undefined variable.
+Typowym przykładem użycia `??` jest dostarczenie domyślnej wartości dla potencjalnie niezdefiniowanej zmiennej.
 
-For example, here we show `Anonymous` if `user` isn't defined:
+Dla przykładu, wyświetlamy `Anonimowy`, jeżeli zmienna `user` jest niezdefiniowana:
 
 ```js run
 let user;
 
-alert(user ?? "Anonymous"); // Anonymous
+alert(user ?? "Anonimowy"); // Anonimowy
 ```
 
-Of course, if `user` had any value except `null/undefined`, then we would see it instead:
+Oczywiście, jeżeli zmienna `user` ma inną wartość niż `null/undefined`, wtedy oczywiście powinniśmy zobaczyć jej wartość:
 
 ```js run
 let user = "John";
 
-alert(user ?? "Anonymous"); // John
+alert(user ?? "Anonimowy"); // John
 ```
 
 We can also use a sequence of `??` to select the first value from a list that isn't `null/undefined`.
@@ -77,7 +77,7 @@ alert(firstName || lastName || nickName || "Anonymous"); // Supercoder
 
 The OR `||` operator exists since the beginning of JavaScript, so developers were using it for such purposes for a long time.
 
-On the other hand, the nullish coalescing operator `??` was added to JavaScript only recently, and the reason for that was that people weren't quite happy with `||`.
+On the other hand, Operator łączenia wartości null `??` was added to JavaScript only recently, and the reason for that was that people weren't quite happy with `||`.
 
 The important difference between them is that:
 - `||` returns the first *truthy* value.
@@ -153,7 +153,7 @@ alert(x); // 2
 
 ## Summary
 
-- The nullish coalescing operator `??` provides a short way to choose the first "defined" value from a list.
+- Operator łączenia wartości null `??` provides a short way to choose the first "defined" value from a list.
 
     It's used to assign default values to variables:
 
