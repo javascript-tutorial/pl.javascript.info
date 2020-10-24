@@ -7,8 +7,8 @@ W tym artykule zakładamy, że wyrażenie jest "zdefiniowane", jeżeli nie jest 
 Operator łączenia wartości null zapisujemy jako dwa znaki zapytania `??`.
 
 Wynikiem `a ?? b` jest:
-- jeżeli `a` jest zdefiniowane, to wynikiem jest `a`,
-- jeżeli `a` nie jest zdefiniowane, to wynikiem jest `b`.
+- `a` jeżeli jest zdefiniowane,
+- `b` jeżeli `a` nie jest zdefiniowane.
 
 
 Innymi słowy, `??` zwraca pierwszy argument jeżeli jego wartość jest inna niż `null/undefined`. W przeciwnym razie, zwraca drugi argument.
@@ -43,7 +43,7 @@ Możemy również użyć sekwencji `??`, żeby wybrać pierwszą wartość  z li
 
 Powiedzmy, że mamy dane użytkownika w zmiennej `firstName`, `lastName` oraz `nickName`. Wszystkie mogą być niezdefiniowane, jeżeli użytkownik zdecyduje się ich nie wprowadzać.
 
-Chcielibyśmy wyświetlić nazwę użytkownika użyuwając jednej z tych zmiennych, albo wyświetlić "Anonim", jeżeli wszystkie są niezdefiniowane.
+Chcielibyśmy wyświetlić nazwę użytkownika używając jednej z tych zmiennych, albo wyświetlić "Anonim", jeżeli wszystkie są niezdefiniowane.
 
 Użyjmy do tego operatora `??`:
 
@@ -81,7 +81,7 @@ Z drugiej strony, Operator łączenia wartości null `??` został dodany do Java
 
 Ważną różnicą pomiędzy nimi jest:
 - `||` zwraca pierwszą *truthy* wartość.
-- `??` zwraca pierwszą *defined* wartość.
+- `??` zwraca pierwszą *zdefiniowaną* wartość.
 
 Innymi słowy, `||` nie rozróżnia pomiędzy `false`, `0`, pustym stringiem `""` i `null/undefined`. Wszystkie one są takie same -- falsy wartości. Jeżeli którakolwiek z tych wartości jest pierwszym argumentem w `||`, wtedy otrzymamy drugi argument jako wynik.
 
@@ -103,7 +103,7 @@ alert(height ?? 100); // 0
 
 Jeżeli zerowa wysokość jest poprawną wartością, która nie powinna być zastąpiona wartością domyślną, wtedy `??` sprawdzi się doskonale.
 
-## Precedence / 
+## Priorytet / 
 
 Priorytet operatora `??` jest raczej niski: `5` [tabela MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence#Table). Więc `??` jest przetwarzane przed `=` i `?`, ale po większości innych operatorów, jak `+`, `*`.
 
@@ -141,7 +141,7 @@ let x = 1 && 2 ?? 3; // Błąd składni
 
 Obostrzenia są oczywiście dyskusyjne, ale zostały dodane do specyfikacji języka celem uniknięcia błędów programowania, kiedy ludzie zaczną zmieniać z `??` na `||`.
 
-Używaj dokładnych nawiasów żeby uniknąć problemu:
+Używaj nawiasów żeby uniknąć problemu:
 
 ```js run
 *!*
@@ -158,7 +158,7 @@ alert(x); // 2
     Jest używany do przypisania domyślnej wartości do zmiennej:
 
     ```js
-    // ustaw height=100, jeżeli height  jest null lub undefined
+    // ustaw height=100, jeżeli height jest null lub undefined
     height = height ?? 100;
     ```
 
