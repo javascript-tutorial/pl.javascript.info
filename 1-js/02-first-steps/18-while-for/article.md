@@ -1,54 +1,54 @@
-# Loops: while and for
+# Pętle: while i for
 
-We often need to repeat actions.
+Często musimy powtarzać działania.
 
-For example, outputting goods from a list one after another or just running the same code for each number from 1 to 10.
+Na przykład, wysyłanie towarów z listy jeden po drugim lub po prostu uruchamianie tego samego kodu dla każdej liczby od 1 do 10.
 
-*Loops* are a way to repeat the same code multiple times.
+*Pętle* są sposobem na wielokrotne powtarzanie tego samego kodu.
 
-## The "while" loop
+## Pętla "while"
 
-The `while` loop has the following syntax:
+Pętla `while` ma następującą składnię::
 
 ```js
-while (condition) {
-  // code
-  // so-called "loop body"
+while (warunek) {
+  // kod
+  // tak zwane "ciało pętli"
 }
 ```
 
-While the `condition` is truthy, the `code` from the loop body is executed.
+Podczas gdy `warunek` jest prawdą, `kod` z ciała pętli jest wykonywany.
 
-For instance, the loop below outputs `i` while `i < 3`:
+Na przykład pętla poniżej wysyła `i` dopóki `i < 3`:
 
 ```js run
 let i = 0;
-while (i < 3) { // shows 0, then 1, then 2
+while (i < 3) { // pokazuje 0, potem 1, potem 2
   alert( i );
   i++;
 }
 ```
 
-A single execution of the loop body is called *an iteration*. The loop in the example above makes three iterations.
+Pojedyńcze wykonanie ciała pętli jest nazywane *iteracją*. Pętla w powyższym przykładzie wykonuje trzy iteracje.
 
-If `i++` was missing from the example above, the loop would repeat (in theory) forever. In practice, the browser provides ways to stop such loops, and in server-side JavaScript, we can kill the process.
+Gdyby w powyższym przykładzie brakowało `i++`, pętla powtarzałaby się (w teorii) wiecznie. W praktyce, przeglądarka dostarcza sposobów na zatrzymanie takich pętli, a w JavaScript po stronie serwera, możemy zabić proces.
 
-Any expression or variable can be a loop condition, not just comparisons: the condition is evaluated and converted to a boolean by `while`.
+Każde wyrażenie lub zmienna może być warunkiem pętli, nie tylko porównanie: warunek jest oceniany i zamieniany na boolean przez `while`.
 
-For instance, a shorter way to write `while (i != 0)` is `while (i)`:
+Na przykład, krótszym sposobem na napisanie `while (i != 0)` jest `while (i)`:
 
 ```js run
 let i = 3;
 *!*
-while (i) { // when i becomes 0, the condition becomes falsy, and the loop stops
+while (i) { // kiedy i staje się 0, warunek staje się fałszywy i pętla się zatrzymuje
 */!*
   alert( i );
   i--;
 }
 ```
 
-````smart header="Curly braces are not required for a single-line body"
-If the loop body has a single statement, we can omit the curly braces `{…}`:
+````smart header="Nawiasy klamrowe nie są wymagane dla jedno-linijkowego ciała"
+Jeśli ciało pętli ma jedno wyrażenie, możemy pominąć nawiasy klamrowe `{…}`:
 
 ```js run
 let i = 3;
@@ -58,19 +58,19 @@ while (i) alert(i--);
 ```
 ````
 
-## The "do..while" loop
+## Pętla "do..while"
 
-The condition check can be moved *below* the loop body using the `do..while` syntax:
+Kontrola warunku może być przesunięta *poniżej* ciała pętli za pomocą składni `do...while`:
 
 ```js
 do {
-  // loop body
-} while (condition);
+  // ciało pętli
+} while (warunek);
 ```
 
-The loop will first execute the body, then check the condition, and, while it's truthy, execute it again and again.
+Pętla najpierw wykona ciało, potem sprawdzi warunek i jeśli jest prawdziwy wykona je ponownie i ponownie.
 
-For example:
+Na przykład:
 
 ```js run
 let i = 0;
@@ -80,36 +80,36 @@ do {
 } while (i < 3);
 ```
 
-This form of syntax should only be used when you want the body of the loop to execute **at least once** regardless of the condition being truthy. Usually, the other form is preferred: `while(…) {…}`.
+Ta forma składni powinna być stosowana tylko wtedy, gdy chcemy, aby ciało pętli wykonało się **przynajmniej raz** niezależnie od tego, czy warunek jest prawdziwy. Zazwyczaj preferowana jest druga forma: `while(...) {...}`.
 
-## The "for" loop
+## Pętla "for"
 
-The `for` loop is more complex, but it's also the most commonly used loop.
+Pętla `for` jest bardziej złożona, ale jest to również najczęściej używana pętla.
 
-It looks like this:
+Wygląda tak:
 
 ```js
-for (begin; condition; step) {
-  // ... loop body ...
+for (początek; warunek; krok) {
+  // ... ciało pętli ...
 }
 ```
 
-Let's learn the meaning of these parts by example. The loop below runs `alert(i)` for `i` from `0` up to (but not including) `3`:
+Poznajmy znaczenie tych części na przykładzie. Poniższa pętla uruchomi `alert(i)` dla `i` od `0` do (ale nie włączając) `3`:
 
 ```js run
-for (let i = 0; i < 3; i++) { // shows 0, then 1, then 2
+for (let i = 0; i < 3; i++) { // pokazuje 0, potem 1, potem 2
   alert(i);
 }
 ```
 
-Let's examine the `for` statement part-by-part:
+Zbadajmy wyrażenie `for` kawałek po kawałku:
 
-| part  |          |                                                                            |
+| część |          |                                                                            |
 |-------|----------|----------------------------------------------------------------------------|
-| begin | `i = 0`    | Executes once upon entering the loop.                                      |
-| condition | `i < 3`| Checked before every loop iteration. If false, the loop stops.              |
-| body | `alert(i)`| Runs again and again while the condition is truthy.                         |
-| step| `i++`      | Executes after the body on each iteration. |
+| początek | `i = 0` | Executes once upon entering the loop.                                      |
+| warunek | `i < 3`| Checked before every loop iteration. If false, the loop stops.              |
+| ciało | `alert(i)`| Runs again and again while the condition is truthy.                         |
+| krok| `i++`      | Executes after the body on each iteration. |
 
 The general loop algorithm works like this:
 
