@@ -139,28 +139,28 @@ Kod poniżej wywołuje błąd składni:
 let x = 1 && 2 ?? 3; // Błąd składni
 ```
 
-The limitation is surely debatable, but it was added to the language specification with the purpose to avoid programming mistakes, when people start to switch to `??` from `||`.
+Obostrzenia są oczywiście dyskusyjne, ale zostały dodane do specyfikacji języka celem uniknięcia błędów programowania, kiedy ludzie zaczną zmieniać z `??` na `||`.
 
-Use explicit parentheses to work around it:
+Używaj dokładnych nawiasów żeby uniknąć problemu:
 
 ```js run
 *!*
-let x = (1 && 2) ?? 3; // Works
+let x = (1 && 2) ?? 3; // Działa
 */!*
 
 alert(x); // 2
 ```
 
-## Summary
+## Podsumowanie
 
-- Operator łączenia wartości null `??` provides a short way to choose the first "defined" value from a list.
+- Operator łączenia wartości null `??` dostarcza szybszego sposobu na wybranie pierwszej zdefiniowanej wartości z listy.
 
-    It's used to assign default values to variables:
+    Jest używany do przypisania domyślnej wartości do zmiennej:
 
     ```js
-    // set height=100, if height is null or undefined
+    // ustaw height=100, jeżeli height  jest null lub undefined
     height = height ?? 100;
     ```
 
-- The operator `??` has a very low precedence, only a bit higher than `?` and `=`, so consider adding parentheses when using it in an expression.
-- It's forbidden to use it with `||` or `&&` without explicit parentheses.
+- Operator `??` ma bardzo niski priorytet, tylko trochę wyższy niż `?` i `=`, zatem rozważ dodanie nawiasów w wyrażeniu.
+- Zabronione jest użycie z `||` lub `&&` bez użycia nawiasów.
