@@ -106,83 +106,83 @@ Zbadajmy wyrażenie `for` kawałek po kawałku:
 
 | część |          |                                                                            |
 |-------|----------|----------------------------------------------------------------------------|
-| początek | `i = 0` | Executes once upon entering the loop.                                      |
-| warunek | `i < 3`| Checked before every loop iteration. If false, the loop stops.              |
-| ciało | `alert(i)`| Runs again and again while the condition is truthy.                         |
-| krok| `i++`      | Executes after the body on each iteration. |
+| początek | `i = 0` | Wykonuje się raz po wejściu do pętli.                                      |
+| warunek | `i < 3`| Sprawdzane przed każdą iteracją pętli. Jeśli fałsz, pętla się zatrzymuje.              |
+| ciało | `alert(i)`| Uruchamiane w kółko, gdy warunek jest prawdziwy.                         |
+| krok | `i++`      | Wykonuje się po ciele na każdej iteracji. |
 
-The general loop algorithm works like this:
+Ogólny algorytm pętli działa w ten sposób:
 
 ```
-Run begin
-→ (if condition → run body and run step)
-→ (if condition → run body and run step)
-→ (if condition → run body and run step)
+Początek uruchomienia
+→ (jeśli warunek → uruchamia ciało i krok)
+→ (jeśli warunek → uruchamia ciało i krok)
+→ (jeśli warunek → uruchamia ciało i krok)
 → ...
 ```
 
-That is, `begin` executes once, and then it iterates: after each `condition` test, `body` and `step` are executed.
+To znaczy, `zacznij` wykonywać raz, a następnie iteruje: po każdym sprawdzeniu `warunku`, `ciało` i `krok` są wykonywane.
 
-If you are new to loops, it could help to go back to the example and reproduce how it runs step-by-step on a piece of paper.
+Jeśli jesteś nowym użytkownikiem pętli, możesz wrócić do tego przykładu i odtworzyć, jak przebiega on krok po kroku na kartce papieru.
 
-Here's exactly what happens in our case:
+Oto co dokładnie dzieje się w naszym przypadku:
 
 ```js
 // for (let i = 0; i < 3; i++) alert(i)
 
-// run begin
+// uruchomienie się rozpoczyna
 let i = 0
-// if condition → run body and run step
+// jeśli warunek spełniony → uruchom ciało i krok
 if (i < 3) { alert(i); i++ }
-// if condition → run body and run step
+// jeśli warunek spełniony → uruchom ciało i krok
 if (i < 3) { alert(i); i++ }
-// if condition → run body and run step
+// jeśli warunek spełniony → uruchom ciało i krok
 if (i < 3) { alert(i); i++ }
-// ...finish, because now i == 3
+// ...kończy, ponieważ teraz i == 3
 ```
 
-````smart header="Inline variable declaration"
-Here, the "counter" variable `i` is declared right in the loop. This is called an "inline" variable declaration. Such variables are visible only inside the loop.
+````smart header="Deklaracja zmiennej w linii"
+Tutaj, zmienna "licznik" `i` jest deklarowana w pętli. Nazywa się to deklaracją zmiennej "w linii" (inline). Takie zmienne są widoczne tylko wewnątrz pętli.
 
 ```js run
 for (*!*let*/!* i = 0; i < 3; i++) {
   alert(i); // 0, 1, 2
 }
-alert(i); // error, no such variable
+alert(i); // błąd, nie ma takiej zmiennej
 ```
 
-Instead of defining a variable, we could use an existing one:
+Zamiast definiować zmienną, moglibyśmy użyć istniejącej:
 
 ```js run
 let i = 0;
 
-for (i = 0; i < 3; i++) { // use an existing variable
+for (i = 0; i < 3; i++) { // użyj istniejącej zmiennej
   alert(i); // 0, 1, 2
 }
 
-alert(i); // 3, visible, because declared outside of the loop
+alert(i); // 3, widoczne, ponieważ zadeklarowane poza pętlą
 ```
 
 ````
 
 
-### Skipping parts
+### Pomijanie części
 
-Any part of `for` can be skipped.
+Każda część `for` może być pominięta.
 
-For example, we can omit `begin` if we don't need to do anything at the loop start.
+Na przykład, możemy pominąć `początek`, jeśli nie musimy nic robić na początku pętli.
 
-Like here:
+Jak tutaj:
 
 ```js run
-let i = 0; // we have i already declared and assigned
+let i = 0; // mamy i już zadeklarowane i przypisane
 
-for (; i < 3; i++) { // no need for "begin"
+for (; i < 3; i++) { // nie ma potrzeby "początku"
   alert( i ); // 0, 1, 2
 }
 ```
 
-We can also remove the `step` part:
+Możemy także usunąć część `krok`:
 
 ```js run
 let i = 0;
@@ -192,32 +192,34 @@ for (; i < 3;) {
 }
 ```
 
-This makes the loop identical to `while (i < 3)`.
+To czyni pętlę identyczną jak `while (i < 3)`.
 
-We can actually remove everything, creating an infinite loop:
+Możemy właściwie usunąć wszystko, tworząc nieskończoną pętlę:
 
 ```js
 for (;;) {
-  // repeats without limits
+  // powtarza się bez ograniczeń
 }
 ```
 
 Please note that the two `for` semicolons `;` must be present. Otherwise, there would be a syntax error.
+Proszę zwrócić uwagę, że te dwa średniki `;` pętli `for` muszą być obecne. W przeciwnym razie wystąpiłby błąd składniowy.
 
-## Breaking the loop
+## Przerywanie pętli
 
-Normally, a loop exits when its condition becomes falsy.
+Normalnie, pętla wychodzi, gdy jej warunek staje się fałszywy.
 
-But we can force the exit at any time using the special `break` directive.
+Ale w każdej chwili możemy wymusić wyjście za pomocą specjalnej dyrektywy `break`.
 
 For example, the loop below asks the user for a series of numbers, "breaking" when no number is entered:
+Na przykład, poniższa pętla pyta użytkownika o serię numerów, "przerywa" (break), gdy nie jest wprowadzona żadna liczba:
 
 ```js run
 let sum = 0;
 
 while (true) {
 
-  let value = +prompt("Enter a number", '');
+  let value = +prompt("Wprowadź liczbę", '');
 
 *!*
   if (!value) break; // (*)
@@ -226,35 +228,35 @@ while (true) {
   sum += value;
 
 }
-alert( 'Sum: ' + sum );
+alert( 'Suma: ' + sum );
 ```
 
-The `break` directive is activated at the line `(*)` if the user enters an empty line or cancels the input. It stops the loop immediately, passing control to the first line after the loop. Namely, `alert`.
+Dyrektywa `break` jest aktywowana w wierszu `(*)`, jeśli użytkownik wprowadzi pusty wiersz lub anuluje wejście. Zatrzymuje ona natychmiast pętlę, przekazując sterowanie do pierwszego wiersza po pętli. Mianowicie, `alert`.
 
-The combination "infinite loop + `break` as needed" is great for situations when a loop's condition must be checked not in the beginning or end of the loop, but in the middle or even in several places of its body.
+Kombinacja "nieskończona pętla + `break`(przerwanie) w razie potrzeby" jest świetna w sytuacjach, gdy stan pętli musi być sprawdzony nie na początku lub na końcu pętli, ale w środku lub nawet w kilku miejscach jej ciała.
 
-## Continue to the next iteration [#continue]
+## Kontynuuj do następnej iteracji [#continue]
 
-The `continue` directive is a "lighter version" of `break`. It doesn't stop the whole loop. Instead, it stops the current iteration and forces the loop to start a new one (if the condition allows).
+Dyrektywa `continue`(kontynuuj) jest "lżejszą wersją" `break`(przerwania). Nie zatrzymuje ona całej pętli. Zamiast tego, zatrzymuje bieżącą iterację i zmusza pętlę do rozpoczęcia nowej (jeśli warunek na to pozwala).
 
-We can use it if we're done with the current iteration and would like to move on to the next one.
+Możemy go użyć, jeśli skończyliśmy z obecną iteracją i chcielibyśmy przejść do następnej.
 
-The loop below uses `continue` to output only odd values:
+Poniższa pętla używa `continue` do wyprowadzania tylko nieparzystych wartości:
 
 ```js run no-beautify
 for (let i = 0; i < 10; i++) {
 
-  // if true, skip the remaining part of the body
+  // jeśli prawda, pomiń pozostałą część ciała
   *!*if (i % 2 == 0) continue;*/!*
 
-  alert(i); // 1, then 3, 5, 7, 9
+  alert(i); // 1, potem 3, 5, 7, 9
 }
 ```
 
-For even values of `i`, the `continue` directive stops executing the body and passes control to the next iteration of `for` (with the next number). So the `alert` is only called for odd values.
+Dla wartości parzystych `i`, dyrektywa `continue` przestaje wykonywać ciało i przekazuje kontrolę do następnej iteracji `for` (z kolejnym numerem). Tak więc `alert` jest wywoływany tylko dla wartości nieparzystych.
 
-````smart header="The `continue` directive helps decrease nesting"
-A loop that shows odd values could look like this:
+````smart header="Dyrektywa `continue` pomaga zmniejszyć zagnieżdżanie"
+Pętla, która pokazuje nieparzyste wartości, może wyglądać tak:
 
 ```js
 for (let i = 0; i < 10; i++) {
@@ -266,15 +268,15 @@ for (let i = 0; i < 10; i++) {
 }
 ```
 
-From a technical point of view, this is identical to the example above. Surely, we can just wrap the code in an `if` block instead of using `continue`.
+Z technicznego punktu widzenia, jest to identyczne z powyższym przykładem. Z pewnością możemy po prostu zawinąć kod w bloku `if` zamiast używać `continue`.
 
-But as a side-effect, this created one more level of nesting (the `alert` call inside the curly braces). If the code inside of`if` is longer than a few lines, that may decrease the overall readability.
+Ale jako efekt uboczny, stworzyło to jeszcze jeden poziom zagnieżdżenia (`alert` wywołany wewnątrz nawiasów klamrowych). Jeśli kod wewnątrz `if` jest dłuższy niż kilka linii, może to zmniejszyć ogólną czytelność.
 ````
 
-````warn header="No `break/continue` to the right side of '?'"
-Please note that syntax constructs that are not expressions cannot be used with the ternary operator `?`. In particular, directives such as `break/continue` aren't allowed there.
+````warn header="Nie `break/continue` po prawej stronie '?'"
+Proszę zauważyć, że konstrukcje składniowe, które nie są wyrażeniami, nie mogą być używane z operatorem trójdzielnym `?`. W szczególności, dyrektywy takie jak `break/continue` nie są tam dozwolone.
 
-For example, if we take this code:
+Na przykład, jeśli weźmiemy ten kod:
 
 ```js
 if (i > 5) {
@@ -284,16 +286,15 @@ if (i > 5) {
 }
 ```
 
-...and rewrite it using a question mark:
-
+...i przepiszemy go używając znaku zapytania:
 
 ```js no-beautify
-(i > 5) ? alert(i) : *!*continue*/!*; // continue isn't allowed here
+(i > 5) ? alert(i) : *!*continue*/!*; // continue nie jest tu dozwolone
 ```
 
-...it stops working: there's a syntax error.
+...przestaje działać: jest błąd składniowy.
 
-This is just another reason not to use the question mark operator `?` instead of `if`.
+Jest to kolejny powód, aby nie używać operatora znaku zapytania `?` zamiast `if`.
 ````
 
 ## Labels for break/continue
