@@ -297,91 +297,90 @@ if (i > 5) {
 Jest to kolejny powód, aby nie używać operatora znaku zapytania `?` zamiast `if`.
 ````
 
-## Labels for break/continue
+## Etykiety dla break/continue (labels)
 
-Sometimes we need to break out from multiple nested loops at once.
+Czasami musimy się wyrwać z wielu zagnieżdżonych pętli naraz.
 
-For example, in the code below we loop over `i` and `j`, prompting for the coordinates `(i, j)` from `(0,0)` to `(2,2)`:
+Dla przykładu, w poniższym kodzie iterujemy po `i` i `j`, pytając o współrzędne `(i, j)` od `(0,0)` do `(2,2)`:
 
 ```js run no-beautify
 for (let i = 0; i < 3; i++) {
 
   for (let j = 0; j < 3; j++) {
 
-    let input = prompt(`Value at coords (${i},${j})`, '');
+    let input = prompt(`Wartości współrzędnych (${i},${j})`, '');
 
-    // what if we want to exit from here to Done (below)?
+    // co jeśli chcemy wyjść stąd do Zrobione (poniżej)?
   }
 }
 
-alert('Done!');
+alert('Zrobione!');
 ```
 
-We need a way to stop the process if the user cancels the input.
+Potrzebujemy sposobu na zatrzymanie procesu, jeśli użytkownik anuluje wprowadzanie.
 
-The ordinary `break` after `input` would only break the inner loop. That's not sufficient--labels, come to the rescue!
+Zwykłe `break` po `input` przerwałby tylko wewnętrzną pętlę. To nie wystarczy... etykiety, przyjdźcie na ratunek!
 
-A *label* is an identifier with a colon before a loop:
+*Etykieta* to identyfikator z dwukropkiem przed pętlą:
 ```js
-labelName: for (...) {
+nazwaEtykiety: for (...) {
   ...
 }
 ```
 
-The `break <labelName>` statement in the loop below breaks out to the label:
+Stwierdzenie `break <nazwaEtykiety>` w pętli poniżej wychodzi do etykiety:
 
 ```js run no-beautify
 *!*outer:*/!* for (let i = 0; i < 3; i++) {
 
   for (let j = 0; j < 3; j++) {
 
-    let input = prompt(`Value at coords (${i},${j})`, '');
+    let input = prompt(`Wartość współrzędnych (${i},${j})`, '');
 
-    // if an empty string or canceled, then break out of both loops
+    // jeśli pusty string lub anulowano, wówczas wyjdź z obu pętli
     if (!input) *!*break outer*/!*; // (*)
 
-    // do something with the value...
+    // zrób coś z wartością...
   }
 }
-alert('Done!');
+alert('Zrobione!');
 ```
 
-In the code above, `break outer` looks upwards for the label named `outer` and breaks out of that loop.
+W powyższym kodzie, `break outer` patrzy do góry na etykietę o nazwie `outer` i wychodzi z tej pętli.
+Więc sterowanie idzie prosto z `(*)` do `alert('Zrobione!')`.
 
-So the control goes straight from `(*)` to `alert('Done!')`.
-
-We can also move the label onto a separate line:
+Możemy również przenieść etykietę na osobną linię:
 
 ```js no-beautify
 outer:
 for (let i = 0; i < 3; i++) { ... }
 ```
 
-The `continue` directive can also be used with a label. In this case, code execution jumps to the next iteration of the labeled loop.
+Dyrektywa `continue` może być również stosowana z etykietą. W tym przypadku wykonanie kodu przeskakuje do następnej iteracji etykietowanej pętli.
 
-````warn header="Labels do not allow to \"jump\" anywhere"
-Labels do not allow us to jump into an arbitrary place in the code.
+````warn header="Etykiety nie pozwalają \"skakać\" gdziekolwiek"
+Etykiety nie pozwalają nam wskoczyć w dowolne miejsce w kodzie.
 
-For example, it is impossible to do this:
+Na przykład, nie da się tego zrobić:
 ```js
-break label; // doesn't jumps to the label below
+break label; // nie przeskakuje do etykiety poniżej
 
 label: for (...)
 ```
 
-A call to `break/continue` is only possible from inside a loop and the label must be somewhere above the directive.
+Wezwanie do `break/continue` jest możliwe tylko z wnętrza pętli i etykieta musi być gdzieś nad dyrektywą.
 ````
 
-## Summary
+## Podsumowanie
 
-We covered 3 types of loops:
+Poznaliśmy 3 rodzaje pętli:
 
-- `while` -- The condition is checked before each iteration.
-- `do..while` -- The condition is checked after each iteration.
-- `for (;;)` -- The condition is checked before each iteration, additional settings available.
+- `while` -- Warunek jest sprawdzany przed każdą iteracją.
+- `do..while` -- Warunek jest sprawdzany po każdej iteracji.
+- `for (;;)` -- Warunek jest sprawdzany przed każdą iteracją, dostępne są dodatkowe ustawienia.
 
-To make an "infinite" loop, usually the `while(true)` construct is used. Such a loop, just like any other, can be stopped with the `break` directive.
+Aby zrobić "nieskończoną" pętlę, zwykle używa się konstrukcji`while(true)`. Taką pętlę, tak jak każdą inną, można zatrzymać za pomocą dyrektywy `break`.
 
-If we don't want to do anything in the current iteration and would like to forward to the next one, we can use the `continue` directive.
+Jeśli nie chcemy nic robić w obecnej iteracji i chcielibyśmy przejść do następnej, możemy skorzystać z dyrektywy `continue`.
 
-`break/continue` support labels before the loop. A label is the only way for `break/continue` to escape a nested loop to go to an outer one.
+`break/continue` wspierają etykiety przed pętlą. Etykieta jest jedynym sposobem dla `break/continue`, aby uciec z zagnieżdżonej pętli i przejść do zewnętrznej.
