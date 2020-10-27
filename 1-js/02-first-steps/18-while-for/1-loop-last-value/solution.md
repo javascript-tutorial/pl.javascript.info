@@ -1,4 +1,4 @@
-The answer: `1`.
+Odpowiedź: `1`.
 
 ```js run
 let i = 3;
@@ -8,18 +8,18 @@ while (i) {
 }
 ```
 
-Every loop iteration decreases `i` by `1`. The check `while(i)` stops the loop when `i = 0`.
+Każda obrót pętli zmniejsza `i` o `1`. Sprawdzenie `while(i)` zatrzymuje pętle kiedy `i = 0`.
 
-Hence, the steps of the loop form the following sequence ("loop unrolled"):
+Stąd kroki pętli tworzą następującą sekwencję ("pętla rozwijana"):
 
 ```js
 let i = 3;
 
-alert(i--); // shows 3, decreases i to 2
+alert(i--); // pokazuje 3, zmniejsza i do 2
 
-alert(i--) // shows 2, decreases i to 1
+alert(i--) // pokazuje 2, zmniejsza i do 1
 
-alert(i--) // shows 1, decreases i to 0
+alert(i--) // pokazuje 1, zmniejsza i do 0
 
-// done, while(i) check stops the loop
+// koniec, sprawdzenie while(i) zatrzymuje pętlę
 ```
