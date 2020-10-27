@@ -1,17 +1,17 @@
-importance: 3
+ważność: 3
 
 ---
 
-# Output prime numbers
+# Zwróć liczby pierwsze
 
-An integer number greater than `1` is called a [prime](https://en.wikipedia.org/wiki/Prime_number) if it cannot be divided without a remainder by anything except `1` and itself.
+Liczba całkowita większa od `1` nazywana jest [liczbą pierwszą](https://pl.wikipedia.org/wiki/Liczba_pierwsza), jeśli nie może być podzielona bez reszty przez nic poza `1` i samą siebie.
 
-In other words, `n > 1` is a prime if it can't be evenly divided by anything except `1` and `n`.
+Innymi słowy, `n > 1` jest liczbą pierwszą, jeśli nie można jej równo podzielić przez nic poza `1` i `n`.
 
-For example, `5` is a prime, because it cannot be divided without a remainder by `2`, `3` and `4`.
+Na przykład, `5` jest liczbą pierwszą, ponieważ nie można jej podzielić bez reszty przez `2`, `3` i `4`.
 
-**Write the code which outputs prime numbers in the interval from `2` to `n`.**
+**Napisz kod, który wyprowadza liczby pierwsze w przedziale od `2` do `n`.**
 
-For `n = 10` the result will be `2,3,5,7`.
+Dla `n = 10` wynik będzie `2,3,5,7`.
 
-P.S. The code should work for any `n`, not be hard-tuned for any fixed value.
+P.S. Kod powinien działać dla każdego `n`, nie powinien być dostosowany na stałe do żadnej wartości.

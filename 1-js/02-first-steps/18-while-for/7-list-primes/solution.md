@@ -1,29 +1,29 @@
-There are many algorithms for this task.
+Istnieje wiele algorytmów dla tego zadania.
 
-Let's use a nested loop:
+Użyjmy pętli zagnieżdżonej:
 
 ```js
-For each i in the interval {
-  check if i has a divisor from 1..i
-  if yes => the value is not a prime
-  if no => the value is a prime, show it
+Dla każdego i w przedziale {
+  sprawdź jeśli i ma dzielnik od 1..i
+  jeśli tak => wartość nie jest liczbą pierwszą
+  jeśli nie => wartość jest liczbą pierwszą, pokaż ją
 }
 ```
 
-The code using a label:
+Kod używając etykiety:
 
 ```js run
 let n = 10;
 
 nextPrime:
-for (let i = 2; i <= n; i++) { // for each i...
+for (let i = 2; i <= n; i++) { // dla każdego i...
 
-  for (let j = 2; j < i; j++) { // look for a divisor..
-    if (i % j == 0) continue nextPrime; // not a prime, go next i
+  for (let j = 2; j < i; j++) { // szukaj dziewlnika..
+    if (i % j == 0) continue nextPrime; // nie liczba pierwsza idź do następnego i
   }
 
-  alert( i ); // a prime
+  alert( i ); // liczba pierwsza
 }
 ```
 
-There's a lot of space to optimize it. For instance, we could look for the divisors from `2` to square root of `i`. But anyway, if we want to be really efficient for large intervals, we need to change the approach and rely on advanced maths and complex algorithms like [Quadratic sieve](https://en.wikipedia.org/wiki/Quadratic_sieve), [General number field sieve](https://en.wikipedia.org/wiki/General_number_field_sieve) etc.
+Jest dużo miejsca na optymalizację. Na przykład, możemy szukać dzielników od `2` do pierwiastka kwadratowego `i`. Ale tak czy inaczej, jeśli chcemy być naprawdę wydajni w dużych odstępach czasu, musimy zmienić podejście i polegać na zaawansowanych matematykach i złożonych algorytmach, takich jak [Sito kwadratowe](https://pl.wikipedia.org/wiki/Sito_kwadratowe), [Ogólne sito ciała liczbowego](https://pl.wikipedia.org/wiki/GNFS) itd.
