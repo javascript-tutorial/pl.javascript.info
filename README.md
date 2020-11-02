@@ -1,6 +1,10 @@
 # The Modern JavaScript Tutorial in Polish
 
+<<<<<<< HEAD
 This repository hosts the translation of <https://javascript.info> in Polish.
+=======
+This repository hosts the English content of the Modern JavaScript Tutorial, published in [https://javascript.info](https://javascript.info).
+>>>>>>> dccca58f268ad6d5a6f2160613a8ea3c5cd53a2d
 
 
 **That's how you can contribute:**
@@ -85,7 +89,13 @@ const text = 'Hola mundo';
 document.querySelector('.hola').innerHTML = text;
 ```
 
+<<<<<<< HEAD
 ### External Links
+=======
+  - `index.md` stands for a chapter
+  - `article.md` stands for an article
+  - `task.md` stands for a task (solution must be provided in `solution.md` file as well)
+>>>>>>> dccca58f268ad6d5a6f2160613a8ea3c5cd53a2d
 
 If an external link is to Wikipedia, e.g. `https://en.wikipedia.org/wiki/JavaScript`, and a version of that article exists in your language that is of decent quality, link to that version instead.
 
