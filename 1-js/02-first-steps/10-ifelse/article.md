@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # Operatory warunkowe: if, '?'
+=======
+# Conditional branching: if, '?'
+>>>>>>> 99e59ba611ab11319ef9d0d66734b0bea2c3f058
 
 Czasami potrzebujemy wykonać różne akcje w zależności od warunków.
 
