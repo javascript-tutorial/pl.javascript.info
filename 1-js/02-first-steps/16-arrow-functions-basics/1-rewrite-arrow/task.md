@@ -1,7 +1,7 @@
 
-# Rewrite with arrow functions
+# Przepisz kod użwając funckji strzałkowych
 
-Replace Function Expressions with arrow functions in the code below:
+Zastąp wyrażenia funkcyjne funkcjami strzałkowymi w poniższym kodzie:
 
 ```js run
 function ask(question, yes, no) {
