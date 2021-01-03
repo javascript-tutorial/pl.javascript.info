@@ -1,40 +1,40 @@
-# Functions
+# Funkcje
 
-Quite often we need to perform a similar action in many places of the script.
+Dość często musimy wykonać podobną akcję w wielu miejscach kodu.
 
-For example, we need to show a nice-looking message when a visitor logs in, logs out and maybe somewhere else.
+Na przykład, chcemy pokazać ładnie wyglądającą wiadomość, kiedy gość loguje się, wylogowuje się, a może jeszcze gdzieś indziej.
 
-Functions are the main "building blocks" of the program. They allow the code to be called many times without repetition.
+Funkcje są głównymi "cegiełkami" programu. Pozwalają na wielokrotne wywoływanie kodu bez konieczności duplikowania go.
 
-We've already seen examples of built-in functions, like `alert(message)`, `prompt(message, default)` and `confirm(question)`. But we can create functions of our own as well.
+Widzieliśmy już przykłady wbudowanych funkcji, takich jak `alert(message)`, `prompt(message, default)` i `confirm(question)`. Ale możemy także tworzyć własne funkcje.
 
-## Function Declaration
+## Deklaracja funkcji
 
-To create a function we can use a *function declaration*.
+Do stworzenia funkcji możemy użyć *deklaracji funkcji*.
 
-It looks like this:
+Wygląda to tak:
 
 ```js
 function showMessage() {
-  alert( 'Hello everyone!' );
+  alert( 'Witajcie wszyscy!' );
 }
 ```
 
-The `function` keyword goes first, then goes the *name of the function*, then a list of *parameters* between the parentheses (comma-separated, empty in the example above) and finally the code of the function, also named "the function body", between curly braces.
+Pierwsze jest słowo kluczowe `function`, następnie znajduję się *nazwa funkcji*, później lista *parametrów* pomiędzy nawiasami (rozdzielonych przecinkami, pusta w przykładzie powyżej) i na końcu blok kodu funkcji, nazywany również "ciałem funkcji", pomiędzy nawiasami klamrowymi.
 
 ```js
-function name(parameters) {
-  ...body...
+function name(parametry) {
+  ...ciało...
 }
 ```
 
-Our new function can be called by its name: `showMessage()`.
+Nasza nowa funkcja może być wywołana poprzez podanie jej nazwy: `showMessage()`.
 
-For instance:
+Na przykład:
 
 ```js run
 function showMessage() {
-  alert( 'Hello everyone!' );
+  alert( 'Witajcie wszyscy!' );
 }
 
 *!*
@@ -43,187 +43,187 @@ showMessage();
 */!*
 ```
 
-The call `showMessage()` executes the code of the function. Here we will see the message two times.
+Wywołanie `showMessage()` wykonuje kod funkcji. Tutaj zobaczymy wiadomość dwa razy.
 
-This example clearly demonstrates one of the main purposes of functions: to avoid code duplication.
+Ten przykład wyraźnie demonstruje jeden z głównych celów funkcji: unikanie duplikacji kodu.
 
-If we ever need to change the message or the way it is shown, it's enough to modify the code in one place: the function which outputs it.
+Jeżeli kiedykolwiek będziemy potrzebowali zmienić treść wiadomości lub sposób jej wyświetlania, wystarczy jedynie zmienić kod w jednym miejscu: w funkcji za to odpowiedzialnej.
 
-## Local variables
+## Zmienne lokalne
 
-A variable declared inside a function is only visible inside that function.
+Zmienna zadeklarowana wewnątrz funkcji jest widoczna jedynie wewnątrz niej.
 
-For example:
+Na przykład:
 
 ```js run
 function showMessage() {
 *!*
-  let message = "Hello, I'm JavaScript!"; // local variable
+  let message = 'Cześć, jestem JavaScript!'; //zmienna lokalna
 */!*
 
   alert( message );
 }
 
-showMessage(); // Hello, I'm JavaScript!
+showMessage(); // Cześć, jestem JavaScript!
 
-alert( message ); // <-- Error! The variable is local to the function
+alert( message ); // <--- Błąd! Zmienna jest lokalna dla funkcji
 ```
 
-## Outer variables
+## Zmienne zewnętrzne
 
-A function can access an outer variable as well, for example:
+Funkcja ma dostęp także do zmiennych zewnętrznych, na przykład:
 
 ```js run no-beautify
-let *!*userName*/!* = 'John';
+let *!*userName*/!* = 'Jan';
 
 function showMessage() {
-  let message = 'Hello, ' + *!*userName*/!*;
+  let message = 'Cześć, ' + *!*userName*/!*;
   alert(message);
 }
 
-showMessage(); // Hello, John
+showMessage(); // Cześć, Jan
 ```
 
-The function has full access to the outer variable. It can modify it as well.
+Funkcja ma pełen dostęp do zewnętrznej zmiennej. Może ją także modyfikować.
 
-For instance:
+Na przykład:
 
 ```js run
-let *!*userName*/!* = 'John';
+let *!*userName*/!* = 'Jan';
 
 function showMessage() {
-  *!*userName*/!* = "Bob"; // (1) changed the outer variable
+  *!*userName*/!* = "Robert"; // (1) zmienia zewnętrzną zmienną
 
-  let message = 'Hello, ' + *!*userName*/!*;
+  let message = 'Cześć, ' + *!*userName*/!*;
   alert(message);
 }
 
-alert( userName ); // *!*John*/!* before the function call
+alert( userName ); // *!*Jan*/!* przed wywołaniem funkcji
 
 showMessage();
 
-alert( userName ); // *!*Bob*/!*, the value was modified by the function
+alert( userName ); // *!*Robert*/!*, wartość zmiennej została zmodyfikowana przez funkcję
 ```
 
-The outer variable is only used if there's no local one.
+Zewnętrzna zmienna jest używana jedynie jeśli nie ma żadnej lokalnej.
 
-If a same-named variable is declared inside the function then it *shadows* the outer one. For instance, in the code below the function uses the local `userName`. The outer one is ignored:
+Jeżeli tak samo nazwana zmienna jest zadeklarowana wewnątrz funkcji to wówczas *zaciemnia* ona tą zewnętrzną. Na przykład, w kodzie poniżej funkcja używa lokalnego `userName`. Zewnętrzna jest ignorowana:
 
 ```js run
-let userName = 'John';
+let userName = 'Jan';
 
 function showMessage() {
 *!*
-  let userName = "Bob"; // declare a local variable
+  let userName = "Robert"; // zadeklarowana zmienna lokalna
 */!*
 
-  let message = 'Hello, ' + userName; // *!*Bob*/!*
+  let message = 'Cześć, ' + userName; // *!*Robert*/!*
   alert(message);
 }
 
-// the function will create and use its own userName
+// funkcja stworzy i użyje własnego userName
 showMessage();
 
-alert( userName ); // *!*John*/!*, unchanged, the function did not access the outer variable
+alert( userName ); // *!*Jan*/!*, niezmieniona, funkcja nie uzyskała dostępu do zewnętrznej zmiennej
 ```
 
 ```smart header="Global variables"
-Variables declared outside of any function, such as the outer `userName` in the code above, are called *global*.
+Zmienne zadeklarowane poza funkcjami, tak jak zewnętrzna zmienna `userName` w kodzie powyżej, są nazywane *globalnymi*.
 
-Global variables are visible from any function (unless shadowed by locals).
+Zmienne globalne są widoczne z każdej funkcji (chyba że są zaciemnione przez lokalne).
 
-It's a good practice to minimize the use of global variables. Modern code has few or no globals. Most variables reside in their functions. Sometimes though, they can be useful to store project-level data.
+Dobrą praktyką jest minimalizacja użycia zmiennych globalnych. Nowoczesny kod ma kilka lub nie ma żadnych zmiennych globalnych. Większość zmiennych deklarowanych jest w funkcjach. Chociaż czasami, mogą być użyteczne do przechowywania danych ważnych z punktu widzenia projektu.
 ```
 
-## Parameters
+## Parametry
 
-We can pass arbitrary data to functions using parameters (also called *function arguments*) .
+Możemy przekazać arbitralne dane do funkcji używając parametrów (nazywanych również *argumentami funkcji*).
 
-In the example below, the function has two parameters: `from` and `text`.
+W przykładzie poniżej, funkcja posiada dwa parametry: `from` i `text`.
 
 ```js run
-function showMessage(*!*from, text*/!*) { // arguments: from, text
+function showMessage(*!*from, text*/!*) { // argumenty: from, text
   alert(from + ': ' + text);
 }
 
 *!*
-showMessage('Ann', 'Hello!'); // Ann: Hello! (*)
-showMessage('Ann', "What's up?"); // Ann: What's up? (**)
+showMessage('Anna', 'Cześć!'); // Ann: Cześć! (*)
+showMessage('Anna', "Co słychać?"); // Ann: Co słychać? (**)
 */!*
 ```
 
-When the function is called in lines `(*)` and `(**)`, the given values are copied to local variables `from` and `text`. Then the function uses them.
+Kiedy funkcja jest wywoływana w linijkach `(*)` oraz `(**)`, podane do niej parametry są kopiowane do lokalnych zmiennych `from` i `text`. Poźniej funkcja ich używa.
 
-Here's one more example: we have a variable `from` and pass it to the function. Please note: the function changes `from`, but the change is not seen outside, because a function always gets a copy of the value:
+Tutaj kolejny przykład: mamy zmienną `from` i przekazujemy ją do funkcji. Zwróć uwagę: funkcja zmienia `from`, ale zmiana nie jest widoczna na zewnątrz, ponieważ funkcja zawsze dostaje kopię jej wartości:
 
 
 ```js run
 function showMessage(from, text) {
 
 *!*
-  from = '*' + from + '*'; // make "from" look nicer
+  from = '*' + from + '*'; // sprawia że "from" wygląda ładniej
 */!*
 
   alert( from + ': ' + text );
 }
 
-let from = "Ann";
+let from = "Anna";
 
-showMessage(from, "Hello"); // *Ann*: Hello
+showMessage(from, "Cześć"); // *Anna*: Cześć
 
-// the value of "from" is the same, the function modified a local copy
-alert( from ); // Ann
+// wartość zmiennej "from" jest taka sama, funkcja zmodyfikowała lokalną kopię
+alert( from ); // Anna
 ```
 
-## Default values
+## Domyślna wartość
 
-If a parameter is not provided, then its value becomes `undefined`.
+Jeżeli parametr nie jest dostarczony do funckji, wówczas jego wartość przyjmuję `undefined`.
 
-For instance, the aforementioned function `showMessage(from, text)` can be called with a single argument:
+Na przykład, wyżej wymieniona funckja `showMessage(from, text)` może zostać wywołana z jednym argumentem:
 
 ```js
-showMessage("Ann");
+showMessage('Anna');
 ```
 
-That's not an error. Such a call would output `"Ann: undefined"`. There's no `text`, so it's assumed that `text === undefined`.
+To nie błąd. Takie wywołanie da wynik `"Anna: undefined"`. Nie ma argumentu `text`, więc funkcja zakłada że `text === undefined`.
 
-If we want to use a "default" `text` in this case, then we can specify it after `=`:
+Jeżeli chcemy użyć "domyślnego" argumentu `text` w tym przypadku, możemy go okreslić po znaku `=`:
 
 ```js run
-function showMessage(from, *!*text = "no text given"*/!*) {
+function showMessage(from, *!*text = "brak tekstu"*/!*) {
   alert( from + ": " + text );
 }
 
-showMessage("Ann"); // Ann: no text given
+showMessage("Anna"); // Anna: brak tekstu
 ```
 
-Now if the `text` parameter is not passed, it will get the value `"no text given"`
+Teraz jeżeli parametr `text` nie zostaje przekazany, przybiera wartość `"brak tekstu"`.
 
-Here `"no text given"` is a string, but it can be a more complex expression, which is only evaluated and assigned if the parameter is missing. So, this is also possible:
+W tym przypadku `"brak tekstu"` jest stringiem, ale może być bardziej złożonym wyrażeniem, co jest oceniane i przypisywane tylko w przypadku braku parametru. Więc, to również jest możliwe:
 
 ```js run
 function showMessage(from, text = anotherFunction()) {
-  // anotherFunction() only executed if no text given
-  // its result becomes the value of text
+  // anotherFunction() wykonuje się w przypadku braku podania argumentu text
+  // wynik wywołania funkcji staje się wartością argumentu text
 }
 ```
 
-```smart header="Evaluation of default parameters"
-In JavaScript, a default parameter is evaluated every time the function is called without the respective parameter.
+```smart header="Ewaluacja domyślnych parametrów"
+W JavaScripcie, domyślny parametr jest ewaluowany za każdym razem kiedy funkcja jest wywoływany bez tego parametru.
 
-In the example above, `anotherFunction()` is called every time `showMessage()` is called without the `text` parameter.
+W przykładzie powyżej, `anotherFunction()` jest wywoływana za każdym razem kiedy `showMessage()` jest wywoływana bez parametru `text`.
 ```
 
-````smart header="Default parameters old-style"
-Old editions of JavaScript did not support default parameters. So there are alternative ways to support them, that you can find mostly in the old scripts.
+````smart header="Domyślne parametry w starym stylu"
+Stare wersje JavaScriptu nie wspierają domyślnych parametrów. Są więc alternatywne sposóby na ich wspieranie, które możesz spotkać głównie w starszych skryptach.
 
-For instance, an explicit check for being `undefined`:
+Na przykład, konkretne sprawdzenie czy zmienna jest `undefined`:
 
 ```js
 function showMessage(from, text) {
 *!*
   if (text === undefined) {
-    text = 'no text given';
+    text = 'brak tekstu';
   }
 */!*
 
@@ -231,12 +231,12 @@ function showMessage(from, text) {
 }
 ```
 
-...Or the `||` operator:
+...lub użycie operatora `||`:
 
 ```js
 function showMessage(from, text) {
-  // if text is falsy then text gets the "default" value
-  text = text || 'no text given';
+  // jeżeli text przyjmuje wartość falsy, wówczas text przyjmuje wartość "domyślną"
+  text = text || 'brak tekstu';
   ...
 }
 ```
@@ -245,11 +245,11 @@ function showMessage(from, text) {
 ````
 
 
-## Returning a value
+## Zwracanie wartości
 
-A function can return a value back into the calling code as the result.
+Funkcja może zwracać wartość z powrotem do wywłoującego ją kodu jako rezultat.
 
-The simplest example would be a function that sums two values:
+Najprosztym przykładem będzie funkcja która sumuje dwie wartości:
 
 ```js run no-beautify
 function sum(a, b) {
@@ -260,35 +260,35 @@ let result = sum(1, 2);
 alert( result ); // 3
 ```
 
-The directive `return` can be in any place of the function. When the execution reaches it, the function stops, and the value is returned to the calling code (assigned to `result` above).
+Dyrektywa `return` może być umiejscowiona w dowolnym miejscu funkcji. Kiedy wykonywanie kodu dotrze do niej, funkcja zatrzymuje się i wartość zostaje zwrócona (przypisana do `result` powyżej).
 
-There may be many occurrences of `return` in a single function. For instance:
+Może być wiele wystąpień dyrektywy `return` w pojedynczej funkcji. Na przykład:
 
 ```js run
 function checkAge(age) {
-  if (age > 18) {
+  if (age >= 18) {
 *!*
     return true;
 */!*
   } else {
 *!*
-    return confirm('Do you have permission from your parents?');
+    return confirm('Czy masz pozwolenie od rodziców?');
 */!*
   }
 }
 
-let age = prompt('How old are you?', 18);
+let age = prompt('Ile masz lat?', 18);
 
 if ( checkAge(age) ) {
-  alert( 'Access granted' );
+  alert( 'Dostęp przyznany' );
 } else {
-  alert( 'Access denied' );
+  alert( 'Odmowa dostępu' );
 }
 ```
 
-It is possible to use `return` without a value. That causes the function to exit immediately.
+Możliwe jest użycie `return` bez wartości. To powoduję natychmiastowe wyjście z fukcji.
 
-For example:
+Na przykład:
 
 ```js
 function showMovie(age) {
@@ -298,23 +298,23 @@ function showMovie(age) {
 */!*
   }
 
-  alert( "Showing you the movie" ); // (*)
+  alert( "Pokazuję Ci film" ); // (*)
   // ...
 }
 ```
 
-In the code above, if `checkAge(age)` returns `false`, then `showMovie` won't proceed to the `alert`.
+W kodzie powyżej, jeżeli `checkAge(age)` zwróci `false`, wówczas `showMovie` nie przejdzie do `alert`.
 
-````smart header="A function with an empty `return` or without it returns `undefined`"
-If a function does not return a value, it is the same as if it returns `undefined`:
+````smart header="Funkcja z pustym `return` lub bez niego zwraca `undefined`"
+Jeżeli funkcja nie zwraca żadnej wartości, to tak jakby zwracała `undefined`:
 
 ```js run
-function doNothing() { /* empty */ }
+function doNothing() { /* pusta */ }
 
 alert( doNothing() === undefined ); // true
 ```
 
-An empty `return` is also the same as `return undefined`:
+Pusty `return` to również to samo co `return undefined`:
 
 ```js run
 function doNothing() {
@@ -325,92 +325,92 @@ alert( doNothing() === undefined ); // true
 ```
 ````
 
-````warn header="Never add a newline between `return` and the value"
-For a long expression in `return`, it might be tempting to put it on a separate line, like this:
+````warn header="Nigdy nie dodawaj nowej lini pomiędzy `return` a wartością"
+Dla długiego wyrażenia po `return`, kuszące może być umieszczenie go w oddzielnej lini, jak tutaj:
 
 ```js
 return
- (some + long + expression + or + whatever * f(a) + f(b))
+ (jakieś + długie + wyrażenie + lub + cokolwiek * f(a) + f(b))
 ```
-That doesn't work, because JavaScript assumes a semicolon after `return`. That'll work the same as:
+To nie działa, ponieważ JavaScript zakłada wystąpienie średnika po `return`. To zadziała tak samo jak:
 
 ```js
 return*!*;*/!*
- (some + long + expression + or + whatever * f(a) + f(b))
+ (jakieś + długie + wyrażenie + lub + cokolwiek * f(a) + f(b))
 ```
 
-So, it effectively becomes an empty return.
+Więc, faktycznie staje się on pustym returnem.
 
-If we want the returned expression to wrap across multiple lines, we should start it at the same line as `return`. Or at least put the opening parentheses there as follows:
+Jeżeli chcemy aby zwracane wyrażenie obejmowało wiele lini, powinniśmy zacząć je od tej samej lini w której znajduje się `return`. Lub przynajmniej postawić tam nawias otwierający w następujący sposób:
 
 ```js
 return (
-  some + long + expression
-  + or +
-  whatever * f(a) + f(b)
+  jakieś + długie + wyrażenie
+  + lub +
+  cokolwiek * f(a) + f(b)
   )
 ```
-And it will work just as we expect it to.
+I będzie to działać tak jak tego oczekujemy.
 ````
 
-## Naming a function [#function-naming]
+## Nazewnictwo funkcji [#function-naming]
 
-Functions are actions. So their name is usually a verb. It should be brief, as accurate as possible and describe what the function does, so that someone reading the code gets an indication of what the function does.
+Funkcje są akcjami. Tak więc ich nazwy są zazwyczaj czasownikami. Nazwa powinna być krótka, najdokładniejsza jak to tylko możliwe i opisywać co funkcja robi, tak żeby osoba czytająca kod miała wskazówkę co funkcja robi.
 
-It is a widespread practice to start a function with a verbal prefix which vaguely describes the action. There must be an agreement within the team on the meaning of the prefixes.
+Powszechną praktyką jest rozpoczynanie funkcji czasownikowym przedrostkiem który pobieżnie opisuje akcję. W zespole musi być zgoda co do znaczenia przedrostków.
 
-For instance, functions that start with `"show"` usually show something.
+Na przykład, funkcje zaczynające się od `"show"` zazwyczaj coś pokazują.
 
-Function starting with...
+Funkcja zaczynająca się od...
 
-- `"get…"` -- return a value,
-- `"calc…"` -- calculate something,
-- `"create…"` -- create something,
-- `"check…"` -- check something and return a boolean, etc.
+- `"get…"` -- zwraca wartość,
+- `"calc…"` -- oblicza coś,
+- `"create…"` -- tworzy coś,
+- `"check…"` -- sprawdza coś i zwraca wartość boolean, itp.
 
-Examples of such names:
+Przykłady takich nazw:
 
 ```js no-beautify
-showMessage(..)     // shows a message
-getAge(..)          // returns the age (gets it somehow)
-calcSum(..)         // calculates a sum and returns the result
-createForm(..)      // creates a form (and usually returns it)
-checkPermission(..) // checks a permission, returns true/false
+showMessage(..)     // pokazuje wiadomość
+getAge(..)          // zwraca wiek (pobiera go w jakiś sposób)
+calcSum(..)         // oblicza sumę i zwraca rezultat
+createForm(..)      // tworzy formularz (i zazwyczaj go zwraca)
+checkPermission(..) // sprawdza pozwolenie, zwraca true/false
 ```
 
-With prefixes in place, a glance at a function name gives an understanding what kind of work it does and what kind of value it returns.
+Z przedrostkami w nazwie, jedno spojrzenie na nazwę funkcji daje pojęcie co dana funkcja robi oraz jaką wartość zwraca.
 
-```smart header="One function -- one action"
-A function should do exactly what is suggested by its name, no more.
+```smart header="Jedna funkcja -- jedna akcja"
+Funkcja powinna robić dokładnie to co sugeruje jej nazwa, nic więcej.
 
-Two independent actions usually deserve two functions, even if they are usually called together (in that case we can make a 3rd function that calls those two).
+Dwie niezależne akcje zazwyczaj zasługują na dwie funkcje, nawet jeśli zazwyczaj są wywoływane razem (w tym przypadku możemy stworzyć trzecią funkcję która wywołuje tamte dwie).
 
-A few examples of breaking this rule:
+Kilka przykładów łamiących tą zasadę:
 
-- `getAge` -- would be bad if it shows an `alert` with the age (should only get).
-- `createForm` -- would be bad if it modifies the document, adding a form to it (should only create it and return).
-- `checkPermission` -- would be bad if it displays the `access granted/denied` message (should only perform the check and return the result).
+- `getAge` -- byłoby źle gdyby funkcja pokazywała `alert` z wiekem (powinna tylko pobierać wiek).
+- `createForm` -- byłoby źle gdyby modyfikowała dokument, dodając do niego formularz (powinna go tylko tworzyć i zwracać).
+- `checkPermission` -- byłoby źle gdyby wyświetlała wiadomość `dostęp przyznany/zabroniony` (powinna tylko wykonać sprawdzenie i zwrócić wynik).
 
-These examples assume common meanings of prefixes. You and your team are free to agree on other meanings, but usually they're not much different. In any case, you should have a firm understanding of what a prefix means, what a prefixed function can and cannot do. All same-prefixed functions should obey the rules. And the team should share the knowledge.
+Te przykłady zakładają powszechne znaczenie przedrostków. Ty i twój zespół macie wolną rekę aby zgodzić się na inne znaczenie, ale zazwyczaj nie różnią się one. W każdym przypadku, powinieneś mieć silne zrozumienie co znaczy dany prefiks, co funckja z prefiksem może a czego nie może zrobić. Wszystkie funkcje z tym samym prefiksem powinny przestrzegać zasad. Zespół powinien dzielić się tą wiedzą.
 ```
 
-```smart header="Ultrashort function names"
-Functions that are used *very often* sometimes have ultrashort names.
+```smart header="Ultra-krótkie nazwy funkcji"
+Funkcje które są używane *bardzo często* czasami mają ultra-krótkie nazwy.
 
-For example, the [jQuery](http://jquery.com) framework defines a function with `$`. The [Lodash](http://lodash.com/) library has its core function named `_`.
+Na przykład, framework [jQuery](http://jquery.com) definiuje funkcje za pomocą `$`. Bibloteka [Lodash](http://lodash.com/) ma swoje funkcje nazwane za pomocą `_`.
 
-These are exceptions. Generally functions names should be concise and descriptive.
+To są wyjątki. Ogólnie nazwy funkcji powinny być zwięzłe i opisowe.
 ```
 
-## Functions == Comments
+## Funkcje == Komentarze
 
-Functions should be short and do exactly one thing. If that thing is big, maybe it's worth it to split the function into a few smaller functions. Sometimes following this rule may not be that easy, but it's definitely a good thing.
+Funkcje powinny być krótkie i robić dokładnie jedną rzecz. Jeżeli ta rzecz jest duża, może warto rozdzielić tę funkcję na kilka mniejszych. Czasami przestrzeganie tej zasady może nie być łatwe, ale to zdecydowanie dobra rzecz.
 
-A separate function is not only easier to test and debug -- its very existence is a great comment!
+Oddzielnna funckja jest nie tylko łatwiejsza do testowania i debugowania -- jej samo istnienie jest wspaniałym komentarzem!
 
-For instance, compare the two functions `showPrimes(n)` below. Each one outputs [prime numbers](https://en.wikipedia.org/wiki/Prime_number) up to `n`.
+Dla przykładu, porównaj dwie fukncje `showPrimes(n)` poniżej. Każda z nich zwraca [liczby pierwsze](https://pl.wikipedia.org/wiki/Liczba_pierwsza) aż do `n`.
 
-The first variant uses a label:
+Pierwszy wwariant używa etykiety:
 
 ```js
 function showPrimes(n) {
@@ -420,12 +420,12 @@ function showPrimes(n) {
       if (i % j == 0) continue nextPrime;
     }
 
-    alert( i ); // a prime
+    alert( i ); // liczba pierwsza
   }
 }
 ```
 
-The second variant uses an additional function `isPrime(n)` to test for primality:
+Drugi wariant używa dodatkowej funkcji `isPrime(n)` do testowania czy liczba jest liczbą pierwszą:
 
 ```js
 function showPrimes(n) {
@@ -445,32 +445,32 @@ function isPrime(n) {
 }
 ```
 
-The second variant is easier to understand, isn't it? Instead of the code piece we see a name of the action (`isPrime`). Sometimes people refer to such code as *self-describing*.
+Drugi wariant jest łatwiejszy do zrozumienia, prawda? Zamiast kawałka kodu widzimy nazwę akcji (`isPrime`). Czasami ludzie odnoszą się do takiego kodu jako do *samo-opisującego się*.
 
-So, functions can be created even if we don't intend to reuse them. They structure the code and make it readable.
+Tak więc, funkcje mogą być tworzone nawet jeśli nie mamy zamiaru ich znowu używać. Strukturyzują kod i sprawiają że jest czytelny.
 
-## Summary
+## Podsumowanie
 
-A function declaration looks like this:
+Deklaracja funckji wygląda w ten sposób:
 
 ```js
-function name(parameters, delimited, by, comma) {
-  /* code */
+function name(parametry, rozdzielone, przecinkiem) {
+  /* kod */
 }
 ```
 
-- Values passed to a function as parameters are copied to its local variables.
-- A function may access outer variables. But it works only from inside out. The code outside of the function doesn't see its local variables.
-- A function can return a value. If it doesn't, then its result is `undefined`.
+- Wartości przekazane do funkcji jako parametry są kopiowane do jej lokalnych zmiennych.
+- Funkcja ma dostęp do zewnętrznych zmiennych. Ale działa to tylko ze środka na zewnątrz. Kod poza funkcją nie widzi jej zmiennych lokalnych.
+- Funkcja może zwrócić wartość. Jeżeli tego nie robi, wówczas jej rezultat jest `undefined`.
 
-To make the code clean and easy to understand, it's recommended to use mainly local variables and parameters in the function, not outer variables.
+Aby kod był czysty i łatwy do zrozumienia, rekomendowane jest używanie głównie zmiennych lokalnych i parametrów wewnątrz funkcji, nie zewnętrznych zmiennych.
 
-It is always easier to understand a function which gets parameters, works with them and returns a result than a function which gets no parameters, but modifies outer variables as a side-effect.
+Zawsze łatwiejsze jest zrozumienie funkcji która otrzymuje parametry, pracuje z nimi i zwraca wynik niż funkcji która nie przyjmuje żadnych parametrów, ale modyfikuje zewnętrzne zmienne jako efekt uboczny.
 
-Function naming:
+Nazewnictwo funkcji:
 
-- A name should clearly describe what the function does. When we see a function call in the code, a good name instantly gives us an understanding what it does and returns.
-- A function is an action, so function names are usually verbal.
-- There exist many well-known function prefixes like `create…`, `show…`, `get…`, `check…` and so on. Use them to hint what a function does.
+- Nazwa powinna jasno opisywać co funkcja robi. Kiedy widzimy wywołanie funkcji w kodzie, dobra nazwa od razu daje nam zrozumienie co robi i zwraca.
+- Funkcja jest akcją, więc nazwy funkcji są zazwyczaj czasownikami.
+- Istnieje wiele dobrze znanych prefiksów funkcji takich jak `create…`, `show…`, `get…`, `check…` itp. . Użyj ich aby zostawiać podpowiedzi odnośnie działania funkcji.
 
-Functions are the main building blocks of scripts. Now we've covered the basics, so we actually can start creating and using them. But that's only the beginning of the path. We are going to return to them many times, going more deeply into their advanced features.
+Funckje są głównymi elementami budującymi kod. Teraz mamy już podstawy, więc możemy zacząc tworzyć i używać ich. Ale to dopiero początek ścieżki. Będziemy do nich wracać wiele razy, wchodząc głębiej w ich zaawansowane funkcje.

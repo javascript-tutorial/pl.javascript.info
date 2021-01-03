@@ -1,12 +1,12 @@
-importance: 1
+ważność: 1
 
 ---
 
-# Function min(a, b)
+# Funkcja min(a, b)
 
-Write a function `min(a,b)` which returns the least of two numbers `a` and `b`.
+Napisz funkcję `min(a,b)` która zwraca najmniejszą z dwóch liczb `a` i `b`.
 
-For instance:
+Na przykład:
 
 ```js
 min(2, 5) == 2
