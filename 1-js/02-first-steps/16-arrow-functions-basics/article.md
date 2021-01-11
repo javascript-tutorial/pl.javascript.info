@@ -1,16 +1,16 @@
-# Arrow functions, the basics
+# Funkcje strzałkowe, podstawy 
 
-There's another very simple and concise syntax for creating functions, that's often better than Function Expressions.
+Istnieją jeszcze funkcje o krótszej i zwięzłej składni, która często jest lepsza niż wyrażenia funkcyjne.
 
-It's called "arrow functions", because it looks like this:
+Nazywają się "funkcjami strzałkowymi" i wyglądają następująco:
 
 ```js
 let func = (arg1, arg2, ...argN) => expression
 ```
 
-...This creates a function `func` that accepts arguments `arg1..argN`, then evaluates the `expression` on the right side with their use and returns its result.
+...Stworzona funckja `func` przyjmuje argumenty `arg1..argN`, następnie wykonuje wyrażenie po prawej stronie i zwraca jego wynik.
 
-In other words, it's the shorter version of:
+Innymi słowy, jest to krótsza wersja zapisu:
 
 ```js
 let func = function(arg1, arg2, ...argN) {
@@ -18,12 +18,12 @@ let func = function(arg1, arg2, ...argN) {
 };
 ```
 
-Let's see a concrete example:
+Zobaczmy konkretny przykład:
 
 ```js run
 let sum = (a, b) => a + b;
 
-/* This arrow function is a shorter form of:
+/* Powyższa funkcja strzałkowa jest krótszą formą poniższego zapisu:
 
 let sum = function(a, b) {
   return a + b;
@@ -33,79 +33,82 @@ let sum = function(a, b) {
 alert( sum(1, 2) ); // 3
 ```
 
-As you can, see `(a, b) => a + b` means a function that accepts two arguments named `a` and `b`. Upon the execution, it evaluates the expression `a + b` and returns the result.
+Jak możesz zobaczyć `(a, b) => a + b` to funkcja, która przyjmuje dwa argumenty o nazwie `a` i `b`. Następnie oblicza wyrażenie `a + b` i zwraca jego wynik.
 
-- If we have only one argument, then parentheses around parameters can be omitted, making that even shorter.
+- Jeśli mamy tylko jeden argument, to możemy pominąć nawiasy wokół parametrów, czyniąc zapis jeszcze krótszym.
 
-    For example:
+    Na przykład:
 
     ```js run
     *!*
     let double = n => n * 2;
-    // roughly the same as: let double = function(n) { return n * 2 }
+    // zapis mniej więcej taki sam jak: let double = function(n) { return n * 2 }
     */!*
 
     alert( double(3) ); // 6
     ```
 
-- If there are no arguments, parentheses will be empty (but they should be present):
+- Jeśli nie ma paramentrów, nawiasy będą puste (ale i tak powinny być obecne):
 
     ```js run
-    let sayHi = () => alert("Hello!");
+    let sayHi = () => alert("Cześć!");
 
     sayHi();
     ```
 
-Arrow functions can be used in the same way as Function Expressions.
+Funkcji strzałkowych można używać w taki sam sposób jak wyrażeń funkcyjnych.
 
-For instance, to dynamically create a function:
+Na przykład, aby dynamicznie utworzyć funkcję:
 
 ```js run
-let age = prompt("What is your age?", 18);
+let age = prompt("Ile masz lat?", 18); 
 
 let welcome = (age < 18) ?
-  () => alert('Hello') :
-  () => alert("Greetings!");
+  () => alert('Cześć') :
+  () => alert("Pozdrawiam!");
 
-welcome(); // ok now
+welcome(); 
 ```
 
-Arrow functions may appear unfamiliar and not very readable at first, but that quickly changes as the eyes get used to the structure.
+Funckje strzałkowe mogą początkowo wydawać się nieznane i mało czytelne ale to się szybko zmieni, gdy oczy przyzwyczajają się do ich struktury.
 
-They are very convenient for simple one-line actions, when we're just too lazy to write many words.
+Są bardzo wygodne w przypadku prostych, jednolinijkowych działań lub gdy jesteśmy zbyt leniwi, by napisać wiele słów.
 
-## Multiline arrow functions
+## Wielolinijkowe funckje strzałkowe
 
-The examples above took arguments from the left of `=>` and evaluated the right-side expression with them.
+Powyższe przykłady pobierały argumenty z lewej strony `=>` a później wykonywały wyrażenie znajdujące się po prawej stronie. 
 
-Sometimes we need something a little bit more complex, like multiple expressions or statements. It is also possible, but we should enclose them in curly braces. Then use a normal `return` within them.
+Czasami potrzebujemy czegoś bardziej złożonego, na przykład wielu wyrażeń lub instrukcji. Powinniśmy je wtedy napisać w nawiasach klamrowych i oczywiście, nie zapomnieć o "return".
 
 Like this:
 
 ```js run
-let sum = (a, b) => {  // the curly brace opens a multiline function
+let sum = (a, b) => {  // nawiasy klamrowe otwierają wielolinijkową funkcję
   let result = a + b;
 *!*
-  return result; // if we use curly braces, then we need an explicit "return" 
+  return result; // jeśli użyjemy nawiasów klamrowych, nie możemy zapomnieć o „return” 
 */!*
 };
 
 alert( sum(1, 2) ); // 3
 ```
 
-```smart header="More to come"
-Here we praised arrow functions for brevity. But that's not all!
+```smart header="Inne zalety"
 
-Arrow functions have other interesting features.
+Tutaj pochwaliliśmy funkcje strzałkowe za ich zwięzłość. Ale to nie koniec ich zalet!
 
-To study them in-depth, we first need to get to know some other aspects of JavaScript, so we'll return to arrow functions later in the chapter <info:arrow-functions>.
+Funckje strzałkowe mają też inne interesujące cechy.
 
-For now, we can already use arrow functions for one-line actions and callbacks.
+Aby dogłębnie je przestudiować najpierw musimy poznać inne aspekty JavaScript więc wrócimy do funkcji strzałkowych w dalszej części rozdziału <info:arrow-functions>.
+
+Na tę chwilę potrafimy już używać funkcji strzałkowych do działań jednolinijkowych i wywołań zwrotnych.
+
 ```
 
-## Summary
+## Podsumowanie
 
-Arrow functions are handy for one-liners. They come in two flavors:
+Funkcje strzałkowe są przydatne w przypadku działań jednolinijkowych. Występują w dwóch wersjach:
 
-1. Without curly braces: `(...args) => expression` -- the right side is an expression: the function evaluates it and returns the result.
-2. With curly braces: `(...args) => { body }` -- brackets allow us to write multiple statements inside the function, but we need an explicit `return` to return something.
+1. Bez nawiasów klamrowych: `(...args) => expression` -- prawa strona to wyrażenie: funkcja je wykonuje i zwraca jego wynik
+
+2. Z nawiasami klamrowymi: `(...args) => { body }` -- nawiasy pozwalają nam napisać wiele instrukcji wewnątrz funkcji, ale żeby coś zwrócić nie możemy zapomnieć o "return". 
