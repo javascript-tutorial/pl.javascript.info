@@ -10,8 +10,8 @@ function ask(question, yes, no) {
 }
 
 ask(
-  "Do you agree?",
-  function() { alert("You agreed."); },
-  function() { alert("You canceled the execution."); }
+  "Zgadzasz się?",
+  function() { alert("Zgodziłeś się."); },
+  function() { alert("Anulowałeś wykonanie."); }
 );
 ```
