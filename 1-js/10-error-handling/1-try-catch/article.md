@@ -1,118 +1,120 @@
-# Error handling, "try..catch"
+# Obsługa błędów, "try...catch"
 
-No matter how great we are at programming, sometimes our scripts have errors. They may occur because of our mistakes, an unexpected user input, an erroneous server response, and for a thousand other reasons.
+Nieważne jak świetnymi jesteśmy programistami, zdarza się, że do naszych programów wkradają się błędy. Mogą wystąpić jako rezultat naszej literówki, przez niespodziewane dane wejściowe użytkownika, błędnej odpowiedzi serwera czy z tysiąca wielu innych powodów. 
 
-Usually, a script "dies" (immediately stops) in case of an error, printing it to console.
+Z reguły, nasz program zostaje natychmiastowo przerwany w sytuacji napotkania błędu, zaraz po zwróceniu jego zawartości do konsoli.
 
-But there's a syntax construct `try..catch` that allows to "catch" errors and, instead of dying, do something more reasonable.
+Przy użyciu instrukcji `try...catch`, możemy obsłużyć błędy w bardziej sensowny sposób.
 
-## The "try..catch" syntax
+## Składnia "try...catch"
 
-The `try..catch` construct has two main blocks: `try`, and then `catch`:
+Instrukcja `try...catch` zawiera dwa główne bloki - `try {...}` oraz `catch(err) {...}`:
 
 ```js
 try {
 
-  // code...
+  // instrukcje do wykonania...
 
 } catch (err) {
 
-  // error handling
+  // obsługa błędu z pierwszego bloku...
 
 }
 ```
 
-It works like this:
+Sposób działania:
 
-1. First, the code in `try {...}` is executed.
-2. If there were no errors, then `catch(err)` is ignored: the execution reaches the end of `try` and goes on, skipping `catch`.
-3. If an error occurs, then `try` execution is stopped, and the control flows to the beginning of `catch(err)`. The `err` variable (can use any name for it) will contain an error object with details about what happened.
+1. Rozpoczęcie się wykonywania kodu zawartego w bloku `try {...}`.
+2. Bezbłędne wykonanie pierwszego bloku oznacza, że drugi blok `catch(err) {...}` zostaje pominięty, a program rusza dalej.
+3. W przypadku pojawienia się błędu, wykonywanie bloku `try {...}` zostaje przerwane, a kontrola przekazana jest drugiemu blokowi `catch(err) {...}`. Parametr `err` może mieć dowolną nazwę, argumentem jest obiekt zawierający błąd oraz szczegóły jego wystąpienia.
 
 ![](try-catch-flow.svg)
 
-So, an error inside the `try {…}` block does not kill the script: we have a chance to handle it in `catch`.
+Błąd, który wystąpił w pierwszym bloku `try {...}`, nie przerywa działania programu, więc mamy szansę go obsłużyć w drugim bloku `catch(err) {...}`.
 
-Let's see examples.
+Spójrzmy na przykłady:
 
-- An errorless example: shows `alert` `(1)` and `(2)`:
+- Przykład programu niezawierającego błędu, wykonuje instrukcje `alert` `(1)` oraz `(2)`:
 
     ```js run
     try {
 
-      alert('Start of try runs');  // *!*(1) <--*/!*
+      alert('początek bloku try');  // *!*(1) <--*/!*
 
-      // ...no errors here
+      // ...instrukcja wykonana, brak błędu
 
-      alert('End of try runs');   // *!*(2) <--*/!*
+      alert('koniec bloku try');   // *!*(2) <--*/!*
 
     } catch(err) {
 
-      alert('Catch is ignored, because there are no errors'); // (3)
+      alert('blok catch został pominięty, z powodu braku błędu'); // (3)
 
     }
     ```
-- An example with an error: shows `(1)` and `(3)`:
+- Przykład programu zawierającego błąd: wykonuje instrukcje `(1)` oraz `(3)`:
 
     ```js run
     try {
 
-      alert('Start of try runs');  // *!*(1) <--*/!*
+      alert('początek bloku try');  // *!*(1) <--*/!*
 
     *!*
-      lalala; // error, variable is not defined!
+      lalala; // Niezadeklarowana zmienna powoduje wystąpienie błędu!
     */!*
 
-      alert('End of try (never reached)');  // (2)
+      alert('instrukcja nie została wykonana');  // (2)
 
     } catch(err) {
 
-      alert(`Error has occurred!`); // *!*(3) <--*/!*
+      alert(`w programie pojawił się błąd!`); // *!*(3) <--*/!*
 
     }
     ```
 
 
-````warn header="`try..catch` only works for runtime errors"
-For `try..catch` to work, the code must be runnable. In other words, it should be valid JavaScript.
+````warn header="`try...catch` umożliwia obsługę błędów napotkanych tylko w trakcie wykonywania się programu"
 
-It won't work if the code is syntactically wrong, for instance it has unmatched curly braces:
+Aby instrukcja `try...catch` zadziałała, kod zawarty w tym bloku powinien być w stanie się uruchomić. Innymi słowy, musi to być poprawny kod JavaScript. 
+
+Instrukcja nie uruchomi się, jeśli napotka błędy składniowe. Weźmy za przykład nieparzystą ilość klamer:
 
 ```js run
 try {
   {{{{{{{{{{{{
 } catch(e) {
-  alert("The engine can't understand this code, it's invalid");
+  alert("silnik nie jest w stanie zrozumieć kodu zawartego w powyższym bloku, ponieważ jest niepoprawny");
+  
 }
 ```
 
-The JavaScript engine first reads the code, and then runs it. The errors that occur on the reading phase are called "parse-time" errors and are unrecoverable (from inside that code). That's because the engine can't understand the code.
+Silnik JavaScript najpierw odczytuje kod, a dopiero potem go wykonuje. Błędy fazy analizy kodu nie zostaną obsłużone w pierwszym bloku instrukcji, ponieważ silnik nic z niego nie zrozumiał.
 
-So, `try..catch` can only handle errors that occur in the valid code. Such errors are called "runtime errors" or, sometimes, "exceptions".
+A więc, `try...catch` umożliwia nam tylko i wyłącznie obsługę błędów występujących w poprawnym składniowo kodzie. Takie błędy nazywane są błędami napotkanymi w trakcie wykonywania się programu czy też wyjątkami. 
 ````
 
 
-````warn header="`try..catch` works synchronously"
-If an exception happens in "scheduled" code, like in `setTimeout`, then `try..catch` won't catch it:
+````warn header="`try...catch` działa synchronicznie"
+Jeśli wyjątek pojawi się w operacji asynchronicznej, przykładowo `setTimeout`, wtedy instrukcja `try...catch` jej nie złapie:
 
 ```js run
 try {
   setTimeout(function() {
-    noSuchVariable; // script will die here
+    noSuchVariable; // W tym miejscu, program zostanie przerwany
   }, 1000);
 } catch (e) {
-  alert( "won't work" );
+  alert( "instrukcja nie została wykonana" );
 }
 ```
 
-That's because the function itself is executed later, when the engine has already left the `try..catch` construct.
+To dlatego, że funkcja została wykonana później, kiedy silnik zdążył już opuścić instrukcję `try...catch`.  
 
-To catch an exception inside a scheduled function, `try..catch` must be inside that function:
+Aby złapać wyjątek podczas asynchronicznej operacji, `try...catch` musi znajdować się w środku tego działania:
 ```js run
 setTimeout(function() {
   try {    
-    noSuchVariable; // try..catch handles the error!
+    noSuchVariable; // instrukcja try...catch obsłuży ten błąd!
   } catch {
-    alert( "error is caught here!" );
+    alert( "błąd pierwszego bloku zostanie tutaj obsłużony" );
   }
 }, 1000);
 ```
