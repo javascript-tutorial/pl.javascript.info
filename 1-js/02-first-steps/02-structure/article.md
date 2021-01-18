@@ -95,7 +95,11 @@ Zalecamy używanie średników nawet wtedy, gdy instrukcje są oddzielone nową 
 
 ## Komentarze
 
+<<<<<<< HEAD
 Z czasem programy stają się coraz bardziej złożone. Przychodzi wtedy konieczność dodania _komentarzy_, które opisują, co robi kod i dlaczego.
+=======
+## Comments [#code-comments]
+>>>>>>> 3a0b3f4e31d4c4bbe90ed4c9c6e676a888ad8311
 
 Komentarze mogą być umieszczane w dowolnym miejscu skryptu. Nie wpływają na wykonanie kodu, ponieważ silnik JavaScript je ignoruje.
 
@@ -135,8 +139,13 @@ alert('Witaj');
 alert("świecie");
 ```
 
+<<<<<<< HEAD
 ```smart header="Używaj skrótów klawiaturowych!"
 W większości edytorów można zamienić jedną linię w komentarz za pomocą klawiszy `key:Ctrl+/` lub kilka linii za pomocą `key:Ctrl+Shift+/` (zaznacz fragment kodu i po prostu wciśnij te klawisze). Jeśli korzystasz z Maca, zamiast `key:Ctrl` użyj `key:Cmd`.
+=======
+```smart header="Use hotkeys!"
+In most editors, a line of code can be commented out by pressing the `key:Ctrl+/` hotkey for a single-line comment and something like `key:Ctrl+Shift+/` -- for multiline comments (select a piece of code and press the hotkey). For Mac, try `key:Cmd` instead of `key:Ctrl` and `key:Option` instead of `key:Shift`.
+>>>>>>> 3a0b3f4e31d4c4bbe90ed4c9c6e676a888ad8311
 ```
 
 ````warn header="Nie można zagnieżdżać komentarzy!"
