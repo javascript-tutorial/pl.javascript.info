@@ -24,7 +24,7 @@ try {
 
 Sposób działania:
 
-1. Rozpoczęcie się wykonywania kodu zawartego w bloku `try {...}`.
+1. Rozpoczęcie wykonywania się kodu zawartego w bloku `try {...}`.
 2. Bezbłędne wykonanie pierwszego bloku oznacza, że drugi blok `catch(err) {...}` zostaje pominięty, a program rusza dalej.
 3. W przypadku pojawienia się błędu, wykonywanie bloku `try {...}` zostaje przerwane, a kontrola przekazana jest drugiemu blokowi `catch(err) {...}`. Parametr `err` może mieć dowolną nazwę, argumentem jest obiekt zawierający błąd oraz szczegóły jego wystąpienia.
 
@@ -56,10 +56,10 @@ Spójrzmy na przykłady:
     ```js run
     try {
 
-      alert('początek bloku try');  // *!*(1) <--*/!*
+      alert('instrukcja została wykonana');  // *!*(1) <--*/!*
 
     *!*
-      lalala; // Niezadeklarowana zmienna powoduje wystąpienie błędu!
+      lalala; // niezadeklarowana zmienna powoduje wystąpienie błędu
     */!*
 
       alert('instrukcja nie została wykonana');  // (2)
@@ -70,7 +70,6 @@ Spójrzmy na przykłady:
 
     }
     ```
-
 
 ````warn header="`try...catch` umożliwia obsługę błędów napotkanych tylko w trakcie wykonywania się programu"
 
@@ -83,10 +82,8 @@ try {
   {{{{{{{{{{{{
 } catch(e) {
   alert("silnik nie jest w stanie zrozumieć kodu zawartego w powyższym bloku, ponieważ jest niepoprawny");
-  
 }
 ```
-
 Silnik JavaScript najpierw odczytuje kod, a dopiero potem go wykonuje. Błędy fazy analizy kodu nie zostaną obsłużone w pierwszym bloku instrukcji, ponieważ silnik nic z niego nie zrozumiał.
 
 A więc, `try...catch` umożliwia nam tylko i wyłącznie obsługę błędów występujących w poprawnym składniowo kodzie. Takie błędy nazywane są błędami napotkanymi w trakcie wykonywania się programu czy też wyjątkami. 
@@ -120,45 +117,45 @@ setTimeout(function() {
 ```
 ````
 
-## Error object
+## Obiekt błędu
 
-When an error occurs, JavaScript generates an object containing the details about it. The object is then passed as an argument to `catch`:
+Podczas pojawienia się błędu w programie, silnik JavaScript generuje obiekt zawierający błąd oraz szczegóły jego wystąpienia. Następnie zostaje przekazany jako argument drugiego bloku `catch(err) {...}`:
 
 ```js
 try {
   // ...
-} catch(err) { // <-- the "error object", could use another word instead of err
+} catch(err) { // <-- w tym miejscu znajduje się nasz obiekt błędu, parametr err może mieć dowolną nazwę
   // ...
 }
 ```
 
-For all built-in errors, the error object has two main properties:
+Dla wszystkich wbudowanych błędów środowiskowych, obiekt błędu składa się z dwóch głównych właściwości:
 
 `name`
-: Error name. For instance, for an undefined variable that's `"ReferenceError"`.
+: Identyfikator błędu. Przykład, niezadeklarowana zmienna spowoduje wystąpienie błędu odniesienia (ang. ReferenceError).
 
 `message`
-: Textual message about error details.
+: Wiadomość w formie łańcucha znaków, mieszcząca w sobie szczegóły wystąpienia błędu.
 
-There are other non-standard properties available in most environments. One of most widely used and supported is:
+Istnieją również nieustandaryzowane właściwości, które są dostępne w wielu środowiskach. Stos jest jedną z nich, zarazem najbardziej używaną i wspieraną:
 
 `stack`
-: Current call stack: a string with information about the sequence of nested calls that led to the error. Used for debugging purposes.
+: Aktualny stos wywołań. Zwraca sekwencję zagnieżdżonych wywołań, które doprowadziły do wystąpienia błędu. Przydatne w procesie debugowania.
 
-For instance:
+Przykład:
 
 ```js run untrusted
 try {
 *!*
-  lalala; // error, variable is not defined!
+  lalala; // niezadeklarowana zmienna powoduje wystąpienie błędu
 */!*
 } catch(err) {
   alert(err.name); // ReferenceError
   alert(err.message); // lalala is not defined
   alert(err.stack); // ReferenceError: lalala is not defined at (...call stack)
 
-  // Can also show an error as a whole
-  // The error is converted to string as "name: message"
+  // możemy wyświetlić skondensowaną wersję błędu
+  // zwraca ciąg znaków w formacie "name: message"
   alert(err); // ReferenceError: lalala is not defined
 }
 ```
