@@ -132,7 +132,7 @@ try {
 Dla wszystkich wbudowanych błędów środowiskowych, obiekt błędu składa się z dwóch głównych właściwości:
 
 `name`
-: Identyfikator błędu. Przykład, niezadeklarowana zmienna spowoduje wystąpienie błędu odniesienia (ang. ReferenceError).
+: Identyfikator błędu. Przykład, niezadeklarowana zmienna spowoduje wystąpienie błędu odniesienia (ang. Reference Error).
 
 `message`
 : Wiadomość w formie łańcucha znaków, mieszcząca w sobie szczegóły wystąpienia błędu.
@@ -140,7 +140,7 @@ Dla wszystkich wbudowanych błędów środowiskowych, obiekt błędu składa si�
 Istnieją również nieustandaryzowane właściwości, które są dostępne w wielu środowiskach. Stos jest jedną z nich, zarazem najbardziej używaną i wspieraną:
 
 `stack`
-: Aktualny stos wywołań. Zwraca sekwencję zagnieżdżonych wywołań, które doprowadziły do wystąpienia błędu. Przydatne w procesie debugowania.
+: Aktualny stos wywołań. Zwraca sekwencję zagnieżdżonych wywołań, które doprowadzą nas do miejsca wystąpienia błędu. Przydatne w procesie debugowania.
 
 Przykład:
 
@@ -152,7 +152,7 @@ try {
 } catch(err) {
   alert(err.name); // ReferenceError
   alert(err.message); // lalala is not defined
-  alert(err.stack); // ReferenceError: lalala is not defined at (...call stack)
+  alert(err.stack); // ReferenceError: lalala is not defined at (...zagnieżdżona sekwencja wywołań)
 
   // możemy wyświetlić skondensowaną wersję błędu
   // zwraca ciąg znaków w formacie "name: message"
@@ -160,73 +160,72 @@ try {
 }
 ```
 
-## Optional "catch" binding
+## Opcjonalne przekazanie argumentu
 
 [recent browser=new]
 
-If we don't need error details, `catch` may omit it:
+Jeśli nie potrzebujemy informacji o błędzie, pozbywamy się parametru drugiego bloku `catch(err) {...}`: 
 
 ```js
 try {
   // ...
-} catch { // <-- without (err)
+} catch { // <-- nie uwzględniamy parametru (err)
   // ...
 }
 ```
 
-## Using "try..catch"
+## "try...catch" w życiu codziennym
 
-Let's explore a real-life use case of `try..catch`.
+Spójrzmy na realny sposób użycia instrukcji `try...catch`.
 
-As we already know, JavaScript supports the [JSON.parse(str)](mdn:js/JSON/parse) method to read JSON-encoded values.
+Na tym etapie powinniśmy już wiedzieć o metodzie [JSON.parse(str)](mdn:js/JSON/parse), która umożliwia nam przetworzenie obiektu typu JSON.
 
-Usually it's used to decode data received over the network, from the server or another source.
+Metoda zwykle jest używana do przekształcenia informacji otrzymanych z poziomu sieci, serwera czy innych źródeł.  
 
-We receive it and call `JSON.parse` like this:
+Po ich otrzymaniu, wywołujemy metodę `JSON.parse`:
 
 ```js run
-let json = '{"name":"John", "age": 30}'; // data from the server
+let json = '{"imię":"Jacek", "wiek": 30}'; // otrzymane dane z serwera w formie obiektu JSON
 
 *!*
-let user = JSON.parse(json); // convert the text representation to JS object
+let user = JSON.parse(json); // przekształć łańcuch znaków na obiekt JavaScript
 */!*
 
-// now user is an object with properties from the string
-alert( user.name ); // John
+// na tym etapie zmienna "user" przechowuje odniesienie do utworzonego obiektu z właściwościami
+alert( user.name ); // Jacek
 alert( user.age );  // 30
 ```
 
-You can find more detailed information about JSON in the <info:json> chapter.
+Więcej informacji o obiekcie JSON znajduje się w rozdziale <info:json>.
 
-**If `json` is malformed, `JSON.parse` generates an error, so the script "dies".**
+**Jeśli nasz obiekt JSON został źle sformułowany, metoda `JSON.parse` wygeneruje błąd, który natychmiastowo przerwie program.**
 
-Should we be satisfied with that? Of course not!
+Nie brzmi to przekonująco, prawda?
 
-This way, if something's wrong with the data, the visitor will never know that (unless they open the developer console). And people really don't like when something "just dies" without any error message.
+Jeśli coś pójdzie nie tak, odwiedzający nie otrzyma żadnej informacji zwrotnej o błędzie, który wystąpił. Zazwyczaj nie lubimy, gdy coś nagle przestaje działać i nie wiemy po której stronie leży problem.
 
-Let's use `try..catch` to handle the error:
+Możemy wdrożyć instrukcję `try..catch`, aby obsłużyć ten błąd:
 
 ```js run
-let json = "{ bad json }";
+let json = "{ niepoprawnie sformułowany obiekt JSON }";
 
 try {
 
 *!*
-  let user = JSON.parse(json); // <-- when an error occurs...
+  let user = JSON.parse(json); // <-- instrukcja tworzy obiekt błędu
 */!*
-  alert( user.name ); // doesn't work
+  alert( user.name ); // instrukcja nie została wykonana
 
-} catch (e) {
+} catch(e) {
 *!*
-  // ...the execution jumps here
-  alert( "Our apologies, the data has errors, we'll try to request it one more time." );
+  // kontrolę nad programem przejął drugi blok
+  alert( "Przepraszamy, wystąpił błąd podczas wykonywania działań na otrzymanych danych z serwera. Spróbujemy wykonać akcję ponownie." );
   alert( e.name );
   alert( e.message );
 */!*
 }
 ```
-
-Here we use the `catch` block only to show the message, but we can do much more: send a new network request, suggest an alternative to the visitor, send information about the error to a logging facility, ... . All much better than just dying.
+Drugi blok `catch(e) {...}` zwróci odwiedzającemu wyłącznie wiadomość tekstową oraz szczegóły wystąpienia błędu. Możemy pójść o krok dalej i wykonać kolejne żądanie serwerowe czy zapisać kopię wystąpienia błędu na naszych zasobach serwerowych. Generalnie każdy z tych wariantów jest lepszym rozwiązaniem niż brak implementacji obsługi błędu. 
 
 ## Throwing our own errors
 
