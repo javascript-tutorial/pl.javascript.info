@@ -41,7 +41,7 @@ Spójrzmy na przykłady:
 
       alert('początek bloku try');  // *!*(1) <--*/!*
 
-      // ...instrukcja wykonana, brak błędu
+      // ...instrukcja została wykonana, brak błędu
 
       alert('koniec bloku try');   // *!*(2) <--*/!*
 
@@ -155,12 +155,12 @@ try {
   alert(err.stack); // ReferenceError: lalala is not defined at (...zagnieżdżona sekwencja wywołań)
 
   // możemy wyświetlić skondensowaną wersję błędu
-  // zwraca ciąg znaków w formacie "name: message"
+  // zwraca wiadomość tekstową w formacie "name: message"
   alert(err); // ReferenceError: lalala is not defined
 }
 ```
 
-## Opcjonalne przekazanie argumentu
+## Opcjonalne zwrócenie błędu
 
 [recent browser=new]
 
@@ -174,7 +174,7 @@ try {
 }
 ```
 
-## "try...catch" w życiu codziennym
+## Zastosowanie "try...catch" w życiu codziennym
 
 Spójrzmy na realny sposób użycia instrukcji `try...catch`.
 
@@ -185,26 +185,26 @@ Metoda zwykle jest używana do przekształcenia informacji otrzymanych z poziomu
 Po ich otrzymaniu, wywołujemy metodę `JSON.parse`:
 
 ```js run
-let json = '{"imię":"Jacek", "wiek": 30}'; // otrzymane dane z serwera w formie obiektu JSON
+let json = '{"name":"Jacek", "age": 30}'; // otrzymane dane z serwera w formie obiektu JSON
 
 *!*
 let user = JSON.parse(json); // przekształć łańcuch znaków na obiekt JavaScript
 */!*
 
-// na tym etapie zmienna "user" przechowuje odniesienie do utworzonego obiektu z właściwościami
+// od teraz pod zmienną "user" znajduje się odniesienie do utworzonego obiektu
 alert( user.name ); // Jacek
 alert( user.age );  // 30
 ```
 
 Więcej informacji o obiekcie JSON znajduje się w rozdziale <info:json>.
 
-**Jeśli nasz obiekt JSON został źle sformułowany, metoda `JSON.parse` wygeneruje błąd, który natychmiastowo przerwie program.**
+**Jeśli obiekt JSON został źle sformułowany, metoda `JSON.parse` wygeneruje błąd, który natychmiastowo przerwie program.**
 
 Nie brzmi to przekonująco, prawda?
 
 Jeśli coś pójdzie nie tak, odwiedzający nie otrzyma żadnej informacji zwrotnej o błędzie, który wystąpił. Zazwyczaj nie lubimy, gdy coś nagle przestaje działać i nie wiemy po której stronie leży problem.
 
-Możemy wdrożyć instrukcję `try..catch`, aby obsłużyć ten błąd:
+Możemy wdrożyć instrukcję `try...catch`, aby obsłużyć ten błąd:
 
 ```js run
 let json = "{ niepoprawnie sformułowany obiekt JSON }";
@@ -225,73 +225,74 @@ try {
 */!*
 }
 ```
+
 Drugi blok `catch(e) {...}` zwróci odwiedzającemu wyłącznie wiadomość tekstową oraz szczegóły wystąpienia błędu. Możemy pójść o krok dalej i wykonać kolejne żądanie serwerowe czy zapisać kopię wystąpienia błędu na naszych zasobach serwerowych. Generalnie każdy z tych wariantów jest lepszym rozwiązaniem niż brak implementacji obsługi błędu. 
 
-## Throwing our own errors
+## Obsługa wyjątków
 
-What if `json` is syntactically correct, but doesn't have a required `name` property?
+Co jeśli odbierany obiekt `json` jest poprawnie sformułowany, ale nie zawiera własności `name`, której się spodziewaliśmy?
 
-Like this:
+Spójrzmy:
 
 ```js run
-let json = '{ "age": 30 }'; // incomplete data
+let json = '{ "age": 30 }'; // obiekt JSON nie zawiera własności, którą chcemy zwrócić
 
 try {
 
-  let user = JSON.parse(json); // <-- no errors
+  let user = JSON.parse(json); // <-- instrukcja została wykonana, brak błędu
 *!*
-  alert( user.name ); // no name!
+  alert( user.name ); // metoda alert zwraca wartość undefined, ponieważ własność nie istnieje
 */!*
 
 } catch (e) {
-  alert( "doesn't execute" );
+  alert( "instrukcja nie została wykonana" );
 }
 ```
 
-Here `JSON.parse` runs normally, but the absence of `name` is actually an error for us.
+Metoda `JSON.parse` wykonała się poprawnie. Brak spodziewanej własności `name` stanowi dla nas problem. 
 
-To unify error handling, we'll use the `throw` operator.
+Aby poradzić sobie w takich sytuacjach, mamy do dyspozycji operator `throw`.
 
-### "Throw" operator
+### Operator "throw"
 
-The `throw` operator generates an error.
+Za pomocą operatora `throw`, możemy utworzyć obiekt błędu.
 
-The syntax is:
+Składnia wygląda następująco:
 
 ```js
-throw <error object>
+throw <obiekt błędu>
 ```
 
-Technically, we can use anything as an error object. That may be even a primitive, like a number or a string, but it's better to use objects, preferably with `name` and `message` properties (to stay somewhat compatible with built-in errors).
+Formalnie rzecz biorąc, naszym obiektem błędu może być wszystko. Możemy użyć wartości prymitywnych takich jak ciąg znaków czy wartości numerycznych, ale przyjmujemy konwencję używania obiektów, domyślnie z dwiema własnościami `name` oraz `message`. Głównie ze względu na to, aby zachować analogię zwracania błędów środowiskowych.
 
-JavaScript has many built-in constructors for standard errors: `Error`, `SyntaxError`, `ReferenceError`, `TypeError` and others. We can use them to create error objects as well.
+Silnik JavaScript oferuje wiele konstruktorów dla błędów środowiskowych: `Error`, `SyntaxError`, `ReferenceError`, `TypeError` i tak dalej. Jeśli chcemy, możemy także ich użyć do utworzenia obiektu błędu.
 
-Their syntax is:
+Zerknijmy na składnię:
 
 ```js
 let error = new Error(message);
-// or
+// lub
 let error = new SyntaxError(message);
 let error = new ReferenceError(message);
 // ...
 ```
 
-For built-in errors (not for any objects, just for errors), the `name` property is exactly the name of the constructor. And `message` is taken from the argument.
+Podczas tworzenia błędów środowiskowych, własność `name` przyjmuje wartość nazwy konstruktora, a wartość własności `message` zostaje przekazana jako argument.
 
-For instance:
+Dla przykładu:
 
 ```js run
-let error = new Error("Things happen o_O");
+let error = new Error("coś poszło nie tak");
 
 alert(error.name); // Error
-alert(error.message); // Things happen o_O
+alert(error.message); // coś poszło nie tak
 ```
 
-Let's see what kind of error `JSON.parse` generates:
+Spójrzmy jaki błąd wygeneruje wywołanie metody `JSON.parse`:
 
 ```js run
 try {
-  JSON.parse("{ bad json o_O }");
+  JSON.parse("{ niepoprawnie sformułowany obiekt JSON }");
 } catch(e) {
 *!*
   alert(e.name); // SyntaxError
@@ -300,35 +301,36 @@ try {
 }
 ```
 
-As we can see, that's a `SyntaxError`.
+Jak możemy zauważyć, identyfikatorem błędu jest `SyntaxError`.
 
-And in our case, the absence of `name` is an error, as users must have a `name`.
+W naszej sytuacji, brak spodziewanej własności `name` stanowi problem, ponieważ użytkownicy muszą mieć imię. 
 
-So let's throw it:
+
+Zatem spróbujmy przygotować wyjątek:
 
 ```js run
-let json = '{ "age": 30 }'; // incomplete data
+let json = '{ "age": 30 }'; // obiekt JSON nie zawiera własności, którą chcemy zwrócić
 
 try {
 
-  let user = JSON.parse(json); // <-- no errors
+  let user = JSON.parse(json); // <-- instrukcja została wykonana, brak błędu
 
   if (!user.name) {
 *!*
-    throw new SyntaxError("Incomplete data: no name"); // (*)
+    throw new SyntaxError("Niekompletne dane: obiekt nie zawiera własności imienia"); // (*)
 */!*
   }
 
   alert( user.name );
 
 } catch(e) {
-  alert( "JSON Error: " + e.message ); // JSON Error: Incomplete data: no name
+  alert( "Błąd w obiekcie JSON: " + e.message ); // Błąd w obiekcie JSON: Niekompletne dane: obiekt nie zawiera własności imienia
 }
 ```
 
-In the line `(*)`, the `throw` operator generates a `SyntaxError` with the given `message`, the same way as JavaScript would generate it itself. The execution of `try` immediately stops and the control flow jumps into `catch`.
+Spójrzmy na instrukcję oznaczoną asteriksem. Za pośrednictwem operatora `throw`, generujemy błąd o identyfikatorze `SyntaxError` oraz przekazujemy argument `message`. Wykonywanie bloku `try {...}` zostaje przerwane, a kontrola przekazana jest drugiemu blokowi `catch(e) {...}`.
 
-Now `catch` became a single place for all error handling: both for `JSON.parse` and other cases.
+Warto zaznaczyć, że drugi blok `catch(e) {...}` obsługuje przypadki wszystkich błędów jakie mogą się pojawić, nie tylko metody `JSON.parse`.
 
 ## Rethrowing
 
