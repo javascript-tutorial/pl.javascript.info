@@ -1,6 +1,6 @@
 # Obsługa błędów, "try...catch"
 
-Nieważne jak świetnymi jesteśmy programistami, zdarza się, że do naszych programów wkradają się błędy. Mogą wystąpić jako rezultat naszej literówki, przez niespodziewane dane wejściowe użytkownika, błędnej odpowiedzi serwera czy z tysiąca wielu innych powodów. 
+Nieważne jak świetnymi jesteśmy programistami, zdarza się, że do naszych programów wkradają się błędy. Mogą wystąpić jako rezultat literówki, przez niespodziewane dane wejściowe użytkownika, błędnej odpowiedzi serwera czy z tysiąca wielu innych powodów. 
 
 Z reguły, nasz program zostaje natychmiastowo przerwany w sytuacji napotkania błędu, zaraz po zwróceniu jego zawartości do konsoli.
 
@@ -265,7 +265,7 @@ throw <obiekt błędu>
 
 Formalnie rzecz biorąc, naszym obiektem błędu może być wszystko. Możemy użyć wartości prymitywnych takich jak ciąg znaków czy wartości numerycznych, ale przyjmujemy konwencję używania obiektów, domyślnie z dwiema własnościami `name` oraz `message`. Głównie ze względu na to, aby zachować analogię zwracania błędów środowiskowych.
 
-Silnik JavaScript oferuje wiele konstruktorów dla błędów środowiskowych: `Error`, `SyntaxError`, `ReferenceError`, `TypeError` i tak dalej. Jeśli chcemy, możemy także ich użyć do utworzenia obiektu błędu.
+Silnik JavaScript oferuje wiele konstruktorów dla błędów środowiskowych: `Error`, `SyntaxError`, `ReferenceError`, `TypeError` i tak dalej. Jeśli chcemy, możemy ich także użyć do utworzenia obiektu błędu.
 
 Zerknijmy na składnię:
 
@@ -277,7 +277,7 @@ let error = new ReferenceError(message);
 // ...
 ```
 
-Podczas tworzenia błędów środowiskowych, własność `name` przyjmuje wartość nazwy konstruktora, a wartość własności `message` zostaje przekazana jako argument.
+Podczas tworzenia błędów środowiskowych, własność `name` przyjmuje wartość nazwy konstruktora, natomiast wartość własności `message` zostaje przekazana jako argument.
 
 Dla przykładu:
 
@@ -288,7 +288,7 @@ alert(error.name); // Error
 alert(error.message); // coś poszło nie tak
 ```
 
-Spójrzmy jaki błąd wygeneruje wywołanie metody `JSON.parse`:
+Spójrzmy jaki błąd wygeneruje wywołanie metody `JSON.parse` na błędnym obiekcie JSON:
 
 ```js run
 try {
@@ -304,7 +304,6 @@ try {
 Jak możemy zauważyć, identyfikatorem błędu jest `SyntaxError`.
 
 W naszej sytuacji, brak spodziewanej własności `name` stanowi problem, ponieważ użytkownicy muszą mieć imię. 
-
 
 Zatem spróbujmy przygotować wyjątek:
 
@@ -324,11 +323,11 @@ try {
   alert( user.name );
 
 } catch(e) {
-  alert( "Błąd w obiekcie JSON: " + e.message ); // Błąd w obiekcie JSON: Niekompletne dane: obiekt nie zawiera własności imienia
+  alert( "Błąd wystąpił w obiekcie JSON: " + e.message ); // Błąd w obiekcie JSON: Niekompletne dane: obiekt nie zawiera własności imienia
 }
 ```
 
-Spójrzmy na instrukcję oznaczoną asteriksem. Za pośrednictwem operatora `throw`, generujemy błąd o identyfikatorze `SyntaxError` oraz przekazujemy argument `message`. Wykonywanie bloku `try {...}` zostaje przerwane, a kontrola przekazana jest drugiemu blokowi `catch(e) {...}`.
+Spójrzmy na instrukcję oznaczoną asteriksem. Za pośrednictwem operatora `throw`, generujemy błąd o identyfikatorze `SyntaxError` oraz przekazujemy argument własności `message`. W razie napotkania tego błędu, wykonywanie bloku `try {...}` zostaje przerwane, a kontrola przekazana jest drugiemu blokowi `catch(e) {...}`.
 
 Warto zaznaczyć, że drugi blok `catch(e) {...}` obsługuje przypadki wszystkich błędów jakie mogą się pojawić, nie tylko metody `JSON.parse`.
 
@@ -444,35 +443,35 @@ try {
 
 Here `readData` only knows how to handle `SyntaxError`, while the outer `try..catch` knows how to handle everything.
 
-## try..catch..finally
+## try...catch...finally
 
-Wait, that's not all.
+Tak, to nie wszystko.
 
-The `try..catch` construct may have one more code clause: `finally`.
+W instrukcji `try...catch` może pojawić się trzeci blok `finally {...}`.
 
-If it exists, it runs in all cases:
+Jeżeli trzeci blok został uwzględniony, kontrola zostanie mu przekazana:
 
-- after `try`, if there were no errors,
-- after `catch`, if there were errors.
+- po wykonaniu pierwszego bloku `try {...}`, jeśli nie wystąpiły błędy,
+- po wykonaniu drugiego bloku `catch(e) {...}`, jeśli pojawiły się błędy. 
 
-The extended syntax looks like this:
+Nieco dłuższa składnia wygląda następująco:
 
 ```js
 *!*try*/!* {
-   ... try to execute the code ...
+   ... spróbuj wykonać instrukcje ...
 } *!*catch*/!*(e) {
-   ... handle errors ...
+   ... obsłuż błędy ...
 } *!*finally*/!* {
-   ... execute always ...
+   ... ostatecznie wykonaj instrukcje ...
 }
 ```
 
-Try running this code:
+Spróbuj wykonać poniższy program:
 
 ```js run
 try {
   alert( 'try' );
-  if (confirm('Make an error?')) BAD_CODE();
+  if (confirm('Utworzyć obiekt błędu?')) GAFA_PROGRAMISTY();
 } catch (e) {
   alert( 'catch' );
 } finally {
@@ -480,27 +479,29 @@ try {
 }
 ```
 
-The code has two ways of execution:
+Program może uruchomić się na dwa sposoby:
 
-1. If you answer "Yes" to "Make an error?", then `try -> catch -> finally`.
-2. If you say "No", then `try -> finally`.
+1. W przypadku potwierdzenia, `try {...} -> catch(e) {...} -> finally {...}`.
+2. W przypadku odrzucenia, `try {...} -> finally {...}`.
 
-The `finally` clause is often used when we start doing something and want to finalize it in any case of outcome.
+Trzeci blok `finally {...}` jest używany do wykonywania ostatecznych kroków instrukcji.
 
-For instance, we want to measure the time that a Fibonacci numbers function `fib(n)` takes. Naturally, we can start measuring before it runs and finish afterwards. But what if there's an error during the function call? In particular, the implementation of `fib(n)` in the code below returns an error for negative or non-integer numbers.
+Dla przykładu, chcemy zwrócić czas wykonania się funkcji `fib(n)`. Rzecz jasna, procedura liczenia rozpocznie się przed wykonaniem funkcji i zatrzyma się natychmiastowo po jej wykonaniu. Co jeśli pojawi się błąd podczas wywoływania funkcji?
 
-The `finally` clause is a great place to finish the measurements no matter what.
+Poniższa implementacja funkcji `fib(n)`, zwraca błąd dla liczb, które nie są całkowite czy dodatnie.
 
-Here `finally` guarantees that the time will be measured correctly in both situations -- in case of a successful execution of `fib` and in case of an error in it:
+Trzeci blok `finally {...}` jest idealnym miejscem na zatrzymanie procedury liczenia, bez względu na wszystko.
+
+Mamy gwarancje, że czas zostanie odmierzony prawidłowo w obydwu przypadkach - bezbłędnego wykonania się funkcji `fib(n)` czy też nie:
 
 ```js run
-let num = +prompt("Enter a positive integer number?", 35)
+let num = +prompt("wprowadź liczbę dodatnią całkowitą: ", 35)
 
 let diff, result;
 
 function fib(n) {
   if (n < 0 || Math.trunc(n) != n) {
-    throw new Error("Must not be negative, and also an integer.");
+    throw new Error("liczba musi być dodatnia całkowita.");
   }
   return n <= 1 ? n : fib(n - 1) + fib(n - 2);
 }
@@ -517,26 +518,26 @@ try {
 }
 */!*
 
-alert(result || "error occurred");
+alert(result || "wystąpił błąd");
 
-alert( `execution took ${diff}ms` );
+alert( `wykonanie zajęło ${diff}ms` );
 ```
 
-You can check by running the code with entering `35` into `prompt` -- it executes normally, `finally` after `try`. And then enter `-1` -- there will be an immediate error, and the execution will take `0ms`. Both measurements are done correctly.
+W momencie wprowadzenia liczby `35` do okna dialogowego `prompt`, trzeci blok `finally {...}` wykona się zaraz po pierwszym bloku `try {...}`. W przypadku wprowadzenia liczby `-1`, program zwróci błąd, a czas wykonania funkcji wyniesie `0ms`. Cała procedura działa tak jak powinna. 
 
-In other words, the function may finish with `return` or `throw`, that doesn't matter. The `finally` clause executes in both cases.
+Innymi słowy, nieważne co zostanie zwrócone przez funkcję. Trzeci blok `finally {...}` wykona się w obu przypadkach - `return` czy `throw`.
 
+```smart header="Zasięg zmiennych jest lokalny w instrukcji `try...catch...finally`"
+Jak możemy zauważyć, zmienne `result` oraz `diff` są zadeklarowane *przed* instrukcją `try...catch...finally`.
 
-```smart header="Variables are local inside `try..catch..finally`"
-Please note that `result` and `diff` variables in the code above are declared *before* `try..catch`.
-
-Otherwise, if we declared `let` in `try` block, it would only be visible inside of it.
+Gdybyśmy zadeklarowali zmienne w pierwszym bloku `try {...}`, byłyby dostępne tylko w tym bloku.
 ```
 
-````smart header="`finally` and `return`"
-The `finally` clause works for *any* exit from `try..catch`. That includes an explicit `return`.
+````smart header="`finally` w połączeniu z `return`"
 
-In the example below, there's a `return` in `try`. In this case, `finally` is executed just before the control returns to the outer code.
+Trzeci blok `finally` wykona się dla *każdego* możliwego wyjścia z dwóch dostępnych bloków instrukcji `try...catch...finally`. Nawet jeśli użyjemy instrukcji `return`. 
+
+W poniższym przykładzie, używamy instrukcji `return` w pierwszym bloku `try {...}`. W tym przypadku, trzeci blok `finally {...}` zostaje wykonany przed przekazaniem kontroli na zewnątrz.
 
 ```js run
 function func() {
@@ -555,40 +556,40 @@ function func() {
   }
 }
 
-alert( func() ); // first works alert from finally, and then this one
+alert( func() ); // w pierwszej kolejności, wykonuje się metoda `alert` w trzecim bloku `finally {...}`
 ```
 ````
 
-````smart header="`try..finally`"
+````smart header="`try...finally`"
 
-The `try..finally` construct, without `catch` clause, is also useful. We apply it when we don't want to handle errors here (let them fall through), but want to be sure that processes that we started are finalized.
+Instrukcja `try...finally`, bez bloku `catch`, jest całkiem przydatna. Możemy użyć jej w przypadku, gdy obchodzi nas tylko sfinalizowanie procedury, którą zainicjowaliśmy.
 
 ```js
-function func() {
-  // start doing something that needs completion (like measurements)
+function func() { 
+  // rozpocznij procedurę, która musi zostać zakończona (jak na przykład procedura liczenia)
   try {
     // ...
   } finally {
-    // complete that thing even if all dies
+    // sfinalizuj procedurę, nawet jeśli cała reszta zawiedzie 
   }
 }
 ```
-In the code above, an error inside `try` always falls out, because there's no `catch`. But `finally` works before the execution flow leaves the function.
+Błędy, które pojawią się w pierwszym bloku `try`, zostaną zepchnięte na margines, ponieważ pozbyliśmy się bloku `catch`. Mimo wszystko, blok `finally` wykona się zanim silnik opuści funkcję.
 ````
 
-## Global catch
+## `catch` o zasięgu globalnym
 
-```warn header="Environment-specific"
-The information from this section is not a part of the core JavaScript.
+```warn header="Zależne od środowiska"
+Informacje zawarte w tej części artykułu, opisują specifyczne metody, które mogą być niedostępne w niektórych środowiskach i nie są ustandaryzowaną częścią JavaScript.
 ```
 
-Let's imagine we've got a fatal error outside of `try..catch`, and the script died. Like a programming error or some other terrible thing.
+Wyobraźmy sobie, że w naszym programie pojawił się błąd. Literówka czy coś równie przerażającego, poza instrukcją `try...catch`. Wykonywanie programu natychmiastowo zostanie przerwane.
 
-Is there a way to react on such occurrences? We may want to log the error, show something to the user (normally they don't see error messages), etc.
+Czy istnieje jakiś sposób, aby przygotować się na taką sytuację? Co gdy chcemy zapisać kopię wystąpienia błędu na naszych zasobach serwerowych czy wyświetlić coś użytkownikowi?
 
-There is none in the specification, but environments usually provide it, because it's really useful. For instance, Node.js has [`process.on("uncaughtException")`](https://nodejs.org/api/process.html#process_event_uncaughtexception) for that. And in the browser we can assign a function to the special [window.onerror](mdn:api/GlobalEventHandlers/onerror) property, that will run in case of an uncaught error.
+Nie istnieje ustandaryzowana metoda, która jest częścią JavaScript, ale środowiska zwykle taką dysponują. Weźmy za przykład  Node.js, a dokładnie metodę bazującą na obserwatorze zdarzeń [`process.on("uncaughtException")`](https://nodejs.org/api/process.html#process_event_uncaughtexception). Istnieje jej przeglądarkowy odpowiednik, którym możemy się posłużyć, w razie wystąpienia nieobsłużonego błędu [window.onerror](mdn:api/GlobalEventHandlers/onerror).
 
-The syntax:
+Składnia:
 
 ```js
 window.onerror = function(message, url, line, col, error) {
@@ -597,18 +598,18 @@ window.onerror = function(message, url, line, col, error) {
 ```
 
 `message`
-: Error message.
+: Wiadomość w formie łańcucha znaków, mieszcząca w sobie szczegóły wystąpienia błędu.
 
 `url`
-: URL of the script where error happened.
+: Adres URL skryptu, w którym doszło do wystąpienia błędu.
 
 `line`, `col`
-: Line and column numbers where error happened.
+: Numer wiersza oraz kolumny zwracający błąd.
 
 `error`
-: Error object.
+: Obiekt błędu.
 
-For instance:
+Przykład:
 
 ```html run untrusted refresh height=1
 <script>
@@ -619,23 +620,23 @@ For instance:
 */!*
 
   function readData() {
-    badFunc(); // Whoops, something went wrong!
+    badFunc(); // coś poszło nie tak
   }
 
   readData();
 </script>
 ```
 
-The role of the global handler `window.onerror` is usually not to recover the script execution -- that's probably impossible in case of programming errors, but to send the error message to developers.
+Zwykle używamy `window.onerror` do wysłania kopii wystąpienia błędu, a nie do przywrócenia wykonywania się programu - jest to praktycznie niemożliwe w przypadku literówek, błędów w trakcie wykonywania się programu i tak dalej.
 
-There are also web-services that provide error-logging for such cases, like <https://errorception.com> or <http://www.muscula.com>.
+Istnieją usługi internetowe, które zostały stworzone z myślą o gromadzeniu i zapisywaniu błędów w naszym serwisie. <https://errorception.com> czy <http://www.muscula.com>.
 
-They work like this:
+Działają w następujący sposób:
 
-1. We register at the service and get a piece of JS (or a script URL) from them to insert on pages.
-2. That JS script sets a custom `window.onerror` function.
-3. When an error occurs, it sends a network request about it to the service.
-4. We can log in to the service web interface and see errors.
+1. Po zarejestrowaniu się u wybranego usługodawcy, powinniśmy otrzymać kawałek kodu lub odnośnik do skryptu, który umieszczamy na naszej stronie.
+2. Skrypt zawiera specjalnie przygotowany `window.onerror`.
+3. W przypadku pojawienia się błędu, następuje wysłanie żądania sieciowego do naszego usługodawcy.
+4. Po zalogowaniu się do intefejsu zapewnionego przez usługodawcę, będziemy mogli przejrzeć wszystkie błędy, które wystąpiły na wybranej stronie.
 
 ## Summary
 
