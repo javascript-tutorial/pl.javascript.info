@@ -2,37 +2,36 @@ importance: 5
 
 ---
 
-# Finally or just the code?
+# Czy blok finally jest rzeczywiście potrzebny?
 
-Compare the two code fragments.
+Porównaj obydwa fragmenty programu:
 
-1. The first one uses `finally` to execute the code after `try..catch`:
+1. Pierwszy fragment zawiera blok `finally`, naturalnie wykona się jako ostatni ze wszystkich bloków instrukcji:
 
     ```js
     try {
-      work work
+      // spróbuj wykonać instrukcje
     } catch (e) {
-      handle errors
+      // obsłuż błąd
     } finally {
     *!*
-      cleanup the working space
+      // sfinalizuj instrukcję
     */!*
     }
     ```
-2. The second fragment puts the cleaning right after `try..catch`:
+2. Drugi fragment nie zawiera bloku `finally`. Instrukcja `try...catch` zostaje sfinalizowana na zewnątrz, zaraz po jej całkowitym wykonaniu.
 
     ```js
     try {
-      work work
+      // spróbuj wykonać instrukcje
     } catch (e) {
-      handle errors
+      // obsłuż błędy
     }
 
     *!*
-    cleanup the working space
+    // sfinalizuj instrukcję
     */!*
     ```
+Bez względu na to czy pojawi się błąd czy też nie, chcemy sfinalizować instrukcję. 
 
-We definitely need the cleanup after the work, doesn't matter if there was an error or not.
-
-Is there an advantage here in using `finally` or both code fragments are equal? If there is such an advantage, then give an example when it matters.
+Czy istnieje jakaś różnica między powyższymi fragmentami kodu, wynikająca z używania bloku `finally`? Jeśli tak to przedstaw przykład kiedy ma to znaczenie. A może oba fragmenty są sobie równe?

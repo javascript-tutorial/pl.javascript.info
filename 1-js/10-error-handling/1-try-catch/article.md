@@ -75,7 +75,7 @@ Spójrzmy na przykłady:
 
 Aby instrukcja `try...catch` zadziałała, kod zawarty w tym bloku powinien być w stanie się uruchomić. Innymi słowy, musi to być poprawny kod JavaScript. 
 
-Wykonywanie instrukcji zostnanie przerwane, jeśli napotka błąd składni (ang. Syntax Error). Weźmy za przykład nieparzystą ilość klamer:
+Wykonywanie instrukcji zostanie przerwane, jeśli napotka błąd składni (ang. Syntax Error). Weźmy za przykład nieparzystą ilość klamer:
 
 ```js run
 try {
@@ -327,7 +327,7 @@ try {
 }
 ```
 
-Spójrzmy na instrukcję oznaczoną asteriksem. Za pośrednictwem operatora `throw`, generujemy błąd o identyfikatorze `SyntaxError` oraz przekazujemy argument własności `message`. W razie napotkania tego błędu, wykonywanie bloku `try {...}` zostaje przerwane, a kontrola przekazana jest drugiemu blokowi `catch(err) {...}`.
+Spójrzmy na instrukcję oznaczoną `(*)`. Za pośrednictwem operatora `throw`, generujemy błąd o identyfikatorze `SyntaxError` oraz przekazujemy argument własności `message`. W razie napotkania tego błędu, wykonywanie bloku `try {...}` zostaje przerwane, a kontrola przekazana jest drugiemu blokowi `catch(err) {...}`.
 
 Warto zaznaczyć, że drugi blok `catch(err) {...}` obsługuje przypadki wszystkich błędów jakie mogą się pojawić, nie tylko metody `JSON.parse`.
 
@@ -407,7 +407,7 @@ try {
 }
 ```
 
-Spójrzmy na instrukcję oznaczoną asteriksem. Niespodziewany błąd zostanie zwrócony na zewnątrz, poza instrukcję `try...catch`. Zostanie przechwycona przez zewnętrzną instrukcję `try...catch`, o ile taka istnieje lub po prostu wykonywanie programu zostanie przerwane. 
+Spójrzmy na instrukcję oznaczoną `(*)`. Niespodziewany błąd zostanie zwrócony na zewnątrz, poza instrukcję `try...catch`. Zostanie przechwycona przez zewnętrzną instrukcję `try...catch`, o ile taka istnieje lub po prostu wykonywanie programu zostanie przerwane. 
 
 Od teraz, przygotowany przez nas blok `catch(err) {...}`, obsługuje tylko i wyłącznie interesujące nas typy błędów, reszta zostaje zwrócona na zewnątrz. 
 
@@ -651,7 +651,7 @@ try {
   // w przypadku błędu, przekaż kontrolę drugiemu blokowi
   // parametr err przyjmuje argument zawierający obiekt błędu
 } finally {
-  // sfinalizuj instrukcje, bez względu na wszystko
+  // sfinalizuj instrukcję, bez względu na wszystko
 }
 ```
 
