@@ -1,47 +1,47 @@
-The difference becomes obvious when we look at the code inside a function.
+Jeśli umieścimy pierwszy fragment w środku funkcji, szybko zauważymy różnicę. 
 
-The behavior is different if there's a "jump out" of `try..catch`.
+Występuje ona w momencie wyjścia z instrukcji `try...catch`.
 
-For instance, when there's a `return` inside `try..catch`. The `finally` clause works in case of *any* exit from `try..catch`, even via the `return` statement: right after `try..catch` is done, but before the calling code gets the control.
+Spójrzmy na przykład użycia `return` w środku `try...catch`. Trzeci blok `finally` wykona się dla *każdego* możliwego wyjścia z dwóch dostępnych bloków instrukcji `try...catch...finally`. Nawet jeśli użyjemy instrukcji `return`. 
 
 ```js run
 function f() {
   try {
-    alert('start');
+    alert('spróbuj wyświetlić okno dialogowe');
 *!*
-    return "result";
+    return "opuść blok try";
 */!*
   } catch (e) {
     /// ...
   } finally {
-    alert('cleanup!');
+    alert('sfinalizuj instrukcję');
   }
 }
 
-f(); // cleanup!
+f(); // sfinalizuj instrukcję
 ```
 
-...Or when there's a `throw`, like here:
+lub kiedy używamy operatora `throw`, jak w przykładzie poniżej:
 
 ```js run
 function f() {
   try {
-    alert('start');
-    throw new Error("an error");
+    alert('spróbuj wyświetlić okno dialogowe');
+    throw new Error("błąd!");
   } catch (e) {
     // ...
-    if("can't handle the error") {
+    if("nie interesują mnie błędy") {
 *!*
       throw e;
 */!*
     }
 
   } finally {
-    alert('cleanup!')
+    alert('sfinalizuj instrukcję')
   }
 }
 
-f(); // cleanup!
+f(); // sfinalizuj instrukcję
 ```
 
-It's `finally` that guarantees the cleanup here. If we just put the code at the end of `f`, it wouldn't run in these situations.
+To blok `finally` zagwarantuje sfinalizowanie instrukcji. Gdy użyjemy zawartości trzeciego bloku na zewnątrz, tuż przed końcem funkcji `f`, nie zostanie to wykonane w przedstawionych scenariuszach.
