@@ -3,7 +3,11 @@ Do pobrania użytkownika wykorzystamy: `fetch('https://api.github.com/users/USER
 
 Jeżeli odpowiedź zostanie zwrócona ze statusem `200`, wywołamy metodę `.json()`, aby móc odczytać javascriptowy obiekt.
 
+<<<<<<< HEAD
 Jeżeli natomiast `fetch` się nie powiedzie lub status odpowiedzi będzie inny niz 200, wówczas w tablicy wynikowej zwracamy po prostu `null`.
+=======
+Otherwise, if a `fetch` fails, or the response has non-200 status, we just return `null` in the resulting array.
+>>>>>>> 97ef86242f9f236b13152e1baf52a55c4db8728a
 
 Kod wygląda następująco:
 
