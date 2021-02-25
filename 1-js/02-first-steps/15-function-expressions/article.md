@@ -40,7 +40,7 @@ Zwróć uwagę, że ostatnia linijka nie wywołuje funkcji, ponieważ po `sayHi`
 
 W JavaScripcie, funkcja jest wartością, więc możemy postępować z nią jak z wartością. Powyższy kod wyświetla jej reprezentację jako łańcuch znaków, czyli jej kod źródłowy.
 
-Oczywiście, funkcja jest wyjątkową wartością, pod tym względem, że możemy ją wywołać, pisząc np. `sayHi()`.
+Oczywiście, funkcja jest wyjątkową wartością - pod tym względem, że możemy ją wywołać, pisząc np. `sayHi()`.
 
 Ale to nadal wartość, dlatego możemy operować na niej, jak na innych rodzajach wartości.
 
@@ -59,7 +59,7 @@ sayHi(); // Cześć    //     to też działa (czemu miałoby nie?)
 
 Oto co dokładnie się dzieje:
 
-1. Deklarując funkcję, `(1)` tworzymy ją i zapisujemy ją do zmiennej o nazwie `sayHi`.
+1. Deklarując funkcję `(1)`, tworzymy ją i zapisujemy ją do zmiennej o nazwie `sayHi`.
 2. Linijka `(2)` kopiuje ją do zmiennej `func`. Jeszcze raz zwróć uwagę: po `sayHi` nie ma nawiasów. Gdyby się tam znajdowały, to polecenie `func = sayHi()` zapisałoby do zmiennej `func` *wynik wywołania* `sayHi()`, a nie *samą funkcję* `sayHi`.
 3. Teraz można wywołać funkcję na dwa sposoby: `sayHi()` i `func()`.
 
@@ -105,10 +105,10 @@ Napiszemy funkcję `ask(question, yes, no)` z trzema parametrami:
 : Tekst pytania
 
 `yes`
-: Funkcja uruchomiona, jeśli odpowiedź brzmi "tak"
+: Funkcja wywoływana, jeśli odpowiedź brzmi "tak"
 
 `no`
-: Funkcja uruchomiona, jeśli odpowiedź brzmi "nie"
+: Funkcja wywoływana, jeśli odpowiedź brzmi "nie"
 
 Funkcja powinna zadać pytanie (`question`) i w zależności od odpowiedzi użytkownika wywołać `yes()` lub `no()`:
 
@@ -134,9 +134,9 @@ ask("Zgadzasz się?", showOk, showCancel);
 
 Okazuje się, że takie funkcje są całkiem przydatne. W przeciwieństwie do powyższego przykładu, funkcje wykorzystywane w praktyce używają znacznie bardziej skomplikowanych sposobów interakcji z użytkownikiem niż zwykłe `confirm`. W przeglądarce, taka funkcja zazwyczaj rysuje ładnie wyglądające okienko, chociaż jest to zupełnie inna historia.
 
-**Argumenty `showOk` i `showCancel` funkcji `ask` nazywane są *wywołaniami zwrotnymi* (*callback functions*) lub po prostu *callback*i.**
+**Argumenty `showOk` i `showCancel` funkcji `ask` nazywane są *wywołaniami zwrotnymi* (*callback functions*) lub po prostu *callback*ami.**
 
-Idea jest taka, że przekazujemy funkcję po to, aby później w razie potrzeby została "wywołana zwrotnie" (*called back*). W naszym przypadku, `showOk` staje się wywołaniem zwrotnym (*callback*iem) wywołanym, jeśli odpowiedź to "tak" a `showCancel` - jeśli odpowiedź to "nie".
+Idea jest taka, że przekazujemy funkcję po to, aby później w razie potrzeby została "wywołana zwrotnie" (*called back*). W naszym przypadku, `showOk` staje się wywołaniem zwrotnym (*callback*iem) wywołanym, jeśli odpowiedź to "tak", a `showCancel` - jeśli odpowiedź to "nie".
 
 Możemy użyć wyrażeń funkcyjnych, aby zapisać tę samą funkcję o wiele krócej:
 
@@ -170,9 +170,9 @@ Możemy przekazywać ją pomiędzy zmiennymi i wywoływać kiedy chcemy.
 
 ## Wyrażenie funkcyjne a deklaracja funkcji
 
-Podsumujmy najważniejsze różnice między deklaracją funkcji a wyrażeniem funkcyjnym
+Podsumujmy najważniejsze różnice między deklaracją funkcji a wyrażeniem funkcyjnym.
 
-Po pierwsze, składnia: jak odróżnić je w kodzie.
+Po pierwsze, składnia - jak odróżnić je w kodzie.
 
 - *Deklaracja funkcji:* funkcja, zadeklarowana jako osobne polecenie, w głównym ciągu kodu.
 
@@ -191,9 +191,9 @@ Po pierwsze, składnia: jak odróżnić je w kodzie.
     };
     ```
 
-Bardziej subtelną różnicą jest *kiedy* funkcja jest tworzona przez silnik JavaScriptu.
+Bardziej subtelną różnicą jest różnica w *momencie tworzenia* funkcji przez silnik JavaScriptu.
 
-**Wyrażenie funkcyjne jest tworzone, w momencie jego napotkania podczas wykonywania skryptu. Można używać go tylko od tej chwili.**
+**Wyrażenie funkcyjne jest tworzone w momencie jego napotkania podczas wykonywania skryptu. Można używać go tylko od tej chwili.**
 
 Kiedy wykonanie skryptu dojdzie do prawej strony przypisania `let sum = function…`, funkcja jest tworzona i od tego momentu może być używana (przypisana, wywołana, itp.).
 
@@ -221,7 +221,7 @@ function sayHi(name) {
 
 Deklaracja funkcji `sayHi` jest tworzona, kiedy JavaScript przygotowuje się do wykonywania skryptu, dlatego funkcja jest widoczna wszędzie.
 
-...Gdybyśmy użyli wyrażenia funkcyjnego, przykład by nie zadziałał:
+Gdybyśmy użyli wyrażenia funkcyjnego, przykład by nie zadziałał:
 
 ```js run refresh untrusted
 *!*
@@ -239,9 +239,9 @@ Innym aspektem deklaracji funkcji jest ich zasięg w bloku.
 
 **W trybie ścisłym (*strict*), kiedy deklaracja funkcji znajduje się wewnątrz bloku, jest ona widoczna wszędzie w tym bloku, lecz nie poza nim.**
 
-Załóżmy dla przykładu, że chcemy zadeklarować funkcję `welcome()`, zależącą od zmiennej `age`, którą otrzymujemy w trakcie wykonania, a którą chcemy wykorzystać później.
+Załóżmy dla przykładu, że chcemy zadeklarować dwie różne wersje funkcji `welcome()` w zależności od wartości zmiennej `age`, którą otrzymujemy w trakcie wykonania, a później użyć tej funkcji.
 
-Jeśli użyjemy deklaracji funkcji, poniższy kod nie zadziała tak, jak byśmy tego oczekiwali:
+Jeśli utworzymy funkcję za pomocą deklaracji, poniższy kod nie zadziała tak, jak byśmy tego oczekiwali:
 
 ```js run
 let age = prompt("Ile masz lat?", 18);
@@ -304,7 +304,7 @@ welcome(); // Error: welcome is not defined
 
 Co możemy zrobić, żeby `welcome` było widoczne poza `if`em?
 
-Odpowiednim podejściem będzie użycie wyrażenia funkcyjnego i przypisanie `welcome` do zmiennej zadeklarowanej poza `if`em, i która ma odpowiednią widoczność.
+Odpowiednim podejściem będzie użycie wyrażenia funkcyjnego i przypisanie `welcome` do zmiennej zadeklarowanej poza `if`em, która ma przez to odpowiednią widoczność.
 
 Ten kod zadziała tak, jakbyśmy chcieli:
 
@@ -365,4 +365,4 @@ Dopiero jeśli z jakichś powodów deklaracja funkcji nie odpowiada naszym potrz
 
 W większości przypadków, kiedy potrzebujemy utworzyć funkcję, lepiej użyć deklaracji funkcji, ponieważ będzie ona widoczna wszędzie. Daje nam to elastyczność w organizacji kodu i zazywczaj poprawia jego czytelność.
 
-Wyrażeń funkcyjnych używaj tam, gdzie zwykła deklaracja funkcji nie wystarczy. Zobaczyliśmy kilka przykładów w tym podrozdziale; w następnych podrozdziałach pojawi się ich więcej.
+Wyrażeń funkcyjnych używaj tam, gdzie zwykła deklaracja funkcji nie wystarczy. W tym podrozdziale przedstawiliśmy kilka przykładów ich użycia; w następnych podrozdziałach pojawi się ich więcej.
