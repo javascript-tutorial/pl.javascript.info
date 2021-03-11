@@ -23,7 +23,7 @@ Na przykład pętla poniżej wysyła `i` dopóki `i < 3`:
 
 ```js run
 let i = 0;
-while (i < 3) { // pokazuje 0, potem 1, potem 2
+while (i < 3) { // pokazuje 0, następnie 1, następnie 2
   alert( i );
   i++;
 }
@@ -68,7 +68,7 @@ do {
 } while (warunek);
 ```
 
-Pętla najpierw wykona ciało, potem sprawdzi warunek i jeśli jest prawdziwy wykona je ponownie i ponownie.
+Pętla najpierw wykona ciało, następnie sprawdzi warunek i jeśli jest prawdziwy wykona je ponownie i ponownie.
 
 Na przykład:
 
@@ -97,7 +97,7 @@ for (początek; warunek; krok) {
 Poznajmy znaczenie tych części na przykładzie. Poniższa pętla uruchomi `alert(i)` dla `i` od `0` do (ale nie włączając) `3`:
 
 ```js run
-for (let i = 0; i < 3; i++) { // pokazuje 0, potem 1, potem 2
+for (let i = 0; i < 3; i++) { // pokazuje 0, następnie 1, następnie 2
   alert(i);
 }
 ```
@@ -249,7 +249,7 @@ for (let i = 0; i < 10; i++) {
   // jeśli prawda, pomiń pozostałą część ciała
   *!*if (i % 2 == 0) continue;*/!*
 
-  alert(i); // 1, potem 3, 5, 7, 9
+  alert(i); // 1, następnie 3, 5, 7, 9
 }
 ```
 
