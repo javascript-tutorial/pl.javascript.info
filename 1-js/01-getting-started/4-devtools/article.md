@@ -8,7 +8,11 @@ Do przeglądarek internetowych dołączane są tzw. "narzędzia deweloperskie", 
 
 Większość programistów skłania się ku przeglądarkom Chrome i Firefox, ponieważ mają najbardziej zaawansowane narzędzia. Inne przeglądarki również je mają, czasem ze specjalnymi funkcjami, ale zazwyczaj jedynie próbują nadrobić zaległości w stosunku do Chrome'a lub Firefoksa. Programiści zwykle jednak mają swoją "ulubioną" przeglądarkę i przełączają się na inną dopiero, gdy muszą naprawić błąd specyficzny dla tej przeglądarki.
 
+<<<<<<< HEAD
 Narzędzia deweloperskie są bardzo rozbudowane i mają wiele funkcjonalności. Zaczniemy od ich otwarcia, zajrzenia do błędów i uruchomienia pierwszych komend javascriptowych.
+=======
+Developer tools are potent, they have many features. To start, we'll learn how to open them, look at errors, and run JavaScript commands.
+>>>>>>> d4b3c135ccf80914f59677803e64ebc832d165e3
 
 ## Google Chrome
 
