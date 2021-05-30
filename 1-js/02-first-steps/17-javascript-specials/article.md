@@ -87,9 +87,9 @@ Istnieje 8 typów danych:
 - `bigint` dla liczb całkowitych dowolnej wielkości,
 - `string` dla ciągów znaków,
 - `boolean` dla wartości logicznych (prawda/fałsz): `true/false`,
-- `null` -- typ przyjmujący tylko wartość `null`, znaczący "pusty" albo "nie istnieje",
-- `undefined` -- typ przyjmujący tylko wartość `undefined`, znaczący "nieprzypisany",
-- `object` i `symbol` -- wykorzystywany w złożonych strukturach danych i unikalnych identyfikatorach, ale jeszcze się ich nie nauczyliśmy.
+- `null` - typ przyjmujący tylko wartość `null`, znaczący "pusty" albo "nie istnieje",
+- `undefined` - typ przyjmujący tylko wartość `undefined`, znaczący "nieprzypisany",
+- `object` i `symbol` - wykorzystywany w złożonych strukturach danych i unikalnych identyfikatorach, ale jeszcze się ich nie nauczyliśmy.
 
 Operator `typeof` zwraca typ wartości, z dwoma wyjątkami:
 ```js
@@ -133,7 +133,7 @@ JavaScript obsługuje następujące operatory:
 Arytmetyczne
 : Zwyczajne: `* + - /`, oraz `%` dla reszty z dzielenia całkowitego i `**` dla potęgi liczby.
 
-    Binarny operator plus `+` łączy łańcuchy znaków. Jeżeli któryś z operandów (argumentów) jest napisem, drugi jest również konwertowany na napis:
+    Dwuargumentowy operator plus `+` łączy łańcuchy znaków. Jeżeli któryś z operandów jest napisem, drugi jest również konwertowany na napis:
 
     ```js run
     alert( '1' + 2 ); // '12', string
