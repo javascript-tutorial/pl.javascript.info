@@ -1,6 +1,6 @@
-# Object methods, "this"
+# Metody obiektów, "this"
 
-Objects are usually created to represent entities of the real world, like users, orders and so on:
+Obiekty zazwyczaj są tworzone po to, żeby przedstawiać rzeczywiste podmioty, takie jak użytkownicy, zadania do wykonania i tym podobne: 
 
 ```js
 let user = {
@@ -9,13 +9,13 @@ let user = {
 };
 ```
 
-And, in the real world, a user can *act*: select something from the shopping cart, login, logout etc.
+I tak jak w rzeczywistości, użytkownik może *działać*: wybrać coś z koszyka, zalogować się, wylogować itd.
 
-Actions are represented in JavaScript by functions in properties.
+Czynności są w JavaScript'cie funkcjami we właściwościach obiektu.
 
-## Method examples
+## Przykłady metod
 
-For a start, let's teach the `user` to say hello:
+Na początek, nauczmy użytkownika `user` jak się przywitać:
 
 ```js run
 let user = {
@@ -25,22 +25,22 @@ let user = {
 
 *!*
 user.sayHi = function() {
-  alert("Hello!");
+  alert("Cześć!");
 };
 */!*
 
-user.sayHi(); // Hello!
+user.sayHi(); // Cześć!
 ```
 
-Here we've just used a Function Expression to create the function and assign it to the property `user.sayHi` of the object.
+Właśnie użyliśmy Wyrażenia Funkcji do stworzenia funkcji i przypisaliśmy ją do właściwości `user.sayHi` obiektu.
 
-Then we can call it. The user can now speak!
+Następnie ją wywołaliśmy. Użytkownik potrafi teraz mówić!
 
-A function that is the property of an object is called its *method*.
+Funkcja która jest właściwością obiektu nazywamy *metodą*.
 
-So, here we've got a method `sayHi` of the object `user`.
+Także mamy tutaj metodę `sayHi` obiektu `user`.
 
-Of course, we could use a pre-declared function as a method, like this:
+Oczywiście moglibyśmy również posłużyć się wcześniej zadeklarowaną funkcją jako metodą: 
 
 ```js run
 let user = {
@@ -48,51 +48,52 @@ let user = {
 };
 
 *!*
-// first, declare
+// najpierw deklarujemy
 function sayHi() {
-  alert("Hello!");
+  alert("Cześć!");
 };
 
-// then add as a method
+// następnie dodajemy jako metodę
 user.sayHi = sayHi;
 */!*
 
-user.sayHi(); // Hello!
+user.sayHi(); // Cześć!
 ```
 
 ```smart header="Object-oriented programming"
-When we write our code using objects to represent entities, that's called [object-oriented programming](https://en.wikipedia.org/wiki/Object-oriented_programming), in short: "OOP".
+Kiedy piszemy kod wykorzystujący obiekty do reprezentowania podmiotów, nazywamy to[programowaniem obiektowym](https://pl.wikipedia.org/wiki/Programowanie_obiektowe), w skrócie:
+"OOP".
 
-OOP is a big thing, an interesting science of its own. How to choose the right entities? How to organize the interaction between them? That's architecture, and there are great books on that topic, like "Design Patterns: Elements of Reusable Object-Oriented Software" by E.Gamma, R.Helm, R.Johnson, J.Vissides or "Object-Oriented Analysis and Design with Applications" by G.Booch, and more.
+OOP to bardzo rozległy i interesujący temat. Jak wybrać właściwe podmioty? Jak stworzyć zależności między nimi? Jest to cała architektura i istnieje wiele świetnych książek traktujących ten temat, jak np. "Wzorce projektowe. Elementy oprogramowania" autorstwa E.Gamma, R.Helm, R.Johnson, J.Vissides, lub  "Object-Oriented Analysis and Design with Applications" G.Booch, i wiele innych
 ```
-### Method shorthand
+### Skróty dla metod
 
-There exists a shorter syntax for methods in an object literal:
+Istnieje skrócona składnia dla metod w literałach obiektowych:
 
 ```js
-// these objects do the same
+// te obiekty działają tak samo
 
 user = {
   sayHi: function() {
-    alert("Hello");
+    alert("Cześć");
   }
 };
 
-// method shorthand looks better, right?
+// skrócona składnia wygląda lepiej, prawda ? 
 user = {
 *!*
-  sayHi() { // same as "sayHi: function()"
+  sayHi() { // to samo co "sayHi: function()"
 */!*
-    alert("Hello");
+    alert("Cześć");
   }
 };
 ```
 
-As demonstrated, we can omit `"function"` and just write `sayHi()`.
+Jak wyżej, możemy pominąć `"function"` i po prostu użyć `sayHi()`.
 
-To tell the truth, the notations are not fully identical. There are subtle differences related to object inheritance (to be covered later), but for now they do not matter. In almost all cases the shorter syntax is preferred.
+Szczerze mowiąc, oba zapisy nie są całkowicie identyczne. Istnieją subtelne różnice między nimi, związane z dziedziczeniem (ten temat poruszymy później), ale na tem moment nie ma to znaczenia. W prawie każdym przypadku lepiej użyć skróconej wersji.
 
-## "this" in methods
+## "this" w metodach
 
 It's common that an object method needs to access the information stored in the object to do its job.
 
