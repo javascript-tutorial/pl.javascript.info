@@ -244,8 +244,7 @@ Ta część zawiera bardziej zaawansowaną terminologię, pomagającą lepiej zr
 Jeśli chcesz szybciej przejść dalej, możesz pominąć tę część lub zostawić do przeczytania na później.
 ```
 
-An intricate method call can lose `this`, for instance:
-Zawiłą metoda może doprowadzić do zgubienia `this`, na przykład: 
+Zawiła metoda może doprowadzić do zgubienia `this`, na przykład: 
 
 ```js run
 let user = {
