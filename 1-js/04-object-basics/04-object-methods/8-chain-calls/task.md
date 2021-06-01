@@ -30,7 +30,7 @@ ladder.down();
 ladder.showStep(); // 1
 ```
 
-Zmodyfkuj kod dla `up`, `down` i `showStep` żeby można było połączyć wywołania kroków, w taki sposób:
+Zmodyfkuj kod dla `up`, `down` i `showStep` żeby można było połączyć wywołania funkcji, w taki sposób:
 
 ```js
 ladder.up().up().down().showStep(); // 1
