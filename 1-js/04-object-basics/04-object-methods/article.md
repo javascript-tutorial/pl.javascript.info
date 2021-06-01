@@ -11,7 +11,7 @@ let user = {
 
 I tak jak w rzeczywistości, użytkownik może *działać*: wybrać coś z koszyka, zalogować się, wylogować itd.
 
-Czynności JavaScript'cie są funkcjami we właściwościach obiektu.
+Czynności w JavaScript'cie są funkcjami we właściwościach obiektu.
 
 ## Przykłady metod
 
@@ -34,13 +34,13 @@ user.sayHi(); // Cześć!
 
 Właśnie stworzyliśmy funkcję za pomocą Wyrażenia Funkcji i przypisaliśmy ją do właściwości `user.sayHi` obiektu.
 
-Następnie ją wywołaliśmy. Nasz użytkownik potrafi teraz mówić!
+Następnie ją wywołaliśmy i nasz użytkownik potrafi teraz mówić!
 
 Funkcję, która jest właściwością obiektu nazywamy *metodą*.
 
 Także mamy tutaj metodę `sayHi` obiektu `user`.
 
-Oczywiście moglibyśmy również posłużyć się wcześniej zadeklarowaną funkcją jako metodą: 
+Oczywiście, moglibyśmy również posłużyć się zadeklarowaną wcześniej funkcją jako metodą: 
 
 ```js run
 let user = {
@@ -61,17 +61,17 @@ user.sayHi(); // Cześć!
 ```
 
 ```smart header="Object-oriented programming"
-Kiedy piszemy kod wykorzystujący obiekty do reprezentowania różnych podmiotów, nazywamy to [programowaniem obiektowym](https://pl.wikipedia.org/wiki/Programowanie_obiektowe), w skrócie:
+Kiedy piszemy kod wykorzystujący obiekty do reprezentowania różnych istnień, nazywamy to [programowaniem obiektowym](https://pl.wikipedia.org/wiki/Programowanie_obiektowe), w skrócie:
 "OOP".
 
-OOP to bardzo rozległy i interesujący temat. Jak wybrać właściwe podmioty? Jak stworzyć zależności między nimi? Jest to cała architektura i istnieje wiele świetnych książek traktujących ten temat, jak np. "Wzorce projektowe. Elementy oprogramowania" autorstwa E.Gamma, R.Helm, R.Johnson, J.Vissides, lub  "Object-Oriented Analysis and Design with Applications" G.Booch, i wiele innych
+OOP to bardzo rozległy i interesujący temat. Jak wybrać właściwe podmioty? Jak stworzyć zależności między nimi? Jest to cała architektura i istnieje wiele świetnych książek traktujących ten temat, jak np. "Wzorce projektowe. Elementy oprogramowania" autorstwa E.Gamma, R.Helm, R.Johnson, J.Vissides, lub  "Object-Oriented Analysis and Design with Applications" G.Booch, i wiele innych.
 ```
-### Skrót dla metod
+### Skrót składniowy dla metod
 
 Istnieje skrócona składnia dla metod w literałach obiektowych:
 
 ```js
-// te obiekty działają tak samo
+// poniższe obiekty działają tak samo
 
 user = {
   sayHi: function() {
@@ -89,9 +89,9 @@ user = {
 };
 ```
 
-Tak jak wyżej, możemy pominąć `"function"` i po prostu użyć `sayHi()`.
+Jak widzimy, możemy pominąć `"function"` i po prostu użyć `sayHi()`.
 
-Szczerze mowiąc, oba zapisy nie są całkowicie identyczne. Istnieją subtelne różnice między nimi, związane z dziedziczeniem (ten temat poruszymy później), ale na tem moment nie ma to znaczenia. W prawie każdym przypadku lepiej użyć skróconej wersji.
+Prawde mowiąc, oba zapisy nie są całkowicie identyczne. Istnieją subtelne różnice między nimi, związane z dziedziczeniem (ten temat poruszymy później), ale na tem moment nie ma to znaczenia. W prawie każdym przypadku lepiej użyć krótszej składni.
 
 ## "this" w metodach
 
@@ -122,9 +122,9 @@ let user = {
 user.sayHi(); // John
 ```
 
-Podczas wykonania `user.sayHi()`, wartością `this` będzie `user`.
+Podczas wywołania `user.sayHi()`, wartością `this` będzie `user`.
 
-Możliwe jest również uzyskanie dostępu do obiektu bez używania `this`, przez odwołąnie się do niego przez zmienną z zewnątrz:
+Możliwe jest również uzyskanie dostępu do obiektu bez używania `this`, przez odwołanie się do niego za pomocą zmiennej z zewnątrz:
 
 ```js run
 let user = {
@@ -168,7 +168,7 @@ Jeśli użylibyśmy `this.name` zamiast `user.name` wewnątrz `alert`, wtedy kod
 
 ## "this" nie jest powiązane
 
-W JavaScript słowo kluczowe `this` zachowuje się inaczej niż w innych językach programowania. Może być użyte w każdej funkcji.
+W JavaScript słowo kluczowe `this` zachowuje się inaczej niż w innych językach programowania. Może ono być użyte w każdej funkcji.
 
 Zapis taki jak w poniższym przykładzie nie powoduje błędu:
 
@@ -220,9 +220,9 @@ sayHi(); // undefined
 
 W tym przypadku `this` jest `undefined` w trybie ścisłym. Jeśli spróbujemy uzyskać dostęp do `this.name` pojawi się błąd.
 
-Poza trybem ścisłym, w tym przypadku, wartością `this` będzie *obiekt globalny* (`window` w przeglądarce, dojdziemy do tego w późniejszym rozdziale [](info:global-object)). Jest to zamierzchłe zachowanie, które tryb `"use strict"` naprawia.
+Poza trybem ścisłym, w tym przypadku, wartością `this` będzie *obiekt globalny* (`window` w przeglądarce, dojdziemy do tego w późniejszym rozdziale [](info:global-object)). Jest to zamierzchłe zachowanie języka, które tryb `"use strict"` naprawia.
 
-Zazwyczaj takie wywołanie jest błędem w kodzie. Jeśli w funkcji istnieje `this`, to powinna zostać wywołana jako metoda obiektu.
+Zazwyczaj takie wywołanie jest błędem w kodzie. Jeśli w funkcji istnieje `this`, to powinna ona zostać wywołana jako metoda obiektu.
 ````
 
 
@@ -231,9 +231,9 @@ Jeśli programujesz w innym języku, zapewne przywykłeś do "powiązanego this"
 
 W JavaScript `this` jest "wolne", jego wartość jest określana podczas wykonywania kodu i nie zależy od tego gdzie została zadeklarowana metoda, tylko jaki obiekt znajduje się "przed kropką".
 
-Koncepcja określania `this` podczas wykonywania kodu ma wady i zalety. Z jednej strony, funkcja może być wykorzystywana przez różne obiekty. Z drugiej - im większa swoboda, tym większa podatność na pomyłki.
+Koncepcja ewaluacji `this` podczas wykonywania kodu ma wady i zalety. Z jednej strony, funkcja może być wykorzystywana przez różne obiekty. Z drugiej - im większa swoboda, tym większe ryzyko pomyłki.
 
-Naszym zadaniem nie jest ocena czy taki wybór przy tworzeniu języka był dobry czy zły. Zastanawiamy się raczej jak z tym pracować, jak zyskać dzięki temu korzyści i jak uniknąć problemów.
+Naszym zadaniem nie jest ocena czy taki wybór przy tworzeniu języka był dobry czy zły. Zastanawiamy się raczej jak z takim mechanizmem pracować, jakie zyskać dzięki temu korzyści i jak uniknąć problemów.
 ```
 
 ## Internals: Referencje
@@ -250,7 +250,7 @@ Zawiła metoda może doprowadzić do zgubienia `this`, na przykład:
 let user = {
   name: "John",
   hi() { alert(this.name); },
-  bye() { alert("Bye"); }
+  bye() { alert("Pa!"); }
 };
 
 user.hi(); // John (zwykłe wywołanie działa bez problemu)
@@ -261,7 +261,7 @@ user.hi(); // John (zwykłe wywołanie działa bez problemu)
 */!*
 ```
 
-W ostatniej linijce operator warunkowy wybiera pomiędzy `user.hi` i `user.bye`. W powyższym przykładzie wynikiem jest `ures.hi`.
+W ostatniej linijce operator warunkowy wybiera pomiędzy `user.hi` i `user.bye`. W powyższym przykładzie wynikiem jest `user.hi`.
 
 Następnie metoda jest natychmiast wywoływana z nawiasami `()`. Ale nie działa prawidłowo!
 
@@ -272,17 +272,17 @@ Ten kod działa (obiekt kropka metoda):
 user.hi();
 ```
 
-Ten nie działa (metoda określana):
+Ten nie działa (metoda ewaluowana):
 ```js
 (user.name == "John" ? user.hi : user.bye)(); // Błąd!
 ```
 
-Dlaczego? Jeśli chcemy zrozumieć dlaczego tak się dzieje, przyjrzyjmy się dokładnie działa jak wywołanie `obj.method()`.
+Dlaczego? Jeśli chcemy zrozumieć dlaczego tak się dzieje, przyjrzyjmy się dokładnie jak działa wywołanie metody `obj.method()`.
 
 Patrząc uważne, możemy zaobserwować dwie wykonujące się operacje w `obj.method()`:
 
-1. Najpierw, kropka `'.'` pobiera wląściwość `obj.method`.
-2. Następnie nawiasy `()` ją wykonują. 
+1. Najpierw, kropka `'.'` pobiera właściwość `obj.method`.
+2. Następnie nawiasy `()` ją wywołują. 
 
 Jak więc informacja o `this` migruje z pierwszej części do drugiej?
 
@@ -303,7 +303,7 @@ hi(); // Błąd, ponieważ this jest undefined
 
 `hi = user.hi` przypisuje metodę do zmiennej, a na samym końcu jest wywoływana jako osobna funkcja, więc `this` nie posiada już tutaj żadnej wartości.
 
-**Żeby `user.hi()` działalo, JavaScript używa sztuczki -- kropka `'.'` nie zwraca funkcji, tylko wartość ze specjalną]ym [Typem Referencji](https://tc39.github.io/ecma262/#sec-reference-specification-type).**
+**Żeby `user.hi()` działało prawidłowo, JavaScript używa sztuczki -- kropka `'.'` nie zwraca funkcji, tylko wartość ze specjalnym [Typem Referencji](https://tc39.github.io/ecma262/#sec-reference-specification-type).**
 
 Typ Referencji jest "typem specyfikacji". Nie możemy go bezpośrednio uzyć, ale jest on wbudowany i wykorzystywany przez język.
 
@@ -320,11 +320,11 @@ Wynikiem dostępu do właściwości `user.hi` nie jest funkcja, tylko wartość 
 (user, "hi", true)
 ```
 
-Jeśli wywołujemy nawiasy `()` na Typ Referencji, otrzymują one całą informację o obiekcie, jego metodzie i mogą ustawić dla this prawidłową wartość (w tym przypadku `=user`).
+Jeśli wywołujemy nawiasy `()` na Typie Referencji, otrzymują one całą informację o obiekcie, jego metodzie i mogą ustawić dla this prawidłową wartość (w tym przypadku `=user`).
 
 Typ Referencji jest specjalnym "pośrednim" typem wewnętrznym, którego zadaniem jest przekazywanie informacji z kropki `.` do nawiasów `()`.
 
-Każda inna operacja, jak przypisanie `hi = user.hi` odrzuca całkowicie Typ Referencji, bierze wartośc z `user.hi` (funkcji) i przekazuje ją dalej. Zatem każda następna operacja "gubi" `this`.
+Każda inna operacja, jak przypisanie `hi = user.hi` odrzuca całkowicie Typ Referencji, bierze wartość z `user.hi` (funkcji) i przekazuje ją dalej. Zatem każda następna operacja "gubi" `this`.
 
 Podsumowując, wartość `this` jest przekazywane we właściwy sposób jeśli funkcja jest wywoływana za pomocą kropki `obj.method()` lub nawiasów kwadratowych `obj[`method`]()` (obie składnie zadziałają tutaj identycznie). W dalszej części kursu, nauczymy się różnych możliwości aby rozwiązać ten problem, takich jak [func.bind()](/bind#solution-2-bind).
 
@@ -353,7 +353,7 @@ Jest to specjalna właściwość funkcji strzalkowych, są użyteczne gdy nie ch
 
 - Funkcje które są przechowywane w obiekcie nazywamy "metodami".
 - Metody pozwalają obiektom "zachowywać się" w sposób `object.zróbCoś()`
-- Metody mają referencje do swojego obiektu, jest to wartość ich `this`
+- Metody mają referencje do swojego obiektu, jest to ich wartość `this`
 
 Wartość `this` jest określana podczas wykonywania kodu.
 - Kiedy funkcja jest deklarowana, może ona użyć `this`, z tym że nie będzie ono miało wartości tak długo aż funkcja zostanie wywyłana.
