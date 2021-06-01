@@ -61,7 +61,7 @@ user.sayHi(); // Cześć!
 ```
 
 ```smart header="Object-oriented programming"
-Kiedy piszemy kod wykorzystujący obiekty do reprezentowania podmiotów, nazywamy to[programowaniem obiektowym](https://pl.wikipedia.org/wiki/Programowanie_obiektowe), w skrócie:
+Kiedy piszemy kod wykorzystujący obiekty do reprezentowania podmiotów, nazywamy to [programowaniem obiektowym](https://pl.wikipedia.org/wiki/Programowanie_obiektowe), w skrócie:
 "OOP".
 
 OOP to bardzo rozległy i interesujący temat. Jak wybrać właściwe podmioty? Jak stworzyć zależności między nimi? Jest to cała architektura i istnieje wiele świetnych książek traktujących ten temat, jak np. "Wzorce projektowe. Elementy oprogramowania" autorstwa E.Gamma, R.Helm, R.Johnson, J.Vissides, lub  "Object-Oriented Analysis and Design with Applications" G.Booch, i wiele innych
@@ -126,7 +126,7 @@ Podczas wykonania `user.sayHi()`, wartością `this` będzie `user`.
 
 Możliwe jest również uzyskanie dostępu do obiektu bez używania `this`, przez odwołąnie się do niego przez zmienną z zewnątrz:
 
-```js
+```js run
 let user = {
   name: "John",
   age: 30,
@@ -161,7 +161,7 @@ let user = {
 let admin = user;
 user = null; // dla pewności nadpisujemy zmienną
 
-admin.sayHi(); // Ups! wewnątrz sayHi(), wykorzystywana jest zła zmienna! błąd!
+admin.sayHi(); // Ups! wewnątrz sayHi(), wykorzystywana jest zła zmienna! Błąd!
 ```
 
 Jeśli użylibyśmy `this.name` zamiast `user.name` wewnątrz `alert`, wtedy kod by zadziałał.
@@ -206,7 +206,8 @@ admin['f'](); // Admin (kropka lub nawiasy kwadratowe udzielają dostępu do met
 
 Zasada jest prosta: jeśli `obj.f()` jest wywołana, to `this` jest `obj` podczas wywoływania `f`. Więc w powyższym przykładzie jest to zarówno `user` lub `admin`.
 
-````smart header="Calling without an object: `this == undefined`"
+
+````smart header="Calling without an object: `this` == undefined"
 Możemy wywołać tę funkcję nawet bez obiektu:
 
 ```js run
@@ -328,11 +329,11 @@ Każda inna operacja, jak przypisanie `hi = user.hi` odrzuca całkowicie Typ Ref
 
 Podsumowując, wartość `this` jest przekazywane we właściwy sposób jeśli funkcja jest wywoływana za pomocą kropki `obj.method()` lub nawiasów kwadratowych `obj[`method`]()` (obie składnie zadziałają tutaj identycznie). W dalszej części kursu, nauczymy się różnych możliwości aby rozwiązać ten problem, takich jak [func.bind()](/bind#solution-2-bind).
 
-## Arrow functions have no "this"
+## Funkcje strzałkowe nie mają "this"
 
-Arrow functions are special: they don't have their "own" `this`. If we reference `this` from such a function, it's taken from the outer "normal" function.
+Funkcje strzałkowe są specjalnym typem funkcji: nie posiadają "własnego" `this`. Jeśli odnosimy się do `this` w takiej funkcji, jego wartość jest pobierana z zewnętrznej "normalnej" funkcji. 
 
-For instance, here `arrow()` uses `this` from the outer `user.sayHi()` method:
+W poniższym przykładzie `arrow()` używa `this` z zewnętrznej metody `user.sayHi()`:
 
 ```js run
 let user = {
@@ -346,18 +347,18 @@ let user = {
 user.sayHi(); // Ilya
 ```
 
-That's a special feature of arrow functions, it's useful when we actually do not want to have a separate `this`, but rather to take it from the outer context. Later in the chapter <info:arrow-functions> we'll go more deeply into arrow functions.
+Jest to specjalna właściwość funkcji strzalkowych, są użyteczne gdy nie chcemy mieć osobnego `this`, tylko wolimy je pobrać z zewnątrz. W późniejszym rozdziale <info:arrow-functions> zagłębimy się bardziej w to czym są funkcje strzałkowe. 
 
 
-## Summary
+## Podsumowanie
 
-- Functions that are stored in object properties are called "methods".
-- Methods allow objects to "act" like `object.doSomething()`.
-- Methods can reference the object as `this`.
+- Funkcje które są przechowywane w obiekcie nazywamy "metodami".
+- Metody pozwalają obiektom "zachowywać się" w sposób `object.zróbCoś()`
+- Metody mają referencje do swojego obiektu, jest to wartość ich `this`
 
-The value of `this` is defined at run-time.
-- When a function is declared, it may use `this`, but that `this` has no value until the function is called.
-- A function can be copied between objects.
-- When a function is called in the "method" syntax: `object.method()`, the value of `this` during the call is `object`.
+Wartość `this` jest określana podczas wykonhwania kodu.
+- Kiedy funkcja jest deklarowana, może ona użyć `this`, z tym że nie będzie ono miało wartości tak długo aż funkcja zostanie wywyłana.
+- Jedna funkcja może być użwana jako metoda przez kilka obiektów.
+- Kiedy funkcja jest wykonywana za pomocą składni: `object.method()`, `this` podczas wykonywania przybierze wartość `object`.
 
-Please note that arrow functions are special: they have no `this`. When `this` is accessed inside an arrow function, it is taken from outside.
+Zapamiętaj że funkcje strzałkowe są specjalnym typem funkcji: nie posiadają `this`. Kiedy chcemy uzyskać dostęp do `this` wewnątrz funkcji strzałkowej, wartość jest brana z zewnątrz.
