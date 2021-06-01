@@ -6,7 +6,7 @@ importance: 5
 
 Stwórz obiekt `calculator` z trzema metodami:
 
-- `read()` pobiera dwie wartości w okienku dialogowym `prompt` i zachowuje je jako właściwości obiektu.
+- `read()` pobiera dwie wartości z okienek dialogowych `prompt` i zachowuje je jako właściwości obiektu.
 - `sum()` zwraca sumę zachowanych wartości.
 - `mul()` mnoży zachowane wartości i zwraca wynik.
 
