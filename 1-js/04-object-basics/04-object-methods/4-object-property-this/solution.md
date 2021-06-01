@@ -1,6 +1,6 @@
-**Answer: an error.**
+**Odpowiedź: błąd.**
 
-Try it:
+Uruchom ten kod:
 ```js run
 function makeUser() {
   return {
@@ -14,26 +14,26 @@ let user = makeUser();
 alert( user.ref.name ); // Error: Cannot read property 'name' of undefined
 ```
 
-That's because rules that set `this` do not look at object definition. Only the moment of call matters.
+Jest to spowodowane tym, że reguły ustalające wartość `this` nie uwzględniają definicji obiektu. Znaczenie ma tylko moment wywołania.
 
-Here the value of `this` inside `makeUser()` is `undefined`, because it is called as a function, not as a method with "dot" syntax.
+Wartość `this` wewnątrz `makeUser()` jest `undefined`, ponieważ jest wywołana jako funkcja, a nie jako metoda wywołania za pomocą składni z "kropką"
 
-The value of `this` is one for the whole function, code blocks and object literals do not affect it.
+Wartość `this` jest tu ustalonawyłącznie dla tej funkcji. Bloki kodu i obiekty nie są w tym przypadku brane pod uwagę.
 
-So `ref: this` actually takes current `this` of the function.
+Zatem `ref:this` jest równoznaczne z `this` funkcji.
 
-We can rewrite the function and return the same `this` with `undefined` value: 
+Możemy napisać tę funkcję od nowa w taki sposób, że będzie zwracała takie samo `this` z wartością `undefined`:
 
 ```js run
 function makeUser(){
-  return this; // this time there's no object literal
+  return this; // tym razem nie jest zwracany obiekt
 }
 
 alert( makeUser().name ); // Error: Cannot read property 'name' of undefined
 ```
-As you can see the result of `alert( makeUser().name )` is the same as the result of `alert( user.ref.name )` from the previous example.
+Jak widzisz wynik `alert( makeUser().name )` jest taki sam jak wynik `alert( user.ref.name )` z poprzedniego przykładu.
 
-Here's the opposite case:
+A tutaj odwrotna sytuacja:
 
 ```js run
 function makeUser() {
@@ -52,4 +52,4 @@ let user = makeUser();
 alert( user.ref().name ); // John
 ```
 
-Now it works, because `user.ref()` is a method. And the value of `this` is set to the object before dot `.`.
+Teraz kod działa prawidłowo, ponieważ `user.ref()` jest metodą, a wartością `this` jest obiekt przed kropką `.`. 
