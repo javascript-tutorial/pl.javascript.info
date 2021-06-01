@@ -18,4 +18,4 @@ Oto wyjaśnienie.
 
 Żeby wyjaśnić zachowanie `(3)` i `(4)` musimy przypomnieć sobie, że akcesory właściwości (kropki lub nawiasy kwadratowe) zwracają wartość Typu Referencji.
 
-Każda inna operacja niż wywołanie metody (jak przypisanie `=` lub `||`) zmienia Typ Referencji na zwykłą wartość, która nie zawiera informacji pozwalającej ustalić wartość `this`.
+Każda inna operacja niż wywołanie metody (jak przypisanie `=` lub `||`) zmienia Typ Referencji na zwykłą wartość, która nie zawiera informacji pozwalającej ustalić wartości `this`.
