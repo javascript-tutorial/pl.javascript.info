@@ -1,6 +1,6 @@
 # Metody obiektów, "this"
 
-Obiekty zazwyczaj są tworzone po to, żeby przedstawiać rzeczywiste podmioty, takie jak użytkownicy, zadania do wykonania i tym podobne: 
+Obiekty zazwyczaj są tworzone po to, żeby przedstawiać rzeczywiste byty, takie jak użytkownicy, zadania do wykonania i tym podobne: 
 
 ```js
 let user = {
@@ -11,11 +11,11 @@ let user = {
 
 I tak jak w rzeczywistości, użytkownik może *działać*: wybrać coś z koszyka, zalogować się, wylogować itd.
 
-Czynności są w JavaScript'cie funkcjami we właściwościach obiektu.
+Czynności JavaScript'cie są funkcjami we właściwościach obiektu.
 
 ## Przykłady metod
 
-Na początek, nauczmy użytkownika `user` jak się przywitać:
+Na początek, nauczmy użytkownika `user` przywitania się:
 
 ```js run
 let user = {
@@ -32,11 +32,11 @@ user.sayHi = function() {
 user.sayHi(); // Cześć!
 ```
 
-Właśnie użyliśmy Wyrażenia Funkcji do stworzenia funkcji i przypisaliśmy ją do właściwości `user.sayHi` obiektu.
+Właśnie stworzyliśmy funkcję za pomocą Wyrażenia Funkcji i przypisaliśmy ją do właściwości `user.sayHi` obiektu.
 
-Następnie ją wywołaliśmy. Użytkownik potrafi teraz mówić!
+Następnie ją wywołaliśmy. Nasz użytkownik potrafi teraz mówić!
 
-Funkcja która jest właściwością obiektu nazywamy *metodą*.
+Funkcję, która jest właściwością obiektu nazywamy *metodą*.
 
 Także mamy tutaj metodę `sayHi` obiektu `user`.
 
@@ -61,12 +61,12 @@ user.sayHi(); // Cześć!
 ```
 
 ```smart header="Object-oriented programming"
-Kiedy piszemy kod wykorzystujący obiekty do reprezentowania podmiotów, nazywamy to [programowaniem obiektowym](https://pl.wikipedia.org/wiki/Programowanie_obiektowe), w skrócie:
+Kiedy piszemy kod wykorzystujący obiekty do reprezentowania różnych podmiotów, nazywamy to [programowaniem obiektowym](https://pl.wikipedia.org/wiki/Programowanie_obiektowe), w skrócie:
 "OOP".
 
 OOP to bardzo rozległy i interesujący temat. Jak wybrać właściwe podmioty? Jak stworzyć zależności między nimi? Jest to cała architektura i istnieje wiele świetnych książek traktujących ten temat, jak np. "Wzorce projektowe. Elementy oprogramowania" autorstwa E.Gamma, R.Helm, R.Johnson, J.Vissides, lub  "Object-Oriented Analysis and Design with Applications" G.Booch, i wiele innych
 ```
-### Skróty dla metod
+### Skrót dla metod
 
 Istnieje skrócona składnia dla metod w literałach obiektowych:
 
@@ -89,13 +89,13 @@ user = {
 };
 ```
 
-Jak wyżej, możemy pominąć `"function"` i po prostu użyć `sayHi()`.
+Tak jak wyżej, możemy pominąć `"function"` i po prostu użyć `sayHi()`.
 
 Szczerze mowiąc, oba zapisy nie są całkowicie identyczne. Istnieją subtelne różnice między nimi, związane z dziedziczeniem (ten temat poruszymy później), ale na tem moment nie ma to znaczenia. W prawie każdym przypadku lepiej użyć skróconej wersji.
 
 ## "this" w metodach
 
-Często się zdarza, że metoda obiektu do poprawnego działania potrzebuje dostępu do informacji zawartej w tym samym obiekcie
+Często się zdarza, że metoda obiektu do poprawnego działania potrzebuje dostępu do informacji zawartej w tym samym obiekcie.
 
 DLa przykładu, kod wewnątrz `user.sayHi()` może wymagać imienia użytkownika `user`.
 
