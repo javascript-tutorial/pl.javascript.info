@@ -356,7 +356,7 @@ Jest to specjalna właściwość funkcji strzalkowych, są użyteczne gdy nie ch
 - Metody pozwalają obiektom "zachowywać się" w sposób `object.zróbCoś()`
 - Metody mają referencje do swojego obiektu, jest to wartość ich `this`
 
-Wartość `this` jest określana podczas wykonhwania kodu.
+Wartość `this` jest określana podczas wykonywania kodu.
 - Kiedy funkcja jest deklarowana, może ona użyć `this`, z tym że nie będzie ono miało wartości tak długo aż funkcja zostanie wywyłana.
 - Jedna funkcja może być użwana jako metoda przez kilka obiektów.
 - Kiedy funkcja jest wykonywana za pomocą składni: `object.method()`, `this` podczas wykonywania przybierze wartość `object`.
