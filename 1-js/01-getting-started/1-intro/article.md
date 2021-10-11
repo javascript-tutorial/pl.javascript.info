@@ -1,10 +1,18 @@
 # Wprowadzenie do JavaScriptu
 
+<<<<<<< HEAD
 Sprawdźmy, czym jest JavaScript, co możemy osiągnąć z jego pomocą i z jakimi innymi technologiami dobrze współpracuje.
+=======
+Let's see what's so special about JavaScript, what we can achieve with it, and what other technologies play well with it.
+>>>>>>> 193319c963b9ba86ac7d9590f7261a36ecdcc4d2
 
 ## Czym jest JavaScript?
 
+<<<<<<< HEAD
 *JavaScript* pierwotnie został stworzony z myślą o *"ożywieniu stron internetowych"*.
+=======
+*JavaScript* was initially created to "make web pages alive".
+>>>>>>> 193319c963b9ba86ac7d9590f7261a36ecdcc4d2
 
 Programy napisane w tym języku nazywamy *skryptami*. Możemy je pisać bezpośrednio w kodzie HTML strony i uruchamiać podczas wczytywania strony.
 
@@ -24,11 +32,19 @@ Przeglądarka posiada wbudowany silnik, potocznie nazywany "wirtualną maszyną 
 
 Poszczególne silniki różnią się "nazwami kodowymi", na przykład:
 
+<<<<<<< HEAD
 - [V8](https://pl.wikipedia.org/wiki/V8_(silnik_JavaScript)) -- w Chromie i Operze.
 - [SpiderMonkey](https://pl.wikipedia.org/wiki/SpiderMonkey) -- w Firefoksie.
 - ... istnieją inne nazwy, jak "Trident" lub "Chakra" dla różnych wersji IE, "ChakraCore" dla Microsoft Edge, "Nitro" i "SquirrelFish" dla Safari itd.
 
 Warto zapamiętać powyższe nazwy, ponieważ często przewijają się w artykułach programistycznych w Internecie. W tym także będą się pojawiać. Będziemy pisać, na przykład, że "funkcjonalność X jest wspierana przez silnik V8", co oznacza, że najprawdopodobniej zadziała w Chromie i Operze.
+=======
+- [V8](https://en.wikipedia.org/wiki/V8_(JavaScript_engine)) -- in Chrome, Opera and Edge.
+- [SpiderMonkey](https://en.wikipedia.org/wiki/SpiderMonkey) -- in Firefox.
+- ...There are other codenames like "Chakra" for IE, "JavaScriptCore", "Nitro" and "SquirrelFish" for Safari, etc.
+
+The terms above are good to remember because they are used in developer articles on the internet. We'll use them too. For instance, if "a feature X is supported by V8", then it probably works in Chrome, Opera and Edge.
+>>>>>>> 193319c963b9ba86ac7d9590f7261a36ecdcc4d2
 
 ```smart header="Jak działają silniki?"
 
@@ -63,7 +79,11 @@ Możliwości przeglądarkowego JavaScriptu są ograniczone ze względu na bezpie
 
 Przykładami takich restrykcji są:
 
+<<<<<<< HEAD
 - JavaScript zawarty na stronie nie może odczytywać/zapisywać plików na dysku twardym, kopiować ich ani uruchamiać programów. Nie ma bezpośredniego dostępu do funkcji systemu operacyjnego.
+=======
+- JavaScript on a webpage may not read/write arbitrary files on the hard disk, copy them or execute programs. It has no direct access to OS functions.
+>>>>>>> 193319c963b9ba86ac7d9590f7261a36ecdcc4d2
 
     Współczesne przeglądarki pozwalają na przetwarzanie plików, jednak dostęp jest ograniczony do sytuacji, w których użytkownik wykona odpowiednie akcje, np. "przeciągnie" plik do okna przeglądarki lub wybierze go poprzez element `<input>`.
 
@@ -106,15 +126,30 @@ Współczesne narzędzia pozwalają na szybką i przejrzystą transpilację, umo
 
 Przykłady takich języków:
 
+<<<<<<< HEAD
 - [CoffeeScript](http://coffeescript.org/) jest "lukrem składniowym" (ang. *syntactic sugar*) dla JavaScriptu. Wprowadza krótszą składnie, pozwalając na pisanie precyzyjnego i bardziej przejrzystego kodu. Ma zwolenników wśród programistów języka Ruby.
 - [TypeScript](http://www.typescriptlang.org/) skupia się na dodaniu "rygorystycznego typowania danych" w celu ułatwienia dewelopmentu i lepszego wsparcia dla skomplikowanych systemów. Jest rozwijany przez Microsoft.
 - [Flow](http://flow.org/) również dodaje typy, ale w nieco inny sposób. Rozwijany przez Facebooka.
 - [Dart](https://www.dartlang.org/) jest odrębnym językiem, posiadającym własny silnik, który działa poza przeglądarką (np. w aplikacjach mobilnych), ale może być także transpilowany do JavaScriptu. Rozwijany przez Google.
+=======
+- [CoffeeScript](http://coffeescript.org/) is a "syntactic sugar" for JavaScript. It introduces shorter syntax, allowing us to write clearer and more precise code. Usually, Ruby devs like it.
+- [TypeScript](http://www.typescriptlang.org/) is concentrated on adding "strict data typing" to simplify the development and support of complex systems. It is developed by Microsoft.
+- [Flow](http://flow.org/) also adds data typing, but in a different way. Developed by Facebook.
+- [Dart](https://www.dartlang.org/) is a standalone language that has its own engine that runs in non-browser environments (like mobile apps), but also can be transpiled to JavaScript. Developed by Google.
+- [Brython](https://brython.info/) is a Python transpiler to JavaScript that enables the writing of applications in pure Python without JavaScript.
+- [Kotlin](https://kotlinlang.org/docs/reference/js-overview.html) is a modern, concise and safe programming language that can target the browser or Node.
+>>>>>>> 193319c963b9ba86ac7d9590f7261a36ecdcc4d2
 
 Jest ich więcej. Rzecz jasna, nawet jeśli używamy któregoś z języków transpilowanych, powinniśmy znać JavaScript, aby lepiej rozumieć, co się dzieje w kodzie.
 
 ## Podsumowanie
 
+<<<<<<< HEAD
 - JavaScript został stworzony jako język tylko dla przeglądarek, jednak obecnie używa się go także w wielu innych środowiskach.
 - Uplasował się na dogodnej pozycji jako najszerzej stosowany język przeglądarkowy o pełnej integrowalności z HTML-em i CSS-em.
 - Istnieje wiele języków "transpilowanych" do JavaScriptu, które dodają konkretne funkcjonalności. Dobrze jest się z nimi zapoznać po nauce JavaScriptu, choćby pobieżnie.
+=======
+- JavaScript was initially created as a browser-only language, but it is now used in many other environments as well.
+- Today, JavaScript has a unique position as the most widely-adopted browser language with full integration in HTML/CSS.
+- There are many languages that get "transpiled" to JavaScript and provide certain features. It is recommended to take a look at them, at least briefly, after mastering JavaScript.
+>>>>>>> 193319c963b9ba86ac7d9590f7261a36ecdcc4d2
