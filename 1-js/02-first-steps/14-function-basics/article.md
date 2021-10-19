@@ -127,7 +127,7 @@ showMessage();
 alert( userName ); // *!*Jan*/!*, niezmieniona, funkcja nie uzyskała dostępu do zewnętrznej zmiennej
 ```
 
-```smart header="Global variables"
+```smart header="Zmienne globalne"
 Zmienne zadeklarowane poza funkcjami, tak jak zewnętrzna zmienna `userName` w kodzie powyżej, są nazywane *globalnymi*.
 
 Zmienne globalne są widoczne z każdej funkcji (chyba że są zaciemnione przez lokalne).
@@ -235,7 +235,7 @@ function showMessage(from, text) {
 
 ```js
 function showMessage(from, text) {
-  // jeżeli text przyjmuje wartość falsy, wówczas text przyjmuje wartość "domyślną"
+  // jeżeli text przyjmuje wartość fałszywą, wówczas text przyjmuje wartość "domyślną"
   text = text || 'brak tekstu';
   ...
 }
@@ -247,7 +247,7 @@ function showMessage(from, text) {
 
 ## Zwracanie wartości
 
-Funkcja może zwracać wartość z powrotem do wywłoującego ją kodu jako rezultat.
+Funkcja może zwracać wartość z powrotem do wywołującego ją kodu jako rezultat.
 
 Najprosztym przykładem będzie funkcja która sumuje dwie wartości:
 
@@ -266,7 +266,7 @@ Może być wiele wystąpień dyrektywy `return` w pojedynczej funkcji. Na przyk�
 
 ```js run
 function checkAge(age) {
-  if (age >= 18) {
+  if (age > 18) {
 *!*
     return true;
 */!*
@@ -397,7 +397,7 @@ Te przykłady zakładają powszechne znaczenie przedrostków. Ty i twój zespó�
 ```smart header="Ultra-krótkie nazwy funkcji"
 Funkcje które są używane *bardzo często* czasami mają ultra-krótkie nazwy.
 
-Na przykład, framework [jQuery](http://jquery.com) definiuje funkcje za pomocą `$`. Bibloteka [Lodash](http://lodash.com/) ma swoje funkcje nazwane za pomocą `_`.
+Na przykład, framework [jQuery](http://jquery.com) definiuje funkcje za pomocą `$`. Bibloteka [Lodash](http://lodash.com/) ma swoją główną funkcję nazwaną `_`.
 
 To są wyjątki. Ogólnie nazwy funkcji powinny być zwięzłe i opisowe.
 ```
@@ -410,7 +410,7 @@ Oddzielnna funckja jest nie tylko łatwiejsza do testowania i debugowania -- jej
 
 Dla przykładu, porównaj dwie fukncje `showPrimes(n)` poniżej. Każda z nich zwraca [liczby pierwsze](https://pl.wikipedia.org/wiki/Liczba_pierwsza) aż do `n`.
 
-Pierwszy wwariant używa etykiety:
+Pierwszy wariant używa etykiety:
 
 ```js
 function showPrimes(n) {
