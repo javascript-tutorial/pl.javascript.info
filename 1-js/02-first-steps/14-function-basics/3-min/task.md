@@ -1,4 +1,4 @@
-ważność: 1
+importance: 1
 
 ---
 
