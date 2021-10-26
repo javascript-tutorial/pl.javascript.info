@@ -107,7 +107,7 @@ alert( userName ); // *!*Robert*/!*, wartość zmiennej została zmodyfikowana p
 
 Zewnętrzna zmienna jest używana jedynie jeśli nie ma żadnej lokalnej.
 
-Jeżeli tak samo nazwana zmienna jest zadeklarowana wewnątrz funkcji to wówczas *zaciemnia* ona tą zewnętrzną. Na przykład, w kodzie poniżej funkcja używa lokalnego `userName`. Zewnętrzna jest ignorowana:
+Jeżeli tak samo nazwana zmienna jest zadeklarowana wewnątrz funkcji to wówczas *przesłania* ona tą zewnętrzną. Na przykład, w kodzie poniżej funkcja używa lokalnego `userName`. Zewnętrzna jest ignorowana:
 
 ```js run
 let userName = 'Jan';
@@ -130,7 +130,7 @@ alert( userName ); // *!*Jan*/!*, niezmieniona, funkcja nie uzyskała dostępu d
 ```smart header="Zmienne globalne"
 Zmienne zadeklarowane poza funkcjami, tak jak zewnętrzna zmienna `userName` w kodzie powyżej, są nazywane *globalnymi*.
 
-Zmienne globalne są widoczne z każdej funkcji (chyba że są zaciemnione przez lokalne).
+Zmienne globalne są widoczne z każdej funkcji (chyba że są przesłonione przez lokalne).
 
 Dobrą praktyką jest minimalizacja użycia zmiennych globalnych. Nowoczesny kod ma kilka lub nie ma żadnych zmiennych globalnych. Większość zmiennych deklarowanych jest w funkcjach. Chociaż czasami, mogą być użyteczne do przechowywania danych ważnych z punktu widzenia projektu.
 ```
