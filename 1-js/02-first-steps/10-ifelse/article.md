@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # Operatory warunkowe: if, '?'
+=======
+# Conditional branching: if, '?'
+>>>>>>> 6989312841d843f2350803ab552d9082437be569
 
 Czasami potrzebujemy wykonać różne akcje w zależności od warunków.
 
@@ -68,7 +72,11 @@ if (cond) {
 
 ## Klauzula "else"
 
+<<<<<<< HEAD
 Wyrażenie `if` może opcjonalnie zawierać blok "else", który wykona się w przypadku gdy sprawdzany warunek jest fałszywy  (ang. *falsy*).
+=======
+The `if` statement may contain an optional "else" block. It executes when the condition is falsy.
+>>>>>>> 6989312841d843f2350803ab552d9082437be569
 
 Na przykład:
 ```js run
