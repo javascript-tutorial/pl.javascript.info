@@ -2,7 +2,7 @@ importance: 3
 
 ---
 
-# Określ wartość "this":
+# Określ wartość "this"
 
 W poniższym kodzie chcemy wywołać metodę `obj.go()` cztery razy pod rząd.
 

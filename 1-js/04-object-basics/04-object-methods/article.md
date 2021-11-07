@@ -97,7 +97,7 @@ Prawde mowiąc, oba zapisy nie są całkowicie identyczne. Istnieją subtelne r�
 
 Często się zdarza, że metoda obiektu do poprawnego działania potrzebuje dostępu do informacji zawartej w tym samym obiekcie.
 
-DLa przykładu, kod wewnątrz `user.sayHi()` może wymagać imienia użytkownika `user`.
+Dla przykładu, kod wewnątrz `user.sayHi()` może wymagać imienia użytkownika `user`.
 
 **Aby zdobyć taki dostęp, metoda może wykorzystać słowo kluczowe `this`**
 
@@ -126,7 +126,7 @@ Podczas wywołania `user.sayHi()`, wartością `this` będzie `user`.
 
 Możliwe jest również uzyskanie dostępu do obiektu bez używania `this`, przez odwołanie się do niego za pomocą zmiennej z zewnątrz:
 
-```js run
+```js
 let user = {
   name: "John",
   age: 30,

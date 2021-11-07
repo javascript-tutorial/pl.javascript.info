@@ -3,7 +3,7 @@ Oto wyjaśnienie.
 
 1. Jest to zwykłe wywołanie metody obiektu.
 
-2. Tak jak powyżej. Nawiasy nie zmieniają tutaj kolejności wykonywania działań. Kropka ma pierwszeństwo.
+2. Tak jak powyżej, nawiasy nie zmieniają tutaj kolejności wykonywania działań, kropka i tak ma pierwszeństwo.
 
 3. Tutaj mamy bardziej złożone wywołanie `(expression).method()`. Wywołanie działa tutaj tak jakby było rozbite na dwie linijki kodu:
 

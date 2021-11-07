@@ -2,11 +2,11 @@ importance: 5
 
 ---
 
-# "this" w literałach obiektowych
+# "this" w obiektach
 
 Poniższa funkcja `makeUser` zwraca obiekt. 
 
-Jaki będzie rezultat dostępu do jego `ref` ? I dlaczego?
+Jaki będzie rezultat dostępu do jego `ref`? I dlaczego?
 
 ```js
 function makeUser() {

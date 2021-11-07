@@ -12,7 +12,7 @@ let user = {
 ```
 W większości przeglądarek wiadomość o błędzie nie zawiera zbyt wielu szczegółów mówiących co poszło nie tak.
 
-**Błąd wystąpił ponieważ nie ma średnika po`user = {...}`.**
+**Błąd wystąpił ponieważ nie ma średnika po `user = {...}`.**
 
 JavaScript nie wstawia automatycznie średnika przed nawiasem `(user.go)()`, więc czyta kod w ten sposób:'
 
@@ -20,7 +20,7 @@ JavaScript nie wstawia automatycznie średnika przed nawiasem `(user.go)()`, wi�
 let user = { go:... }(user.go)()
 ```
 
-Teraz widzimy, że taka składnia jest w zasadzie wywołaniem funkcji  `{ go: ... }` z argumentem `(user.go)`. W dodatku wywołanie to znajduje się w tej samej linijce co `let user`, więc do obiekt `user` nie został jeszcze nawet zdefiniowany, dlatego pojawia się błąd.
+Teraz widzimy, że taka składnia jest w zasadzie wywołaniem obiektu  `{ go: ... }` jako funkcji z argumentem `(user.go)`. W dodatku wywołanie to znajduje się w tej samej linijce co `let user`, więc obiekt `user` nie został jeszcze nawet zdefiniowany, dlatego pojawia się błąd.
 
 Jeśli wstawimy średnik, kod będzie działać:
 

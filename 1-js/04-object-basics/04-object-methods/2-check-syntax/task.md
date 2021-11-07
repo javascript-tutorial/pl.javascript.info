@@ -2,7 +2,7 @@ importance: 2
 
 ---
 
-# Sprawdzian ze składni
+# Sprawdzenie składni
 
 Jaki będzie rezultat wykonania tego kodu ?
 

@@ -20,7 +20,7 @@ Wartość `this` wewnątrz `makeUser()` jest `undefined`, ponieważ jest wywoła
 
 Wartość `this` jest tu ustalona wyłącznie dla tej funkcji. Bloki kodu i obiekty nie są w tym przypadku brane pod uwagę.
 
-Zatem `ref:this` jest równoznaczne z `this` funkcji.
+Zatem `ref: this` jest równoznaczne z `this` funkcji.
 
 Możemy napisać tę funkcję od nowa w taki sposób, że będzie zwracała takie samo `this` z wartością `undefined`:
 
