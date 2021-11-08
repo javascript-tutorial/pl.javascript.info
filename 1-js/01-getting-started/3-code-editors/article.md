@@ -31,11 +31,18 @@ W praktyce jednak lekkie edytory mają wiele wtyczek, które wspomagają pracę,
 
 Poniższe przykłady zasługują na twoją uwagę: 
 
+<<<<<<< HEAD
 - [Atom](https://atom.io/) (wieloplatformowy, darmowy).
 - [Visual Studio Code](https://code.visualstudio.com/) (wieloplatformowy, darmowy).
 - [Sublime Text](http://www.sublimetext.com) (wieloplatformowy, shareware).
 - [Notepad++](https://notepad-plus-plus.org/) (Windows, darmowy).
 - [Vim](http://www.vim.org/) i [Emacs](https://www.gnu.org/software/emacs/) są świetne, pod warunkiem że wiesz, jak na nich pracować.
+=======
+- [Atom](https://atom.io/) (cross-platform, free).
+- [Sublime Text](http://www.sublimetext.com) (cross-platform, shareware).
+- [Notepad++](https://notepad-plus-plus.org/) (Windows, free).
+- [Vim](http://www.vim.org/) and [Emacs](https://www.gnu.org/software/emacs/) are also cool if you know how to use them.
+>>>>>>> 4541b7af7584014a676da731f6e8774da5e059f6
 
 ## Nie sprzeczajmy się
 

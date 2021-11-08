@@ -9,7 +9,11 @@ Na początek zobaczmy, jak podpiąć skrypt do naszej strony. W środowiskach se
 
 ## Znacznik "script"
 
+<<<<<<< HEAD
 Programy napisane w JavaScripcie można wrzucić do dowolnej części dokumentu HTML za pomocą znacznika `<script>`.
+=======
+JavaScript programs can be inserted almost anywhere into an HTML document using the `<script>` tag.
+>>>>>>> 4541b7af7584014a676da731f6e8774da5e059f6
 
 Na przykład:
 
@@ -45,8 +49,13 @@ Znacznik `<script>` zawiera kod javascriptowy, który jest automatycznie wywoły
 
 Znacznik `<script>` posiada kilka atrybutów, których współcześnie się nie używa, a na które można się natknąć w starym kodzie:
 
+<<<<<<< HEAD
 Atrybut `type`: <code>&lt;script <u>type</u>=...&gt;</code>
 : Stary standard HTML, czyli HTML4, wymagał, aby skrypty miały określony typ (`type`). Zwykle było to `type="text/javascript"`. Obecnie nie jest on już wymagany. Ponadto, w aktualnym standardzie HTML całkowicie zmieniło się jego znaczenie - teraz stosuje się go przy modułach javascriptowych. Ale to zaawansowany temat. O modułach będziemy mówić w innej części samouczka.
+=======
+The `type` attribute: <code>&lt;script <u>type</u>=...&gt;</code>
+: The old HTML standard, HTML4, required a script to have a `type`. Usually it was `type="text/javascript"`. It's not required anymore. Also, the modern HTML standard totally changed the meaning of this attribute. Now, it can be used for JavaScript modules. But that's an advanced topic, we'll talk about modules in another part of the tutorial.
+>>>>>>> 4541b7af7584014a676da731f6e8774da5e059f6
 
 Atrybut `language`: <code>&lt;script <u>language</u>=...&gt;</code>
 : Ten atrybut służył do określenia języka skryptu. Obecnie nie ma on większego sensu, ponieważ JavaScript jest domyślnym językiem. Nie trzeba go używać.
@@ -73,12 +82,16 @@ Pliki skryptowe dołącza się do HTML-a za pomocą atrybutu `src`:
 <script src="/ścieżka/do/skryptu.js"></script>
 ```
 
+<<<<<<< HEAD
 W tym przykładzie `/ścieżka/do/skryptu.js` to ścieżka bezwzględna do pliku, licząc od katalogu głównego strony. Można jednak podać ścieżkę względną, liczoną od położenia aktualnej strony. Na przykład, `src="skrypt.js"` odnosi się do pliku `"skrypt.js"` w tym samym folderze.
+=======
+Here, `/path/to/script.js` is an absolute path to the script from the site root. One can also provide a relative path from the current page. For instance, `src="script.js"`, just like `src="./script.js"`, would mean a file `"script.js"` in the current folder.
+>>>>>>> 4541b7af7584014a676da731f6e8774da5e059f6
 
 Oprócz tego mamy możliwość podania pełnego adresu URL, na przykład:
 
 ```html
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.2.0/lodash.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.js"></script>
 ```
 
 Jeśli chcesz dodać kilka skryptów, wstaw więcej znaczników:
