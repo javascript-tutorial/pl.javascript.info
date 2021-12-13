@@ -45,7 +45,11 @@ Istnieje kilka sytuacji, w których nowa linia nie oznacza, że powinien tam zna
 alert(3 + 1 + 2);
 ```
 
+<<<<<<< HEAD
 Kod zwróci `6`, ponieważ JavaScript nie wstawi średnika na końcu linii. Wydaje się oczywistym, że jeśli linia kończy się wyrażeniem, na przykład plusem `"+"`, to mamy do czynienia z "niepełnym wyrażeniem" i średnik nie jest wymagany. I w tym przypadku działa to zgodnie z oczekiwaniami.
+=======
+The code outputs `6` because JavaScript does not insert semicolons here. It is intuitively obvious that if the line ends with a plus `"+"`, then it is an "incomplete expression", so a semicolon there would be incorrect. And in this case, that works as intended.
+>>>>>>> c5358c59494b53efb832c81a5338e0a23b22c269
 
 **Są jednak sytuacje, w których JavaScript błędnie zakłada, gdzie średnik jest rzeczywiście potrzebny.**
 
@@ -55,19 +59,31 @@ Błąd, który się pojawi w takim przypadku, jest trudny do wykrycia i naprawie
 Jeśli ciekawi cię konkretny przykład takiego błędu, uruchom poniższy kod:
 
 ```js run
-[1, 2].forEach(alert)
+alert("Hello");
+
+[1, 2].forEach(alert);
 ```
 
+<<<<<<< HEAD
 Nie musisz się zastanawiać, co oznaczają te nawiasy kwadratowe `[]` ani czym jest `forEach`. Będzie o tym później. Na tę chwilę musisz wiedzieć, że rezultatem będzie wyświetlenie najpierw `1`, a później `2`.
 
 Teraz dodaj `alert` przed kodem i *nie* dodawaj średnika na końcu linii:
 
 ```js run no-beautify
 alert("Tutaj będzie błąd")
+=======
+No need to think about the meaning of the brackets `[]` and `forEach` yet. We'll study them later. For now, just remember the result of running the code: it shows `Hello`, then `1`, then `2`.
 
-[1, 2].forEach(alert)
+Now let's remove the semicolon after the `alert`:
+
+```js run no-beautify
+alert("Hello")
+>>>>>>> c5358c59494b53efb832c81a5338e0a23b22c269
+
+[1, 2].forEach(alert);
 ```
 
+<<<<<<< HEAD
 Jeśli uruchomimy powyższy kod, zobaczymy tylko pierwszy `alert`, a następnie otrzymamy komunikat błędu w konsoli!
 
 Wszystko jednak zacznie działać, gdy tylko umieścimy średnik po pierwszej instrukcji:
@@ -89,13 +105,34 @@ alert("Tutaj będzie błąd")[1, 2].forEach(alert)
 ```
 
 To powinny być dwie oddzielne instrukcje, ale nie są. Takie łączenie jest po prostu błędne i może pojawić się również w wielu innych sytuacjach.
+=======
+The difference compared to the code above is only one character: the semicolon at the end of the first line is gone.
+
+If we run this code, only the first `Hello` shows (and there's an error, you may need to open the console to see it). There are no numbers any more.
+
+That's because JavaScript does not assume a semicolon before square brackets `[...]`. So, the code in the last example is treated as a single statement.
+
+Here's how the engine sees it:
+
+```js run no-beautify
+alert("Hello")[1, 2].forEach(alert);
+```
+
+Looks weird, right? Such merging in this case is just wrong. We need to put a semicolon after `alert` for the code to work correctly.
+
+This can happen in other situations also.
+>>>>>>> c5358c59494b53efb832c81a5338e0a23b22c269
 ````
 
 Zalecamy używanie średników nawet wtedy, gdy instrukcje są oddzielone nową linią. Społeczność programistów przyjęła taką właśnie zasadę. Zanotujmy to jeszcze raz -- _istnieje możliwość_ nie wpisywania średników w większości przypadków. Ale bezpieczniej jest -- szczególnie dla początkujących -- używać ich zawsze.
 
 ## Komentarze
 
+<<<<<<< HEAD
 Z czasem programy stają się coraz bardziej złożone. Przychodzi wtedy konieczność dodania _komentarzy_, które opisują, co robi kod i dlaczego.
+=======
+## Comments [#code-comments]
+>>>>>>> c5358c59494b53efb832c81a5338e0a23b22c269
 
 Komentarze mogą być umieszczane w dowolnym miejscu skryptu. Nie wpływają na wykonanie kodu, ponieważ silnik JavaScript je ignoruje.
 
@@ -135,8 +172,13 @@ alert('Witaj');
 alert("świecie");
 ```
 
+<<<<<<< HEAD
 ```smart header="Używaj skrótów klawiaturowych!"
 W większości edytorów można zamienić jedną linię w komentarz za pomocą klawiszy `key:Ctrl+/` lub kilka linii za pomocą `key:Ctrl+Shift+/` (zaznacz fragment kodu i po prostu wciśnij te klawisze). Jeśli korzystasz z Maca, zamiast `key:Ctrl` użyj `key:Cmd`.
+=======
+```smart header="Use hotkeys!"
+In most editors, a line of code can be commented out by pressing the `key:Ctrl+/` hotkey for a single-line comment and something like `key:Ctrl+Shift+/` -- for multiline comments (select a piece of code and press the hotkey). For Mac, try `key:Cmd` instead of `key:Ctrl` and `key:Option` instead of `key:Shift`.
+>>>>>>> c5358c59494b53efb832c81a5338e0a23b22c269
 ```
 
 ````warn header="Nie można zagnieżdżać komentarzy!"
