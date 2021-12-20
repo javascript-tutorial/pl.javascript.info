@@ -2,15 +2,25 @@
 
 [recent browser="new"]
 
+<<<<<<< HEAD
 Here, in this article, we'll say that an expression is "defined" when it's neither `null` nor `undefined`.
 
 The nullish coalescing operator is written as two question marks `??`.
 
+=======
+The nullish coalescing operator is written as two question marks `??`.
+
+As it treats `null` and `undefined` similarly, we'll use a special term here, in this article. We'll say that an expression is "defined" when it's neither `null` nor `undefined`.
+
+>>>>>>> 8d04d0d2db97276dbb2b451c30a7bd3e05d65831
 The result of `a ?? b` is:
 - if `a` is defined, then `a`,
 - if `a` isn't defined, then `b`.
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8d04d0d2db97276dbb2b451c30a7bd3e05d65831
 In other words, `??` returns the first argument if it's not `null/undefined`. Otherwise, the second one.
 
 The nullish coalescing operator isn't anything completely new. It's just a nice syntax to get the first "defined" value of the two.
@@ -21,29 +31,54 @@ We can rewrite `result = a ?? b` using the operators that we already know, like 
 result = (a !== null && a !== undefined) ? a : b;
 ```
 
+<<<<<<< HEAD
 The common use case for `??` is to provide a default value for a potentially undefined variable.
 
 For example, here we show `Anonymous` if `user` isn't defined:
+=======
+Now it should be absolutely clear what `??` does. Let's see where it helps.
+
+The common use case for `??` is to provide a default value for a potentially undefined variable.
+
+For example, here we show `user` if defined, otherwise `Anonymous`:
+>>>>>>> 8d04d0d2db97276dbb2b451c30a7bd3e05d65831
 
 ```js run
 let user;
 
+<<<<<<< HEAD
 alert(user ?? "Anonymous"); // Anonymous
 ```
 
 Of course, if `user` had any value except `null/undefined`, then we would see it instead:
+=======
+alert(user ?? "Anonymous"); // Anonymous (user not defined)
+```
+
+Here's the example with `user` assigned to a name:
+>>>>>>> 8d04d0d2db97276dbb2b451c30a7bd3e05d65831
 
 ```js run
 let user = "John";
 
+<<<<<<< HEAD
 alert(user ?? "Anonymous"); // John
+=======
+alert(user ?? "Anonymous"); // John (user defined)
+>>>>>>> 8d04d0d2db97276dbb2b451c30a7bd3e05d65831
 ```
 
 We can also use a sequence of `??` to select the first value from a list that isn't `null/undefined`.
 
+<<<<<<< HEAD
 Let's say we have a user's data in variables `firstName`, `lastName` or `nickName`. All of them may be undefined, if the user decided not to enter a value.
 
 We'd like to display the user name using one of these variables, or show "Anonymous" if all of them are undefined.
+=======
+Let's say we have a user's data in variables `firstName`, `lastName` or `nickName`. All of them may be not defined, if the user decided not to enter a value.
+
+We'd like to display the user name using one of these variables, or show "Anonymous" if all of them aren't defined.
+>>>>>>> 8d04d0d2db97276dbb2b451c30a7bd3e05d65831
 
 Let's use the `??` operator for that:
 
@@ -75,7 +110,11 @@ alert(firstName || lastName || nickName || "Anonymous"); // Supercoder
 */!*
 ```
 
+<<<<<<< HEAD
 The OR `||` operator exists since the beginning of JavaScript, so developers were using it for such purposes for a long time.
+=======
+Historically, the OR `||` operator was there first. It exists since the beginning of JavaScript, so developers were using it for such purposes for a long time.
+>>>>>>> 8d04d0d2db97276dbb2b451c30a7bd3e05d65831
 
 On the other hand, the nullish coalescing operator `??` was added to JavaScript only recently, and the reason for that was that people weren't quite happy with `||`.
 
@@ -96,6 +135,7 @@ alert(height || 100); // 100
 alert(height ?? 100); // 0
 ```
 
+<<<<<<< HEAD
 - The `height || 100` checks `height` for being a falsy value, and it really is.
     - so the result is the second argument, `100`.
 - The `height ?? 100` checks `height` for being `null/undefined`, and it's not,
@@ -106,6 +146,20 @@ If the zero height is a valid value, that shouldn't be replaced with the default
 ## Precedence
 
 The precedence of the `??` operator is rather low: `5` in the [MDN table](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence#Table). So `??` is evaluated before `=` and `?`, but after most other operations, such as `+`, `*`.
+=======
+- The `height || 100` checks `height` for being a falsy value, and it's `0`, falsy indeed.
+    - so the result of `||` is the second argument, `100`.
+- The `height ?? 100` checks `height` for being `null/undefined`, and it's not,
+    - so the result is `height` "as is", that is `0`.
+
+In practice, the zero height is often a valid value, that shouldn't be replaced with the default. So `??` does just the right thing.
+
+## Precedence
+
+The precedence of the `??` operator is about the same as `||`, just a bit lower. It equals `5` in the [MDN table](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence#Table), while `||` is `6`.
+
+That means that, just like `||`, the nullish coalescing operator `??` is evaluated before `=` and `?`, but after most other operations, such as `+`, `*`.
+>>>>>>> 8d04d0d2db97276dbb2b451c30a7bd3e05d65831
 
 So if we'd like to choose a value with `??` in an expression with other operators, consider adding parentheses:
 
@@ -139,7 +193,11 @@ The code below triggers a syntax error:
 let x = 1 && 2 ?? 3; // Syntax error
 ```
 
+<<<<<<< HEAD
 The limitation is surely debatable, but it was added to the language specification with the purpose to avoid programming mistakes, when people start to switch to `??` from `||`.
+=======
+The limitation is surely debatable, it was added to the language specification with the purpose to avoid programming mistakes, when people start to switch from `||` to `??`.
+>>>>>>> 8d04d0d2db97276dbb2b451c30a7bd3e05d65831
 
 Use explicit parentheses to work around it:
 
