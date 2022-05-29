@@ -2,9 +2,9 @@ importance: 5
 
 ---
 
-# Uppercase the first character
+# Zrób pierwszy znak wielką literą
 
-Write a function `ucFirst(str)` that returns the string `str` with the uppercased first character, for instance:
+Napisz funkcję `ucFirst(str)`, która zwraca ciąg `str` z pierwszym znakiem wielką literą. Na przykład:
 
 ```js
 ucFirst("john") == "John";
