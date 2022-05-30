@@ -2,16 +2,16 @@ importance: 5
 
 ---
 
-# Truncate the text
+# Obcinanie tekstu
 
-Create a function `truncate(str, maxlength)` that checks the length of the `str` and, if it exceeds `maxlength` -- replaces the end of `str` with the ellipsis character `"…"`, to make its length equal to `maxlength`.
+Utwórz funkcję `truncate(str, maxlength)`, która sprawdza długość łańcucha `str` i jeśli przekracza `maxlength`, zamienia koniec `str` na `…`, tak aby jego długość była równa `maxlength`.
 
-The result of the function should be the truncated (if needed) string.
+Wynik funkcji musi być tym samym ciągiem, jeśli obcięcie nie jest wymagane lub obciętym ciągiem, jeśli to konieczne.
 
-For instance:
+Na przykład:
 
 ```js
-truncate("What I'd like to tell on this topic is:", 20) = "What I'd like to te…"
+truncate("Oto, co chciałbym powiedzieć na ten temat:", 20) = "Oto, co chciałbym p…"
 
-truncate("Hi everyone!", 20) = "Hi everyone!"
+truncate("Cześć wszystkim!", 20) = "Cześć wszystkim!"
 ```
