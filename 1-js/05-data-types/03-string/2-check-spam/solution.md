@@ -1,4 +1,4 @@
-To make the search case-insensitive, let's bring the string to lower case and then search:
+Aby wyszukiwanie działało bez względu na wielkość liter, przekonwertujemy cały łańcuch na małe litery, a następnie sprawdzimy, czy zawiera szukany ciąg znaków:
 
 ```js run demo
 function checkSpam(str) {

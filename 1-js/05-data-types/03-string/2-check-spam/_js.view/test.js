@@ -1,13 +1,13 @@
 describe("checkSpam", function() {
-  it('finds spam in "buy ViAgRA now"', function() {
+  it('uważa "buy ViAgRA now" za spam', function() {
     assert.isTrue(checkSpam('buy ViAgRA now'));
   });
 
-  it('finds spam in "free xxxxx"', function() {
+  it('uważa "free xxxxx" za spam', function() {
     assert.isTrue(checkSpam('free xxxxx'));
   });
 
-  it('no spam in "innocent rabbit"', function() {
+  it('nie uważa "innocent rabbit" za spam', function() {
     assert.isFalse(checkSpam('innocent rabbit'));
   });
 });
