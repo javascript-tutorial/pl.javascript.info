@@ -4,7 +4,7 @@ W JavaScript dane tekstowe są przechowywane jako łańcuchy (ciągi znaków). N
 
 Wewnętrzny format ciągów to zawsze [UTF-16](https://pl.wikipedia.org/wiki/UTF-16), nie jest on powiązany z kodowaniem strony
 
-## Cytaty
+## Cudzysłów
 
 W JavaScript istnieją różne rodzaje cudzysłowów.
 
@@ -50,75 +50,75 @@ Pojedyncze i podwójne cudzysłowy pochodzą ze starożytnych czasów tworzenia 
 
 Grawisy umożliwia również określenie "funkcji szablonu" przed pierwszym grawisem. Składnia to: <code>func&#96;string&#96;</code>. Automatycznie wywoływana funkcja `func` pobiera osadzony w niej ciąg znaków i wyrażenia i może je przetwarzać. Nazywa się to „otagowanymi szablonami”. Ta funkcjonalność ułatwia implementację niestandardowych szablonów, ale jest rzadko używana w praktyce. Więcej na ten temat przeczytasz w [dokumentacji](mdn:/JavaScript/Reference/Template_literals#Tagged_templates). 
 
-## Special characters
+## Znaki specjalne
 
-It is still possible to create multiline strings with single and double quotes by using a so-called "newline character", written as `\n`, which denotes a line break:
+Ciągi wielowierszowe można również tworzyć za pomocą pojedynczych i podwójnych cudzysłowów, używając do tego tak zwanego "znaku nowej linii", który jest zapisany jako `\n`:
 
 ```js run
 let guestList = "Guests:\n * John\n * Pete\n * Mary";
 
-alert(guestList); // a multiline list of guests
+alert(guestList); // wielowierszowa lista gości
 ```
 
-For example, these two lines are equal, just written differently:
+Te dwie linie są takie same, po prostu napisane inaczej:
 
 ```js run
-let str1 = "Hello\nWorld"; // two lines using a "newline symbol"
+let str1 = "Hello\nWorld"; // nowa linia ze "znaku nowej linii"
 
-// two lines using a normal newline and backticks
+// nowa linia utworzona przy pomocy grawisów
 let str2 = `Hello
 World`;
 
 alert(str1 == str2); // true
 ```
 
-There are other, less common "special" characters.
+Istnieją inne rzadziej używane "znaki specjalne".
 
-Here's the full list:
+Oto pełna lista:
 
-| Character | Description |
+| Znak | Opis |
 |-----------|-------------|
-|`\n`|New line|
-|`\r`|Carriage return: not used alone. Windows text files use a combination of two characters `\r\n` to represent a line break. |
-|`\'`, `\"`|Quotes|
-|`\\`|Backslash|
-|`\t`|Tab|
-|`\b`, `\f`, `\v`| Backspace, Form Feed, Vertical Tab -- kept for compatibility, not used nowadays. |
-|`\xXX`|Unicode character with the given hexadecimal unicode `XX`, e.g. `'\x7A'` is the same as `'z'`.|
-|`\uXXXX`|A unicode symbol with the hex code `XXXX` in UTF-16 encoding, for instance `\u00A9` -- is a unicode for the copyright symbol `©`. It must be exactly 4 hex digits. |
-|`\u{X…XXXXXX}` (1 to 6 hex characters)|A unicode symbol with the given UTF-32 encoding. Some rare characters are encoded with two unicode symbols, taking 4 bytes. This way we can insert long codes. |
+|`\n`|Nowa linia|
+|`\r`|Znak powrotu: nie używany samodzielnie. Pliki tekstowe Windows używają kombinacji dwóch znaków `\r\n` do reprezentowania łamania wiersza. |
+|`\'`, `\"`|Cudzysłów|
+|`\\`|Ukośnik wsteczny|
+|`\t`|Tabulacja|
+|`\b`, `\f`, `\v`| Backspace, Form Feed oraz Vertical Tab -- pozostawione do wstecznej kompatybilności, obecnie nieużywane. |
+|`\xXX`|Znak Unicode o podanym szesnastkowym kodzie`XX`, np. `'\x7A'` to to samo co `'z'`.|
+|`\uXXXX`|Znak Unicode z kodem szesnastkowym `XXXX` w kodowaniu UTF-16, np. `\u00A9` -- kod Unicode dla symbolu praw autorskich `©`. Musi mieć dokładnie 4 cyfry szesnastkowe. |
+|`\u{X…XXXXXX}` (od 1 do 6 znaków szesnastkowych)|Znak Unicode z podanym kodowaniem UTF-32. Niektóre rzadkie znaki są zakodowane za pomocą dwóch symboli Unicode, zajmując 4 bajty. W ten sposób możemy wstawiać długie kody. |
 
-Examples with unicode:
+Przykłady z Unicode:
 
 ```js run
 alert( "\u00A9" ); // ©
-alert( "\u{20331}" ); // 佫, a rare Chinese hieroglyph (long unicode)
-alert( "\u{1F60D}" ); // 😍, a smiling face symbol (another long unicode)
+alert( "\u{20331}" ); // 佫, rzadki chiński znak (długi Unicode)
+alert( "\u{1F60D}" ); // 😍, symbol uśmiechniętej buźki (kolejny długi Unicode)
 ```
 
-All special characters start with a backslash character `\`. It is also called an "escape character".
+Wszystkie znaki specjalne zaczynają się od odwrotnego ukośnika `\`, tzw. "znak ucieczki".
 
-We might also use it if we wanted to insert a quote into the string.
+Możemy go również użyć, jeśli chcemy wstawić cytat do łańcucha.
 
-For instance:
+Na przykład:
 
 ```js run
 alert( 'I*!*\'*/!*m the Walrus!' ); // *!*I'm*/!* the Walrus!
 ```
 
-As you can see, we have to prepend the inner quote by the backslash `\'`, because otherwise it would indicate the string end.
+Jak widać, wewnętrzny cytat musimy poprzedzić `\'`, ponieważ w przeciwnym razie oznaczałoby to koniec ciągu.
 
-Of course, only to the quotes that are the same as the enclosing ones need to be escaped. So, as a more elegant solution, we could switch to double quotes or backticks instead:
+Oczywiście wymóg użycia "znaku ucieczki" dotyczy tylko tych samych cudzysłowów budujących łańcuch. Możemy więc użyć bardziej eleganckiego rozwiązania, używając podwójnych cudzysłowów lub znaków wstecznych dla tego ciągu:
 
 ```js run
 alert( `I'm the Walrus!` ); // I'm the Walrus!
 ```
 
-Note that the backslash `\` serves for the correct reading of the string by JavaScript, then disappears. The in-memory string has no `\`. You can clearly see that in `alert` from the examples above.
+Zauważ, że znak ucieczki `\` służy tylko do poprawnego odczytania wiersza przez JavaScript i nie jest dopisywany do wiersza. Łańcuch nie ma go w pamięci. Widać to wyraźnie w wywołaniu funkcji `alert` na powyższym przykładzie.
 
-But what if we need to show an actual backslash `\` within the string?
+Ale co, jeśli musimy pokazać wsteczny ukośnik `\` w łańcuchu?
 
-That's possible, but we need to double it like `\\`:
+To możliwe, ale musimy go podwoić `\\`:
 
 ```js run
 alert( `The backslash: \\` ); // The backslash: \
