@@ -1,14 +1,14 @@
-# Strings
+# Łańcuchy
 
-In JavaScript, the textual data is stored as strings. There is no separate type for a single character.
+W JavaScript dane tekstowe są przechowywane jako łańcuchy (ciągi znaków). Nie ma oddzielnego typu dla pojedynczego znaku.
 
-The internal format for strings is always [UTF-16](https://en.wikipedia.org/wiki/UTF-16), it is not tied to the page encoding.
+Wewnętrzny format ciągów to zawsze [UTF-16](https://pl.wikipedia.org/wiki/UTF-16), nie jest on powiązany z kodowaniem strony
 
-## Quotes
+## Cytaty
 
-Let's recall the kinds of quotes.
+W JavaScript istnieją różne rodzaje cudzysłowów.
 
-Strings can be enclosed within either single quotes, double quotes or backticks:
+Ciąg można utworzyć za pomocą cudzysłowów pojedynczych, podwójnych lub grawisów:
 
 ```js
 let single = 'single-quoted';
@@ -17,7 +17,7 @@ let double = "double-quoted";
 let backticks = `backticks`;
 ```
 
-Single and double quotes are essentially the same. Backticks, however, allow us to embed any expression into the string, by wrapping it in `${…}`:
+Pojedyncze i podwójne cudzysłowy są zasadniczo takie same. Grawisy natomiast pozwalają nam osadzić dowolne wyrażenie w łańcuchu, owijając je w `${…}`:
 
 ```js run
 function sum(a, b) {
@@ -27,7 +27,7 @@ function sum(a, b) {
 alert(`1 + 2 = ${sum(1, 2)}.`); // 1 + 2 = 3.
 ```
 
-Another advantage of using backticks is that they allow a string to span multiple lines:
+Kolejną zaletą grawisów jest to, że mogą obejmować więcej niż jedną linię, na przykład:
 
 ```js run
 let guestList = `Guests:
@@ -36,21 +36,19 @@ let guestList = `Guests:
  * Mary
 `;
 
-alert(guestList); // a list of guests, multiple lines
+alert(guestList); // lista gości, wiele wierszy
 ```
 
-Looks natural, right? But single or double quotes do not work this way.
-
-If we use them and try to use multiple lines, there'll be an error:
+Wygląda całkiem naturalnie, prawda? Jeśli jednak spróbujesz użyć pojedynczych lub podwójnych cudzysłowów w ten sam sposób, wystąpi błąd:
 
 ```js run
 let guestList = "Guests: // Error: Unexpected token ILLEGAL
   * John";
 ```
 
-Single and double quotes come from ancient times of language creation when the need for multiline strings was not taken into account. Backticks appeared much later and thus are more versatile.
+Pojedyncze i podwójne cudzysłowy pochodzą ze starożytnych czasów tworzenia języka, kiedy nie brano pod uwagę potrzeby wielowierszowych ciągów. Grawisy pojawiły się znacznie później i dzięki temu są bardziej wszechstronne.
 
-Backticks also allow us to specify a "template function" before the first backtick. The syntax is: <code>func&#96;string&#96;</code>. The function `func` is called automatically, receives the string and embedded expressions and can process them. This is called "tagged templates". This feature makes it easier to implement custom templating, but is rarely used in practice. You can read more about it in the [manual](mdn:/JavaScript/Reference/Template_literals#Tagged_templates). 
+Grawisy umożliwia również określenie "funkcji szablonu" przed pierwszym grawisem. Składnia to: <code>func&#96;string&#96;</code>. Automatycznie wywoływana funkcja `func` pobiera osadzony w niej ciąg znaków i wyrażenia i może je przetwarzać. Nazywa się to „otagowanymi szablonami”. Ta funkcjonalność ułatwia implementację niestandardowych szablonów, ale jest rzadko używana w praktyce. Więcej na ten temat przeczytasz w [dokumentacji](mdn:/JavaScript/Reference/Template_literals#Tagged_templates). 
 
 ## Special characters
 
