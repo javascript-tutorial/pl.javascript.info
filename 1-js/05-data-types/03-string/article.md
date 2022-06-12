@@ -174,32 +174,32 @@ for (let char of "Hello") {
 }
 ```
 
-## Strings are immutable
+## Łańcuchy są niezmienne
 
-Strings can't be changed in JavaScript. It is impossible to change a character.
+Treść łańcucha w JavaScript nie może być zmieniona. Nie można wziąć znaku ze środka ciągu i zastąpić go innym.
 
-Let's try it to show that it doesn't work:
+Spróbujmy i zobaczmy, czy to nie działa:
 
 ```js run
 let str = 'Hi';
 
 str[0] = 'h'; // error
-alert( str[0] ); // doesn't work
+alert( str[0] ); // nie działa
 ```
 
-The usual workaround is to create a whole new string and assign it to `str` instead of the old one.
+Powszechnym obejściem tego problemu jest utworzenie zupełnie nowego łańcucha i przypisanie go do `str` zamiast starego.
 
-For instance:
+Na przykład:
 
 ```js run
 let str = 'Hi';
 
-str = 'h' + str[1]; // replace the string
+str = 'h' + str[1]; // zamieniamy ciąg
 
 alert( str ); // hi
 ```
 
-In the following sections we'll see more examples of this.
+Więcej przykładów zobaczymy w kolejnych sekcjach.
 
 ## Changing the case
 
