@@ -140,37 +140,37 @@ Zdarza się, że osoby z praktyką w innych językach przypadkowo dodają nawias
 Należy pamiętać, że `str.length` jest właściwością numeryczną, a nie funkcją. Nie ma potrzeby dodawania po nim nawiasu.
 ```
 
-## Accessing characters
+## Dostęp do znaków
 
-To get a character at position `pos`, use square brackets `[pos]` or call the method [str.charAt(pos)](mdn:js/String/charAt). The first character starts from the zero position:
+Aby uzyskać znak w pozycji `pos`, użyj nawiasów kwadratowych `[pos]` lub wywołaj metodę [str.charAt(pos)](https://developer.mozilla.org/pl/docs/Web/JavaScript/Reference/Global_Objects/String/charAt). Pierwszy znak zaczyna się od pozycji zerowej:
 
 ```js run
 let str = `Hello`;
 
-// the first character
+// zwraca pierwszy znak
 alert( str[0] ); // H
 alert( str.charAt(0) ); // H
 
-// the last character
+// zwraca ostatni znak
 alert( str[str.length - 1] ); // o
 ```
 
-The square brackets are a modern way of getting a character, while `charAt` exists mostly for historical reasons.
+Nawiasy kwadratowe to nowoczesny sposób na uzyskanie znaku, natomiast `charAt` istnieje głównie ze względów historycznych.
 
-The only difference between them is that if no character is found, `[]` returns `undefined`, and `charAt` returns an empty string:
+Jedyna różnica między nimi polega na tym, że jeśli nie zostanie znaleziony żaden znak, `[]` zwraca `undefined`, a `charAt` zwraca pusty ciąg:
 
 ```js run
 let str = `Hello`;
 
 alert( str[1000] ); // undefined
-alert( str.charAt(1000) ); // '' (an empty string)
+alert( str.charAt(1000) ); // '' (pusty ciąg)
 ```
 
-We can also iterate over characters using `for..of`:
+Możemy również iterować po znakach, używając `for..of`:
 
 ```js run
 for (let char of "Hello") {
-  alert(char); // H,e,l,l,o (char becomes "H", then "e", then "l" etc)
+  alert(char); // H,e,l,l,o (char - najpierw "H", później "e", następnie "l" itd.)
 }
 ```
 
