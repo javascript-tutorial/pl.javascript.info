@@ -124,20 +124,20 @@ To możliwe, ale musimy go podwoić `\\`:
 alert( `The backslash: \\` ); // The backslash: \
 ```
 
-## String length
+## Długość łańcucha
 
-The `length` property has the string length:
+Właściwość `length` zawiera długość ciągu:
 
 ```js run
 alert( `My\n`.length ); // 3
 ```
 
-Note that `\n` is a single "special" character, so the length is indeed `3`.
+Pamiętaj, że `\n` to pojedynczy "znak specjalny", więc długość łańcucha wynosi `3`.
 
-```warn header="`length` is a property"
-People with a background in some other languages sometimes mistype by calling `str.length()` instead of just `str.length`. That doesn't work.
+```warn header="`length` jest wartością"
+Zdarza się, że osoby z praktyką w innych językach przypadkowo dodają nawiasy `str.length()`, zamiast po prostu `str.length`. To nie zadziała.
 
-Please note that `str.length` is a numeric property, not a function. There is no need to add parenthesis after it.
+Należy pamiętać, że `str.length` jest właściwością numeryczną, a nie funkcją. Nie ma potrzeby dodawania po nim nawiasu.
 ```
 
 ## Accessing characters
