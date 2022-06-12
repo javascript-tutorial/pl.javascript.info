@@ -216,30 +216,30 @@ Lub, jeśli chcemy, aby jeden znak był pisany małymi literami:
 alert( 'Interface'[0].toLowerCase() ); // 'i'
 ```
 
-## Searching for a substring
+## Wyszukiwanie podciągu
 
-There are multiple ways to look for a substring within a string.
+Istnieje wiele sposobów wyszukiwania podciągu w ciągu.
 
 ### str.indexOf
 
-The first method is [str.indexOf(substr, pos)](mdn:js/String/indexOf).
+Pierwszą metodą jest [str.indexOf(substr, pos)](mdn:js/String/indexOf).
 
-It looks for the `substr` in `str`, starting from the given position `pos`, and returns the position where the match was found or `-1` if nothing can be found.
+Szuka `substr` w `str`, zaczynając od podanej pozycji `pos`, i zwraca pozycję, w której znalazł dopasowanie lub `-1` jeśli nic nie zostało znalezione.
 
-For instance:
+Na przykład:
 
 ```js run
 let str = 'Widget with id';
 
-alert( str.indexOf('Widget') ); // 0, because 'Widget' is found at the beginning
-alert( str.indexOf('widget') ); // -1, not found, the search is case-sensitive
+alert( str.indexOf('Widget') ); // 0, because 'Widget' został znaleziony na początku łańcucha
+alert( str.indexOf('widget') ); // -1, nie znaleziono, w wyszukiwaniu rozróżniana jest wielkość liter
 
-alert( str.indexOf("id") ); // 1, "id" is found at the position 1 (..idget with id)
+alert( str.indexOf("id") ); // 1, "id" znajduje się na pozycji 1 (id w Widget)
 ```
 
-The optional second parameter allows us to search starting from the given position.
+Opcjonalny drugi parametr pozwala nam na wyszukiwanie zaczynając od podanej pozycji.
 
-For instance, the first occurrence of `"id"` is at position `1`. To look for the next occurrence, let's start the search from position `2`:
+Na przykład pierwsze wystąpienie `"id"` występuje na pozycji `1`. Aby wyszukać następne wystąpienie, zacznijmy wyszukiwanie od pozycji `2`:
 
 ```js run
 let str = 'Widget with id';
@@ -247,12 +247,12 @@ let str = 'Widget with id';
 alert( str.indexOf('id', 2) ) // 12
 ```
 
-If we're interested in all occurrences, we can run `indexOf` in a loop. Every new call is made with the position after the previous match:
+Jeśli interesują nas wszystkie wystąpienia, możemy uruchomić `indexOf` w pętli. Każde nowe wywołanie jest wykonywane na następnej pozycji w łańcuchu po poprzednim dopasowaniu:
 
 ```js run
 let str = 'As sly as a fox, as strong as an ox';
 
-let target = 'as'; // let's look for it
+let target = 'as'; // cel wyszukiwania
 
 let pos = 0;
 while (true) {
@@ -260,11 +260,11 @@ while (true) {
   if (foundPos == -1) break;
 
   alert( `Found at ${foundPos}` );
-  pos = foundPos + 1; // continue the search from the next position
+  pos = foundPos + 1; // kontynuuj wyszukiwanie od następnej pozycji
 }
 ```
 
-The same algorithm can be layed out shorter:
+Ten sam algorytm można skrócić:
 
 ```js run
 let str = "As sly as a fox, as strong as an ox";
@@ -279,24 +279,24 @@ while ((pos = str.indexOf(target, pos + 1)) != -1) {
 ```
 
 ```smart header="`str.lastIndexOf(substr, position)`"
-There is also a similar method [str.lastIndexOf(substr, position)](mdn:js/String/lastIndexOf) that searches from the end of a string to its beginning.
+Istnieje również podobna metoda [str.lastIndexOf(substr, position)](mdn:js/String/lastIndexOf), która przeszukuje string od końca do jego początku.
 
-It would list the occurrences in the reverse order.
+Zwraca wystąpienia w odwrotnej kolejności.
 ```
 
-There is a slight inconvenience with `indexOf` in the `if` test. We can't put it in the `if` like this:
+Istnieje niewielka niedogodność z metodą `indexOf` w sprawdzeniu warunkowym `if`. Ten warunek nie zadziała prawidłowo:
 
 ```js run
 let str = "Widget with id";
 
 if (str.indexOf("Widget")) {
-    alert("We found it"); // doesn't work!
+    alert("We found it"); // Nie zadziała!
 }
 ```
 
-The `alert` in the example above doesn't show because `str.indexOf("Widget")` returns `0` (meaning that it found the match at the starting position). Right, but `if` considers `0` to be `false`.
+`alert` w powyższym przykładzie nie jest wyświetlany, ponieważ `str.indexOf("Widget")` zwraca `0` (co oznacza, że ​​znalazł dopasowanie na pozycji wyjściowej). Natomiast warunek `if` odczytuje `0` jako `false`.
 
-So, we should actually check for `-1`, like this:
+Dlatego też powinniśmy użyć warunku dla wartości `-1`:
 
 ```js run
 let str = "Widget with id";
@@ -308,50 +308,50 @@ if (str.indexOf("Widget") != -1) {
 }
 ```
 
-#### The bitwise NOT trick
+#### Bitowy trik NOT
 
-One of the old tricks used here is the [bitwise NOT](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Bitwise_Operators#Bitwise_NOT) `~` operator. It converts the number to a 32-bit integer (removes the decimal part if exists) and then reverses all bits in its binary representation.
+Istnieje stara sztuczka z użyciem [bitowego operatora NOT](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Bitwise_NOT) `~`. Konwertuje liczbę na 32-bitową liczbę całkowitą (usuwa część dziesiętną, jeśli istnieje), a następnie odwraca wszystkie bity w reprezentacji binarnej.
 
-In practice, that means a simple thing: for 32-bit integers `~n` equals `-(n+1)`.
+W praktyce oznacza to, że: dla 32-bitowych liczb całkowitych `~n` równa się `-(n+1)`.
 
-For instance:
+Na przykład:
 
 ```js run
-alert( ~2 ); // -3, the same as -(2+1)
-alert( ~1 ); // -2, the same as -(1+1)
-alert( ~0 ); // -1, the same as -(0+1)
+alert( ~2 ); // -3, to samo, co -(2+1)
+alert( ~1 ); // -2, to samo, co -(1+1)
+alert( ~0 ); // -1, to samo, co -(0+1)
 *!*
-alert( ~-1 ); // 0, the same as -(-1+1)
+alert( ~-1 ); // 0, to samo, co -(-1+1)
 */!*
 ```
 
-As we can see, `~n` is zero only if `n == -1` (that's for any 32-bit signed integer `n`).
+Zatem `~n` jest równe zeru, tylko, gdy `n == -1` (dowolna 32-bitowa liczby całkowitej ze znakiem `n`).
 
-So, the test `if ( ~str.indexOf("...") )` is truthy only if the result of `indexOf` is not `-1`. In other words, when there is a match.
+Tak więc warunek `if ( ~str.indexOf("...") )` jest prawdziwy tylko wtedy, gdy wynikiem `indexOf` nie jest `-1`. Innymi słowy, kiedy jest dopasowanie.
 
-People use it to shorten `indexOf` checks:
+Ludzie używają go do skrócenia `indexOf`:
 
 ```js run
 let str = "Widget";
 
 if (~str.indexOf("Widget")) {
-  alert( 'Found it!' ); // works
+  alert( 'Found it!' ); // działa
 }
 ```
 
-It is usually not recommended to use language features in a non-obvious way, but this particular trick is widely used in old code, so we should understand it.
+Generalnie odradza się używanie funkcji językowych w jakikolwiek nieoczywisty sposób, ale ta sztuczka jest szeroko stosowana w starszym kodzie, więc ważne jest, aby ją zrozumieć.
 
-Just remember: `if (~str.indexOf(...))` reads as "if found".
+Wystarczy, że zapamiętasz: `if (~str.indexOf(...))` oznacza "jeśli znaleziono".
 
-To be precise though, as big numbers are truncated to 32 bits by `~` operator, there exist other numbers that give `0`, the smallest is `~4294967295=0`. That makes such check is correct only if a string is not that long.
+Aby być precyzyjnym, należy wspomnieć, że z powodu iż, duże liczby są obcinane przez operator `~` do 32 bitów, istnieją inne liczby, które dają 0. Najmniejsza to `~4294967295=0`. To sprawia, że ​​takie sprawdzenie jest poprawne tylko wtedy, gdy łańcuch nie jest tak długi.
 
-Right now we can see this trick only in the old code, as modern JavaScript provides `.includes` method (see below).
+Aktualnie tę sztuczkę możemy zobaczyć tylko w starym kodzie, ponieważ współczesny JavaScript zapewnia metodę .includes (patrz poniżej).
 
 ### includes, startsWith, endsWith
 
-The more modern method [str.includes(substr, pos)](mdn:js/String/includes) returns `true/false` depending on whether `str` contains `substr` within.
+Bardziej nowoczesna metoda [str.includes(substr, pos)](mdn:js/String/includes) zwraca `true/false` w zależności, czy `str` zawiera w sobie `substr`.
 
-It's the right choice if we need to test for the match, but don't need its position:
+To właściwy wybór, jeśli musimy sprawdzić wystąpienie jakiegoś podciągu, ale nie interesuje nas jego pozycja w łańcuchu:
 
 ```js run
 alert( "Widget with id".includes("Widget") ); // true
@@ -359,18 +359,18 @@ alert( "Widget with id".includes("Widget") ); // true
 alert( "Hello".includes("Bye") ); // false
 ```
 
-The optional second argument of `str.includes` is the position to start searching from:
+Opcjonalny drugi argument `str.includes` to pozycja, od której należy rozpocząć wyszukiwanie:
 
 ```js run
 alert( "Widget".includes("id") ); // true
-alert( "Widget".includes("id", 3) ); // false, from position 3 there is no "id"
+alert( "Widget".includes("id", 3) ); // false, od pozycji 3 "id nie występuje
 ```
 
-The methods [str.startsWith](mdn:js/String/startsWith) and [str.endsWith](mdn:js/String/endsWith) do exactly what they say:
+Metody [str.startsWith](mdn:js/String/startsWith) i [str.endsWith](mdn:js/String/endsWith) sprawdzają odpowiednio, czy łańcuch zaczyna się i kończy na określonym podciągu:
 
 ```js run
-alert( "Widget".startsWith("Wid") ); // true, "Widget" starts with "Wid"
-alert( "Widget".endsWith("get") ); // true, "Widget" ends with "get"
+alert( "Widget".startsWith("Wid") ); // true, "Widget" zaczyna się od "Wid"
+alert( "Widget".endsWith("get") ); // true, "Widget" kończy się na "get"
 ```
 
 ## Getting a substring
