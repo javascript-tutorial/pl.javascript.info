@@ -201,16 +201,16 @@ alert( str ); // hi
 
 Więcej przykładów zobaczymy w kolejnych sekcjach.
 
-## Changing the case
+## Zmiana wielkości znaków
 
-Methods [toLowerCase()](mdn:js/String/toLowerCase) and [toUpperCase()](mdn:js/String/toUpperCase) change the case:
+Metody [toLowerCase()](https://developer.mozilla.org/pl/docs/Web/JavaScript/Reference/Global_Objects/String/toLowerCase) i [toUpperCase()](https://developer.mozilla.org/pl/docs/Web/JavaScript/Reference/Global_Objects/String/toUpperCase) zmieniają wielkość liter:
 
 ```js run
 alert( 'Interface'.toUpperCase() ); // INTERFACE
 alert( 'Interface'.toLowerCase() ); // interface
 ```
 
-Or, if we want a single character lowercased:
+Lub, jeśli chcemy, aby jeden znak był pisany małymi literami:
 
 ```js
 alert( 'Interface'[0].toLowerCase() ); // 'i'
