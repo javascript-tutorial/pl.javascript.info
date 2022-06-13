@@ -457,54 +457,54 @@ Wszystkie metody robią robotę. Formalnie `substr` ma niewielką wadę: nie jes
 Z pozostałych dwóch opcji, `slice` jest nieco bardziej elastyczne - pozwala na użycie wartości ujemny i jest krótsze. Wystarczy więc, że spośród tych metoda zapamiętasz `slice`.
 ```
 
-## Comparing strings
+## Porównywanie łańcuchów
 
-As we know from the chapter <info:comparison>, strings are compared character-by-character in alphabetical order.
+Jak wiemy z rozdziału <info:comparison>, łańcuchy są porównywane znak po znaku w kolejności alfabetycznej.
 
-Although, there are some oddities.
+Są jednak pewne niuanse.
 
-1. A lowercase letter is always greater than the uppercase:
+1. Mała litera jest zawsze większa niż wielka:
 
     ```js run
     alert( 'a' > 'Z' ); // true
     ```
 
-2. Letters with diacritical marks are "out of order":
+2. Litery ze znakami diakrytycznymi są "wyłączone z użytkowania":
 
     ```js run
     alert( 'Österreich' > 'Zealand' ); // true
     ```
 
-    This may lead to strange results if we sort these country names. Usually people would expect `Zealand` to come after `Österreich` in the list.
+    Może to prowadzić do dziwnych wyników podczas sortowania nazw krajów. Zazwyczaj ludzie spodziewaliby się, że `Zealand` znajdzie się na liście po `Österreich`.
 
-To understand what happens, let's review the internal representation of strings in JavaScript.
+Aby zrozumieć, co się dzieje, spójrzmy na wewnętrzną reprezentację ciągów w JavaScript.
 
-All strings are encoded using [UTF-16](https://en.wikipedia.org/wiki/UTF-16). That is: each character has a corresponding numeric code. There are special methods that allow to get the character for the code and back.
+Wszystkie ciągi są zakodowane przy użyciu [UTF-16](https://pl.wikipedia.org/wiki/UTF-16). To oznacza, że każdy znak ma odpowiedni kod numeryczny. Istnieją specjalne metody, które pozwalają uzyskać znak dla danego kodu i odwrotnie.
 
 `str.codePointAt(pos)`
-: Returns the code for the character at position `pos`:
+: Zwraca kod dla znaku na pozycji `pos`:
 
     ```js run
-    // different case letters have different codes
+    // różna wielkość tych samych liter ma różne kody
     alert( "z".codePointAt(0) ); // 122
     alert( "Z".codePointAt(0) ); // 90
     ```
 
 `String.fromCodePoint(code)`
-: Creates a character by its numeric `code`
+: Tworzy znak za pomocą jego kodu numerycznego `code`
 
     ```js run
     alert( String.fromCodePoint(90) ); // Z
     ```
 
-    We can also add unicode characters by their codes using `\u` followed by the hex code:
+    Możemy również dodawać znaki Unicode według ich kodów, używając`\u`, a następnie kodu szesnastkowego:
 
     ```js run
-    // 90 is 5a in hexadecimal system
+    // 90 to 5a w systemie szesnastkowym
     alert( '\u005a' ); // Z
     ```
 
-Now let's see the characters with codes `65..220` (the latin alphabet and a little bit extra) by making a string of them:
+Spójrzmy teraz na znaki o kodach `65..220` (alfabet łaciński i kilka extra znaków):
 
 ```js run
 let str = '';
@@ -517,14 +517,14 @@ alert( str );
 // ¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜ
 ```
 
-See? Capital characters go first, then a few special ones, then lowercase characters, and `Ö` near the end of the output.
+Jak widać, najpierw pojawiają się wielkie litery, potem kilka znaków specjalnych, potem małe litery i Ö prawie na samym końcu.
 
-Now it becomes obvious why `a > Z`.
+Teraz jest oczywiste, dlaczego `a > Z`.
 
-The characters are compared by their numeric code. The greater code means that the character is greater. The code for `a` (97) is greater than the code for `Z` (90).
+Znaki są porównywane według ich kodów numerycznych. Większy kod = większy znak. Kod `a` (97) jest większy niż kod `Z` (90).
 
-- All lowercase letters go after uppercase letters because their codes are greater.
-- Some letters like `Ö` stand apart from the main alphabet. Here, it's code is greater than anything from `a` to `z`.
+- Wszystkie małe litery występują po wielkich literach, ponieważ ich kody są większe.
+- Niektóre litery, takie jak `Ö`, są całkowicie poza głównym alfabetem. Ta litera ma większy kod niż jakakolwiek litera od `a` do `z`.
 
 ### Correct comparisons
 
