@@ -517,7 +517,7 @@ alert( str );
 // ¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜ
 ```
 
-Jak widać, najpierw pojawiają się wielkie litery, potem kilka znaków specjalnych, potem małe litery i Ö prawie na samym końcu.
+Jak widać, najpierw pojawiają się wielkie litery, potem kilka znaków specjalnych, potem małe litery i `Ö` prawie na samym końcu.
 
 Teraz jest oczywiste, dlaczego `a > Z`.
 
@@ -526,29 +526,27 @@ Znaki są porównywane według ich kodów numerycznych. Większy kod = większy 
 - Wszystkie małe litery występują po wielkich literach, ponieważ ich kody są większe.
 - Niektóre litery, takie jak `Ö`, są całkowicie poza głównym alfabetem. Ta litera ma większy kod niż jakakolwiek litera od `a` do `z`.
 
-### Correct comparisons
+### Prawidłowe porównania
 
-The "right" algorithm to do string comparisons is more complex than it may seem, because alphabets are different for different languages.
+„Właściwy” algorytm porównywania łańcuchów jest bardziej skomplikowany, niż mogłoby się wydawać, ponieważ różne języki używają różnych alfabetów.
 
-So, the browser needs to know the language to compare.
+Przeglądarka musi więc wiedzieć, jakiego języka użyć do porównania.
 
-Luckily, all modern browsers (IE10- requires the additional library [Intl.JS](https://github.com/andyearnshaw/Intl.js/)) support the internationalization standard [ECMA 402](http://www.ecma-international.org/ecma-402/1.0/ECMA-402.pdf).
+Na szczęście wszystkie nowoczesne przeglądarki (IE10- wymaga dodatkowej biblioteki [Intl.JS](https://github.com/andyearnshaw/Intl.js/)) obsługują standard internacjonalizacji [ECMA 402](http://www.ecma-international.org/ecma-402/1.0/ECMA-402.pdf), który zapewnia poprawne porównywanie ciągów w różnych językach z uwzględnieniem ich reguł.
 
-It provides a special method to compare strings in different languages, following their rules.
+Wywołanie [str.localeCompare(str2)](mdn:js/String/localeCompare) zwraca liczbę wskazującą, który ciąg jest większy zgodnie z zasadami języka:
 
-The call [str.localeCompare(str2)](mdn:js/String/localeCompare) returns an integer indicating whether `str` is less, equal or greater than `str2` according to the language rules:
+- Zwraca liczbę ujemną, jeśli `str` jest mniejszy niż `str2`.
+- Zwraca liczbę dodatnią, jeśli `str` jest większy niż `str2`.
+- Zwraca `0` jeśli są równoważne.
 
-- Returns a negative number if `str` is less than `str2`.
-- Returns a positive number if `str` is greater than `str2`.
-- Returns `0` if they are equivalent.
-
-For instance:
+Na przykład:
 
 ```js run
 alert( 'Österreich'.localeCompare('Zealand') ); // -1
 ```
 
-This method actually has two additional arguments specified in [the documentation](mdn:js/String/localeCompare), which allows it to specify the language (by default taken from the environment, letter order depends on the language) and setup additional rules like case sensitivity or should `"a"` and `"á"` be treated as the same etc.
+Ta metoda ma właściwie dwa dodatkowe argumenty określone w [dokumentacji](mdn:js/String/localeCompare). Pierwszy pozwala na określenie języka (domyślnie jest on pobierany ze środowiska) - od tego zależy kolejność liter. Drugi, to dodatkowe reguły, takie jak rozróżnianie wielkości liter, czy należy przestrzegać różnic między `"a"` i `"á"` itp.
 
 ## Internals, Unicode
 
