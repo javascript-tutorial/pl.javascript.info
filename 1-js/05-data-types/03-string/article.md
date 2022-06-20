@@ -548,55 +548,55 @@ alert( 'Österreich'.localeCompare('Zealand') ); // -1
 
 Ta metoda ma właściwie dwa dodatkowe argumenty określone w [dokumentacji](mdn:js/String/localeCompare). Pierwszy pozwala na określenie języka (domyślnie jest on pobierany ze środowiska) - od tego zależy kolejność liter. Drugi, to dodatkowe reguły, takie jak rozróżnianie wielkości liter, czy należy przestrzegać różnic między `"a"` i `"á"` itp.
 
-## Internals, Unicode
+## Wewnętrzne części unicode
 
-```warn header="Advanced knowledge"
-The section goes deeper into string internals. This knowledge will be useful for you if you plan to deal with emoji, rare mathematical or hieroglyphic characters or other rare symbols.
+```warn header="Zaawansowana wiedza"
+Ta sekcja zagłębia się bardziej w wewnętrzną budowę łańcuchów. Ta wiedza będzie dla Ciebie przydatna, jeśli planujesz zajmować się emotikonami, rzadkimi znakami matematycznymi lub innymi specjalnymi symbolami.
 
-You can skip the section if you don't plan to support them.
+Jeśli nie planujesz z nimi pracować, możesz pominąć tę sekcję.
 ```
 
-### Surrogate pairs
+### Pary zastępcze
 
-All frequently used characters have 2-byte codes. Letters in most european languages, numbers, and even most hieroglyphs, have a 2-byte representation.
+Wszystkie często używane znaki mają kody 2-bajtowe. Litery w większości języków europejskich, liczby, a nawet większość symboli mają reprezentację 2 bajtową.
 
-But 2 bytes only allow 65536 combinations and that's not enough for every possible symbol. So rare symbols are encoded with a pair of 2-byte characters called "a surrogate pair".
+Jednakże 2 bajty pozwalają tylko na 65536 kombinacji, a to nie wystarcza dla każdego możliwego symbolu. Tak więc rzadkie symbole są zakodowane za pomocą pary dwubajtowych znaków, zwanej również "parą zastępczą".
 
-The length of such symbols is `2`:
+Długość tych symboli wynosi `2`:
 
 ```js run
-alert( '𝒳'.length ); // 2, MATHEMATICAL SCRIPT CAPITAL X
-alert( '😂'.length ); // 2, FACE WITH TEARS OF JOY
-alert( '𩷶'.length ); // 2, a rare Chinese hieroglyph
+alert( '𝒳'.length ); // 2, matematyczny zapis X
+alert( '😂'.length ); // 2, twarz ze łzami radości
+alert( '𩷶'.length ); // 2, rzadki chiński symbol
 ```
 
-Note that surrogate pairs did not exist at the time when JavaScript was created, and thus are not correctly processed by the language!
+Zwróć uwagę, że pary zastępcze nie istniały w czasie tworzenia JavaScript, więc język nie obsługuje ich odpowiednio!
 
-We actually have a single symbol in each of the strings above, but the `length` shows a length of `2`.
+W rzeczywistości w każdym z powyższych ciągów znajduje się jeden symbol, ale `length` pokazuje długość `2`.
 
-`String.fromCodePoint` and `str.codePointAt` are few rare methods that deal with surrogate pairs right. They recently appeared in the language. Before them, there were only [String.fromCharCode](mdn:js/String/fromCharCode) and [str.charCodeAt](mdn:js/String/charCodeAt). These methods are actually the same as `fromCodePoint/codePointAt`, but don't work with surrogate pairs.
+`String.fromCodePoint` i `str.codePointAt` to kilka rzadkich metod, które poprawnie radzą sobie z parami zastępczymi. Dopiero niedawno zostały dodane do języka. Przed nimi były dostępne tylko [String.fromCharCode](https://developer.mozilla.org/pl/docs/Web/JavaScript/Reference/Global_Objects/String/fromCharCode) oraz [str.charCodeAt](https://developer.mozilla.org/pl/docs/Web/JavaScript/Reference/Global_Objects/String/charCodeAt). Te metody są w rzeczywistości takie same jak `fromCodePoint/codePointAt`, ale nie działają z parami zastępczymi.
 
-Getting a symbol can be tricky, because surrogate pairs are treated as two characters:
+Uzyskanie znaku reprezentowanego przez parę zastępczą może być trudne, ponieważ para zastępcza jest interpretowana jako dwa znaki:
 
 ```js run
-alert( '𝒳'[0] ); // strange symbols...
-alert( '𝒳'[1] ); // ...pieces of the surrogate pair
+alert( '𝒳'[0] ); // dziwne symbole...
+alert( '𝒳'[1] ); // ...części pary zastępczej
 ```
 
-Note that pieces of the surrogate pair have no meaning without each other. So the alerts in the example above actually display garbage.
+Części pary zastępczej same w sobie nie mają sensu, więc wywołania alertów w tym przykładzie pokażą tylko jakieś bzdury.
 
-Technically, surrogate pairs are also detectable by their codes: if a character has the code in the interval of `0xd800..0xdbff`, then it is the first part of the surrogate pair. The next character (second part) must have the code in interval `0xdc00..0xdfff`. These intervals are reserved exclusively for surrogate pairs by the standard.
+Technicznie rzecz biorąc, pary zastępcze można wykryć za pomocą ich kodów: jeśli kod znaku mieści się w zakresie `0xd800..0xdbff`, to jest to pierwsza część pary zastępczej. Następny znak (druga część) musi mieć kod w przedziale `0xdc00..0xdfff`. Te dwa zakresy są przez normę zarezerwowane wyłącznie dla par zastępczych.
 
-In the case above:
+W powyższym przypadku:
 
 ```js run
-// charCodeAt is not surrogate-pair aware, so it gives codes for parts
+// charCodeAt nie jest świadomy pary zastępczej, więc podaje kody części
 
-alert( '𝒳'.charCodeAt(0).toString(16) ); // d835, between 0xd800 and 0xdbff
-alert( '𝒳'.charCodeAt(1).toString(16) ); // dcb3, between 0xdc00 and 0xdfff
+alert( '𝒳'.charCodeAt(0).toString(16) ); // d835, pomiędzy 0xd800 i 0xdbff
+alert( '𝒳'.charCodeAt(1).toString(16) ); // dcb3, pomiędzy 0xdc00 i 0xdfff
 ```
 
-You will find more ways to deal with surrogate pairs later in the chapter <info:iterable>. There are probably special libraries for that too, but nothing famous enough to suggest here.
+Więcej sposobów radzenia sobie z parami zastępczymi znajdziesz w rozdziale <info:iterable>. Istnieją do tego specjalne biblioteki, ale żadna z nich nie jest na tyle znana, aby można było ją tutaj zasugerować.
 
 ### Diacritical marks and normalization
 
