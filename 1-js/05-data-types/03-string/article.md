@@ -1,6 +1,6 @@
-# Łańcuchy
+# Stringi - ciągi znaków
 
-W JavaScript dane tekstowe są przechowywane jako łańcuchy (ciągi znaków). Nie ma oddzielnego typu dla pojedynczego znaku.
+W JavaScript dane tekstowe są przechowywane jako stringi - ciągi znaków, lub też łańcuchy znaków. Nie ma oddzielnego typu dla pojedynczego znaku.
 
 Wewnętrzny format ciągów to zawsze [UTF-16](https://pl.wikipedia.org/wiki/UTF-16), nie jest on powiązany z kodowaniem strony
 
@@ -598,52 +598,52 @@ alert( '𝒳'.charCodeAt(1).toString(16) ); // dcb3, pomiędzy 0xdc00 i 0xdfff
 
 Więcej sposobów radzenia sobie z parami zastępczymi znajdziesz w rozdziale <info:iterable>. Istnieją do tego specjalne biblioteki, ale żadna z nich nie jest na tyle znana, aby można było ją tutaj zasugerować.
 
-### Diacritical marks and normalization
+### Znaki diakrytyczne i normalizacja
 
-In many languages there are symbols that are composed of the base character with a mark above/under it.
+W wielu językach istnieją symbole, które składają się ze znaku bazowego oraz znaku diakrytycznego.
 
-For instance, the letter `a` can be the base character for: `àáâäãåā`. Most common "composite" character have their own code in the UTF-16 table. But not all of them, because there are too many possible combinations.
+Na przykład, litera `a` może być znakiem bazowym dla: `ąàáâäãåā`. Większośc popularnych "kompozycji" znaków posiada swój własny kod w tabeli UTF-16. Ale nie wszystkie, ze względu na dużą liczbę kombinacji.
 
-To support arbitrary compositions, UTF-16 allows us to use several unicode characters: the base character followed by one or many "mark" characters that "decorate" it.
+Aby obsługiwać dowolne kompozycje, UTF-16 pozwala nam na użycie kilku znaków Unicode: znaku podstawowego, po którym następuje jeden lub więcej "znaków specjalnych".
 
-For instance, if we have `S` followed by the special "dot above" character (code `\u0307`), it is shown as Ṡ.
+Na przykład, jeśli dodamy znak "kropka powyżej" (kod `\u0307`) bezpośrednio po `S`, to będzie on wyświetlany, jako `Ṡ`.
 
 ```js run
 alert( 'S\u0307' ); // Ṡ
 ```
 
-If we need an additional mark above the letter (or below it) -- no problem, just add the necessary mark character.
+Jeśli potrzebujemy dodatkowego oznaczenia nad literą (lub pod nią) -- nie ma problemu, wystarczy dodać niezbędny znak oznaczenia.
 
-For instance, if we append a character "dot below" (code `\u0323`), then we'll have "S with dots above and below": `Ṩ`.
+Na przykład, jeśli dodamy znak "kropka poniżej" (code `\u0323`), otrzymamy "S z kropkami powyżej i poniżej": `Ṩ`.
 
-For example:
+Na przykład:
 
 ```js run
 alert( 'S\u0307\u0323' ); // Ṩ
 ```
 
-This provides great flexibility, but also an interesting problem: two characters may visually look the same, but be represented with different unicode compositions.
+Zapewnia to dużą elastyczność, ale także interesujący problem: dwie postacie mogą wizualnie wyglądać tak samo, ale być reprezentowane za pomocą różnych kompozycji Unicode.
 
-For instance:
+Na przykład:
 
 ```js run
-let s1 = 'S\u0307\u0323'; // Ṩ, S + dot above + dot below
-let s2 = 'S\u0323\u0307'; // Ṩ, S + dot below + dot above
+let s1 = 'S\u0307\u0323'; // Ṩ, S + kropka powyżej + kropka poniżej
+let s2 = 'S\u0323\u0307'; // Ṩ, S + kropka poniżej + kropka powyżej
 
 alert( `s1: ${s1}, s2: ${s2}` );
 
-alert( s1 == s2 ); // false though the characters look identical (?!)
+alert( s1 == s2 ); // false pomimo tego, że znaki wyglądają identycznie (?!)
 ```
 
-To solve this, there exists a "unicode normalization" algorithm that brings each string to the single "normal" form.
+Aby rozwiązać ten problem, istnieje algorytm "normalizacji Unicode", który sprowadza każdy ciąg do pojedynczej "normalnej" postaci.
 
-It is implemented by [str.normalize()](mdn:js/String/normalize).
+Jest zaimplementowany przez metodę [str.normalize()](mdn:js/String/normalize).
 
 ```js run
 alert( "S\u0307\u0323".normalize() == "S\u0323\u0307".normalize() ); // true
 ```
 
-It's funny that in our situation `normalize()` actually brings together a sequence of 3 characters to one: `\u1e68` (S with two dots).
+To zabawne, że w naszym przypadku `normalize()` łączy sekwencję 3 znaków w jeden: `\u1e68` (S z dwoma kropkami).
 
 ```js run
 alert( "S\u0307\u0323".normalize().length ); // 1
@@ -651,9 +651,9 @@ alert( "S\u0307\u0323".normalize().length ); // 1
 alert( "S\u0307\u0323".normalize() == "\u1e68" ); // true
 ```
 
-In reality, this is not always the case. The reason being that the symbol `Ṩ` is "common enough", so UTF-16 creators included it in the main table and gave it the code.
+W rzeczywistości taka sytuacja nie zawsze ma miejsce. Znak `Ṩ` jest "dość powszechny", więc twórcy UTF-16 uwzględnili go w głównej tabeli i przypisali mu kod.
 
-If you want to learn more about normalization rules and variants -- they are described in the appendix of the Unicode standard: [Unicode Normalization Forms](http://www.unicode.org/reports/tr15/), but for most practical purposes the information from this section is enough.
+Jeśli chcesz dowiedzieć się więcej o regułach i wariantach normalizacji – są one opisane w załączniku standardu Unicode: [Unicode Normalization Forms](http://www.unicode.org/reports/tr15/). Jednakże do większości praktycznych celów wystarczą informacje z tego rozdziału.
 
 ## Summary
 
