@@ -304,11 +304,11 @@ let str = "Widget with id";
 *!*
 if (str.indexOf("Widget") != -1) {
 */!*
-    alert("We found it"); // works now!
+    alert("We found it"); // Działa!
 }
 ```
 
-#### Bitowy trik NOT
+#### Trik bitowy NOT
 
 Istnieje stara sztuczka z użyciem [bitowego operatora NOT](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Bitwise_NOT) `~`. Konwertuje liczbę na 32-bitową liczbę całkowitą (usuwa część dziesiętną, jeśli istnieje), a następnie odwraca wszystkie bity w reprezentacji binarnej.
 
