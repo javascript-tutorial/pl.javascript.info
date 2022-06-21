@@ -2,11 +2,11 @@ importance: 3
 
 ---
 
-# Explain the value of "this"
+# Określ wartość "this"
 
-In the code below we intend to call `obj.go()` method 4 times in a row.
+W poniższym kodzie chcemy wywołać metodę `obj.go()` cztery razy pod rząd.
 
-But calls `(1)` and `(2)` works differently from `(3)` and `(4)`. Why?
+Jednak wywołania `(1)` i `(2)` działają inaczej niż `(3)` i `(4)`. Dlaczego?
 
 ```js run no-beautify
 let obj, method;
