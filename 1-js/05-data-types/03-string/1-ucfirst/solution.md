@@ -6,7 +6,7 @@ Możemy jednak stworzyć nowy łańcuch na podstawie istniejącego z pierwszym z
 let newStr = str[0].toUpperCase() + str.slice(1);
 ```
 
-Jest jednak mały problem. Jeśli `str` jest pusty, to `str[0]` zwróci `undefined`, a `undefined` nie ma metody`toUpperCase()`, więc otrzymamy błąd.
+Jest jednak mały problem. Jeśli `str` jest pusty, to `str[0]` zwróci `undefined`, a `undefined` nie ma metody `toUpperCase()`, więc otrzymamy błąd.
 
 Są dwa wyjścia:
 

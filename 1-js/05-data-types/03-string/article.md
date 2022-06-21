@@ -655,21 +655,21 @@ W rzeczywistości taka sytuacja nie zawsze ma miejsce. Znak `Ṩ` jest "dość p
 
 Jeśli chcesz dowiedzieć się więcej o regułach i wariantach normalizacji – są one opisane w załączniku standardu Unicode: [Unicode Normalization Forms](http://www.unicode.org/reports/tr15/). Jednakże do większości praktycznych celów wystarczą informacje z tego rozdziału.
 
-## Summary
+## Podsumowanie
 
-- There are 3 types of quotes. Backticks allow a string to span multiple lines and embed expressions `${…}`.
-- Strings in JavaScript are encoded using UTF-16.
-- We can use special characters like `\n` and insert letters by their unicode using `\u...`.
-- To get a character, use: `[]`.
-- To get a substring, use: `slice` or `substring`.
-- To lowercase/uppercase a string, use: `toLowerCase/toUpperCase`.
-- To look for a substring, use: `indexOf`, or `includes/startsWith/endsWith` for simple checks.
-- To compare strings according to the language, use: `localeCompare`, otherwise they are compared by character codes.
+- Istnieją 3 rodzaje cudzysłowów. Grawisy pozwalają ciągowi rozciągać się na wiele linii i osadzać wyrażenia `${…}`.
+- Łańcuchy w JavaScript są kodowane przy użyciu UTF-16.
+- Możemy używać znaków specjalnych, takich jak `\n` i wstawiać litery przy użyciu i kodu Unicode, używając `\u...`.
+- Użyj `[]`, aby uzyskać pojedynczy znak.
+- Aby uzyskać podciąg, użyj: `slice` lub `substring`.
+- Aby pisać małymi/wielkimi literami, użyj: `toLowerCase/toUpperCase`.
+- Aby wyszukać podciąg, użyj `indexOf` lub `includes/startsWith/endsWith`, gdy chcesz tylko sprawdzić, czy podciąg występuje w łańcuchu.
+- Aby porównać ciągi znaków zgodnie z regułami języka, użyj: `localeCompare`.
 
-There are several other helpful methods in strings:
+Istnieje kilka innych pomocnych metod:
 
-- `str.trim()` -- removes ("trims") spaces from the beginning and end of the string.
-- `str.repeat(n)` -- repeats the string `n` times.
-- ...and more to be found in the [manual](mdn:js/String).
+- `str.trim()` -- usuwa ("przycina") spacje z początku i końca ciągu.
+- `str.repeat(n)` -- powtarza ciąg `n` razy.
+- ...i inne, które znajdziesz w [dokumentacji](https://developer.mozilla.org/pl/docs/Web/JavaScript/Reference/Global_Objects/String).
 
-Strings also have methods for doing search/replace with regular expressions. But that's big topic, so it's explained in a separate tutorial section <info:regular-expressions>.
+Istnieją również metody wyszukiwania i zastępowania za pomocą wyrażeń regularnych. Jest to jednak duży i osobny temat, więc został poświęcony mu osobny rozdział: <info:regular-expressions>.
