@@ -1,4 +1,4 @@
-# Operator łączenia wartości null '??'
+# Operator null'owego scalania '??'
 
 [recent browser="new"]
 
@@ -11,7 +11,7 @@ Wynikiem `a ?? b` jest:
 - `b` jeżeli `a` nie jest zdefiniowane.
 
 
-Innymi słowy, `??` zwraca pierwszy argument jeżeli jego wartość jest inna niż `null/undefined`. W przeciwnym razie, zwraca drugi argument.
+Innymi słowy, `??` zwraca pierwszy argument, którego wartość jest inna niż `null/undefined`. W przeciwnym razie, zwraca drugi argument.
 
 Operator łączenia wartości null nie jest całkiem nowy. Jest to po prostu ładna składnia, aby dostać pierwszą zdefiniowaną wartość z dwóch dostępnych.
 
@@ -41,7 +41,7 @@ alert(user ?? "Anonim"); // John
 
 Możemy również użyć sekwencji `??`, żeby wybrać pierwszą wartość  z listy, która jest inna niż `null/undefined`.
 
-Powiedzmy, że mamy dane użytkownika w zmiennej `firstName`, `lastName` oraz `nickName`. Wszystkie mogą być niezdefiniowane, jeżeli użytkownik zdecyduje się ich nie wprowadzać.
+Powiedzmy, że mamy dane użytkownika w zmiennych `firstName`, `lastName` oraz `nickName`. Wszystkie mogą być niezdefiniowane, jeżeli użytkownik zdecyduje się ich nie wprowadzać.
 
 Chcielibyśmy wyświetlić nazwę użytkownika używając jednej z tych zmiennych, albo wyświetlić "Anonim", jeżeli wszystkie są niezdefiniowane.
 
@@ -85,7 +85,7 @@ Ważną różnicą pomiędzy nimi jest:
 
 Innymi słowy, `||` nie rozróżnia pomiędzy `false`, `0`, pustym stringiem `""` i `null/undefined`. Wszystkie one są takie same -- falsy wartości. Jeżeli którakolwiek z tych wartości jest pierwszym argumentem w `||`, wtedy otrzymamy drugi argument jako wynik.
 
-W praktyce, możemy chcieć użyć domyślnej wartości tylko wtedy jeżeli zmienna ma wartość `null/undefined`. To znaczy tylko wtedy kiedy wartość naprawdę jest nieznana/nie ustawiona.
+W praktyce jednak, możemy chcieć użyć domyślnej wartości tylko wtedy jeżeli zmienna ma wartość `null/undefined`. To znaczy tylko wtedy kiedy wartość naprawdę jest nieznana/nie ustawiona.
 
 Na przykład, rozważmy:
 
@@ -96,9 +96,9 @@ alert(height || 100); // 100
 alert(height ?? 100); // 0
 ```
 
-- Wyrażenie `height || 100` sprawdza `height` pod kątem falsy wartości, i jest ona taka.
+- Wyrażenie `height || 100` sprawdza `height` pod kątem falsy wartości, i tak też właśnie jest.
     - w takim razie wynikiem jest drugi argument, `100`.
-- Wyrażenie `height ?? 100` sprawdza `height` pod kątem `null/undefined`, i nie jest,
+- Wyrażenie `height ?? 100` sprawdza `height` pod kątem `null/undefined`, a zmienna `height` nie jest żadną z tych wartości,
     - w takim razie, wynikiem jest `height` "takie jakie jest", zatem `0`.
 
 Jeżeli zerowa wysokość jest poprawną wartością, która nie powinna być zastąpiona wartością domyślną, wtedy `??` sprawdzi się doskonale.
@@ -119,7 +119,7 @@ let area = (height ?? 100) * (width ?? 50);
 alert(area); // 5000
 ```
 
-W innym wypadku, jeżeli ominiemy nawiasy, wtedy `*` ma większy priorytet niż `??`, wykona się najpierw, prowadząc do niewłaściwych wyników.
+W innym wypadku, jeżeli ominiemy nawiasy, wtedy `*` ma większy priorytet niż `??`, więc wykona się najpierw, prowadząc do niewłaściwych wyników.
 
 ```js
 // bez nawiasów
@@ -136,7 +136,7 @@ Z powodów bezpieczeństwa, JavaScript zabrania użycia `??` razem z operatorami
 Kod poniżej wywołuje błąd składni:
 
 ```js run
-let x = 1 && 2 ?? 3; // Błąd składni
+let x = 1 && 2 ?? 3; // Błąd składni (eng. syntax error)
 ```
 
 Obostrzenia są oczywiście dyskusyjne, ale zostały dodane do specyfikacji języka celem uniknięcia błędów programowania, kiedy ludzie zaczną zmieniać z `??` na `||`.
@@ -153,7 +153,7 @@ alert(x); // 2
 
 ## Podsumowanie
 
-- Operator łączenia wartości null `??` dostarcza szybszego sposobu na wybranie pierwszej zdefiniowanej wartości z listy.
+- Operator null'owego scalania `??` dostarcza szybszego sposobu na wybranie pierwszej zdefiniowanej wartości z listy.
 
     Jest używany do przypisania domyślnej wartości do zmiennej:
 
