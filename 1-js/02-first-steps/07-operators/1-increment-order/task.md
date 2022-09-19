@@ -2,9 +2,9 @@ importance: 5
 
 ---
 
-# The postfix and prefix forms
+# Forma przedrostkowa i przyrostkowa
 
-What are the final values of all variables `a`, `b`, `c` and `d` after the code below?
+Jakie będą finalne wartości zmiennych `a`, `b`, `c` i `d` po wykonaniu poniższego kodu?
 
 ```js
 let a = 1, b = 1;

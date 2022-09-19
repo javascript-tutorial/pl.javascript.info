@@ -2,9 +2,9 @@ importance: 2
 
 ---
 
-# Chaining
+# Łączenie
 
-There's a `ladder` object that allows to go up and down:
+Mamy tutaj obiekt `ladder` który pozwala wspinać się do góry i schodzić w dół:
 
 ```js
 let ladder = {
@@ -15,13 +15,13 @@ let ladder = {
   down() { 
     this.step--;
   },
-  showStep: function() { // shows the current step
+  showStep: function() { // pokazuje aktualną wartość step
     alert( this.step );
   }
 };
 ```
 
-Now, if we need to make several calls in sequence, can do it like this:
+Jeśli chcielibyśmy wykonać sekwencję ruchów, możemy zrobić to w ten sposób:
 
 ```js
 ladder.up();
@@ -30,10 +30,10 @@ ladder.down();
 ladder.showStep(); // 1
 ```
 
-Modify the code of `up`, `down` and `showStep` to make the calls chainable, like this:
+Zmodyfkuj kod dla `up`, `down` i `showStep` żeby można było połączyć wywołania metod, w taki sposób:
 
 ```js
 ladder.up().up().down().showStep(); // 1
 ```
 
-Such approach is widely used across JavaScript libraries.
+Wiele bibliotek JavaScript wykorzystuje taki sposób pisania kodu.

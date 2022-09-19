@@ -1,15 +1,15 @@
 
-Backticks embed the expression inside `${...}` into the string.
+Grawisy(backticks) dołączają wyrażenie wewnątrz `${...}` bezpośrednio do stringa.
 
 ```js run
 let name = "Ilya";
 
-// the expression is a number 1
+// wyrażenie jest liczbą 1
 alert( `hello ${1}` ); // hello 1
 
-// the expression is a string "name"
+// wyrażenie jest stringiem "name"
 alert( `hello ${"name"}` ); // hello name
 
-// the expression is a variable, embed it
+// dołącz zmienną do stringa
 alert( `hello ${name}` ); // hello Ilya
 ```

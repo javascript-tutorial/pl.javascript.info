@@ -1,12 +1,12 @@
-**Yes, it will.**
+**Tak, pokaże się.**
 
-Any string except an empty one (and `"0"` is not empty) becomes `true` in the logical context.
+Każdy ciąg znaków z wyjątkiem pustego (a `"0"` nie jest puste) zostaje `true` w kontekście logicznym.
 
-We can run and check:
+Możemy uruchomić kod aby sprawdzić:
 
 ```js run
 if ("0") {
-  alert( 'Hello' );
+  alert( 'Witaj' );
 }
 ```
 

@@ -2,9 +2,9 @@ importance: 4
 
 ---
 
-# Function pow(x,n)
+# Funkcja pow(x,n)
 
-Write a function `pow(x,n)` that returns `x` in power `n`. Or, in other words, multiplies `x` by itself `n` times and returns the result.
+Napisz funkcję `pow(x,n)` która zwraca `x` podniesione do potęgi `n`. Lub, innymi słowy, mnoży `x` przez samą siebie `n` razy i zwraca rezultat.
 
 ```js
 pow(3, 2) = 3 * 3 = 9
@@ -12,8 +12,8 @@ pow(3, 3) = 3 * 3 * 3 = 27
 pow(1, 100) = 1 * 1 * ...* 1 = 1
 ```
 
-Create a web-page that prompts for `x` and `n`, and then shows the result of `pow(x,n)`.
+Stwórz stronę internetową która wyświetla okno dialogowe i prosi od podanie `x` oraz `n`, a następnie pokazuje rezultat `pow(x,n)`.
 
 [demo]
 
-P.S. In this task the function should support only natural values of `n`: integers up from `1`.
+P.S. W tym zadaniu funkcja powinna wspierać jedynie naturalne wartości `n`: liczby całkowite od `1` wzwyż.
