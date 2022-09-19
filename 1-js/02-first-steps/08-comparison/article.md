@@ -11,8 +11,8 @@ Na matematyce poznaliśmy porównania:
 
 Jak wszystkie inne operatory porównanie zwraca wartość. W tym przypadku wartością jest Boolean.
 
-- `true` -- means "yes", "correct" or "the truth".
-- `false` -- means "no", "wrong" or "not the truth".
+- `true` -- oznacza "tak", "poprawnie" albo "prawda".
+- `false` -- oznacza "nie", "źle" albo "fałsz".
 
 Na przykład:
 
@@ -29,11 +29,11 @@ let result = 5 > 4; // przypisz wynik porównania
 alert( result ); // true
 ```
 
-## Porównanie stringów
+## Porównanie łańcuchów
 
-Aby zobaczyć czy ciąg znaków jest większy niż inny JavaScript używa porównania, które nazywamy "słownikowym" lub "leksykograficznym".
+Aby zobaczyć czy ciąg znaków jest większy niż inny, JavaScript używa porównania, które nazywamy "słownikowym" lub "leksykograficznym".
 
-Innymi słowy, stringi porównywane są litera po literze.
+Innymi słowy, łańcuchy porównywane są litera po literze.
 
 Na przykład:
 
@@ -43,13 +43,13 @@ alert( 'Brat' > 'Brak' ); // true
 alert( 'Jan' > 'Ja' ); // true
 ```
 
-Algorytm porównuje dwa stringi w prosty sposób:
+Algorytm porównuje dwa ciągi w prosty sposób:
 
-1. Porównaj pierwszy znak w obu stringach.
-2. Jeśli pierwszy znak w pierwszym stringu jest większy (lub mniejszy) niż inny string, wtedy pierwszy string jest większy (lub mniejszy). Porównanie zakończone.
+1. Porównaj pierwszy znak w obu łańcuchach .
+2. Jeśli pierwszy znak w pierwszym ciągu jest większy (lub mniejszy) niż w drugim łańcuchu, wtedy pierwszy ciąg jest większy (lub mniejszy). Porównanie zakończone.
 3. Jeśli pierwsze znaki są takie same zrób porównanie dla kolejnego znaku w ten sam sposób jak w punkcie nr 2.
-4. Powtarzaj dopóki nie dojdzie do końca stringu.
-5. Jeśli oba stringi mają taką samą długość są równe. W przeciwnym przypadku dłuższy string jest większy.
+4. Powtarzaj dopóki nie nastapi koniec łańcucha znaków.
+5. Jeśli oba ciągi mają taką samą długość, to są równe. W przeciwnym przypadku dłuższy łańcuch jest większy.
 
 W powyższych przypadkach porównanie `'Z' > 'A'` zwróci rezultat w pierwszym podejściu. Porównanie `"Brat"` z `"Brak"` będzie porównywane znak po znaku:
 
@@ -59,9 +59,9 @@ W powyższych przypadkach porównanie `'Z' > 'A'` zwróci rezultat w pierwszym p
 3. `t` jest większe niż `k`. Zatrzymaj tutaj. Pierwszy string jest większy.
 
 ```smart header="Nie do końca słownikowa, bo kolejność wg Unicode"
-Podany powyżej przykład jest prawie taki sam jak algorytm używany w słownikach lub książkach telefonicznych. Ale nie jest dokładnie taki sam.
+Podany powyżej przykład jest prawie taki sam jak algorytm używany w słownikach lub książkach telefonicznych. Nie jest jednak dokładnie taki sam.
 
-Na przykład wielkość ma znaczenie. Duża litera `"A"` nie jest równa małej literze `"a"`. Która jest większa? Mała litera `"a"`. Dlaczego? Ponieważ małe litery mają większy index w wewnętrznej tabeli kodowania znaków (Unicode), której używa JavaScript. Wrócimy do tego w rozdziale <info:string>.
+Na przykład wielkość ma znaczenie. Duża litera `"A"` nie jest równa małej literze `"a"`. Która jest większa? Mała litera `"a"`. Dlaczego? Ponieważ małe litery mają większy index w wewnętrznej tabeli kodowania znaków (Unicode), której używa JavaScript. Wrócimy do tego ze szczegółami w rozdziale <info:string>.
 ```
 
 ## Porównania wartości różnego typu
@@ -71,11 +71,11 @@ Kiedy porównujemy wartości różnego typu JavaScript konwertuje te wartości n
 Na przykład:
 
 ```js run
-alert( '2' > 1 ); // true, string '2' staje się numerem 2
-alert( '01' == 1 ); // true, string '01' staje się numerem 1
+alert( '2' > 1 ); // true, łańcuch '2' staje się numerem 2
+alert( '01' == 1 ); // true, łańcuch '01' staje się numerem 1
 ```
 
-Dla wartości Boolean `true` staje się `1`, a `false` staje się `0`. 
+W przypadku wartości logicznych, `true` staje się `1`, a `false` staje się `0`. 
 
 Na przykład:
 
@@ -88,7 +88,7 @@ alert( false == 0 ); // true
 Jest możliwe, aby w tym samym czasie:
 
 - Dwie wartości były równe.
-- Jedna z nich będzie `true` jako Boolean, natomiast druga jest `false` jako Boolean.
+- Jedna z nich będzie `true` jako wartość logiczna, natomiast druga `false` jako wartość logiczna.
 
 Na przykład:
 
@@ -102,7 +102,7 @@ alert( Boolean(b) ); // true
 alert(a == b); // true!
 ```
 
-Z punkty widzenia JavaScript taki rezultat jest oczekiwany i normalny. Porównanie konwertuje wartości na typ liczbowy (więc string `"0"` zostaje `0`), podczas gdy porównanie `Boolean` konwertuje te wartości w inny sposób.
+Z punkty widzenia JavaScript taki rezultat jest oczekiwany i normalny. Porównanie konwertuje wartości na typ liczbowy (więc łańcuch `"0"` zostaje `0`), podczas gdy porównanie `Boolean` konwertuje te wartości w inny sposób.
 ````
 
 ## Operator identyczności
@@ -113,13 +113,13 @@ Operator równości `==` ma jedną wadę. Nie potrafi odróżnić `0` od `false`
 alert( 0 == false ); // true
 ```
 
-To samo się stanie gdy porównamy pusty string:
+To samo się stanie gdy porównamy pusty łańcuch:
 
 ```js run
 alert( '' == false ); // true
 ```
 
-Dzieje się tak, ponieważ operandy różnych typów są konwertowane do typu liczbowego podczas użycia `==`. Pusty string, a także `false` stają się 0.
+Dzieje się tak, ponieważ operandy różnych typów są konwertowane do typu liczbowego podczas użycia `==`. Pusty łańcuch, a także `false` stają się 0.
 
 Co powinniśmy zrobić, aby odróżnić `0` od `false`?
 
@@ -139,9 +139,7 @@ Operator identyczności jest nieco dłuższy do zapisania, ale czyni porównanie
 
 ## Porównania z null i undefined
 
-Zobaczmy kilka skrajnych przypadków.
-
-Nie jest intuicyjne w jaki sposób zachowają się `null` lub `undefined` gdy będą porównywane z innymi wartościami.
+Porównywanie wartości `null` lub `undefined` z innymi wartościami jest nieintuicyjne.
 
 
 Dla sprawdzenia identyczności `===`
@@ -161,7 +159,7 @@ Dla sprawdzenia równości `==`
 W matematyce i innych porównaniach `< > <= >=`
 : `null/undefined` są skonwertowane do liczb: `null` staje się `0`, natomiast `undefined` staje się `NaN`.
 
-Zobaczmy kilka ciekawych rzeczy, które się dzieją gdy zaaplikujemy te reguły. I co jest najważniejsze, jak nie wpaść z nimi w tarapaty.
+Zobaczmy kilka ciekawych rzeczy, które się dzieją gdy zastosujemy te reguły. I co najważniejsze, jak nie wpaść w tarapaty używając ich.
 
 ### Dziwny rezultat: null vs 0
 
@@ -173,7 +171,7 @@ alert( null == 0 ); // (2) false
 alert( null >= 0 ); // (3) *!*true*/!*
 ```
 
-W matematyce jest to dziwne. Ostatni rezultat, w którym "`null` jest większe lub równe zero" zwraca `true`, podczas gdy oba wcześniejsze zwracają `false`, wydaje się, że również powinno być `false`, a jest `true`.
+Z matematycznego punktu widzenia jest to dziwne. Ostatni rezultat, w którym "`null` jest większe lub równe zero" zwraca `true`, podczas gdy oba wcześniejsze zwracają `false`, wydaje się, że również powinno być `false`, a jest `true`.
 
 Powodem takiego wyniku jest to, że znak `==` i porównania `> < >= <=` nie działają w ten sam sposób. Porównania konwertują `null` do liczby traktując go jako `0`. Dlatego właśnie (3) `null >= 0` jest true i (1) `null > 0` jest false.
 
@@ -200,14 +198,14 @@ Dostaliśmy takie rezultaty ponieważ:
 
 Dlaczego w ogóle przeszliśmy przez te przykłady? Czy powinniśmy pamiętać o tych osobliwych rzeczach cały czas? Nie do końca. Tak właściwie to te podstępne rzeczy staną się jasne z czasem, ale jest jeden porządny sposób na uniknięcie związanych z nimi problemów:
 
-Po prostu traktuj każde porównanie z `undefined/null` używając znaku identyczności `===` zachowując wszelkie środki ostrożności.
+Po prostu traktuj każde porównanie z `undefined/null` używając znaku ścisłej identyczności `===` zachowując wszelkie środki ostrożności.
 
 Nie używaj porównań `>= > < <=` ze zmiennymi, które mogą być `null/undefined`. Chyba że wiesz co robisz. Jeśli zmienna może mieć te wartości sprawdź je oddzielnie.
 
 ## Podsumowanie
 
-- Operatory porównania zwracają wartość typu Boolean (true lub false).
-- Stringi porównywane są litera po literze w "słownikowej" kolejności.
-- Jeśli porównujemy wartości różnych typów, zostaną one skonwertowane do liczby (chyba, że użyjemy operatora identyczności).
+- Operatory porównania zwracają wartość typu logicznego (true lub false).
+- Łańcuchy znaków porównywane są litera po literze w "słownikowej" kolejności.
+- Jeśli porównujemy wartości różnych typów, zostaną one skonwertowane do liczby (chyba, że użyjemy operatora ścisłej identyczności).
 - Wartości `null` i `undefined` są równe sobie `==` i są różne od każdej innej wartości.
 - Bądź ostrożny gdy używasz porównac takich jak `>` lub `<` ze zmiennymi, które mogą być `null/undefined`. Oddzielne sprawdzanie dla `null/undefined` jest dobrym rozwiązaniem.
