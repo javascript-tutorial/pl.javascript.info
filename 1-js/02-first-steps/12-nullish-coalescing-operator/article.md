@@ -4,7 +4,7 @@
 
 W tym artykule zakładamy, że wyrażenie jest "zdefiniowane", jeżeli nie jest `null` albo `undefined`.
 
-Operator łączenia wartości null zapisujemy jako dwa znaki zapytania `??`.
+Operator null'owego scalania zapisujemy jako dwa znaki zapytania `??`.
 
 Wynikiem `a ?? b` jest:
 - `a` jeżeli jest zdefiniowane,
@@ -13,7 +13,7 @@ Wynikiem `a ?? b` jest:
 
 Innymi słowy, `??` zwraca pierwszy argument, którego wartość jest inna niż `null/undefined`. W przeciwnym razie, zwraca drugi argument.
 
-Operator łączenia wartości null nie jest całkiem nowy. Jest to po prostu ładna składnia, aby dostać pierwszą zdefiniowaną wartość z dwóch dostępnych.
+Operator null'owego scalania nie jest całkiem nowy. Jest to po prostu ładna składnia, aby dostać pierwszą zdefiniowaną wartość z dwóch dostępnych.
 
 Możemy zapisać `result = a ?? b` używając operatorów, które już znamy:
 
@@ -77,7 +77,7 @@ alert(firstName || lastName || nickName || "Anonim"); // Supercoder
 
 Operator OR `||` istnieje od początku w JavaScript, więc był w ten sposób używany przez developerów od bardzo dawna.
 
-Z drugiej strony, Operator łączenia wartości null `??` został dodany do JavaScript ostatnio i powodem było to, że ludzie nie byli całkiem zadowoleni z `||`.
+Z drugiej strony, Operator null'owego scalania `??` został dodany do JavaScript ostatnio i powodem było to, że ludzie nie byli całkiem zadowoleni z `||`.
 
 Ważną różnicą pomiędzy nimi jest:
 - `||` zwraca pierwszą *truthy* wartość.
