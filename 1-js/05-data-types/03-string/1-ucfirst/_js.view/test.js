@@ -3,7 +3,7 @@ describe("ucFirst", function() {
     assert.strictEqual(ucFirst("john"), "John");
   });
 
-  it("Nie wysypuje się na na pustym łańcuchu", function() {
+  it("Nie wysypuje się na pustym łańcuchu", function() {
     assert.strictEqual(ucFirst(""), "");
   });
 });
