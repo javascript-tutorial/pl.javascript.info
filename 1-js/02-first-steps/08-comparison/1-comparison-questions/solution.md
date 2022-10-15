@@ -10,12 +10,12 @@ null == "\n0\n" → false
 null === +"\n0\n" → false
 ```
 
-Some of the reasons:
+Wytłumaczenie rozwiązania:
 
-1. Obviously, true.
-2. Dictionary comparison, hence false. `"a"` is smaller than `"p"`.
-3. Again, dictionary comparison, first char of `"2"` is greater than the first char of `"1"`.
-4. Values `null` and `undefined` equal each other only.
-5. Strict equality is strict. Different types from both sides lead to false.
-6. Similar to `(4)`, `null` only equals `undefined`.
-7. Strict equality of different types.
+1. Oczywiście true.
+2. Porównanie słownikowe, dlatego zwróci false. `"a"` jest mniejsze niż `"p"`
+3. Ponownie porównanie słownikowe, pierwszy znak `"2"` jest większy niż pierwszy znak drugiego stringu `"1"`.
+4. Wartości `null` i `undefined` są równe tylko ze sobą.
+5. Ścisła porównanie jest rygorystyczne. Obie wartości mają rózne typy, stąd `false`.
+6. Podobnie, jak w `(4)`, `null` i `undefined` są równe tylko ze sobą.
+7. Ścisłe porównanie róznych typów.
