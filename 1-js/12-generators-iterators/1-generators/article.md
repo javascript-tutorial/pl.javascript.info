@@ -153,11 +153,11 @@ let sequence = [0, ...generateSequence()];
 alert(sequence); // 0, 1, 2, 3
 ```
 
-W kodzie powyżej, `...generateSequence()` zamienia iterowalny obiekt generatora w tablice wartości (przeczytaj więcej o składni rozwinięcia w rozdziale [](info:rest-parameters-spread-operator#spread-operator))
+W kodzie powyżej, `...generateSequence()` zamienia iterowalny obiekt generatora w tablice wartości (przeczytaj więcej o składni rozwinięcia w rozdziale [parametr rest i składnia rozwinięcia](info:rest-parameters-spread-operator#spread-operator))
 
 ## Używanie generatorów do iteracji
 
-Jakiś czas temu w rozdziale [](info:iterable) stworzyliśmy obiekt `range` typu iterowalnego, który zwraca wartości `od..do`.
+Jakiś czas temu w rozdziale [Iteracja](info:iterable) stworzyliśmy obiekt `range` typu iterowalnego, który zwraca wartości `od..do`.
 
 Dla przypomnienia, kod:
 
@@ -398,7 +398,7 @@ Jak zauważyliśmy w przykładach wyżej, kod zewnętrzny może przekazać warto
 
 Aby przekazać błąd do `yield`, powinniśmy wywołać `generator.throw(err)`. W tym przypadku, `err` jest rzucony w linijce razem z danym `yield`.
 
-Na przykład, poniższy `yield "2+2 = ?"` prowadzi do błędu:
+Na przykład, poniższy `yield "2 + 2 = ?"` prowadzi do błędu:
 
 ```js run
 function* gen() {
