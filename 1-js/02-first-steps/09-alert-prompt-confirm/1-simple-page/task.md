@@ -2,8 +2,8 @@ importance: 4
 
 ---
 
-# A simple page
+# Prost strona
 
-Create a web-page that asks for a name and outputs it.
+Stwórz prostą stronę, która zapyta użytkownika o imię, a następnie wyświeli je.
 
 [demo]

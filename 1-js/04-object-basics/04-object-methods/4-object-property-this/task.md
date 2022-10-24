@@ -2,11 +2,11 @@ importance: 5
 
 ---
 
-# Using "this" in object literal
+# "this" w obiektach
 
-Here the function `makeUser` returns an object.
+Poniższa funkcja `makeUser` zwraca obiekt. 
 
-What is the result of accessing its `ref`? Why?
+Jaki będzie rezultat dostępu do jego `ref`? I dlaczego?
 
 ```js
 function makeUser() {
@@ -18,6 +18,6 @@ function makeUser() {
 
 let user = makeUser();
 
-alert( user.ref.name ); // What's the result?
+alert( user.ref.name ); // Jaki będzie wynik?
 ```
 

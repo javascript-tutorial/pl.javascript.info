@@ -1,7 +1,7 @@
 <!doctype html>
 <script>
 (async () {
-	
+
 	const response = await fetch('long.txt');
 	const reader = response.body.getReader();
 
@@ -12,13 +12,13 @@
 		const chunk = await reader.read();
 
 		if (chunk.done) {
-			console.log("done!");
+			console.log("gotowe!");
 			break;
 		}
 
 		chunks.push(chunk.value);
 		receivedLength += chunk.value.length;
-		console.log(`${receivedLength}/${contentLength} received`)
+		console.log(`otrzymano ${receivedLength}/${contentLength}`)
 	}
 
 

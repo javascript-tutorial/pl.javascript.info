@@ -1,6 +1,6 @@
 describe("extractCurrencyValue", function() {
 
-  it("for the string $120 returns the number 120", function() {
+  it("dla ciągu $120 zwraca numer 120", function() {
     assert.strictEqual(extractCurrencyValue('$120'), 120);
   });
 

@@ -2,11 +2,11 @@ importance: 5
 
 ---
 
-# Show an alert
+# Wyświetl komunikat
 
-Create a page that shows a message "I'm JavaScript!".
+Stwórz stronę, która wyświetla komunikat "Jestem JavaScript!".
 
-Do it in a sandbox, or on your hard drive, doesn't matter, just ensure that it works.
+Nie ważne, czy stworzysz ją w sandboxie, czy lokalnie na dysku - ważne, żeby działała.
 
 [demo src="solution"]
 

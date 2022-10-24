@@ -1,22 +1,21 @@
 
-Here's the explanations.
+Oto wyjaśnienie.
 
-1. That's a regular object method call.
+1. Jest to zwykłe wywołanie metody obiektu.
 
-2. The same, brackets do not change the order of operations here, the dot is first anyway.
+2. Tak jak powyżej, nawiasy nie zmieniają tutaj kolejności wykonywania działań, kropka i tak ma pierwszeństwo.
 
-3. Here we have a more complex call `(expression).method()`. The call works as if it were split into two lines:
+3. Tutaj mamy bardziej złożone wywołanie `(expression).method()`. Wywołanie działa tutaj tak jakby było rozbite na dwie linijki kodu:
 
     ```js no-beautify
-    f = obj.go; // calculate the expression
-    f();        // call what we have
+    f = obj.go; // przypisanie jako wartość zmiennej
+    f();        // wywołanie stworzonej zmiennej
     ```
 
-    Here `f()` is executed as a function, without `this`.
+    `f()` jest tutaj wywoływane jako funkcja, bez `this`.
 
-4. The similar thing as `(3)`, to the left of the dot `.` we have an expression.
+4. Podobna sytuacja jak w `(3)`, po lewej stronie od kropki `.` mamy wyrażenie.
 
-To explain the behavior of `(3)` and `(4)` we need to recall that property accessors (dot or square brackets) return a value of the Reference Type.  
+Żeby wyjaśnić zachowanie `(3)` i `(4)` musimy przypomnieć sobie, że akcesory właściwości (kropki lub nawiasy kwadratowe) zwracają wartość Typu Referencji.
 
-Any operation on it except a method call (like assignment `=` or `||`) turns it into an ordinary value, which does not carry the information allowing to set `this`.
-
+Każda inna operacja niż wywołanie metody (jak przypisanie `=` lub `||`) zmienia Typ Referencji na zwykłą wartość, która nie zawiera informacji pozwalającej ustalić wartości `this`.

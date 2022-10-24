@@ -1,15 +1,15 @@
 describe("truncate", function() {
-  it("truncate the long string to the given length (including the ellipsis)", function() {
+  it("obcina ciąg do podanej długości (łącznie z wielokropkiem)", function() {
     assert.equal(
-      truncate("What I'd like to tell on this topic is:", 20),
-      "What I'd like to te…"
+      truncate("Oto, co chciałbym powiedzieć na ten temat:", 20),
+      "Oto, co chciałbym p…"
     );
   });
 
-  it("doesn't change short strings", function() {
+  it("nie zmienia krótkich łańcuchów", function() {
     assert.equal(
-      truncate("Hi everyone!", 20),
-      "Hi everyone!"
+      truncate("Cześć wszystkim!", 20),
+      "Cześć wszystkim!"
     );
   });
 
