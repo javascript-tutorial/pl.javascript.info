@@ -99,7 +99,7 @@ Mimo to, w większości przypadków używamy pierwszej składni, ponieważ gwiaz
 
 ## Na generatorach można dokonywać iteracji.
 
-Jak wskazuje metoda `next()`,generatory to obiekty typu [iterowalnego](info: iterable)
+Jak wskazuje metoda `next()`, generatory to obiekty typu [iterowalnego](info: iterable)
 
 Możemy przechodzić po ich wartościach, za pomocą pętli `for..of`:
 
