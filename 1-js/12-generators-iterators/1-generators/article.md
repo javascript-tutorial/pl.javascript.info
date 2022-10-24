@@ -139,7 +139,7 @@ for(let value of generator) {
 }
 ```
 
-Oczywiście, generatory to obiekty typu iterowalnego, więc można też wywoływać na nich funkcjonalności powiązane z iteracją, np. składnia rozwinięcia `...`:
+Oczywiście, generatory to obiekty typu iterowalnego, więc można też wywoływać na nich funkcjonalności powiązane z iteracją, np. składnie rozwinięcia `...`:
 
 ```js run
 function* generateSequence() {
