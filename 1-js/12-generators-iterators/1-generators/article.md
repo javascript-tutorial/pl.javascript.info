@@ -94,7 +94,7 @@ Nowe wywołania `generator.next()` nie mają sensu. Jeśli je zrobimy, zwrócą 
 ```smart header="`function* f(…)` czy`function *f(…)`?". 
 Co kto lubi, obie składnie są poprawne.
 
-Mimo to, w większości przypadków używamy pierwszej składni, ponieważ gwiazdka `*` wskazuje, że to funkcja generująca, tzn opisuje rodzaj funkcji a nie jej nazwę, więc powinna być obok słowa `function`. 
+Mimo to, w większości przypadków używamy pierwszej składni, ponieważ gwiazdka `*` wskazuje, że to funkcja generująca, tzn. opisuje rodzaj funkcji a nie jej nazwę, więc powinna być obok słowa `function`. 
 ```
 
 ## Na generatorach można dokonywać iteracji.
