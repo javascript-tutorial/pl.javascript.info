@@ -1,4 +1,4 @@
-**The answer: from `0` to `4` in both cases.**
+**Odpowiedź: od `0` do `4` w obu przypadkach.**
 
 ```js run
 for (let i = 0; i < 5; ++i) alert( i );
@@ -6,12 +6,11 @@ for (let i = 0; i < 5; ++i) alert( i );
 for (let i = 0; i < 5; i++) alert( i );
 ```
 
-That can be easily deducted from the algorithm of `for`:
+Można to łatwo odczytać z algorytmu `for`:
 
-1. Execute once `i = 0` before everything (begin).
-2. Check the condition `i < 5`
-3. If `true` -- execute the loop body `alert(i)`, and then `i++`
+1. Wykonać raz `i = 0` przed wszystkim (początek).
+2. Sprawdzić warunek `i < 5`
+3. jeśli `true` -- wykonaj ciało pętli `alert(i)`, a potem `i++`
 
-The increment `i++` is separated from the condition check (2). That's just another statement.
-
-The value returned by the increment is not used here, so there's no difference between `i++` and `++i`.
+Przyrost `i++` jest oddzielony od sprawdzenia warunku (2). To tylko kolejne stwierdzenie.
+Wartość zwracana przez przyrost nie jest tutaj używana, więc nie ma różnicy między `i++` a `++i`.

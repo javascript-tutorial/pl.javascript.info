@@ -1,20 +1,20 @@
-importance: 4
+ważność: 4
 
 ---
 
-# Which values does the while loop show?
+# Jakie wartości pokazuje pętla while?
 
-For every loop iteration, write down which value it outputs and then compare it with the solution.
+Dla każdej iteracji pętli zapisz, jaką wartość ona generuje, a następnie porównaj ją z rozwiązaniem.
 
-Both loops `alert` the same values, or not?
+Obie pętle ogłoszą (`alert`) te same wartości, czy nie?
 
-1. The prefix form `++i`:
+1. Forma prefiksowa `++i`:
 
     ```js
     let i = 0;
     while (++i < 5) alert( i );
     ```
-2. The postfix form `i++`
+2. Forma przyrostkowa (postfix) `i++`
 
     ```js
     let i = 0;

@@ -1,19 +1,19 @@
-importance: 4
+ważność: 4
 
 ---
 
-# Which values get shown by the "for" loop?
+# Jakie wartości pokazuje pętla "for"?
 
-For each loop write down which values it is going to show. Then compare with the answer.
+Dla każdej pętli zapisz, jakie wartości ma ona pokazywać. Następnie porównaj z odpowiedzią.
 
-Both loops `alert` same values or not?
+Obie pętle ogłaszają (`alert`) te same wartości, czy nie?
 
-1. The postfix form:
+1. Forma przyrostkowa:
 
     ```js
     for (let i = 0; i < 5; i++) alert( i );
     ```
-2. The prefix form:
+2. Forma prefixowa:
 
     ```js
     for (let i = 0; i < 5; ++i) alert( i );

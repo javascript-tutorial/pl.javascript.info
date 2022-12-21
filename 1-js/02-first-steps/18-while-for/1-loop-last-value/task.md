@@ -1,10 +1,10 @@
-importance: 3
+ważność: 3
 
 ---
 
-# Last loop value
+# Ostatnia wartość pętli
 
-What is the last value alerted by this code? Why?
+Jaka jest ostatnia wartość pokazana przez ten kod? Dlaczego?
 
 ```js
 let i = 3;
