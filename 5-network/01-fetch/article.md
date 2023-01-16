@@ -37,7 +37,7 @@ Uzyskanie odpowiedzi jest zwykle procesem dwuetapowym.
 
 Na tym etapie możemy sprawdzić status żądania HTTP, aby dowiedzieć się, czy się ono powiodło, albo przejrzeć nagłówki. Nie mamy jednak jeszcze dostępu do ciała odpowiedzi.
 
-Obietnica jest odrzucana (ang. *rejects*), jeżeli `fetch` jest w stanie wykonać zapytania HTTP, np. ze względu na problemy sieciowe lub brak strony, do której skierowano zapytanie. Nieprawidłowe statusy HTTP, takie jak 404 lub 500, nie powodują błędu.
+Obietnica jest odrzucana (ang. *rejects*), jeżeli `fetch` nie jest w stanie wykonać zapytania HTTP, np. ze względu na problemy sieciowe lub brak strony, do której skierowano zapytanie. Nieprawidłowe statusy HTTP, takie jak 404 lub 500, nie powodują błędu.
 
 Informację o statusie HTTP znajdziemy wśród właściwości odpowiedzi:
 
