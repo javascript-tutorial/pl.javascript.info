@@ -1,10 +1,10 @@
 # Środowisko przeglądarki, specyfikacje
 
-Język JavaScript był pierowtnie stworzony na przeglądarki internetowe. Od jego stworzenia ewoluował on i stał się językiem o wielu zastosowaniach i platformach.
+Język JavaScript był pierwotnie stworzony na przeglądarki internetowe. Od jego stworzenia ewoluował on i stał się językiem o wielu zastosowaniach i platformach.
 
-Platformą może być przeglądarka, serwer WWW, inny host albo nawet ekspres do kawy. Każdy z nich posiada specificzną dla siebie funkcjonalność. W nomenklaturze JavaScript nazywamy to *środowiskiem hosta*.
+Platformą może być przeglądarka, serwer WWW, inny host albo nawet ekspres do kawy. Każdy z nich posiada specyficzną dla siebie funkcjonalność. W nomenklaturze JavaScript nazywamy to *środowiskiem hosta*.
 
-Środowisko hosta wprowadza swoje własne objekty i funkcje dodatkowe do języka programowania. Na porzykład przeglądarki interentowe umożliwiają kontrolę nad stronami internetowymi,  Node.js wprowadza nowe funkcjonalności po stronie servera i tak dalej.
+Środowisko hosta wprowadza swoje własne obiekty i funkcje dodatkowe, do języka programowania. Na przykład przeglądarki internetowe umożliwiają kontrolę nad stronami internetowymi, Node.js wprowadza nowe funkcjonalności po stronie serwera i tak dalej.
 
 Poniżej został przedstawiony widok z lotu ptaka na to co się dzieje kiedy JavaScript działa w przeglądarce internetowej.
 
@@ -32,11 +32,11 @@ A tutaj używamy go jako okna przeglądaraki w celu zobaczenia wysokośi okna:
 alert(window.innerHeight); // wewnętrzna wysokość okna
 ```
 
-Jest znacznie więcej metod i własciwości dla okien, ale nimi zajmiemy się później.
+Jest znacznie więcej metod i właściwości dla okien, ale nimi zajmiemy się później.
 
 ## DOM (Document Object Model)
 
-Obiektowy model dokumentu (z ang. Document Object Model) w sktócie DOM, reprezentuje zawartość całej strony, która może zostać zmodyfikowana.
+Obiektowy model dokumentu (z ang. Document Object Model) w skrócie DOM, reprezentuje zawartość całej strony, która może zostać zmodyfikowana.
 
 `Dokument` (który jest obiektem) jest głównym "punktem wejścia" na stronę. Możemy za jego pomocą stworzyć lub zmodyfikować całą stronę.
 
@@ -56,23 +56,23 @@ W przykładzie poniżej używamy `document.body.style` ale metod modyfikacji jes
 ```smart header="DOM is not only for browsers"
 Specyfikacja DOM tłumaczy strukturę dokumentu i zapewnia narzędzia do manipulowania nim. Istnieją też inne narzędzia, inne niż przeglądarki, które również używają DOM.
 
-Dla przykładu scrypty po stronie servera, które ściągają strony HTML i przetwarzają je, również używają DOM. Mogą one jednak obsługiwać tylko część specyfikacji.
+Dla przykładu skrypty po stronie serwera, które ściągają strony HTML i przetwarzają je, również używają DOM. Mogą one jednak obsługiwać tylko część specyfikacji.
 ```
 
 ```smart header="CSSOM for styling"
-Zasady CSS i arkusze stylów mają strukturę inną niż HTML. Dla nich jest inna specyfikacja, która wyjąsnia w jaki sposób są one przedstawiane jako obiekty i jak je zapisać i wczytać. Jest ona dostępna pod adresem [CSS Object Model (CSSOM)](https://www.w3.org/TR/cssom-1/).
+Zasady CSS i arkusze stylów mają strukturę inną niż HTML. Dla nich jest inna specyfikacja, która wyjąsnia, w jaki sposób są one przedstawiane jako obiekty i jak je zapisać i wczytać. Jest ona dostępna pod adresem [CSS Object Model (CSSOM)](https://www.w3.org/TR/cssom-1/).
 
-CSSOM jest używany razem z DOM kiedy modyfikujemy reguły stylu dla dokumentu. W praktyce jednak CSSOM jest bardzo rzadko używany ponieważ zasady CSS są statyczne. Bardzo rzadko zdarza się, że trzeba nam usunąć lub dodać zasady CSS z JavaScriptu.
+CSSOM jest używany razem z DOM kiedy modyfikujemy reguły stylu dla dokumentu. W praktyce jednak CSSOM jest bardzo rzadko używany, ponieważ zasady CSS są statyczne. Bardzo rzadko zdarza się, że trzeba nam usunąć lub dodać zasady CSS z JavaScriptu.
 ```
 
 ## BOM (Browser Object Model)
 
-Model objektowy przeglądarki (z ang. Browser Object Model) w skrócie BOM, reprezentuje dodatowe obiekty dostarczene przez przeglądarkę (środowisko hosta) do pracy ze wszystkim oprócz dokumentu.
+Model obiektowy przeglądarki (z ang. Browser Object Model) w skrócie BOM, reprezentuje dodatkowe obiekty dostarczane przez przeglądarkę (środowisko hosta) do pracy ze wszystkim oprócz dokumentu.
 
 Dla przykładu:
 
-- Objekt [navigator](mdn:api/Window/navigator) dostarcza podstawowych informacji o przeglądarce i systemie operacyjnym. Istnieje wiele właściwości ale dwie najbardziej znane to: `navigator.userAgent` -- o obecnej przeglądarce oraz `navigator.platform` -- o platformie (może pomóc w rozpoznaniu między Windows/Linux/Mac itp.)
-- Obiekt [location](mdn:api/Window/location) pozwala nam odczytać aktualny adres URL i może przekirwoać przeglądarkę na nowy.
+- Objekt [navigator](mdn:api/Window/navigator) dostarcza podstawowych informacji o przeglądarce i systemie operacyjnym. Istnieje wiele właściwości, ale dwie najbardziej znane to: `navigator.userAgent` -- o obecnej przeglądarce oraz `navigator.platform` -- o platformie (może pomóc w rozpoznaniu między Windows/Linux/Mac itp.)
+- Obiekt [location](mdn:api/Window/location) pozwala nam odczytać aktualny adres URL i może przekierwoać przeglądarkę na nowy.
 
 Oto jak możemy wykorzystać obiekt `location`
 
@@ -83,7 +83,7 @@ if (confirm("Go to Wikipedia?")) {
 }
 ```
 
-Funkcje `alert/confirm/prompt` również są częscią BOM. Nie są one bezpośrednio powiązane z dokumentem, ale reprezentują metody komunikacji przeglądarki z uzytkownikiem.
+Funkcje `alert/confirm/prompt` również są częścią BOM. Nie są one bezpośrednio powiązane z dokumentem, ale reprezentują metody komunikacji przeglądarki z użytkownikiem.
 
 ```smart header="Specifications"
 BOM jest częścią ogólnej [specyfikacji HTML](https://html.spec.whatwg.org).
