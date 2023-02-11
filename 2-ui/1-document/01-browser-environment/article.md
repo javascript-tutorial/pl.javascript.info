@@ -1,6 +1,6 @@
 # Środowisko przeglądarki, specyfikacje
 
-Język JavaScript był pierwotnie stworzony na przeglądarki internetowe. Od jego stworzenia ewoluował on i stał się językiem o wielu zastosowaniach i platformach.
+Język JavaScript był pierwotnie stworzony na przeglądarki internetowe. Od jego stworzenia ewoluował i stał się językiem o wielu zastosowaniach i platformach.
 
 Platformą może być przeglądarka, serwer WWW, inny host albo nawet ekspres do kawy. Każdy z nich posiada specyficzną dla siebie funkcjonalność. W nomenklaturze JavaScript nazywamy to *środowiskiem hosta*.
 
@@ -10,7 +10,7 @@ Poniżej został przedstawiony widok z lotu ptaka na to co się dzieje kiedy Jav
 
 ![](windowObjects.svg)
 
-Istnieje obiekt "root" (po polsku "główny") o nazwie `window`. Ma on dwie role:
+Istnieje obiekt "root" o nazwie `window`. Ma on dwie role:
 
 1. Jest to obiekt globalny, tak jak to opisano w rozdziale <info:global-object>.
 2. Obiekt ten reprezentuje "okno przeglądarki" i zapewnia narzędzia do kontrolowania nim.
@@ -88,7 +88,7 @@ Funkcje `alert/confirm/prompt` również są częścią BOM. Nie są one bezpoś
 ```smart header="Specifications"
 BOM jest częścią ogólnej [specyfikacji HTML](https://html.spec.whatwg.org).
 
-Tak dobrze usłyszałeś. Specyfikacje HTML dostępne pod adresme <https://html.spec.whatwg.org> nie są tylko o języku HTML (tagi, atrybuty) ale także omawiają obiekty, metody i rozszerzenia DOM właściwych dla przeglądarki. To jest „HTML w ogólnych zarysach”. Ponadto niektóre części mają dodatkowe specyfikacje wymienione na stronie  <https://spec.whatwg.org>.
+Tak dobrze usłyszałeś. Specyfikacje HTML dostępne pod adresem <https://html.spec.whatwg.org> nie są tylko o języku HTML (tagi, atrybuty) ale także omawiają obiekty, metody i rozszerzenia DOM właściwych dla przeglądarki. To jest „HTML w ogólnych zarysach”. Ponadto niektóre części mają dodatkowe specyfikacje wymienione na stronie  <https://spec.whatwg.org>.
 ```
 
 ## Podsumowanie
