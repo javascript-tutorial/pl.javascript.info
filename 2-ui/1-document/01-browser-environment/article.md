@@ -1,115 +1,115 @@
-# Browser environment, specs
+# Środowisko przeglądarki, specyfikacje
 
-The JavaScript language was initially created for web browsers. Since then it has evolved and become a language with many uses and platforms.
+Język JavaScript był pierwotnie stworzony na przeglądarki internetowe. Od jego stworzenia ewoluował i stał się językiem o wielu zastosowaniach i platformach.
 
-A platform may be a browser, or a web-server or another *host*, even a coffee machine. Each of them provides platform-specific functionality. The JavaScript specification calls that a *host environment*.
+Platformą może być przeglądarka, serwer WWW, inny host albo nawet ekspres do kawy. Każdy z nich posiada specyficzną dla siebie funkcjonalność. W nomenklaturze JavaScript nazywamy to *środowiskiem hosta*.
 
-A host environment provides own objects and functions additional to the language core. Web browsers give a means to control web pages. Node.js provides server-side features, and so on.
+Środowisko hosta wprowadza swoje własne obiekty i funkcje dodatkowe, do języka programowania. Na przykład przeglądarki internetowe umożliwiają kontrolę nad stronami internetowymi, Node.js wprowadza nowe funkcjonalności po stronie serwera i tak dalej.
 
-Here's a bird's-eye view of what we have when JavaScript runs in a web-browser:
+Poniżej został przedstawiony widok z lotu ptaka na to co się dzieje kiedy JavaScript działa w przeglądarce internetowej.
 
 ![](windowObjects.svg)
 
-There's a "root" object called `window`. It has two roles:
+Istnieje obiekt "root" o nazwie `window`. Ma on dwie role:
 
-1. First, it is a global object for JavaScript code, as described in the chapter <info:global-object>.
-2. Second, it represents the "browser window" and provides methods to control it.
+1. Jest to obiekt globalny, tak jak to opisano w rozdziale <info:global-object>.
+2. Obiekt ten reprezentuje "okno przeglądarki" i zapewnia narzędzia do kontrolowania nim.
 
-For instance, here we use it as a global object:
+Dla przykładu, poniżej używamy tego obiektu jako globalnego:
 
 ```js run
 function sayHi() {
   alert("Hello");
 }
 
-// global functions are methods of the global object:
+// funkcje globalne są metodami obiektu globalnego:
 window.sayHi();
 ```
 
-And here we use it as a browser window, to see the window height:
+A tutaj używamy go jako okna przeglądaraki w celu zobaczenia wysokośi okna:
 
 ```js run
-alert(window.innerHeight); // inner window height
+alert(window.innerHeight); // wewnętrzna wysokość okna
 ```
 
-There are more window-specific methods and properties, we'll cover them later.
+Jest znacznie więcej metod i właściwości dla okien, ale nimi zajmiemy się później.
 
 ## DOM (Document Object Model)
 
-Document Object Model, or DOM for short, represents all page content as objects that can be modified.
+Obiektowy model dokumentu (z ang. Document Object Model) w skrócie DOM, reprezentuje zawartość całej strony, która może zostać zmodyfikowana.
 
-The `document` object is the main "entry point" to the page. We can change or create anything on the page using it.
+`Dokument` (który jest obiektem) jest głównym "punktem wejścia" na stronę. Możemy za jego pomocą stworzyć lub zmodyfikować całą stronę.
 
-For instance:
+Dla przykładu:
 ```js run
-// change the background color to red
+// zmienia kolor tła na czerwony
 document.body.style.background = "red";
 
-// change it back after 1 second
+// zmienia go spowrotme po sekundzie
 setTimeout(() => document.body.style.background = "", 1000);
 ```
 
-Here we used `document.body.style`, but there's much, much more. Properties and methods are described in the specification:
+W przykładzie poniżej używamy `document.body.style` ale metod modyfikacji jest o wiele więcej. Właściwości i metody zostały opisane w specyfikacji:
 
-- **DOM Living Standard** at <https://dom.spec.whatwg.org>
+- **DOM Living Standard** dostępnym pod adresem <https://dom.spec.whatwg.org>
 
 ```smart header="DOM is not only for browsers"
-The DOM specification explains the structure of a document and provides objects to manipulate it. There are non-browser instruments that use DOM too.
+Specyfikacja DOM tłumaczy strukturę dokumentu i zapewnia narzędzia do manipulowania nim. Istnieją też inne narzędzia, inne niż przeglądarki, które również używają DOM.
 
-For instance, server-side scripts that download HTML pages and process them can also use DOM. They may support only a part of the specification though.
+Dla przykładu skrypty po stronie serwera, które ściągają strony HTML i przetwarzają je, również używają DOM. Mogą one jednak obsługiwać tylko część specyfikacji.
 ```
 
 ```smart header="CSSOM for styling"
-CSS rules and stylesheets are structured in a different way than HTML. There's a separate specification, [CSS Object Model (CSSOM)](https://www.w3.org/TR/cssom-1/), that explains how they are represented as objects, and how to read and write them.
+Zasady CSS i arkusze stylów mają strukturę inną niż HTML. Dla nich jest inna specyfikacja, która wyjąsnia, w jaki sposób są one przedstawiane jako obiekty i jak je zapisać i wczytać. Jest ona dostępna pod adresem [CSS Object Model (CSSOM)](https://www.w3.org/TR/cssom-1/).
 
-CSSOM is used together with DOM when we modify style rules for the document. In practice though, CSSOM is rarely required, because usually CSS rules are static. We rarely need to add/remove CSS rules from JavaScript, but that's also possible.
+CSSOM jest używany razem z DOM kiedy modyfikujemy reguły stylu dla dokumentu. W praktyce jednak CSSOM jest bardzo rzadko używany, ponieważ zasady CSS są statyczne. Bardzo rzadko zdarza się, że trzeba nam usunąć lub dodać zasady CSS z JavaScriptu.
 ```
 
 ## BOM (Browser Object Model)
 
-The Browser Object Model (BOM) represents additional objects provided by the browser (host environment) for working with everything except the document.
+Model obiektowy przeglądarki (z ang. Browser Object Model) w skrócie BOM, reprezentuje dodatkowe obiekty dostarczane przez przeglądarkę (środowisko hosta) do pracy ze wszystkim oprócz dokumentu.
 
-For instance:
+Dla przykładu:
 
-- The [navigator](mdn:api/Window/navigator) object provides background information about the browser and the operating system. There are many properties, but the two most widely known are: `navigator.userAgent` -- about the current browser, and `navigator.platform` -- about the platform (can help to differ between Windows/Linux/Mac etc).
-- The [location](mdn:api/Window/location) object allows us to read the current URL and can redirect the browser to a new one.
+- Objekt [navigator](mdn:api/Window/navigator) dostarcza podstawowych informacji o przeglądarce i systemie operacyjnym. Istnieje wiele właściwości, ale dwie najbardziej znane to: `navigator.userAgent` -- o obecnej przeglądarce oraz `navigator.platform` -- o platformie (może pomóc w rozpoznaniu między Windows/Linux/Mac itp.)
+- Obiekt [location](mdn:api/Window/location) pozwala nam odczytać aktualny adres URL i może przekierwoać przeglądarkę na nowy.
 
-Here's how we can use the `location` object:
+Oto jak możemy wykorzystać obiekt `location`
 
 ```js run
-alert(location.href); // shows current URL
+alert(location.href); // pokazuje aktualny URL
 if (confirm("Go to Wikipedia?")) {
-  location.href = "https://wikipedia.org"; // redirect the browser to another URL
+  location.href = "https://wikipedia.org"; // przekierowuje przeglądarkę do innego adresu URL
 }
 ```
 
-Functions `alert/confirm/prompt` are also a part of BOM: they are directly not related to the document, but represent pure browser methods of communicating with the user.
+Funkcje `alert/confirm/prompt` również są częścią BOM. Nie są one bezpośrednio powiązane z dokumentem, ale reprezentują metody komunikacji przeglądarki z użytkownikiem.
 
 ```smart header="Specifications"
-BOM is the part of the general [HTML specification](https://html.spec.whatwg.org).
+BOM jest częścią ogólnej [specyfikacji HTML](https://html.spec.whatwg.org).
 
-Yes, you heard that right. The HTML spec at <https://html.spec.whatwg.org> is not only about the "HTML language" (tags, attributes), but also covers a bunch of objects, methods and browser-specific DOM extensions. That's "HTML in broad terms". Also, some parts have additional specs listed at <https://spec.whatwg.org>.
+Tak dobrze usłyszałeś. Specyfikacje HTML dostępne pod adresem <https://html.spec.whatwg.org> nie są tylko o języku HTML (tagi, atrybuty) ale także omawiają obiekty, metody i rozszerzenia DOM właściwych dla przeglądarki. To jest „HTML w ogólnych zarysach”. Ponadto niektóre części mają dodatkowe specyfikacje wymienione na stronie  <https://spec.whatwg.org>.
 ```
 
-## Summary
+## Podsumowanie
 
-Talking about standards, we have:
+Jeżli chodzi o standardy, to mamy:
 
-DOM specification
-: Describes the document structure, manipulations and events, see <https://dom.spec.whatwg.org>.
+Specyfikację DOM
+: która mówi o strukturze dokumentu, manipulowaniu nim oraz zdarzenia. Zobacz: <https://dom.spec.whatwg.org>.
 
-CSSOM specification
-: Describes stylesheets and style rules, manipulations with them and their binding to documents, see <https://www.w3.org/TR/cssom-1/>.
+Specyfikację CSSOM
+: która opisuje arkusze stylów, reguły stylów, manipulacje nimi i ich wiązanie z dokumentem. Zobacz: <https://www.w3.org/TR/cssom-1/>.
 
-HTML specification
-: Describes the HTML language (e.g. tags) and also the BOM (browser object model) -- various browser functions: `setTimeout`, `alert`, `location` and so on, see <https://html.spec.whatwg.org>. It takes the DOM specification and extends it with many additional properties and methods.
+Specyfikację HTML
+: która opisuje język HTML (np. tagi), a także BOM (model obiektowy przeglądarki) -- różne funkcje przeglądarki: `setTimeout`, `alert`, `location` itd. Zobacz https://html.spec.whatwg.org. Wykorzystuje specyfikację DOM i rozszerza ją o wiele dodatkowych właściwości i metod. 
 
-Additionally, some classes are described separately at <https://spec.whatwg.org/>.
+Dodatkowo niektóre klasy są opisane oddzielnie na <https://spec.whatwg.org/>.
 
-Please note these links, as there's so much stuff to learn it's impossible to cover and remember everything.
+Weź pod uwagę te linki, ponieważ jest tak wiele do nauczenia się i zapamiętania, że nie sposób omówić i zapamiętać wszystko.
 
-When you'd like to read about a property or a method, the Mozilla manual at <https://developer.mozilla.org/en-US/search> is also a nice resource, but the corresponding spec may be better: it's more complex and longer to read, but will make your fundamental knowledge sound and complete.
+Jeśli zechcesz przeczytać o jakiejś właściwości lub metodzie, skorzystaj z podręcznika Mozilli pod adresem https://developer.mozilla.org/en-US/search który jest również dobrym źródłem informacji, ale właściwa specyfikacja może okazać się lepsza, ponieważ jest bardziej złożona i dłuższa, ale sprawi, że twoja podstawowa wiedza będzie solidna i kompletna.
 
-To find something, it's often convenient to use an internet search "WHATWG [term]" or "MDN [term]", e.g <https://google.com?q=whatwg+localstorage>, <https://google.com?q=mdn+localstorage>.
+Aby coś znaleźć, często wygodnie jest skorzystać z wyszukiwarki internetowej i wpisać "WHATWG [szukany termin]" albo "MDN [szukany termin]", np. https://google.com?q=whatwg+localstorage, https://google.com?q=mdn+localstorage.
 
-Now we'll get down to learning DOM, because the document plays the central role in the UI.
+Teraz przejdziemy do nauki DOM, ponieważ dokument odgrywa kluczową rolę w interfejsie użytkownika.
