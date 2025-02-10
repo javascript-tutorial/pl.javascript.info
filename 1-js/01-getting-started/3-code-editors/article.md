@@ -12,8 +12,13 @@ IDE ładuje projekt (który może mieć mnóstwo plików), pozwala nawigować mi
 
 Jeśli nie masz jeszcze wybranego żadnego IDE, rozważ następujące opcje:
 
+<<<<<<< HEAD
 - [Visual Studio Code](https://code.visualstudio.com/) (cross-platform, darmowy).
 - [WebStorm](http://www.jetbrains.com/webstorm/) (cross-platform, płatny).
+=======
+- [Visual Studio Code](https://code.visualstudio.com/) (cross-platform, free).
+- [WebStorm](https://www.jetbrains.com/webstorm/) (cross-platform, paid).
+>>>>>>> 6236eb8c3cdde729dab761a1d0967a88a1a6197e
 
 Dla systemu Windows istnieje jeszcze "Visual Studio", którego nie należy mylić z "Visual Studio Code". "Visual Studio" jest rozbudowanym i płatnym edytorem tylko dla systemu Windows, świetnie dopasowanym do platformy .NET. Jest również dobry dla JavaScriptu. Dostępna jest również darmowa wersja [Visual Studio Community](https://www.visualstudio.com/vs/community/).
 
@@ -29,6 +34,7 @@ Główna różnica pomiędzy lekkim edytorem a środowiskiem programistycznym po
 
 W praktyce jednak lekkie edytory mają wiele wtyczek, które wspomagają pracę, analizują i dostarcząją autouzupełnianie na poziomie projektu, więc granica pomiędzy lekkimi edytorami a IDE powoli się zaciera.
 
+<<<<<<< HEAD
 Poniższe przykłady zasługują na twoją uwagę: 
 
 - [Atom](https://atom.io/) (wieloplatformowy, darmowy).
@@ -36,6 +42,13 @@ Poniższe przykłady zasługują na twoją uwagę:
 - [Sublime Text](http://www.sublimetext.com) (wieloplatformowy, shareware).
 - [Notepad++](https://notepad-plus-plus.org/) (Windows, darmowy).
 - [Vim](http://www.vim.org/) i [Emacs](https://www.gnu.org/software/emacs/) są świetne, pod warunkiem że wiesz, jak na nich pracować.
+=======
+There are many options, for instance:
+
+- [Sublime Text](https://www.sublimetext.com/) (cross-platform, shareware).
+- [Notepad++](https://notepad-plus-plus.org/) (Windows, free).
+- [Vim](https://www.vim.org/) and [Emacs](https://www.gnu.org/software/emacs/) are also cool if you know how to use them.
+>>>>>>> 6236eb8c3cdde729dab761a1d0967a88a1a6197e
 
 ## Nie sprzeczajmy się
 
@@ -43,4 +56,13 @@ Edytory na powyższej liście to narzędzia, z których sam korzystam lub korzys
 
 Jest mnóstwo takich programów w naszym dużym świecie. Używaj tego, który lubisz najbardziej. 
 
+<<<<<<< HEAD
 Wybór edytora, jak i dowolnego innego narzędzia deweloperskiego, jest naszą indywidualną sprawą, zależną od potrzeb w projekcie, przyzwyczajeń czy osobistych preferencji.
+=======
+The choice of an editor, like any other tool, is individual and depends on your projects, habits, and personal preferences.
+
+The author's personal opinion:
+
+- I'd use [Visual Studio Code](https://code.visualstudio.com/) if I develop mostly frontend.
+- Otherwise, if it's mostly another language/platform and partially frontend, then consider other editors, such as XCode (Mac), Visual Studio (Windows) or Jetbrains family (Webstorm, PHPStorm, RubyMine etc, depending on the language).
+>>>>>>> 6236eb8c3cdde729dab761a1d0967a88a1a6197e
