@@ -8,12 +8,16 @@ let newStr = str[0].toUpperCase() + str.slice(1);
 
 Jest jednak mały problem. Jeśli `str` jest pusty, to `str[0]` zwróci `undefined`, a `undefined` nie ma metody `toUpperCase()`, więc otrzymamy błąd.
 
+<<<<<<< HEAD
 Są dwa wyjścia:
 
 1. Użyj `str.charAt(0)`, ponieważ ta metoda zawsze zwraca łańcuch znaków (może być pusty).
 2. Dodaj warunek na wypadek pustego łańcucha.
 
 Oto druga opcja:
+=======
+The easiest way out is to add a test for an empty string, like this:
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 
 ```js run demo
 function ucFirst(str) {
@@ -24,4 +28,3 @@ function ucFirst(str) {
 
 alert( ucFirst("john") ); // John
 ```
-
