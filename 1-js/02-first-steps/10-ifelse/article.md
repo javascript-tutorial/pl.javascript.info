@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # Operatory warunkowe: if, '?'
+=======
+# Conditional branching: if, '?'
+>>>>>>> 3d7abb9cc8fa553963025547717f06f126c449b6
 
 Czasami potrzebujemy wykonać różne akcje w zależności od warunków.
 
@@ -68,7 +72,11 @@ if (cond) {
 
 ## Klauzula "else"
 
+<<<<<<< HEAD
 Wyrażenie `if` może opcjonalnie zawierać blok "else", który wykona się w przypadku gdy sprawdzany warunek jest fałszywy  (ang. *falsy*).
+=======
+The `if` statement may contain an optional `else` block. It executes when the condition is falsy.
+>>>>>>> 3d7abb9cc8fa553963025547717f06f126c449b6
 
 Na przykład:
 ```js run
@@ -182,7 +190,16 @@ Za pierwszym razem może być ciężko zrozumieć co właściwie się dzieje, al
 3. Jeśli tak -- zwraca `'Witaj!'`. W przeciwnym wypadku kontynuuje wyrażenie za dwukropkiem '":"' i sprawdza czy `age < 100`.
 4. Jeśli tak -- zwraca `'Pozdrowienia!'`.  W przeciwnym wypadku kontynuuje wyrażenie za ostatnim dwukropkiem '":"' i zwraca  `'Cóż za niespotykany wiek!'`.
 
+<<<<<<< HEAD
 Oto jak powyższy kod wyglądał by używając `if..else`
+=======
+1. The first question mark checks whether `age < 3`.
+2. If true -- it returns `'Hi, baby!'`. Otherwise, it continues to the expression after the colon ":", checking `age < 18`.
+3. If that's true -- it returns `'Hello!'`. Otherwise, it continues to the expression after the next colon ":", checking `age < 100`.
+4. If that's true -- it returns `'Greetings!'`. Otherwise, it continues to the expression after the last colon ":", returning `'What an unusual age!'`.
+
+Here's how this looks using `if..else`:
+>>>>>>> 3d7abb9cc8fa553963025547717f06f126c449b6
 
 ```js
 if (age < 3) {

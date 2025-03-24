@@ -1,7 +1,11 @@
 
 # Podręczniki i specyfikacje
 
+<<<<<<< HEAD
 Ta książka służy jako *samouczek*. Pozwala stopniowo wdrażać się w język. Jednak gdy tylko zapoznasz się z podstawami, nadejdzie czas na zgłębienie wiedzy z innych źródeł.
+=======
+This book is a *tutorial*. It aims to help you gradually learn the language. But once you're familiar with the basics, you'll need other resources.
+>>>>>>> 3d7abb9cc8fa553963025547717f06f126c449b6
 
 ## Specyfikacja
 
@@ -9,14 +13,23 @@ Ta książka służy jako *samouczek*. Pozwala stopniowo wdrażać się w język
 
 Przez tę całą formalność trudniej jest jednak ją zrozumieć. Dlatego jeśli potrzebujesz najbardziej wiarygodnego źródła informacji o szczegółach dotyczących języka, zajrzenie do specyfikacji jest najlepszym wyjściem. Nie służy ona jednak do codziennego użytku.
 
+<<<<<<< HEAD
 Co roku wypuszczana jest nowa wersja specyfikacji. W międzyczasie wszelkie aktualne "szkice" można zobaczyć na <https://tc39.es/ecma262/>.
+=======
+A new specification version is released every year. Between these releases, the latest specification draft is at <https://tc39.es/ecma262/>.
+>>>>>>> 3d7abb9cc8fa553963025547717f06f126c449b6
 
 Aby dowiedzieć się czegoś o najświeższych funkcjonalnościach, wliczając w to te, które "są już prawie częścią standardu" (są na tzw. "etapie 3"), przejrzyj listę wniosków na <https://github.com/tc39/proposals>.
 
+<<<<<<< HEAD
 Jeśli piszesz kod dla przeglądarek, w [drugiej części](info:browser-environment) samouczka znajdziesz więcej materiałów.
+=======
+Also, if you're developing for the browser, then there are other specifications covered in the [second part](info:browser-environment) of the tutorial.
+>>>>>>> 3d7abb9cc8fa553963025547717f06f126c449b6
 
 ## Podręczniki
 
+<<<<<<< HEAD
 - **Dokumentacja referencyjna JavaScript na MDN (Mozilla)** służy za poradnik z przykładami i innymi informacjami. Świetnie nadaje się do zgłębiania wiedzy na temat poszczególnych funkcjonalności języka, interfejsów itd.
 
     Dostępna jest pod adresem <https://developer.mozilla.org/pl/docs/Web/JavaScript/Referencje>.
@@ -27,6 +40,13 @@ Jeśli piszesz kod dla przeglądarek, w [drugiej części](info:browser-environm
 - **MSDN** – podręcznik od Microsoftu zawierający sporo informacji, m.in. o JavaScripcie (często nazywany JScriptem). Jeśli szukasz czegoś konkretnego z tematyki Internet Explorera, lepiej zajrzyj na <http://msdn.microsoft.com/>.
 
     Można też przeszukać internet przy użyciu fraz "[pojęcie] MSDN" lub "[pojęcie] MSDN jscript", np. "RegExp MSDN".
+=======
+- **MDN (Mozilla) JavaScript Reference** is the main manual with examples and other information. It's great to get in-depth information about individual language functions, methods etc.
+
+    You can find it at <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference>.
+
+Although, it's often best to use an internet search instead. Just use "MDN [term]" in the query, e.g. <https://google.com/search?q=MDN+parseInt> to search for the `parseInt` function.
+>>>>>>> 3d7abb9cc8fa553963025547717f06f126c449b6
 
 ## Tabele kompatybilności
 
@@ -34,9 +54,16 @@ JavaScript jest językiem intensywnie rozwijanym, dlatego dość często pojawia
 
 Jeśli chcesz dowiedzieć się, jak wygląda wsparcie dla nich w poszczególnych silnikach (przeglądarkowych i innych), odwiedź:
 
+<<<<<<< HEAD
 - <http://caniuse.com> - tabela kompatybilności dla każdej z funkcji z osobna. Na przykład, jeśli chcesz sprawdzić, które silniki wspierają funkcje kryptograficzne: <http://caniuse.com/#feat=cryptography>.
 - <https://kangax.github.io/compat-table> - tabela z wypisanymi funkcjonalnościami języka oraz informacjami, które silniki je wspierają, a które nie.
 
 Wszystkie z powyższych źródeł są przydatne podczas codziennego dewelopmentu, jako że zawierają cenne informacje o szczegółach języka, wsparcia dla nich itp.
+=======
+- <https://caniuse.com> - per-feature tables of support, e.g. to see which engines support modern cryptography functions: <https://caniuse.com/#feat=cryptography>.
+- <https://kangax.github.io/compat-table> - a table with language features and engines that support those or don't support.
+
+All these resources are useful in real-life development, as they contain valuable information about language details, their support, etc.
+>>>>>>> 3d7abb9cc8fa553963025547717f06f126c449b6
 
 Pamiętaj o nich (lub o tej stronie) na wypadek potrzeby zasięgnięcia informacji o konkretnej funkcjonalności.
