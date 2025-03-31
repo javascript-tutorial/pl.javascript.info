@@ -21,6 +21,7 @@ If maintainers do not respond, or if you'd like to become a maintainer, write us
 
 🎉 Thank you!
 
+<<<<<<< HEAD
 Your name and the contribution size will appear in the "About project" page when the translation gets published.
 
 P.S. The full list of languages can be found at <https://javascript.info/translate>.
@@ -30,12 +31,31 @@ P.S. The full list of languages can be found at <https://javascript.info/transla
 Every chapter, an article or a task resides in its own folder.
 
 The folder is named `N-url`, where `N` – is the number for sorting (articles are ordered), and `url` is the URL-slug on the site.
+=======
+Something's wrong? A topic is missing? Explain it to people, add it as PR 👏
+
+**You can edit the text in any editor.** The tutorial uses an enhanced "markdown" format, easy to grasp. And if you want to see how it looks on-site, there's a server to run the tutorial locally at <https://github.com/javascript-tutorial/server>.
+
+The list of contributors is available at <https://javascript.info/about#contributors>.
+
+## Structure
+
+Every chapter, article, or task has its folder.
+
+The folder is named like `N-url`, where `N` is a number for the sorting purposes and `URL` is the URL part with the title of the material.
+>>>>>>> 035c5267ba80fa7b55878f7213cbde449b4092d9
 
 The folder has one of files:
 
+<<<<<<< HEAD
 - `index.md` for a section,
 - `article.md` for an article,
 - `task.md` for a task formulation (+`solution.md` with the solution text if any).
+=======
+  - `index.md` stands for a chapter
+  - `article.md` stands for an article
+  - `task.md` stands for a task (solution must be provided in `solution.md` file as well)
+>>>>>>> 035c5267ba80fa7b55878f7213cbde449b4092d9
 
 A file starts with the `# Title Header`, and then the text in Markdown-like format, editable in a simple text editor. 
 
@@ -112,6 +132,7 @@ Some files, usually tasks, have YAML metadata at the top, delimited by `---`:
 ```md
 importance: 5
 
+<<<<<<< HEAD
 ---
 ...
 ```
@@ -133,3 +154,8 @@ Please don't translate or remove the `[#...]` part, it's for URL anchors.
 You can run the tutorial server locally to see how the translation looks.
 
 The server and install instructions are at <https://github.com/javascript-tutorial/server>. 
+=======
+---  
+♥  
+Ilya Kantor @iliakan
+>>>>>>> 035c5267ba80fa7b55878f7213cbde449b4092d9
