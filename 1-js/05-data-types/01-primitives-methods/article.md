@@ -51,8 +51,38 @@ Rozwiązanie wygląda jest trochę dziwne. Oto ono:
  
 "Wrappery obiektów" są różne dla każdego typu podstawowego i nazywają się: `String`, `Number`, `Boolean` i `Symbol`. W ten sposób zapewniają różne zestawy metod.
 
+<<<<<<< HEAD
 Istnieje na przykład metoda typu tekstowego [str.toUpperCase()](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String/toUpperCase) która zwraca skapitalizowane `str`.
 Oto jak działa:
+=======
+So here we've made an object `john` with the method `sayHi`.
+
+Many built-in objects already exist, such as those that work with dates, errors, HTML elements, etc. They have different properties and methods.
+
+But, these features come with a cost!
+
+Objects are "heavier" than primitives. They require additional resources to support the internal machinery.
+
+## A primitive as an object
+
+Here's the paradox faced by the creator of JavaScript:
+
+- There are many things one would want to do with a primitive, like a string or a number. It would be great to access them using methods.
+- Primitives must be as fast and lightweight as possible.
+
+The solution looks a little bit awkward, but here it is:
+
+1. Primitives are still primitive. A single value, as desired.
+2. The language allows access to methods and properties of strings, numbers, booleans and symbols.
+3. In order for that to work, a special "object wrapper" that provides the extra functionality is created, and then is destroyed.
+
+The "object wrappers" are different for each primitive type and are called: `String`, `Number`, `Boolean`, `Symbol` and `BigInt`. Thus, they provide different sets of methods.
+
+For instance, there exists a string method [str.toUpperCase()](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String/toUpperCase) that returns a capitalized `str`.
+
+Here's how it works:
+
+>>>>>>> 540d753e90789205fc6e75c502f68382c87dea9b
 ```js run
 let str = "Cześć";
 
@@ -98,9 +128,16 @@ if (zero) { // zero jest prawdziwe, ponieważ jest obiektem
 }
 ```
 
+<<<<<<< HEAD
 Z drugiej strony, używając samych funkcji `String/Number/Boolean` bez operatora `new` jest całkowicie rozsądne i użyteczne. Zamieniają one wartości na odpowiadające im typy: typ tekstowy, liczbowy logiczny (typy podstawowe).
 
 Na przykład jest to całkowicie poprawne:
+=======
+On the other hand, using the same functions `String/Number/Boolean` without `new` is totally fine and useful thing. They convert a value to the corresponding type: to a string, a number, or a boolean (primitive).
+
+For example, this is entirely valid:
+
+>>>>>>> 540d753e90789205fc6e75c502f68382c87dea9b
 ```js
 let num = Number("123"); // zamienia ciąg znaków na liczbę
 ```
