@@ -22,7 +22,7 @@ Narzędzia deweloperskie uruchomią się domyślnie z aktywną zakładką "Konso
 
 Powinno to wyglądać jak na zdjęciu poniżej:
 
-![chrome](chrome.png)
+![chrome](chrome.webp)
 
 Dokładny widok narzędzi deweloperskich zależy od wersji Chrome'a. Narzędzia zmieniają się od czasu do czasu, ale ogólnie rzecz biorąc powinny być podobne.
 
@@ -49,7 +49,11 @@ Z wyglądu i zachowania są do siebie dość podobne. Jeśli wiesz, w jaki spos�
 
 Safari (przeglądarka na Macach, nie wspierana w systemach Windows/Linux) jest nieco specyficzna. Aby zacząć korzystać z narzędzi deweloperskich, musimy najpierw włączyć "Programowanie".
 
+<<<<<<< HEAD
 Otwórz Preferencje i przejdź do zakładki "Zaawansowane". Zaznacz na samym dole pole "Pokazuj menu Programowanie na pasku menu", jak na obrazku poniżej:
+=======
+Open Settings and go to the "Advanced" pane. There's a checkbox at the bottom:
+>>>>>>> 51bc6d3cdc16b6eb79cb88820a58c4f037f3bf19
 
 ![safari](safari.png)
 
