@@ -1,10 +1,18 @@
 # Wprowadzenie do JavaScriptu
 
+<<<<<<< HEAD
 Sprawdźmy, czym jest JavaScript, co możemy osiągnąć z jego pomocą i z jakimi innymi technologiami dobrze współpracuje.
+=======
+Let's see what's so special about JavaScript, what we can achieve with it, and what other technologies play well with it.
+>>>>>>> 51bc6d3cdc16b6eb79cb88820a58c4f037f3bf19
 
 ## Czym jest JavaScript?
 
+<<<<<<< HEAD
 *JavaScript* pierwotnie został stworzony z myślą o *"ożywieniu stron internetowych"*.
+=======
+*JavaScript* was initially created to "make web pages alive".
+>>>>>>> 51bc6d3cdc16b6eb79cb88820a58c4f037f3bf19
 
 Programy napisane w tym języku nazywamy *skryptami*. Możemy je pisać bezpośrednio w kodzie HTML strony i uruchamiać podczas wczytywania strony.
 
@@ -24,26 +32,44 @@ Przeglądarka posiada wbudowany silnik, potocznie nazywany "wirtualną maszyną 
 
 Poszczególne silniki różnią się "nazwami kodowymi", na przykład:
 
+<<<<<<< HEAD
 - [V8](https://pl.wikipedia.org/wiki/V8_(silnik_JavaScript)) -- w Chromie i Operze.
 - [SpiderMonkey](https://pl.wikipedia.org/wiki/SpiderMonkey) -- w Firefoksie.
 - ... istnieją inne nazwy, jak "Trident" lub "Chakra" dla różnych wersji IE, "ChakraCore" dla Microsoft Edge, "Nitro" i "SquirrelFish" dla Safari itd.
 
 Warto zapamiętać powyższe nazwy, ponieważ często przewijają się w artykułach programistycznych w Internecie. W tym także będą się pojawiać. Będziemy pisać, na przykład, że "funkcjonalność X jest wspierana przez silnik V8", co oznacza, że najprawdopodobniej zadziała w Chromie i Operze.
+=======
+- [V8](https://en.wikipedia.org/wiki/V8_(JavaScript_engine)) -- in Chrome, Opera and Edge.
+- [SpiderMonkey](https://en.wikipedia.org/wiki/SpiderMonkey) -- in Firefox.
+- ...There are other codenames like "Chakra" for IE, "JavaScriptCore", "Nitro" and "SquirrelFish" for Safari, etc.
+
+The terms above are good to remember because they are used in developer articles on the internet. We'll use them too. For instance, if "a feature X is supported by V8", then it probably works in Chrome, Opera and Edge.
+>>>>>>> 51bc6d3cdc16b6eb79cb88820a58c4f037f3bf19
 
 ```smart header="Jak działają silniki?"
 
 Silniki są skomplikowane. Ale ich podstawy są proste.
 
+<<<<<<< HEAD
 1. Silnik (wbudowany, jeśli mowa o przeglądarce) odczytuje ("parsuje") kod skryptu.
 2. Następnie konwertuje ("kompiluje") skrypt do kodu maszynowego.
 3. Na koniec kod maszynowy jest uruchamiany i działa dość szybko.
+=======
+1. The engine (embedded if it's a browser) reads ("parses") the script.
+2. Then it converts ("compiles") the script to machine code.
+3. And then the machine code runs, pretty fast.
+>>>>>>> 51bc6d3cdc16b6eb79cb88820a58c4f037f3bf19
 
 Silnik stosuje różne optymalizacje na każdym z kroków tego procesu. Co więcej, obserwuje on skompilowany kod podczas działania, analizuje przepływ danych i optymalizuje kod maszynowy, bazując na tej wiedzy.
 ```
 
 ## Co potrafi JavaScript w przeglądarce?
 
+<<<<<<< HEAD
 Współczesny JavaScript jest "bezpiecznym" językiem programowania. Nie umożliwia on, na przykład, niskopoziomowego dostępu do pamięci czy procesora, ponieważ został pierwotnie stworzony dla przeglądarek, które tego nie potrzebują.
+=======
+Modern JavaScript is a "safe" programming language. It does not provide low-level access to memory or the CPU, because it was initially created for browsers which do not require it.
+>>>>>>> 51bc6d3cdc16b6eb79cb88820a58c4f037f3bf19
 
 Możliwości JavaScriptu w dużej mierze zależą od środowiska, w którym jest uruchamiany. Przykładowo, [Node.js](https://pl.wikipedia.org/wiki/Node.js) dostarcza mechanizmy umożliwiające odczyt/zapis plików, wykonywanie zapytań sieciowych itp.
 
@@ -59,14 +85,23 @@ Przeglądarkowy JavaScript może więc:
 
 ## Czego NIE potrafi Javascript w przeglądarce?
 
+<<<<<<< HEAD
 Możliwości przeglądarkowego JavaScriptu są ograniczone ze względu na bezpieczeństwo użytkownika. Celem jest zapobieganie dostępu do prywatnych danych użytkownika przez złośliwe strony.
+=======
+JavaScript's abilities in the browser are limited to protect the user's safety. The aim is to prevent an evil webpage from accessing private information or harming the user's data.
+>>>>>>> 51bc6d3cdc16b6eb79cb88820a58c4f037f3bf19
 
 Przykładami takich restrykcji są:
 
+<<<<<<< HEAD
 - JavaScript zawarty na stronie nie może odczytywać/zapisywać plików na dysku twardym, kopiować ich ani uruchamiać programów. Nie ma bezpośredniego dostępu do funkcji systemu operacyjnego.
+=======
+- JavaScript on a webpage may not read/write arbitrary files on the hard disk, copy them or execute programs. It has no direct access to OS functions.
+>>>>>>> 51bc6d3cdc16b6eb79cb88820a58c4f037f3bf19
 
     Współczesne przeglądarki pozwalają na przetwarzanie plików, jednak dostęp jest ograniczony do sytuacji, w których użytkownik wykona odpowiednie akcje, np. "przeciągnie" plik do okna przeglądarki lub wybierze go poprzez element `<input>`.
 
+<<<<<<< HEAD
     Istnieją również sposoby na interakcję z kamerą/mikrofonem lub podobnymi urządzeniami, jednak wymagają one wyraźnego pozwolenia ze strony użytkownika. Tak więc strona z włączonym JavaScriptem nie włączy cichaczem kamerki internetowej, nie zeskanuje otoczenia i nie wyśle nagrania do [CBŚ](https://pl.wikipedia.org/wiki/Centralne_Biuro_%C5%9Aledcze_Policji).
 - Poszczególne zakładki/okna przeglądarki zazwyczaj niczego nie wiedzą o sobie nawzajem. Czasem jednak mają do siebie dostęp, np. jeśli jedno okno otworzy drugie przy pomocy skryptu. Jednak nawet wtedy skrypt z jednej strony nie będzie miał dostępu do innego, jeśli pochodzi on z innej strony (ma inną domenę, protokół czy port).
 
@@ -78,21 +113,44 @@ Przykładami takich restrykcji są:
 ![](limitations.svg)
 
 Powyższe ograniczenia nie istnieją dla kodu JavaScript uruchamianego poza przeglądarką, na przykład na serwerze. Ponadto, współczesne przeglądarki umożliwiają wtyczkom uzyskiwanie rozszerzonych uprawnień.
+=======
+    There are ways to interact with the camera/microphone and other devices, but they require a user's explicit permission. So a JavaScript-enabled page may not sneakily enable a web-camera, observe the surroundings and send the information to the [NSA](https://en.wikipedia.org/wiki/National_Security_Agency).
+- Different tabs/windows generally do not know about each other. Sometimes they do, for example when one window uses JavaScript to open the other one. But even in this case, JavaScript from one page may not access the other page if they come from different sites (from a different domain, protocol or port).
+
+    This is called the "Same Origin Policy". To work around that, *both pages* must agree for data exchange and must contain special JavaScript code that handles it. We'll cover that in the tutorial.
+
+    This limitation is, again, for the user's safety. A page from `http://anysite.com` which a user has opened must not be able to access another browser tab with the URL `http://gmail.com`, for example, and steal information from there.
+- JavaScript can easily communicate over the net to the server where the current page came from. But its ability to receive data from other sites/domains is crippled. Though possible, it requires explicit agreement (expressed in HTTP headers) from the remote side. Once again, that's a safety limitation.
+
+![](limitations.svg)
+
+Such limitations do not exist if JavaScript is used outside of the browser, for example on a server. Modern browsers also allow plugins/extensions which may ask for extended permissions.
+>>>>>>> 51bc6d3cdc16b6eb79cb88820a58c4f037f3bf19
 
 ## Dlaczego JavaScript jest wyjątkowy?
 
 Istnieją co najmniej *trzy* powody świetności JavaScriptu:
 
 ```compare
+<<<<<<< HEAD
 + Pełna integracja z HTML-em i CSS-em.
 + Proste rzeczy można zrobić w prosty sposób.
 + Jest wspierany przez większość przeglądarek oraz domyślnie w nich włączony.
+=======
++ Full integration with HTML/CSS.
++ Simple things are done simply.
++ Supported by all major browsers and enabled by default.
+>>>>>>> 51bc6d3cdc16b6eb79cb88820a58c4f037f3bf19
 ```
 JavaScript jest jedyną technologią przeglądarkową, która posiada te trzy cechy.
 
 To właśnie sprawia, że jest taki unikatowy. To dzięki temu jest najczęstszym narzędziem używanym do tworzenia interfejsów przeglądarkowych.
 
+<<<<<<< HEAD
 Nie można jednak zapominać, że JavaScript doskonale nadaje się do tworzenia serwerów czy aplikacji mobilnych.
+=======
+That said, JavaScript can be used to create servers, mobile applications, etc.
+>>>>>>> 51bc6d3cdc16b6eb79cb88820a58c4f037f3bf19
 
 ## Języki oparte o JavaScript
 
@@ -100,21 +158,42 @@ Składnia JavaScriptu nie spełnia wymagań wszystkich osób. Różni ludzie pot
 
 Nie ma w tym nic dziwnego, w końcu projekty i ich wymagania bywają bardzo różne.
 
+<<<<<<< HEAD
 Z tego powodu w ostatnim czasie powstały niezliczone ilości nowych języków, które są *transpilowane* (konwertowane) do JavaScriptu przed uruchomieniem.
+=======
+So, recently a plethora of new languages appeared, which are *transpiled* (converted) to JavaScript before they run in the browser.
+>>>>>>> 51bc6d3cdc16b6eb79cb88820a58c4f037f3bf19
 
 Współczesne narzędzia pozwalają na szybką i przejrzystą transpilację, umożliwiając deweloperom na pisanie kodu w innym języku i automatycznie go konwertując do JavaScriptu.
 
 Przykłady takich języków:
 
+<<<<<<< HEAD
 - [CoffeeScript](http://coffeescript.org/) jest "lukrem składniowym" (ang. *syntactic sugar*) dla JavaScriptu. Wprowadza krótszą składnie, pozwalając na pisanie precyzyjnego i bardziej przejrzystego kodu. Ma zwolenników wśród programistów języka Ruby.
 - [TypeScript](http://www.typescriptlang.org/) skupia się na dodaniu "rygorystycznego typowania danych" w celu ułatwienia dewelopmentu i lepszego wsparcia dla skomplikowanych systemów. Jest rozwijany przez Microsoft.
 - [Flow](http://flow.org/) również dodaje typy, ale w nieco inny sposób. Rozwijany przez Facebooka.
 - [Dart](https://www.dartlang.org/) jest odrębnym językiem, posiadającym własny silnik, który działa poza przeglądarką (np. w aplikacjach mobilnych), ale może być także transpilowany do JavaScriptu. Rozwijany przez Google.
 
 Jest ich więcej. Rzecz jasna, nawet jeśli używamy któregoś z języków transpilowanych, powinniśmy znać JavaScript, aby lepiej rozumieć, co się dzieje w kodzie.
+=======
+- [CoffeeScript](https://coffeescript.org/) is "syntactic sugar" for JavaScript. It introduces shorter syntax, allowing us to write clearer and more precise code. Usually, Ruby devs like it.
+- [TypeScript](https://www.typescriptlang.org/) is concentrated on adding "strict data typing" to simplify the development and support of complex systems. It is developed by Microsoft.
+- [Flow](https://flow.org/) also adds data typing, but in a different way. Developed by Facebook.
+- [Dart](https://www.dartlang.org/) is a standalone language that has its own engine that runs in non-browser environments (like mobile apps), but also can be transpiled to JavaScript. Developed by Google.
+- [Brython](https://brython.info/) is a Python transpiler to JavaScript that enables the writing of applications in pure Python without JavaScript.
+- [Kotlin](https://kotlinlang.org/docs/reference/js-overview.html) is a modern, concise and safe programming language that can target the browser or Node.
+
+There are more. Of course, even if we use one of these transpiled languages, we should also know JavaScript to really understand what we're doing.
+>>>>>>> 51bc6d3cdc16b6eb79cb88820a58c4f037f3bf19
 
 ## Podsumowanie
 
+<<<<<<< HEAD
 - JavaScript został stworzony jako język tylko dla przeglądarek, jednak obecnie używa się go także w wielu innych środowiskach.
 - Uplasował się na dogodnej pozycji jako najszerzej stosowany język przeglądarkowy o pełnej integrowalności z HTML-em i CSS-em.
 - Istnieje wiele języków "transpilowanych" do JavaScriptu, które dodają konkretne funkcjonalności. Dobrze jest się z nimi zapoznać po nauce JavaScriptu, choćby pobieżnie.
+=======
+- JavaScript was initially created as a browser-only language, but it is now used in many other environments as well.
+- Today, JavaScript has a unique position as the most widely-adopted browser language, fully integrated with HTML/CSS.
+- There are many languages that get "transpiled" to JavaScript and provide certain features. It is recommended to take a look at them, at least briefly, after mastering JavaScript.
+>>>>>>> 51bc6d3cdc16b6eb79cb88820a58c4f037f3bf19
