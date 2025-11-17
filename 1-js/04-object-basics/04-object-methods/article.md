@@ -32,11 +32,19 @@ user.sayHi = function() {
 user.sayHi(); // Cześć!
 ```
 
+<<<<<<< HEAD
 Właśnie stworzyliśmy funkcję za pomocą Wyrażenia Funkcji i przypisaliśmy ją do właściwości `user.sayHi` obiektu.
 
 Następnie ją wywołaliśmy i nasz użytkownik potrafi teraz mówić!
 
 Funkcję, która jest właściwością obiektu nazywamy *metodą*.
+=======
+Here we've just used a Function Expression to create a function and assign it to the property `user.sayHi` of the object.
+
+Then we can call it as `user.sayHi()`. The user can now speak!
+
+A function that is a property of an object is called its *method*.
+>>>>>>> 5e893cffce8e2346d4e50926d5148c70af172533
 
 Także mamy tutaj metodę `sayHi` obiektu `user`.
 
@@ -50,8 +58,13 @@ let user = {
 *!*
 // najpierw deklarujemy
 function sayHi() {
+<<<<<<< HEAD
   alert("Cześć!");
 };
+=======
+  alert("Hello!");
+}
+>>>>>>> 5e893cffce8e2346d4e50926d5148c70af172533
 
 // następnie dodajemy jako metodę
 user.sayHi = sayHi;
@@ -64,7 +77,11 @@ user.sayHi(); // Cześć!
 Kiedy piszemy kod wykorzystujący obiekty do reprezentowania różnych istnień, nazywamy to [programowaniem obiektowym](https://pl.wikipedia.org/wiki/Programowanie_obiektowe), w skrócie:
 "OOP".
 
+<<<<<<< HEAD
 OOP to bardzo rozległy i interesujący temat. Jak wybrać właściwe podmioty? Jak stworzyć zależności między nimi? Jest to cała architektura i istnieje wiele świetnych książek traktujących ten temat, jak np. "Wzorce projektowe. Elementy oprogramowania" autorstwa E.Gamma, R.Helm, R.Johnson, J.Vissides, lub  "Object-Oriented Analysis and Design with Applications" G.Booch, i wiele innych.
+=======
+OOP is a big thing, an interesting science of its own. How to choose the right entities? How to organize the interaction between them? That's architecture, and there are great books on that topic, like "Design Patterns: Elements of Reusable Object-Oriented Software" by E. Gamma, R. Helm, R. Johnson, J. Vissides or "Object-Oriented Analysis and Design with Applications" by G. Booch, and more.
+>>>>>>> 5e893cffce8e2346d4e50926d5148c70af172533
 ```
 ### Skrót składniowy dla metod
 
@@ -82,7 +99,11 @@ user = {
 // skrócona składnia wygląda lepiej, prawda ? 
 user = {
 *!*
+<<<<<<< HEAD
   sayHi() { // to samo co "sayHi: function()"
+=======
+  sayHi() { // same as "sayHi: function(){...}"
+>>>>>>> 5e893cffce8e2346d4e50926d5148c70af172533
 */!*
     alert("Cześć");
   }
@@ -91,7 +112,11 @@ user = {
 
 Jak widzimy, możemy pominąć `"function"` i po prostu użyć `sayHi()`.
 
+<<<<<<< HEAD
 Prawde mowiąc, oba zapisy nie są całkowicie identyczne. Istnieją subtelne różnice między nimi, związane z dziedziczeniem (ten temat poruszymy później), ale na tem moment nie ma to znaczenia. W prawie każdym przypadku lepiej użyć krótszej składni.
+=======
+To tell the truth, the notations are not fully identical. There are subtle differences related to object inheritance (to be covered later), but for now they do not matter. In almost all cases, the shorter syntax is preferred.
+>>>>>>> 5e893cffce8e2346d4e50926d5148c70af172533
 
 ## "this" w metodach
 
@@ -161,14 +186,24 @@ let user = {
 let admin = user;
 user = null; // dla pewności nadpisujemy zmienną
 
+<<<<<<< HEAD
 admin.sayHi(); // Ups! wewnątrz sayHi(), wykorzystywana jest zła zmienna! Błąd!
+=======
+*!*
+admin.sayHi(); // TypeError: Cannot read property 'name' of null
+*/!*
+>>>>>>> 5e893cffce8e2346d4e50926d5148c70af172533
 ```
 
 Jeśli użylibyśmy `this.name` zamiast `user.name` wewnątrz `alert`, wtedy kod by zadziałał.
 
 ## "this" nie jest powiązane
 
+<<<<<<< HEAD
 W JavaScript słowo kluczowe `this` zachowuje się inaczej niż w innych językach programowania. Może ono być użyte w każdej funkcji.
+=======
+In JavaScript, keyword `this` behaves unlike most other programming languages. It can be used in any function, even if it's not a method of an object.
+>>>>>>> 5e893cffce8e2346d4e50926d5148c70af172533
 
 Zapis taki jak w poniższym przykładzie nie powoduje błędu:
 
@@ -236,6 +271,7 @@ Koncepcja ewaluacji `this` podczas wykonywania kodu ma wady i zalety. Z jednej s
 Naszym zadaniem nie jest ocena czy taki wybór przy tworzeniu języka był dobry czy zły. Zastanawiamy się raczej jak z takim mechanizmem pracować, jakie zyskać dzięki temu korzyści i jak uniknąć problemów.
 ```
 
+<<<<<<< HEAD
 ## Internals: Referencje
 
 ```warn header="Zaawansowane szczegóły języka"
@@ -329,6 +365,9 @@ Każda inna operacja, jak przypisanie `hi = user.hi` odrzuca całkowicie Typ Ref
 Podsumowując, wartość `this` jest przekazywane we właściwy sposób jeśli funkcja jest wywoływana za pomocą kropki `obj.method()` lub nawiasów kwadratowych `obj[`method`]()` (obie składnie zadziałają tutaj identycznie). W dalszej części kursu, nauczymy się różnych możliwości aby rozwiązać ten problem, takich jak [func.bind()](/bind#solution-2-bind).
 
 ## Funkcje strzałkowe nie mają "this"
+=======
+## Arrow functions have no "this"
+>>>>>>> 5e893cffce8e2346d4e50926d5148c70af172533
 
 Funkcje strzałkowe są specjalnym typem funkcji: nie posiadają "własnego" `this`. Jeśli odnosimy się do `this` w takiej funkcji, jego wartość jest pobierana z zewnętrznej "normalnej" funkcji. 
 
