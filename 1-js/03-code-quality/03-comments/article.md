@@ -122,6 +122,7 @@ Udokumentuj parametry oraz użycie funkcji
 
     Na przykład:
 
+<<<<<<< HEAD
     ```js
     /**
       * Zwraca x podniesiony do n-tej potęgi.
@@ -140,6 +141,27 @@ Udokumentuj parametry oraz użycie funkcji
     Tak na marginesie, wiele edytorów, takich jak [WebStorm](https://www.jetbrains.com/webstorm/), jest w stanie dobrze je zrozumieć oraz używać ich do automatycznego uzupełniania i sprawdzania kodu.
 
     Istnieją również takie narzędzia jak [JSDoc 3](https://github.com/jsdoc3/jsdoc), które są w stanie generować dokumentację HTML z tych komentarzy. Możesz dowiedzieć się więcej na ten temat pod tym linkiem: <http://usejsdoc.org/>.
+=======
+For instance:
+```js
+/**
+ * Returns x raised to the n-th power.
+ *
+ * @param {number} x The number to raise.
+ * @param {number} n The power, must be a natural number.
+ * @return {number} x raised to the n-th power.
+ */
+function pow(x, n) {
+  ...
+}
+```
+
+Such comments allow us to understand the purpose of the function and use it the right way without looking in its code.
+
+By the way, many editors like [WebStorm](https://www.jetbrains.com/webstorm/) can understand them as well and use them to provide autocomplete and some automatic code-checking.
+
+Also, there are tools like [JSDoc 3](https://github.com/jsdoc/jsdoc) that can generate HTML-documentation from the comments. You can read more information about JSDoc at <https://jsdoc.app>.
+>>>>>>> 52c1e61915bc8970a950a3f59bd845827e49b4bf
 
 Dlaczego zadanie jest rozwiązane w taki sposób?
 : Co zostało napisane jest ważne. Jednakże to, czego _nie_ napisano, może być jeszcze ważniejsze w zrozumieniu, o co chodzi w kodzie. Dlaczego zadanie zostało rozwiązane dokładnie w taki sposób? Kod nie odpowie na to pytanie.
