@@ -6,8 +6,12 @@ importance: 2
 
 Używając instrukcji `if..else`, napisz kod który będzie pytał: 'Jaka jest "oficjalna" nazwa JavaScript?'
 
+<<<<<<< HEAD
 Jeżeli odwiedzający wpisze "ECMAScript", wtedy 
 If the visitor enters "ECMAScript", then zwróć wynik "Racja!", w przeciwnym wypadku -- zwróć wynik: "Nie wiedziałeś? ECMAScript!"
+=======
+If the visitor enters "ECMAScript", then output "Right!", otherwise -- output: "You don't know? ECMAScript!"
+>>>>>>> 52c1e61915bc8970a950a3f59bd845827e49b4bf
 
 ![](ifelse_task2.svg)
 
