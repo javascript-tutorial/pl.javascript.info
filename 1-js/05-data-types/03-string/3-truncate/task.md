@@ -11,7 +11,13 @@ Wynik funkcji musi być tym samym ciągiem, jeśli obcięcie nie jest wymagane l
 Na przykład:
 
 ```js
+<<<<<<< HEAD
 truncate("Oto, co chciałbym powiedzieć na ten temat:", 20) = "Oto, co chciałbym p…"
 
 truncate("Cześć wszystkim!", 20) = "Cześć wszystkim!"
+=======
+truncate("What I'd like to tell on this topic is:", 20) == "What I'd like to te…"
+
+truncate("Hi everyone!", 20) == "Hi everyone!"
+>>>>>>> 725653fd99b19d42195e837ac3bb23c1784f8f6e
 ```
